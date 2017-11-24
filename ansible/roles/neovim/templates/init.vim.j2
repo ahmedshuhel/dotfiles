@@ -121,11 +121,21 @@ endfunction
 
 
 "ALE Settings
-let g:ale_fixers = {}
-let g:ale_fixers['javascript'] = ['prettier']
+  let g:ale_fixers = {
+  \   'javascript': [
+  \       'eslint',
+  \       'prettier',
+  \   ],
+  \   'python': [
+  \        'add_blank_lines_for_python_control_statements',
+  \        'autopep8',
+  \        'isort',
+  \        'yapf',
+  \   ]
+  \}
+
 let g:ale_javascript_prettier_options = '--single-quote'
 let g:ale_rust_rls_executable = 'rls'
-
 
 "Keymaps
 noremap <plug>(slash-after) zz

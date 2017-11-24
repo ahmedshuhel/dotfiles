@@ -13,6 +13,11 @@
     name: neovim
     executable: pip3
 
+- name: install ALE python requirements
+  pip:
+    name: autopep8 flake8 isort yapf
+    executable: pip3
+
 - name: create necessary directories
   file:
     path: "{{ item }}"
