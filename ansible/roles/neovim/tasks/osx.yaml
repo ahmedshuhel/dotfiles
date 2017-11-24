@@ -1,0 +1,20 @@
+---
+- homebrew:
+    name: neovim
+    state: present
+    update_homebrew: yes
+
+- homebrew:
+    name: python
+    state: present
+
+- homebrew:
+    name: python3
+    state: present
+
+- homebrew:
+    name: fzf
+    state: present
+
+- name: configure fzf
+  shell: "$(brew --prefix)/opt/fzf/install --all"

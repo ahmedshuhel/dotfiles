@@ -1,0 +1,138 @@
+set nocompatible
+set clipboard=unnamed
+set exrc
+filetype off
+
+filetype plugin indent on
+syntax on
+syntax enable
+
+set background=dark
+set foldmethod=indent
+set smartindent
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+set number
+set relativenumber
+
+set hlsearch
+set incsearch
+set mouse=a
+set laststatus=2 "airline
+
+set list                                            "Display unprintable characters f12 - switches
+set listchars=tab:•\ ,trail:•,extends:»,precedes:«  "Unprintable chars mapping
+call plug#begin('{{ plugin_dir }}')
+
+Plug 'sheerun/vim-polyglot'
+Plug 'moll/vim-node'
+Plug 'Chiel92/vim-autoformat'
+Plug 'flazz/vim-colorschemes'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mattn/emmet-vim'
+Plug 'marijnh/tern_for_vim'
+Plug 'raimondi/delimitmate'
+Plug 'w0rp/ale'
+Plug 'majutsushi/tagbar'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-runner'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-rails'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-unimpaired'
+Plug 'kshenoy/vim-signature'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/vim-slash'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'beloglazov/vim-online-thesaurus'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'roxma/nvim-completion-manager'
+Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+Plug 'racer-rust/vim-racer'
+Plug 'roxma/nvim-cm-racer'
+Plug 'ludovicchabant/vim-gutentags'
+
+call plug#end()
+
+
+let g:UltiSnipsExpandTrigger="<c-j>"
+
+"Set colorscheme
+colorscheme solarized
+
+autocmd GUIEnter * set vb t_vb= " for your GUI
+autocmd VimEnter * set vb t_vb=
+
+"Airline
+let g:airline_theme='powerlineish'
+let g:airline_powerline_fonts = 1
+let g:airline_skip_empty_sections = 1
+
+"Emmet
+let g:user_emmet_leader_key='<C-Y>'
+
+"Cursor
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
+let &t_te.="\e[0 q"
+
+"Set swap file location
+set directory=~/.vim/swapfiles//
+
+"Ignore Files
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.pyc
+
+
+function! DistractionFreeModeOn()
+  :silent exec "!tmux set -g status off"
+  color seoul256
+  Goyo
+  Limelight0.5
+endfunction
+
+function! DistractionFreeModeOff()
+  :silent exec "!tmux set -g status on"
+  Limelight!
+  Goyo!
+  color solarized
+endfunction
+
+
+"ALE Settings
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_javascript_prettier_options = '--single-quote'
+let g:ale_rust_rls_executable = 'rls'
+
+
+"Keymaps
+noremap <plug>(slash-after) zz
+if has('timers')
+  " Blink 2 times with 50ms interval
+  noremap <expr> <plug>(slash-after) 'zz'.slash#blink(2, 50)
+endif
+
+nnoremap df= :call DistractionFreeModeOn()<CR>
+nnoremap df- :call DistractionFreeModeOff()<CR>
+nnoremap <C-p> :GFiles<CR>
+nnoremap <leader>g :call GoogleError()<CR>
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+
+set secure
