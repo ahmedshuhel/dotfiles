@@ -24,6 +24,14 @@ set laststatus=2 "airline
 
 set list                                            "Display unprintable characters f12 - switches
 set listchars=tab:•\ ,trail:•,extends:»,precedes:«  "Unprintable chars mapping
+
+{% if ansible_os_family|lower == 'darwin' %}
+let g:python_host_prog = '/usr/local/bin/python2'
+let g:python3_host_prog = '/usr/local/bin/python3'
+{% else %}
+
+{% endif %}
+
 call plug#begin('{{ plugin_dir }}')
 
 Plug 'sheerun/vim-polyglot'
