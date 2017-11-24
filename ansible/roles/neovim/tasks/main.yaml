@@ -1,11 +1,7 @@
 ---
-- name: install neovim on osx
-  import_tasks: osx.yaml
+- name: include install tasks
+  include_tasks: "{{ ansible_os_family|lower }}.yaml"
   when: ansible_os_family|lower == 'darwin'
-
-- name: install neovim on ubuntu
-  import_tasks: ubuntu.yaml
-  when: ansible_os_family|lower == 'debian'
 
 - name: install python2 neovim
   pip:
@@ -30,12 +26,11 @@
   template:
     src: "init.vim.j2"
     dest: "{{ config_file }}"
-  
-- name: Download vim-plug
+
+- name: download vim-plug
   get_url:
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     dest: "{{ autoload_dir }}/plug.vim"
 
 - name: install plugins
   command: nvim +'PlugInstall --sync' +qa
-

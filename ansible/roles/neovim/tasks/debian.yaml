@@ -1,0 +1,4 @@
+---
+- apt:
+    name: pyton3-neovim
+    state: present

@@ -1,18 +1,21 @@
 ---
-- homebrew:
-    name: neovim
-    state: present
-    update_homebrew: yes
+- name: install git
+  homebrew:
+      name: git
+      state: present
 
-- homebrew:
+- name: install python 2
+  homebrew:
     name: python
     state: present
 
-- homebrew:
+- name: install python3
+  homebrew:
     name: python3
     state: present
 
-- homebrew:
+- name: install fzf
+  homebrew:
     name: fzf
     state: present
 
