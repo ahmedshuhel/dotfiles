@@ -1,0 +1,13 @@
+session_name: configuration-management
+start_directory: ~/Workspace/configuration-management
+windows:
+  - window_name: workspace
+    layout: main-horizontal
+    options:
+      main-pane-height: 50
+    panes:
+      - shell_command:
+          - vim
+        focus: true
+      - shell_command:
+          - workon conf-mgmt

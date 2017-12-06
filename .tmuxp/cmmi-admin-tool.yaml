@@ -1,0 +1,23 @@
+session_name: cmmi-admin-tool
+start_directory: ~/Workspace/cmmi-admin-tool
+windows:
+  - window_name: workspace
+    layout: main-horizontal
+    options:
+      main-pane-height: 50
+    panes:
+      - shell_command:
+          - nvm use default
+          - vim
+        focus: true
+      - shell_command:
+          - nvm use 6.10.1
+  - window_name: server
+    layout: tiled
+    panes:
+      - shell_command:
+          - nvm use 6.10.1
+          - yarn client
+      - shell_command:
+          - nvm use 6.10.1
+          - yarn server

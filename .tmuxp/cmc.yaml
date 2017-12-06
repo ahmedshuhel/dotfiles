@@ -1,0 +1,31 @@
+session_name: cmc
+windows:
+  - window_name: workspace
+    focus: true
+    layout: main-horizontal
+    start_directory: ~/Workspace/marketingplatform
+    options:
+      main-pane-height: 50
+    panes:
+      - shell_command:
+          - nvm use 6.10.2
+          - vim
+        focus: true
+      - shell_command:
+          - nvm use 6.10.2
+  - window_name: server
+    layout: even-vertical
+    panes:
+      - start_directory: '~/Workspace/marketingplatform'
+        shell_command:
+          - redis-server --port 6378 &
+          - nvm use 6.10.2
+          - grunt
+      - start_directory: '~/Workspace/channel-service'
+        shell_command:
+          - nvm use 4.3.1
+          - npm start
+      - start_directory: '~/Workspace/publishing-service'
+        shell_command:
+          - nvm use 4.3.1
+          - npm start

@@ -1,0 +1,25 @@
+session_name: abcm
+start_directory: ~/Workspace/abcm
+windows:
+  - window_name: workspace
+    layout: main-horizontal
+    options:
+      main-pane-height: 50
+    panes:
+      - shell_command:
+          - nvm use default
+          - vim
+        focus: true
+      - shell_command:
+          - nvm use default
+          - workon abcm
+  - window_name: server
+    panes:
+      - shell_command:
+          - nvm use default
+          - workon abcm
+          - python -m abcm.server
+  - window_name: local-db
+    panes:
+      - shell_command:
+          - mycli -uabcm -pqwe90qwe -Dabcm

@@ -1,0 +1,31 @@
+session_name: assets
+start_directory: ~/Workspace/assets
+windows:
+  - window_name: workspace
+    layout: main-horizontal
+    focus: true
+    options:
+      main-pane-height: 40
+    panes:
+      - shell_command:
+          - nvm use default
+          - vim
+        focus: true
+      - shell_command:
+          - nvm use default
+          - workon assets-env
+  - window_name: server
+    layout: main-horizontal
+    options:
+      main-pane-height: 40
+    panes:
+      - shell_command:
+          - nvm use default
+          - workon assets-env
+          - python -m assets.web.server
+      - shell_command:
+          - nvm use default
+  - window_name: local-db
+    panes:
+      - shell_command:
+          - mycli -uroot -p123 -Dnewscred_assets

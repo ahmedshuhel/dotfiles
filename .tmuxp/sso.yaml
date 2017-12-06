@@ -1,0 +1,19 @@
+session_name: sso
+start_directory: ~/Workspace/sso
+windows:
+  - window_name: workspace
+    layout: main-horizontal
+    options:
+      main-pane-height: 50
+    panes:
+      - shell_command:
+          - nvm use default
+          - vim
+        focus: true
+      - shell_command:
+          - nvm use 4.3.1
+  - window_name: server
+    panes:
+      - shell_command:
+          - nvm use 4.3.1
+          - npm start

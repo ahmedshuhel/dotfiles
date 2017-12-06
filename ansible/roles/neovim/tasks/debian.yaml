@@ -1,4 +1,10 @@
 ---
+- name: add repository
+  apt_repository:
+    repo: 'ppa:neovim-ppa/stable'
+    state: present
+    update_cache: yes
+
 - apt:
     name: pyton3-neovim
     state: present
