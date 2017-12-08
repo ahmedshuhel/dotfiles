@@ -1,0 +1,14 @@
+session_name: ht
+windows:
+- focus: 'true'
+  layout: e090,178x55,0,0[178x41,0,0,6,178x13,0,42,7]
+  options:
+    automatic-rename: 'off'
+  panes:
+    - shell_command:
+      - nvim
+      focus: true
+    - shell_command:
+      - workon ht-env
+  start_directory: ~/Workspace/ht
+  window_name: workspace
