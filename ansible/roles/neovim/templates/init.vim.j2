@@ -71,6 +71,7 @@ Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 Plug 'racer-rust/vim-racer'
 Plug 'roxma/nvim-cm-racer'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'janko-m/vim-test'
 
 call plug#end()
 
@@ -89,7 +90,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_skip_empty_sections = 1
 
 "Emmet
-let g:user_emmet_leader_key='<C-Y>'
+let g:user_emmet_leader_key='<c-y>'
 
 "Cursor
 let &t_ti.="\e[1 q"
@@ -136,6 +137,17 @@ let g:ale_fixers = {
 
 let g:ale_javascript_prettier_options = '--single-quote'
 let g:ale_rust_rls_executable = 'rls'
+
+"vim-test settings
+let test#strategy = "neovim"
+let test#python#runner = 'pytest'
+
+nmap <silent> tn :TestNearest<CR>
+nmap <silent> tf :TestFile<CR>
+nmap <silent> ts :TestSuite<CR>
+nmap <silent> tl :TestLast<CR>
+nmap <silent> tg :TestVisit<CR>
+"end vim-test settings
 
 "Keymaps
 noremap <plug>(slash-after) zz
