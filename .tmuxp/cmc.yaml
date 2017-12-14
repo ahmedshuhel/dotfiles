@@ -12,6 +12,26 @@ windows:
           - vim
       - shell_command:
           - nvm use 6.10.2
+  - window_name: ps
+    layout: main-horizontal
+    start_directory: ~/Workspace/publishing-service
+    options:
+      main-pane-height: 40
+    panes:
+      - shell_command:
+          - vim
+      - shell_command:
+          - nvm use 4.3.1
+  - window_name: cs
+    layout: main-horizontal
+    start_directory: ~/Workspace/channel-service
+    options:
+      main-pane-height: 40
+    panes:
+      - shell_command:
+          - vim
+      - shell_command:
+          - nvm use 4.3.1
   - window_name: server
     layout: even-vertical
     panes:
