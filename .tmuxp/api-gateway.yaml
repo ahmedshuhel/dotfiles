@@ -1,0 +1,19 @@
+session_name: api-gateway
+windows:
+- focus: 'true'
+  layout: a34d,178x53,0,0[178x39,0,0,54,178x13,0,40,55]
+  options:
+    automatic-rename: 'off'
+  panes:
+  - vim
+  - pane
+  start_directory: ~/Workspace/api-gateway
+  window_name: workspace
+- layout: 5f57,178x53,0,0,56
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: zsh
+  start_directory: ~/Workspace/api-gateway
+  window_name: server
