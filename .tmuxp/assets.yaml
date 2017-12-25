@@ -8,6 +8,7 @@ windows:
       main-pane-height: 40
     panes:
       - shell_command:
+          - workon assets-env
           - nvm use default
           - vim
         focus: true
