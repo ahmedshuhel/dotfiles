@@ -6,6 +6,7 @@ windows:
     automatic-rename: 'off'
   panes:
     - shell_command:
+      - workon ht-env
       - nvim
       focus: true
     - shell_command:
