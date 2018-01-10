@@ -18,7 +18,11 @@ windows:
       - shell_command:
           - nvm use default
           - workon abcm
-          - python -m abcm.server
+          - python -m abcm.web.server
+      - shell_command:
+          - nvm use default
+          - workon abcm
+          - python -m abcm.admin.server
   - window_name: local-db
     panes:
       - shell_command:
