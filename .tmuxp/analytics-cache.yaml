@@ -1,0 +1,19 @@
+session_name: analytics-cache
+windows:
+- layout: 3787,178x53,0,0[178x40,0,0,3,178x12,0,41,4]
+  options:
+    automatic-rename: 'off'
+  panes:
+  - zsh
+  - focus: 'true'
+    shell_command: zsh
+  start_directory: /home/ahmedshuhel/Workspace/analytics-cache
+  window_name: workspace
+- focus: 'true'
+  layout: be42,178x53,0,0,5
+  options:
+    automatic-rename: 'off'
+  panes:
+  - pane
+  start_directory: /home/ahmedshuhel/Workspace/analytics-cache
+  window_name: server
