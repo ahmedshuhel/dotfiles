@@ -16,8 +16,10 @@ windows:
     automatic-rename: 'off'
   panes:
     - shell_command:
+      - nvm use default
       - yarn start
     - shell_command:
+      - nvm use default
       - yarn fake-server
   start_directory: ~/Workspace/xentab/XenTab.App
   window_name: server
