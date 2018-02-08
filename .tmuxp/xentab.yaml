@@ -7,6 +7,7 @@ windows:
   panes:
   - shell_command:
     - cd ~/Workspace/xentab/XenTab.App
+    - nvm use default
     - nvim
   - pane
   start_directory: ~/Workspace/xentab
