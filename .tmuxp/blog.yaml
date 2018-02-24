@@ -5,16 +5,22 @@ windows:
   options:
     automatic-rename: 'off'
   panes:
-  - nvim
-  - focus: 'true'
-    shell_command: Python
-  start_directory: /Users/ahmedshuhel/Workspace/blog
+    - shell_command:
+        - nvm use default
+        - vim
+      focus: 'true'
+    - shell_command: nvm use default
+  start_directory: ~/Workspace/blog
   window_name: workspace
 - layout: 2d05,178x55,0,0[178x27,0,0,1,178x27,0,28,2]
   options:
     automatic-rename: 'off'
   panes:
-  - pane
-  - pane
-  start_directory: /Users/ahmedshuhel/Workspace/blog
+    - shell_command:
+      - nvm use default
+      - hexo server
+    - shell_command:
+      - nvm use default
+      - hexo clean && hexo generate --watch
+  start_directory: ~/Workspace/blog
   window_name: server
