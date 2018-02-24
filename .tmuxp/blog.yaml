@@ -1,0 +1,20 @@
+session_name: blog
+windows:
+- focus: 'true'
+  layout: c082,178x55,0,0[178x41,0,0,0,178x13,0,42,3]
+  options:
+    automatic-rename: 'off'
+  panes:
+  - nvim
+  - focus: 'true'
+    shell_command: Python
+  start_directory: /Users/ahmedshuhel/Workspace/blog
+  window_name: workspace
+- layout: 2d05,178x55,0,0[178x27,0,0,1,178x27,0,28,2]
+  options:
+    automatic-rename: 'off'
+  panes:
+  - pane
+  - pane
+  start_directory: /Users/ahmedshuhel/Workspace/blog
+  window_name: server
