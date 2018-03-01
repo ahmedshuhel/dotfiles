@@ -5,8 +5,11 @@ windows:
   options:
     automatic-rename: 'off'
   panes:
-  - vim
-  - pane
+    - shell_command:
+      - workon api-gateway-env
+      - vim
+    - shell_command:
+      - workon api-gateway-env
   start_directory: ~/Workspace/api-gateway
   window_name: workspace
 - layout: 5f57,178x53,0,0,56
@@ -14,6 +17,8 @@ windows:
     automatic-rename: 'off'
   panes:
   - focus: 'true'
-    shell_command: zsh
+    shell_command:
+      - workon api-gateway-env
+      - python -m ncgateway.server
   start_directory: ~/Workspace/api-gateway
   window_name: server
