@@ -5,15 +5,20 @@ windows:
   options:
     automatic-rename: 'off'
   panes:
-  - pane
-  - zsh
-  start_directory: /home/ahmedshuhel/Workspace/print-server
+    - shell_command:
+      - workon print-server
+      - vim
+    - shell_command:
+      - workon print-server
+  start_directory: ~/Workspace/print-server
   window_name: workspace
 - layout: 5e20,239x62,0,0,11
   options:
     automatic-rename: 'off'
   panes:
   - focus: 'true'
-    shell_command: zsh
-  start_directory: /home/ahmedshuhel/Workspace/print-server
+    shell_command:
+      - workon print-server
+      - python -m print_server.run
+  start_directory: ~/Workspace/print-server
   window_name: server
