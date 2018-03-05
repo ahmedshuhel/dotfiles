@@ -26,6 +26,6 @@ windows:
     automatic-rename: 'off'
   panes:
   - focus: 'true'
-    shell_command: mysql -uroot -p123 -Danalytics_api
+    shell_command: mycli -uroot -p123 -Danalytics_api
   start_directory: ~/Workspace/analytics-api
   window_name: local-db
