@@ -1,0 +1,31 @@
+session_name: analytics-api
+windows:
+- focus: 'true'
+  layout: 984f,178x53,0,0[178x37,0,0,74,178x15,0,38,75]
+  options:
+    automatic-rename: 'off'
+  panes:
+  - shell_command:
+    - workon analytics-api-env
+    - nvim
+  - workon analytics-api-env
+  start_directory: ~/Workspace/analytics-api
+  window_name: workspace
+- layout: 5f58,178x53,0,0,76
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command:
+    - workon analytics-api-env
+    - python -m analytics.server
+  start_directory: ~/Workspace/analytics-api
+  window_name: server
+- layout: 5f59,178x53,0,0,77
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: mysql -uroot -p123 -Danalytics_api
+  start_directory: ~/Workspace/analytics-api
+  window_name: local-db
