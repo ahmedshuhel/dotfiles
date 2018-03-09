@@ -1,0 +1,26 @@
+session_name: xencube
+windows:
+- focus: 'true'
+  layout: de7f,178x53,0,0[178x41,0,0,0,178x11,0,42,1]
+  options:
+    automatic-rename: 'off'
+  panes:
+  - shell_command:
+    - cd ~/Workspace/xencube/XenCube.App
+    - nvm use default
+    - nvim
+  - pane
+  start_directory: ~/Workspace/xencube
+  window_name: workspace
+- layout: 8405,178x53,0,0[178x26,0,0,2,178x26,0,27,3]
+  options:
+    automatic-rename: 'off'
+  panes:
+    - shell_command:
+      - nvm use default
+      - yarn start
+    - shell_command:
+      - nvm use default
+      - yarn fake-server
+  start_directory: ~/Workspace/xencube/XenCube.App
+  window_name: server
