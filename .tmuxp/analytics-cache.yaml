@@ -1,19 +1,23 @@
 session_name: analytics-cache
 windows:
-- layout: 3787,178x53,0,0[178x40,0,0,3,178x12,0,41,4]
+- focus: 'true'
+  layout: 1794,239x62,0,0[239x45,0,0,46,239x16,0,46,47]
   options:
     automatic-rename: 'off'
   panes:
-  - zsh
-  - focus: 'true'
-    shell_command: zsh
+  - shell_command:
+    - workon analytics-cache
+    - nvim
+  - workon analytics-cache
   start_directory: /home/ahmedshuhel/Workspace/analytics-cache
   window_name: workspace
-- focus: 'true'
-  layout: be42,178x53,0,0,5
+- layout: de28,239x62,0,0,48
   options:
     automatic-rename: 'off'
   panes:
-  - pane
+    - focus: 'true'
+      shell_command:
+        - workon analytics-cache
+        - python -m analytics_cache.server
   start_directory: /home/ahmedshuhel/Workspace/analytics-cache
   window_name: server
