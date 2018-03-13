@@ -1,4 +1,4 @@
-session_name: cmc
+session_name: cmp
 windows:
   - window_name: workspace
     focus: true
@@ -37,6 +37,7 @@ windows:
     panes:
       - start_directory: ~/Workspace/marketingplatform
         shell_command:
+          - cd ~/Workspace/marketingplatform
           - nvm use 6.10.2
           - grunt
       - start_directory: ~/Workspace/channel-service
