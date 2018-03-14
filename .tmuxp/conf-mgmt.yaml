@@ -7,6 +7,7 @@ windows:
       main-pane-height: 50
     panes:
       - shell_command:
+          - workon conf-mgmt
           - vim
         focus: true
       - shell_command:
