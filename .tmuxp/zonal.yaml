@@ -7,13 +7,12 @@ windows:
   panes:
   - nvim
   - focus: 'true'
-    shell_command: Python
   start_directory: /Users/ahmedshuhel/Workspace/zonal
   window_name: workspace
 - layout: c63f,178x55,0,0,2
   options:
     automatic-rename: 'off'
   panes:
-  - pane
+  - yarn start
   start_directory: /Users/ahmedshuhel/Workspace/zonal
   window_name: server
