@@ -29,11 +29,16 @@ set listchars=tab:•\ ,trail:•,extends:»,precedes:«  "Unprintable chars map
 let g:python_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
 {% else %}
-
+let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
 {% endif %}
+
+let python_highlight_all=1
 
 call plug#begin('{{ plugin_dir }}')
 
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'skywind3000/asyncrun.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'moll/vim-node'
 Plug 'Chiel92/vim-autoformat'
@@ -73,39 +78,18 @@ Plug 'roxma/nvim-cm-racer'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'janko-m/vim-test'
 Plug 'fatih/vim-go'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
 
 call plug#end()
 
-
-let g:UltiSnipsExpandTrigger="<c-j>"
-
-"Set colorscheme
 colorscheme solarized
 
-autocmd GUIEnter * set vb t_vb= " for your GUI
-autocmd VimEnter * set vb t_vb=
-
-"Airline
-let g:airline_theme='powerlineish'
-let g:airline_powerline_fonts = 1
-let g:airline_skip_empty_sections = 1
-
-"Emmet
-let g:user_emmet_leader_key='<c-y>'
-
-"Cursor
-let &t_ti.="\e[1 q"
-let &t_SI.="\e[5 q"
-let &t_EI.="\e[1 q"
-let &t_te.="\e[0 q"
-
-"Set swap file location
-set directory=~/.vim/swapfiles//
-
-"Ignore Files
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.pyc
-
+"Functions {{{
+function ApplyJavascriptConfig()
+  set errorformat=%f\(%l\\,%c\):\ %trror\ TS%n:\ %m
+  set makeprg=tsc\ --noEmit
+endfunction
 
 function! DistractionFreeModeOn()
   :silent exec "!tmux set -g status off"
@@ -120,9 +104,45 @@ function! DistractionFreeModeOff()
   Goyo!
   color solarized
 endfunction
+"}}}
+
+"UltiSnips {{{
+let g:UltiSnipsExpandTrigger="<c-j>"
+"}}}
 
 
-"ALE Settings
+"Airline {{{
+let g:airline_theme='powerlineish'
+let g:airline_powerline_fonts = 1
+let g:airline_skip_empty_sections = 1
+"}}}
+
+"Emmet {{{
+let g:user_emmet_leader_key='<c-y>'
+"}}}
+
+"Cursor {{{
+autocmd GUIEnter * set vb t_vb= " for your GUI
+autocmd VimEnter * set vb t_vb=
+
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
+let &t_te.="\e[0 q"
+"}}}
+
+"Temp Files {{{
+set directory=~/.vim/swapfiles//
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.pyc
+"}}}
+
+
+"ALE {{{
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '>'
+let g:ale_sign_warning = '-'
+
 let g:ale_fixers = {
 \   'javascript': [
 \       'eslint',
@@ -138,8 +158,33 @@ let g:ale_fixers = {
 
 let g:ale_javascript_prettier_options = '--single-quote'
 let g:ale_rust_rls_executable = 'rls'
+"}}}
 
-"vim-test settings
+"LSP Settings
+if executable('typescript-language-server')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'typescript-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server', '--stdio']},
+        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+        \ 'whitelist': ['typescript', 'javascript', 'javascript.jsx'],
+        \ })
+endif
+
+
+"AsyncRun Settings {{{
+let g:asyncrun_open = 8
+command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+"}}}
+
+"Typescript/JavaScript Settings {{{
+augroup filetype_javascript
+    autocmd!
+    autocmd FileType javascript.jsx call ApplyJavascriptConfig()
+augroup END
+"}}}
+
+
+"VIM Test {{{
 let test#strategy = "neovim"
 let test#python#runner = 'pytest'
 
@@ -149,8 +194,15 @@ nmap <silent> ts :TestSuite<CR>
 nmap <silent> tl :TestLast<CR>
 nmap <silent> tg :TestVisit<CR>
 "end vim-test settings
+"}}}
 
-"Keymaps
+
+"Syntax Highlighting {{{
+hi link pythonImport Include
+hi link pythonBuiltinFunc PreProc
+"}}}
+
+"Keymaps {{{
 noremap <plug>(slash-after) zz
 if has('timers')
   " Blink 2 times with 50ms interval
@@ -164,5 +216,6 @@ nnoremap <C-p> :GFiles<CR>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+"}}}
 
 set secure
