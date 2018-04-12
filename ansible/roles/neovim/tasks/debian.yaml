@@ -5,6 +5,7 @@
     state: present
     update_cache: yes
 
-- apt:
-    name: pyton3-neovim
+- name: install neovim
+  apt:
+    name: neovim
     state: present
