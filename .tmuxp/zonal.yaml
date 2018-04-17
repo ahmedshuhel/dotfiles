@@ -7,12 +7,12 @@ windows:
   panes:
   - nvim
   - focus: 'true'
-  start_directory: /Users/ahmedshuhel/Workspace/zonal
+  start_directory: ~/Workspace/zonal
   window_name: workspace
 - layout: c63f,178x55,0,0,2
   options:
     automatic-rename: 'off'
   panes:
   - yarn start
-  start_directory: /Users/ahmedshuhel/Workspace/zonal
+  start_directory: ~/Workspace/zonal
   window_name: server
