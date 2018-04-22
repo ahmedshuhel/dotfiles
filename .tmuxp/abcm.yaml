@@ -8,6 +8,7 @@ windows:
     panes:
       - shell_command:
           - nvm use default
+          - workon abcm
           - vim
         focus: true
       - shell_command:
