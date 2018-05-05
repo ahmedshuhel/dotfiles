@@ -75,7 +75,6 @@ Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 Plug 'racer-rust/vim-racer'
 Plug 'roxma/nvim-cm-racer'
 Plug 'janko-m/vim-test'
-Plug 'python-mode/python-mode'
 Plug 'fatih/vim-go'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
@@ -85,7 +84,7 @@ call plug#end()
 colorscheme solarized
 
 "Functions
-function ApplyJavaScriptConfig()
+function! ApplyJavaScriptConfig()
   set errorformat=%f\(%l\\,%c\):\ %trror\ TS%n:\ %m
   set makeprg=tsc\ --noEmit
 endfunction
