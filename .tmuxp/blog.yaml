@@ -18,7 +18,7 @@ windows:
   panes:
     - shell_command:
       - nvm use default
-      - hexo server
+      - hexo server -p 4100
     - shell_command:
       - nvm use default
       - hexo clean && hexo generate --watch
