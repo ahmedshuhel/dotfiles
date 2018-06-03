@@ -32,7 +32,7 @@ windows:
       - shell_command:
           - nvm use default
           - workon abcm
-          - uwsgi --http :7005 --wsgi abcm.web.server:app --master --processes 4 --threads 2 --py-autoreload 1
+          - python -m abcm.web.server
       - shell_command:
           - nvm use default
           - workon abcm
