@@ -8,10 +8,11 @@ windows:
       main-pane-height: 40
     panes:
       - shell_command:
-          - nvm use 6.10.2
+          - nvm use 8.11.1
           - vim
       - shell_command:
-          - nvm use 6.10.2
+          - nvm use 8.11.1
+          - vim
   - window_name: ps
     layout: main-horizontal
     start_directory: ~/Workspace/publishing-service
@@ -39,7 +40,7 @@ windows:
       - start_directory: ~/Workspace/marketingplatform
         shell_command:
           - cd ~/Workspace/marketingplatform
-          - nvm use 6.10.2
+          - nvm use 8.11.1
           - grunt
       - start_directory: ~/Workspace/channel-service
         shell_command:
