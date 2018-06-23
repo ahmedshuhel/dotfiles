@@ -177,6 +177,7 @@ command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 augroup filetype_javascript
     autocmd!
     autocmd FileType javascript.jsx call ApplyJavaScriptConfig()
+    autocmd FileType javascript.jsx nnoremap <leader>fu :Ggrep <cword><CR>
 augroup END
 "========
 
