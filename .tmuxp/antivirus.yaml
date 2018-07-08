@@ -1,0 +1,24 @@
+session_name: antivirus
+windows:
+- focus: 'true'
+  layout: 9e8d,239x56,0,0[239x39,0,0,41,239x16,0,40,43]
+  options:
+    automatic-rename: 'off'
+  panes:
+    - shell_command:
+      - workon antivirus-env
+      - nvim
+    - focus: 'true'
+      shell_command:
+      - workon antivirus-env
+  start_directory: ~/Workspace/antivirus
+  window_name: workspace
+- layout: e522,239x56,0,0,42
+  options:
+    automatic-rename: 'off'
+  panes:
+    - shell_command:
+      - workon antivirus-env
+      - python -m antivirus.server
+  start_directory: ~/Workspace/antivirus
+  window_name: server
