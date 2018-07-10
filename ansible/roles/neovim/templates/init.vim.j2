@@ -42,7 +42,7 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'moll/vim-node'
 Plug 'Chiel92/vim-autoformat'
-Plug 'flazz/vim-colorschemes'
+Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mattn/emmet-vim'
@@ -78,8 +78,10 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'OrangeT/vim-csharp'
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
 
 call plug#end()
+
 
 call pymode#default('g:pymode_rope', 1)
 let g:pymode_rope_goto_definition_bind = 'gd'
@@ -167,12 +169,6 @@ let g:ale_fixers = {
 \   'javascript': [
 \       'eslint',
 \       'prettier',
-\   ],
-\   'python': [
-\        'add_blank_lines_for_python_control_statements',
-\        'autopep8',
-\        'isort',
-\        'yapf',
 \   ]
 \}
 
@@ -252,7 +248,7 @@ nnoremap <leader><space> :OmniSharpGetCodeActions<cr>
 vnoremap <leader><space> :call OmniSharp#GetCodeActions('visual')<cr>
 
 " rename with dialog
-nnoremap <leader>nm :OmniSharpRename<cr>
+nnoremap <leader>rr :OmniSharpRename<cr>
 
 " rename without dialog - with cursor on the symbol to rename... ':Rename newname'
 command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
