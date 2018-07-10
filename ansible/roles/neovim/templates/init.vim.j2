@@ -49,7 +49,7 @@ Plug 'mattn/emmet-vim'
 Plug 'marijnh/tern_for_vim'
 Plug 'raimondi/delimitmate'
 Plug 'w0rp/ale'
-Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'tpope/vim-fugitive'
@@ -80,6 +80,15 @@ Plug 'OmniSharp/omnisharp-vim'
 Plug 'OrangeT/vim-csharp'
 
 call plug#end()
+
+call pymode#default('g:pymode_rope', 1)
+let g:pymode_rope_goto_definition_bind = 'gd'
+let g:pymode_syntax_all = 1
+let g:pymode_rope_completion = 0
+let g:pymode_rope_goto_definition_cmd = 'vnew'
+let g:pymode_rope_rename_bind = '<leader>rr'
+let g:pymode_rope_extract_method_bind = '<leader>rem'
+let g:pymode_rope_extract_variable_bind = '<leader>rev'
 
 colorscheme solarized
 
@@ -149,6 +158,7 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.pyc
 "========
 
 "ALE
+let g:ale_linters_explicit = 1
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '>'
 let g:ale_sign_warning = '-'
