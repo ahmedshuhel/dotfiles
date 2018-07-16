@@ -73,16 +73,47 @@ Plug 'junegunn/fzf.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'janko-m/vim-test'
 Plug 'fatih/vim-go'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'OrangeT/vim-csharp'
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
 
 call plug#end()
 
+colorscheme solarized
 
+
+
+"Language Server
+
+autocmd BufRead *.ts setlocal filetype=typescript
+autocmd BufRead *.rs setlocal filetype=rust
+autocmd BufRead *.js setlocal filetype=javascript
+
+let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
+let g:LanguageClient_loggingLevel = 'INFO'
+let g:LanguageClient_serverStderr = '/tmp/LanguageServer.log'
+let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'typescript': ['javascript-typescript-stdio'],
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+    \ }
+
+set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+set signcolumn=yes
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+
+"Pymode
 call pymode#default('g:pymode_rope', 1)
 let g:pymode_rope_goto_definition_bind = 'gd'
 let g:pymode_syntax_all = 1
@@ -92,7 +123,6 @@ let g:pymode_rope_rename_bind = '<leader>rr'
 let g:pymode_rope_extract_method_bind = '<leader>rem'
 let g:pymode_rope_extract_variable_bind = '<leader>rev'
 
-colorscheme solarized
 
 "Functions
 function! ApplyJavaScriptConfig()
