@@ -1,0 +1,19 @@
+session_name: ng-react
+windows:
+- focus: 'true'
+  layout: c081,178x55,0,0[178x41,0,0,0,178x13,0,42,1]
+  options: {}
+  panes:
+  - nvim
+  - focus: 'true'
+    shell_command: Python
+  start_directory: /Users/ahmedshuhel/Workspace/ng-react
+  window_name: zsh
+- layout: c63f,178x55,0,0,2
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: zsh
+  start_directory: /Users/ahmedshuhel/Workspace/ng-react
+  window_name: server
