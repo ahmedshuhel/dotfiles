@@ -12,7 +12,6 @@ windows:
           - vim
       - shell_command:
           - nvm use 8.11.1
-          - vim
   - window_name: ps
     layout: main-horizontal
     start_directory: ~/Workspace/publishing-service
