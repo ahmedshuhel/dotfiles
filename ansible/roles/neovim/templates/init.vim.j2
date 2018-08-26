@@ -91,8 +91,10 @@ colorscheme solarized
 "Language Server
 
 autocmd BufRead *.ts setlocal filetype=typescript
+autocmd BufRead *.tsx setlocal filetype=typescript
 autocmd BufRead *.rs setlocal filetype=rust
 autocmd BufRead *.js setlocal filetype=javascript
+autocmd BufRead *.jsx setlocal filetype=javascript
 
 let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
 let g:LanguageClient_loggingLevel = 'INFO'
@@ -119,7 +121,7 @@ let g:pymode_rope_goto_definition_cmd = 'vnew'
 let g:pymode_rope_rename_bind = '<leader>rr'
 let g:pymode_rope_extract_method_bind = '<leader>rem'
 let g:pymode_rope_extract_variable_bind = '<leader>rev'
-
+let g:pymode_lint_cwindow = 0
 
 "Functions
 function! ApplyJavaScriptConfig()
