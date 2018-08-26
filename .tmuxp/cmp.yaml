@@ -48,4 +48,4 @@ windows:
       - start_directory: ~/Workspace/publishing-service
         shell_command:
           - nvm use 8.11.1
-          - npm start
+          - PM2_DEV_HOME=.pm2_ps_dev npm start

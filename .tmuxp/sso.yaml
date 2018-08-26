@@ -16,4 +16,4 @@ windows:
     panes:
       - shell_command:
           - nvm use 8.11.1
-          - npm start
+          - PM2_DEV_HOME=.pm2_sso_dev npm start
