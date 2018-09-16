@@ -81,6 +81,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'OrangeT/vim-csharp'
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
+Plug 'rhysd/clever-f.vim'
 
 call plug#end()
 
@@ -122,6 +123,7 @@ let g:pymode_rope_rename_bind = '<leader>rr'
 let g:pymode_rope_extract_method_bind = '<leader>rem'
 let g:pymode_rope_extract_variable_bind = '<leader>rev'
 let g:pymode_lint_cwindow = 0
+let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8', 'mccabe']
 
 "Functions
 function! ApplyJavaScriptConfig()
