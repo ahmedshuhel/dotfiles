@@ -1,0 +1,9 @@
+session_name: kinesalite
+windows:
+- layout: 6524,239x56,0,0,72
+  options:
+    automatic-rename: 'off'
+  panes:
+  - kinesalite  --path=/var/kinesalite_db
+  start_directory: /home/ahmedshuhel/Workspace/article-query-record-processors
+  window_name: server
