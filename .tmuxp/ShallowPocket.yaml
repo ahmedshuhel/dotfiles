@@ -5,15 +5,20 @@ windows:
   options:
     automatic-rename: 'off'
   panes:
-  - nvim
+  - shell_command:
+    - nvm use v10
+    - nvim
   - focus: 'true'
-    shell_command: Python
-  start_directory: /Users/ahmedshuhel/Workspace/ShallowPocket
+    shell_command:
+    - nvm use v10
+  start_directory: ~/Workspace/ShallowPocket
   window_name: workspace
 - layout: c63f,178x55,0,0,2
   options:
     automatic-rename: 'off'
   panes:
-  - pane
-  start_directory: /Users/ahmedshuhel/Workspace/ShallowPocket
+  - shell_command:
+    - nvm use v10
+    - yarn start:web
+  start_directory: ~/Workspace/ShallowPocket
   window_name: server
