@@ -1,0 +1,12 @@
+session_name: captain
+windows:
+- focus: 'true'
+  layout: aa77,178x55,0,0[178x45,0,0,0,178x9,0,46,1]
+  options:
+    automatic-rename: 'off'
+  panes:
+  - nvim
+  - focus: 'true'
+    shell_command: Python
+  start_directory: /Users/ahmedshuhel/Workspace/captain
+  window_name: workspace
