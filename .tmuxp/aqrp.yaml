@@ -1,0 +1,25 @@
+session_name: aqrp
+windows:
+- focus: 'true'
+  layout: 000d,239x56,0,0[239x42,0,0,70,239x13,0,43,71]
+  options:
+    automatic-rename: 'off'
+  panes:
+  - shell_command:
+    - nvm use 4.3
+    - vim
+  - focus: 'true'
+    shell_command:
+    - nvm use 4.3
+  start_directory: /home/ahmedshuhel/Workspace/article-query-record-processors
+  window_name: workspace
+- layout: 6525,239x56,0,0,73
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command:
+    - nvm use 4.3
+    - node scripts/create-streams.js && npm run generate-properties ~/.newscred.yaml && npm start
+  start_directory: /home/ahmedshuhel/Workspace/article-query-record-processors
+  window_name: server

@@ -10,4 +10,7 @@ tmuxp load -d cmp
 tmuxp load -d abcm
 tmuxp load -d conf-mgmt
 tmuxp load -d api-gateway
+tmuxp load -d kinesalite
+tmuxp load -d aqrp
+tmuxp load -d aqs
 
