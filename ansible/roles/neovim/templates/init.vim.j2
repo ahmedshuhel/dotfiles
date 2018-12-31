@@ -24,6 +24,7 @@ set mouse=a
 set laststatus=2 "airline
 set list                                            "Display unprintable characters f12 - switches
 set listchars=tab:•\ ,trail:•,extends:»,precedes:«  "Unprintable chars mapping
+let g:loaded_matchit = 1
 
 {% if ansible_os_family|lower == 'darwin' %}
 let g:python_host_prog = '/usr/local/bin/python2'
@@ -58,8 +59,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-eunuch'
 Plug 'junegunn/gv.vim'
-Plug 'gregsexton/MatchTag'
-Plug 'vim-scripts/HTML-AutoCloseTag'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-unimpaired'
 Plug 'kshenoy/vim-signature'
@@ -86,6 +85,7 @@ Plug 'OmniSharp/omnisharp-vim'
 Plug 'OrangeT/vim-csharp'
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'rhysd/clever-f.vim'
+Plug 'andymass/vim-matchup'
 
 call plug#end()
 
