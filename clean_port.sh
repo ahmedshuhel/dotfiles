@@ -5,10 +5,10 @@ killport()
 	pids=`lsof -ti:$@`
 
 	if [ ! "$pids" ]; then
-		echo "No proccesses on port $@ found to kill"
+		echo "No proccess on port $@ found to kill"
 	else
-		echo "Killing proccesses $pids found to kill"
-		# kill -9 $pids
+		echo "Killing proccesses $pids"
+		kill -9 $pids
 	fi
 }
 

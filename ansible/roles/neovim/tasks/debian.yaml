@@ -1,7 +1,7 @@
 ---
 - name: add repository
   apt_repository:
-    repo: 'ppa:neovim-ppa/stable'
+    repo: 'ppa:neovim-ppa/unstable'
     state: present
     update_cache: yes
 
@@ -9,3 +9,4 @@
   apt:
     name: neovim
     state: present
+    update_cache: yes
