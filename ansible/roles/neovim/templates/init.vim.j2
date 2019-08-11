@@ -6,7 +6,6 @@ filetype off
 filetype plugin indent on
 syntax on
 syntax enable
-language en_US
 
 set background=dark
 set foldmethod=indent
@@ -86,11 +85,12 @@ Plug 'OrangeT/vim-csharp'
 Plug 'rhysd/clever-f.vim'
 Plug 'andymass/vim-matchup'
 Plug 'osyo-manga/vim-over'
+Plug 'morhetz/gruvbox'
 
 
 call plug#end()
 
-colorscheme solarized
+colorscheme gruvbox
 
 
 "Functions
@@ -243,7 +243,7 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 
 
 "Airline
-let g:airline_theme='powerlineish'
+let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline_skip_empty_sections = 1
 "========

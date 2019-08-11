@@ -1,7 +1,6 @@
 ---
 - name: include install tasks
   include_tasks: "{{ ansible_os_family|lower }}.yaml"
-  when: ansible_os_family|lower == 'darwin'
 
 - name: install python2 pynvim
   pip:
