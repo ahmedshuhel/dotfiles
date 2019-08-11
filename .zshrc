@@ -99,6 +99,7 @@ export PATH="$PATH:$(python -m site --user-base)/bin/"
 alias vim="nvim"
 alias vimdiff="nvim -d"
 alias zshconfig="nvim ~/.zshrc"
+alias vimrc="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
