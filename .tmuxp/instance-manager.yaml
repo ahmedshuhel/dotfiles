@@ -1,0 +1,25 @@
+session_name: instance-manager
+start_directory: ~/Workspace/instance-manager
+windows:
+- focus: 'true'
+  layout: f44e,178x55,0,0[178x41,0,0,57,178x13,0,42,60]
+  options:
+    automatic-rename: 'off'
+  panes:
+  - shell_command:
+    - workon instance-manger
+  - focus: 'true'
+  start_directory: ~/Workspace/instance-manager
+  window_name: workspace
+- layout: 9094,178x55,0,0[178x27,0,0,58,178x27,0,28,59]
+  options:
+    automatic-rename: 'off'
+  panes:
+  - shell_command:
+    - cd client
+    - yarn watch
+  - focus: 'true'
+    shell_command:
+    - workon instance-manger
+    - python -m instancemanager.app
+  window_name: server
