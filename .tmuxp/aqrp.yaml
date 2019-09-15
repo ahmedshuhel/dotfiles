@@ -20,6 +20,7 @@ windows:
   - focus: 'true'
     shell_command:
     - nvm use 4.3
+    - aws dynamodb list-tables --output text | grep ahmedshuhel | cut -f2 | xargs -I{} aws dynamodb delete-table --table-name {}
     - node scripts/create-streams.js && npm run generate-properties ~/.newscred.yaml && npm start
   start_directory: /home/ahmedshuhel/Workspace/article-query-record-processors
   window_name: server

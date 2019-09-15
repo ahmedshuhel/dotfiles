@@ -20,6 +20,7 @@ windows:
   - shell_command:
     - workon article-query
     - nvm use default
+    - update-es-mappings
     - python -m articles.web.server
   start_directory: /home/ahmedshuhel/Workspace/article-query
   window_name: server
