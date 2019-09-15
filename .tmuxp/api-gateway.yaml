@@ -7,7 +7,6 @@ windows:
   panes:
     - shell_command:
       - workon api-gateway-env
-      - vim
     - shell_command:
       - workon api-gateway-env
   start_directory: ~/Workspace/api-gateway

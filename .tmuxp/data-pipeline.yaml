@@ -7,7 +7,6 @@ windows:
   panes:
   - shell_command:
       - workon data-pipeline-env
-      - vim
   - workon data-pipeline-env
   start_directory: /home/ahmedshuhel/Workspace/data-pipeline
   window_name: workspace

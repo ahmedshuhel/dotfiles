@@ -7,7 +7,6 @@ windows:
   panes:
   - shell_command:
     - workon analytics-api-env
-    - nvim
   - workon analytics-api-env
   start_directory: ~/Workspace/analytics-api
   window_name: workspace

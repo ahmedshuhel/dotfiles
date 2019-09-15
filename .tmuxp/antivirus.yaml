@@ -7,7 +7,6 @@ windows:
   panes:
     - shell_command:
       - workon antivirus-env
-      - nvim
     - focus: 'true'
       shell_command:
       - workon antivirus-env

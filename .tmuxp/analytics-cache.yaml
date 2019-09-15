@@ -7,7 +7,6 @@ windows:
   panes:
   - shell_command:
     - workon analytics-cache
-    - nvim
   - workon analytics-cache
   start_directory: /home/ahmedshuhel/Workspace/analytics-cache
   window_name: workspace

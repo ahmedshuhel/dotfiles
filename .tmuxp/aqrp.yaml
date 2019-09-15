@@ -7,7 +7,6 @@ windows:
   panes:
   - shell_command:
     - nvm use 4.3
-    - vim
   - focus: 'true'
     shell_command:
     - nvm use 4.3

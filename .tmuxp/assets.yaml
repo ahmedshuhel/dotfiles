@@ -10,7 +10,6 @@ windows:
       - shell_command:
           - workon assets-env
           - nvm use default
-          - vim
         focus: true
       - shell_command:
           - nvm use default
