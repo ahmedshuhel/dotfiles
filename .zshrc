@@ -92,6 +92,33 @@ export PATH="$PATH:$(python -m site --user-base)/bin/"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+
+# Custom Functions
+
+function git {
+  if [[ "$1" == "review" ]]; then
+    user=`echo $2 | cut -d':' -f1`
+    branch=`echo $2 | cut -d':' -f2`
+    remote_url=$(command git remote get-url origin)
+    repo=$(echo $remote_url | cut -d'/' -f2)
+    local_branch="${user}-${branch}"
+    user_remote_url=$(command git remote get-url $user)
+
+    if [[ -z "$user_remote_url" ]]; then
+      git remote add $user git@github.com:$user/$repo
+    fi
+
+    command git fetch $user $branch
+    command git checkout $branch
+    command git reset --hard $user/$branch
+  else
+    command git "$@"
+  fi
+}
+
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -101,5 +128,6 @@ alias vimdiff="nvim -d"
 alias zshconfig="nvim ~/.zshrc"
 alias vimrc="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias start="~/start.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

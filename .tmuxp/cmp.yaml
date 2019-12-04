@@ -29,9 +29,9 @@ windows:
       main-pane-height: 40
     panes:
       - shell_command:
-          - nvm use 4.3.1
+          - nvm use 12.13.1
       - shell_command:
-          - nvm use 4.3.1
+          - nvm use 12.13.1
   - window_name: server
     layout: even-vertical
     panes:
@@ -42,8 +42,8 @@ windows:
           - grunt
       - start_directory: ~/Workspace/channel-service
         shell_command:
-          - nvm use 4.3.1
-          - npm start
+          - nvm use 12.13.1
+          - NODE_ENV=development nodemon server.js
       - start_directory: ~/Workspace/publishing-service
         shell_command:
           - nvm use 8.11.1
