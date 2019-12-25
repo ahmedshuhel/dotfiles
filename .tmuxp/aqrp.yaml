@@ -18,7 +18,7 @@ windows:
   panes:
   - focus: 'true'
     shell_command:
-    - nvm use 4.3
+    - nvm use v12.13.1
     - npm ls --depth 0 | grep kinesalite || npm install kinesalite@1.11.4
     - node server.js
   start_directory: /home/ahmedshuhel/Workspace/article-query-record-processors

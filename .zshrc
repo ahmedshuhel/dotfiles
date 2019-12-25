@@ -42,7 +42,7 @@ ZSH_THEME="robbyrussell"
 export DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -94,6 +94,20 @@ export PATH="$PATH:$(python -m site --user-base)/bin/"
 
 
 # Custom Functions
+function open {
+  if [[ "$1" == "jira" ]]; then
+    branch=$(command git rev-parse --abbrev-ref HEAD)
+    url="https://newscred.atlassian.net/browse/$branch"
+    echo $url
+  elif [[ "$1" == "pr" ]]; then
+    remote_url=$(command git remote get-url origin)
+    url=$(echo $remote_url | cut -d':' -f2)
+    echo "https://github.com/$url/pulls/ahmedshuhel"
+  else
+    command open "$@"
+  fi
+}
+
 
 function git {
   if [[ "$1" == "review" ]]; then
