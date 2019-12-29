@@ -73,7 +73,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'janko-m/vim-test'
 Plug 'fatih/vim-go'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
@@ -90,6 +90,7 @@ Plug 'Shougo/defx.nvim'
 Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
 Plug 'morhetz/gruvbox'
+Plug 'andys8/vim-elm-syntax', { 'for': ['elm'] }
 
 
 call plug#end()
@@ -361,6 +362,9 @@ let g:ale_fixers = {
 
 let g:ale_javascript_prettier_options = '--single-quote'
 let g:ale_rust_rls_executable = 'rls'
+
+let g:ale_linters = { 'elm': ['elm_ls'] }
+
 "========
 
 
