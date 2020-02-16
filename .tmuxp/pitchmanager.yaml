@@ -1,0 +1,31 @@
+session_name: pitchmanager
+start_directory: ~/Workspace/pitchmanager
+windows:
+  - window_name: workspace
+    layout: main-horizontal
+    focus: true
+    options:
+      main-pane-height: 40
+    panes:
+      - shell_command:
+          - workon pitchmanager
+          - nvm use default
+        focus: true
+      - shell_command:
+          - nvm use default
+          - workon pitchmanager
+  - window_name: server
+    layout: main-horizontal
+    options:
+      main-pane-height: 40
+    panes:
+      - shell_command:
+          - nvm use default
+          - workon pitchmanager
+          - python -m pitchmanager.web.server
+      - shell_command:
+          - nvm use default
+  - window_name: local-db
+    panes:
+      - shell_command:
+          - mycli -uroot -p123 -Dnewscred_pitchmanager
