@@ -16,6 +16,7 @@ set expandtab
 
 set number
 
+set cursorline
 set hlsearch
 set incsearch
 set mouse=a
@@ -55,6 +56,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 Plug 'brooth/far.vim'
 Plug 'idanarye/vim-merginal'
 Plug 'junegunn/gv.vim'
@@ -68,12 +70,10 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'janko-m/vim-test'
 Plug 'fatih/vim-go'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
@@ -104,7 +104,9 @@ let defx_explorer_cmd=':Defx -split=vertical -winwidth=40 -direction=topleft -co
 
 autocmd FileType defx call s:defx_my_settings()
 autocmd FileType defx set cursorline
-autocmd VimEnter * exec defx_explorer_cmd
+
+" Enter with defx open
+" autocmd VimEnter * exec defx_explorer_cmd
 
 nnoremap - :exec defx_explorer_cmd . ' ' . expand('%:p:h') . ' -search=' . expand('%p:p') <cr>
 
@@ -406,7 +408,7 @@ endif
 
 nnoremap df= :call DistractionFreeModeOn()<CR>
 nnoremap df- :call DistractionFreeModeOff()<CR>
-nnoremap <C-p> :GFiles<CR>
+nnoremap <C-p> :Clap files<CR>
 nnoremap <F12> :Ggrep <cword><CR>
 
 set secure
