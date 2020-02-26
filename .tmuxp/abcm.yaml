@@ -40,7 +40,7 @@ windows:
       - shell_command:
           - cd ~/Workspace/abcm-visualforce-widget
           - nvm use default
-          - API_KEY='f90d8df03b284f8db732b9804ff3b1da' yarn contact
+          - API_KEY='f90d8df03b284f8db732b9804ff3b1da' USE_LOCALHOST='yes' yarn contact
   - window_name: local-db
     panes:
       - shell_command:
