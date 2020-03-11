@@ -16,10 +16,12 @@ windows:
     automatic-rename: 'off'
   panes:
   - shell_command:
+    - dynalite --port 4568
+  - shell_command:
     - cd client
     - yarn watch
   - focus: 'true'
     shell_command:
-    - workon instance-manger
+    - pyenv activate instance-manager
     - python -m instancemanager.app
   window_name: server

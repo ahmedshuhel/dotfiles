@@ -8,12 +8,12 @@ windows:
     panes:
       - shell_command:
           - nvm use default
-          - workon abcm
+          - pyenv activate abcm
           - vim
         focus: true
       - shell_command:
           - nvm use default
-          - workon abcm
+          - pyenv activate abcm
   - window_name: app-workspace
     start_directory: ~/Workspace/abcm-visualforce-widget
     layout: main-horizontal
@@ -31,11 +31,11 @@ windows:
     panes:
       - shell_command:
           - nvm use default
-          - workon abcm
+          - pyenv activate abcm
           - python -m abcm.web.server
       - shell_command:
           - nvm use default
-          - workon abcm
+          - pyenv activate abcm
           - python -m abcm.admin.server
       - shell_command:
           - cd ~/Workspace/abcm-visualforce-widget
