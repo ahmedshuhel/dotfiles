@@ -1,0 +1,32 @@
+session_name: permissions
+windows:
+- focus: 'true'
+  layout: ee96,239x56,0,0[239x41,0,0,76,239x14,0,42,77]
+  options:
+    automatic-rename: 'off'
+  panes:
+  - shell_command:
+    - workon permissions-env
+    - nvim
+  - focus: 'true'
+    shell_command:
+     - workon permissions-env
+  start_directory: ~/Workspace/permissions
+  window_name: workspace
+- layout: 652a,239x56,0,0,78
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command:
+    - workon permissions-env
+  start_directory: ~/Workspace/permissions
+  window_name: server
+- layout: 652b,239x56,0,0,79
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: ssh
+  start_directory: ~/Workspace/permissions
+  window_name: gremlin
