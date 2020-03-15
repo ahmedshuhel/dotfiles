@@ -109,22 +109,42 @@ function open {
 }
 
 
+function git_syncnote {
+  cd ~/Workspace/devlife
+  command git add .
+  command git commit -m "Update daily log: $(date +'%F')"
+  command git fetch origin master
+  command git rebase origin/master
+
+  commit_count=$(command git log --pretty=oneline --since '1 day' | wc -l)
+  command git reset --soft HEAD~$commit_count
+  command git commit -m "Update daily log: $(date +'%F')"
+  command git push origin master -f
+}
+
+function git_review {
+  user=`echo $2 | cut -d':' -f1`
+  branch=`echo $2 | cut -d':' -f2`
+  remote_url=$(command git remote get-url origin)
+  repo=$(echo $remote_url | cut -d'/' -f2)
+  local_branch="${user}-${branch}"
+  user_remote_url=$(command git remote get-url $user)
+
+  if [[ -z "$user_remote_url" ]]; then
+    git remote add $user git@github.com:$user/$repo
+  fi
+
+  command git fetch $user $branch
+  command git checkout $branch
+  command git reset --hard $user/$branch
+}
+
+
 function git {
   if [[ "$1" == "review" ]]; then
-    user=`echo $2 | cut -d':' -f1`
-    branch=`echo $2 | cut -d':' -f2`
-    remote_url=$(command git remote get-url origin)
-    repo=$(echo $remote_url | cut -d'/' -f2)
-    local_branch="${user}-${branch}"
-    user_remote_url=$(command git remote get-url $user)
-
-    if [[ -z "$user_remote_url" ]]; then
-      git remote add $user git@github.com:$user/$repo
-    fi
-
-    command git fetch $user $branch
-    command git checkout $branch
-    command git reset --hard $user/$branch
+    git_review
+  elif [[ "$1" == "sync-note" ]]; then
+    git_syncnote
   else
     command git "$@"
   fi
@@ -140,7 +160,7 @@ function git {
 alias vim="nvim"
 alias vimdiff="nvim -d"
 alias zshconfig="nvim ~/.zshrc"
-alias vimrc="nvim ~/.zshrc"
+alias vimrc="nvim ~/.config/nvim/init.vim"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias start="~/start.sh"
 
