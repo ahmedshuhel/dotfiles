@@ -1,0 +1,14 @@
+session_name: devlife
+windows:
+- focus: 'true'
+  layout: 0782,178x55,0,0[178x42,0,0,0,178x12,0,43,1]
+  options:
+    automatic-rename: 'off'
+  panes:
+  - shell_command:
+    - nvm use 8.9.4
+  - focus: 'true'
+    shell_command:
+    - nvm use 8.9.4
+  start_directory: ~/Workspace/devlife
+  window_name: workspace
