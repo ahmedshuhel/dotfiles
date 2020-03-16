@@ -123,8 +123,11 @@ function git_syncnote {
 }
 
 function git_review {
-  user=`echo $2 | cut -d':' -f1`
-  branch=`echo $2 | cut -d':' -f2`
+  user=`echo $1 | cut -d':' -f1`
+  branch=`echo $1 | cut -d':' -f2`
+
+  echo "Checking out #branch: '${user}/${branch}'..."
+
   remote_url=$(command git remote get-url origin)
   repo=$(echo $remote_url | cut -d'/' -f2)
   local_branch="${user}-${branch}"
@@ -142,7 +145,7 @@ function git_review {
 
 function git {
   if [[ "$1" == "review" ]]; then
-    git_review
+    git_review $2
   elif [[ "$1" == "sync-note" ]]; then
     git_syncnote
   else
@@ -165,3 +168,7 @@ alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias start="~/start.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
