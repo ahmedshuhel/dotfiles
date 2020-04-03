@@ -6,9 +6,11 @@ windows:
     automatic-rename: 'off'
   panes:
   - shell_command:
-    - nvm use 8.9.4
+    - nvm use 12.13.1
+    - pyenv shell devlife
   - focus: 'true'
     shell_command:
     - nvm use 8.9.4
+    - pyenv shell devlife
   start_directory: ~/Workspace/devlife
   window_name: workspace
