@@ -2,16 +2,15 @@ session_name: instance-manager
 start_directory: ~/Workspace/instance-manager
 windows:
 - focus: 'true'
-  layout: f44e,178x55,0,0[178x41,0,0,57,178x13,0,42,60]
   options:
     automatic-rename: 'off'
   panes:
   - shell_command:
-    - pyenv activate instance-manger
+    - pyenv activate instance-manager
   - focus: 'true'
   start_directory: ~/Workspace/instance-manager
   window_name: workspace
-- layout: 9094,178x55,0,0[178x27,0,0,58,178x27,0,28,59]
+- window_name: server
   options:
     automatic-rename: 'off'
   panes:
@@ -24,4 +23,3 @@ windows:
     shell_command:
     - pyenv activate instance-manager
     - python -m instancemanager.app
-  window_name: server
