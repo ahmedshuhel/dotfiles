@@ -6,8 +6,8 @@ windows:
     automatic-rename: 'off'
   panes:
   - shell_command:
-    - workon analytics-cache
-  - workon analytics-cache
+    - pyenv activate analytics-cache
+  - pyenv activate analytics-cache
   start_directory: /home/ahmedshuhel/Workspace/analytics-cache
   window_name: workspace
 - layout: de28,239x62,0,0,48
@@ -16,7 +16,7 @@ windows:
   panes:
     - focus: 'true'
       shell_command:
-        - workon analytics-cache
+        - pyenv activate analytics-cache
         - python -m analytics_cache.server
   start_directory: /home/ahmedshuhel/Workspace/analytics-cache
   window_name: server

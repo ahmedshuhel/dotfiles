@@ -8,12 +8,12 @@ windows:
       main-pane-height: 40
     panes:
       - shell_command:
-          - workon pitchmanager
+          - pyenv activate pitchmanager
           - nvm use default
         focus: true
       - shell_command:
           - nvm use default
-          - workon pitchmanager
+          - pyenv activate pitchmanager
   - window_name: server
     layout: main-horizontal
     options:
@@ -21,7 +21,7 @@ windows:
     panes:
       - shell_command:
           - nvm use default
-          - workon pitchmanager
+          - pyenv activate pitchmanager
           - python -m pitchmanager.web.server
       - shell_command:
           - nvm use default

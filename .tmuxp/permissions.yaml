@@ -6,11 +6,11 @@ windows:
     automatic-rename: 'off'
   panes:
   - shell_command:
-    - workon permissions-env
+    - pyenv activate permissions-env
     - nvim
   - focus: 'true'
     shell_command:
-     - workon permissions-env
+     - pyenv activate permissions-env
   start_directory: ~/Workspace/permissions
   window_name: workspace
 - layout: 652a,239x56,0,0,78
@@ -19,7 +19,7 @@ windows:
   panes:
   - focus: 'true'
     shell_command:
-    - workon permissions-env
+    - pyenv activate permissions-env
   start_directory: ~/Workspace/permissions
   window_name: server
 - layout: 652b,239x56,0,0,79

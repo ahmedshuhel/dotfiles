@@ -8,12 +8,12 @@ windows:
       main-pane-height: 40
     panes:
       - shell_command:
-          - workon wr-env
+          - pyenv activate wr-env
           - nvm use default
         focus: true
       - shell_command:
           - nvm use default
-          - workon wr-env
+          - pyenv activate wr-env
   - window_name: server
     layout: main-horizontal
     options:
@@ -21,7 +21,7 @@ windows:
     panes:
       - shell_command:
           - nvm use default
-          - workon wr-env
+          - pyenv activate wr-env
           - python -m marketingworkrequest.server.api
       - shell_command:
           - nvm use default

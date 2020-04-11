@@ -7,7 +7,7 @@ windows:
     automatic-rename: 'off'
   panes:
   - shell_command:
-    - workon instance-manger
+    - pyenv activate instance-manger
   - focus: 'true'
   start_directory: ~/Workspace/instance-manager
   window_name: workspace

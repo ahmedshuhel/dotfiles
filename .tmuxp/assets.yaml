@@ -8,12 +8,12 @@ windows:
       main-pane-height: 40
     panes:
       - shell_command:
-          - workon assets-env
+          - pyenv activate assets-env
           - nvm use default
         focus: true
       - shell_command:
           - nvm use default
-          - workon assets-env
+          - pyenv activate assets-env
   - window_name: server
     layout: main-horizontal
     options:
@@ -21,7 +21,7 @@ windows:
     panes:
       - shell_command:
           - nvm use default
-          - workon assets-env
+          - pyenv activate assets-env
           - python -m assets.web.server
       - shell_command:
           - nvm use default

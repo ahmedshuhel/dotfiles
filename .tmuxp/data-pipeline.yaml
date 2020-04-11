@@ -6,7 +6,7 @@ windows:
     automatic-rename: 'off'
   panes:
   - shell_command:
-      - workon data-pipeline-env
-  - workon data-pipeline-env
+      - pyenv activate data-pipeline-env
+  - pyenv activate data-pipeline-env
   start_directory: /home/ahmedshuhel/Workspace/data-pipeline
   window_name: workspace

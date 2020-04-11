@@ -7,7 +7,7 @@ windows:
       main-pane-height: 50
     panes:
       - shell_command:
-          - workon conf-mgmt
+          - pyenv activate conf-mgmt
         focus: true
       - shell_command:
-          - workon conf-mgmt
+          - pyenv activate conf-mgmt
