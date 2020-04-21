@@ -6,18 +6,18 @@ windows:
     automatic-rename: 'off'
   panes:
   - shell_command:
-    - workon article-query
+    - pyenv activate article-query
     - nvm use default
   - focus: 'true'
     shell_command:
-    - workon article-query
+    - pyenv activate article-query
     - nvm use default
   start_directory: /home/ahmedshuhel/Workspace/article-query
   window_name: workspace
 - layout: e52a,239x56,0,0,69
   panes:
   - shell_command:
-    - workon article-query
+    - pyenv activate article-query
     - nvm use default
     - update-es-mappings
     - python -m articles.web.server
