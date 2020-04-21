@@ -1,7 +1,6 @@
 session_name: permissions
 windows:
 - focus: 'true'
-  layout: ee96,239x56,0,0[239x41,0,0,76,239x14,0,42,77]
   options:
     automatic-rename: 'off'
   panes:
@@ -13,19 +12,18 @@ windows:
      - pyenv activate permissions-env
   start_directory: ~/Workspace/permissions
   window_name: workspace
-- layout: 652a,239x56,0,0,78
-  options:
+- window_name: server
+  ooptions:
     automatic-rename: 'off'
   panes:
-  - focus: 'true'
-    shell_command:
-    - pyenv activate permissions-env
   - shell_command:
     - pyenv activate permissions-env
     - docker start -a janusgraph || docker run --name janusgraph --mount source=janusgraph,target=/usr/share/janusgraph/data -p 8182:8182 janusgraph/janusgraph:0.5.1
+  - focus: 'true'
+    shell_command:
+    - pyenv activate permissions-env
   start_directory: ~/Workspace/permissions
-  window_name: server
-- layout: 652b,239x56,0,0,79
+- window_name: gremlin
   options:
     automatic-rename: 'off'
   panes:
@@ -33,4 +31,3 @@ windows:
     shell_command:
     - docker run --rm --link janusgraph:janusgraph -e GREMLIN_REMOTE_HOSTS=janusgraph -it janusgraph/janusgraph:latest ./bin/gremlin.sh
   start_directory: ~/Workspace/permissions
-  window_name: gremlin
