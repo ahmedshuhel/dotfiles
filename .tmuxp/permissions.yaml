@@ -18,11 +18,11 @@ windows:
   panes:
   - shell_command:
     - pyenv activate permissions-env
-    - docker start -a janusgraph-local || docker run --name janusgraph-local --mount source=janusgraph,target=/usr/share/janusgraph/data -p 8182:8182 janusgraph/janusgraph:latest
+    - docker start -a janusgraph-local || docker run --name janusgraph-local -v janusgraph-data:/var/lib/janusgraph/data -v janusgraph-index:/var/lib/janusgraph/index -p 8182:8182 janusgraph/janusgraph:latest
   - focus: 'true'
     shell_command:
     - pyenv activate permissions-env
-    - uwsgi --http :5015 --wsgi permissions.consumers.localdev.http_consumer:app --master --processes 1 --threads 1 --py-autoreload 1
+    - python -m permissions.consumers.localdev.http_consumer
   start_directory: ~/Workspace/permissions
 - window_name: gremlin
   options:
