@@ -19,10 +19,12 @@ windows:
   - shell_command:
     - pyenv activate permissions-env
     - docker start -a janusgraph-local || docker run --name janusgraph-local -v janusgraph-data:/var/lib/janusgraph/data -v janusgraph-index:/var/lib/janusgraph/index -p 8182:8182 janusgraph/janusgraph:latest
-  - focus: 'true'
-    shell_command:
+  - shell_command:
     - pyenv activate permissions-env
     - python -m permissions.consumers.localdev.http_consumer
+  - shell_command:
+    - pyenv activate permissions-env
+    - celery -A permissions.worker worker -l info
   start_directory: ~/Workspace/permissions
 - window_name: gremlin
   options:
