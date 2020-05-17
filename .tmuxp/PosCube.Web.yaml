@@ -1,4 +1,4 @@
-session_name: xencube
+session_name: poscubeweb
 windows:
 - focus: 'true'
   layout: de7f,178x53,0,0[178x41,0,0,0,178x11,0,42,1]
@@ -6,11 +6,11 @@ windows:
     automatic-rename: 'off'
   panes:
   - shell_command:
-    - cd ~/Workspace/xencube/XenCube.App
+    - cd ~/Workspace/PosCube.Web
     - nvm use default
     - nvim
   - pane
-  start_directory: ~/Workspace/xencube
+  start_directory: ~/Workspace/PosCube.Web
   window_name: workspace
 - layout: 8405,178x53,0,0[178x26,0,0,2,178x26,0,27,3]
   options:
@@ -22,5 +22,5 @@ windows:
     - shell_command:
       - nvm use default
       - yarn fake-server
-  start_directory: ~/Workspace/xencube/XenCube.App
+  start_directory: ~/Workspace/PosCube.Web/Web.App
   window_name: server
