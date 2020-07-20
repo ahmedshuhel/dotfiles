@@ -1,7 +1,6 @@
 session_name: localstack
 windows:
-- layout: 9c56,239x56,0,0[239x28,0,0,37,239x27,0,29,49]
-  start_directory: /home/ahmedshuhel/Workspace
+- start_directory: /home/ahmedshuhel/Workspace
   options:
     automatic-rename: 'off'
     pane-border-status: 'top'
