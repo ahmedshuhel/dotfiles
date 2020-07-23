@@ -21,20 +21,33 @@ set laststatus=2 "airline
 set list                                            "Display unprintable characters f12 - switches
 set listchars=tab:•\ ,trail:•,extends:»,precedes:«  "Unprintable chars mapping
 
+if !exists('g:env')
+    if has('win64') || has('win32') || has('win16')
+        let g:env = 'WINDOWS'
+    else
+        let g:env = toupper(substitute(system('uname'), '\n', '', ''))
+    endif
+endif
+
 
 let g:coc_node_path = expand("~/.nvm/versions/node/v12.14.1/bin/node")
-{% if ansible_os_family|lower == 'darwin' %}
-let g:python_host_prog = '/usr/local/bin/python2'
-let g:python3_host_prog = '/usr/local/bin/python3'
-{% else %}
-let g:python_host_prog = '/usr/bin/python2'
-let g:python3_host_prog = '/usr/bin/python3'
-{% endif %}
+
+
+if g:env =~ 'DARWIN'
+  let g:python_host_prog = '/usr/local/bin/python2'
+  let g:python3_host_prog = '/usr/local/bin/python3'
+endif
+
+if g:env =~ 'LINUX'
+  let g:python_host_prog = '/usr/bin/python2'
+  let g:python3_host_prog = '/usr/bin/python3'
+endif
 
 let python_highlight_all=1
 
 call plug#begin('{{ plugin_dir }}')
 
+Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'szw/vim-maximizer'
 Plug 'tpope/vim-rhubarb'
 Plug 'ryanoasis/vim-devicons'
@@ -174,15 +187,8 @@ function! DisableDistractionFreeMode()
   :silent exec "!tmux resize-pane -Z"
 endfunction
 
-function! GetPlatform()
-    if has("win32") || has("win64")
-        return "win"
-    else
-        return "nix"
-    endif
-endfunction
 
-"COC{{{
+"COC{
 let g:coc_global_extensions = [
       \'coc-markdownlint',
       \'coc-highlight',
@@ -354,7 +360,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-"}}}
+"}
 
 "UltiSnips
 let g:UltiSnipsExpandTrigger="<c-j>"
