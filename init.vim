@@ -45,9 +45,8 @@ endif
 
 let python_highlight_all=1
 
-call plug#begin('{{ plugin_dir }}')
+call plug#begin('~/.config/nvim/plugged')
 
-Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'szw/vim-maximizer'
 Plug 'tpope/vim-rhubarb'
 Plug 'ryanoasis/vim-devicons'
@@ -88,6 +87,9 @@ Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
 Plug 'morhetz/gruvbox'
 Plug 'andys8/vim-elm-syntax', { 'for': ['elm'] }
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'dhruvasagar/vim-table-mode'
 
 
 call plug#end()
