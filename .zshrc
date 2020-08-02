@@ -79,6 +79,7 @@ eval $(dircolors ~/.dircolors)
 # export MANPATH="/usr/local/man:$MANPATH"
 export PATH="$PATH:$(yarn global bin)/"
 export PATH="$PATH:$(python -m site --user-base)/bin/"
+export PATH="$PATH:$HOME/opt/terraform/"
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
