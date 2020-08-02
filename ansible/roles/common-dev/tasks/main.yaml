@@ -1,8 +1,5 @@
 ---
 - name: install common dev tools
-  remote_user: ahmedshuhel
-  become: true
-  become_method: sudo
   include_tasks: "{{ ansible_os_family|lower }}.yaml"
 
 
