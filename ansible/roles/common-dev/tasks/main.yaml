@@ -2,4 +2,40 @@
 - name: install common dev tools
   include_tasks: "{{ ansible_os_family|lower }}.yaml"
 
+- name: nvm
+  shell: >
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+
+- name: pyenv
+  shell: >
+    curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+  args:
+    creates: "{{ ansible_env.HOME }}/.pyenv"
+
+- name: Create a symbolic link of .zhrc
+  file:
+    src: "~/Workspace/dotfiles/.zshrc"
+    dest: "{{ ansible_env.HOME }}/.zshrc"
+    state: link
+
+- name: Create a symbolic link of .pyenv.zsh
+  file:
+    src: "~/Workspace/dotfiles/init.vim"
+    dest: "{{ ansible_env.HOME }}/.pyenv.zsh"
+    state: link
+
+
+- git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions'
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+
+- git:
+    repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+
+- git:
+    repo: 'https://github.com/qoomon/zsh-lazyload.git'
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-lazyload"
 
