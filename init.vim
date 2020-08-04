@@ -174,6 +174,8 @@ endfunction
 
 
 function! EnableDistractionFreeMode()
+  CocDisable
+  ALEDisable
   :silent exec "!tmux set -g status on"
   :silent exec "!tmux resize-pane -Z"
   color seoul256
@@ -182,6 +184,8 @@ function! EnableDistractionFreeMode()
 endfunction
 
 function! DisableDistractionFreeMode()
+  CocEnable
+  ALEEnable
   Limelight!
   Goyo!
   color gruvbox
