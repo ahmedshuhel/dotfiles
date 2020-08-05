@@ -436,4 +436,36 @@ nnoremap ddf :call DisableDistractionFreeMode()<CR>
 nnoremap <C-p> :Clap files<CR>
 nnoremap <F12> :Ggrep <cword><CR>
 
+"Devlife {{
+let s:project_root_dir = finddir('.git/..', expand('%:p:h').';')
+
+command! DlCreateDailyNote call s:CreateDailyNote()
+command! -nargs=1 DlCreatePost call s:CreatePost(<q-args>)
+command! -nargs=1 DlCreateTil call s:CreateTil(<q-args>)
+
+function! s:CreateDailyNote()
+    let l:fp = s:project_root_dir . "/dn"
+    let l:fn = strftime("%Y-%m-%d") . ".md"
+    call s:NewFile(l:fp, l:fn)
+endfunction
+
+function! s:CreatePost(fn)
+    let l:fp = s:project_root_dir . "/posts"
+    let l:fn = strftime("%Y-%m-%d") . "-" . join(split(a:fn), '-') . ".md"
+    call s:NewFile(l:fp, l:fn)
+endfunction
+
+function! s:CreateTil(fn)
+    let l:fp = s:project_root_dir . "/til"
+    let l:fn = strftime("%Y-%m-%d") . "-" . join(split(a:fn), '-') . ".md"
+    call s:NewFile(l:fp, l:fn)
+endfunction
+
+function! s:NewFile(fp, fn)
+    echom "Creating file '" . a:fp . "/" . a:fn . "'"
+    execute "e ". a:fp . "/" . a:fn
+    :w
+endfunction
+
+"}}
 set secure
