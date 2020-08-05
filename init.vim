@@ -436,12 +436,24 @@ nnoremap ddf :call DisableDistractionFreeMode()<CR>
 nnoremap <C-p> :Clap files<CR>
 nnoremap <F12> :Ggrep <cword><CR>
 
+nnoremap dln :DlCreateDailyNote<CR>
+nnoremap dlp :DlCreatePost
+nnoremap dlt :DlCreateTil
+nnoremap dlo :DlCreateOoo
+
 "Devlife {{
 let s:project_root_dir = finddir('.git/..', expand('%:p:h').';')
 
 command! DlCreateDailyNote call s:CreateDailyNote()
 command! -nargs=1 DlCreatePost call s:CreatePost(<q-args>)
 command! -nargs=1 DlCreateTil call s:CreateTil(<q-args>)
+command! -nargs=1 DlCreateOoo call s:CreateOoo(<q-args>)
+
+function! s:CreateOoo(pn)
+    let l:fp = s:project_root_dir . "/ooo/" . a:pn
+    let l:fn = strftime("%Y-%m-%d") . ".md"
+    call s:NewFile(l:fp, l:fn)
+endfunction
 
 function! s:CreateDailyNote()
     let l:fp = s:project_root_dir . "/dn"
