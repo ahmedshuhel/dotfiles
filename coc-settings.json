@@ -25,12 +25,18 @@
     "Techlead",
     "ansible",
     "autoload",
+    "autossh",
     "devenv",
+    "dircolors",
     "dotfiles",
     "lazyload",
+    "neovim",
     "nvim",
     "omnisharp",
     "pyenv",
-    "smcms"
+    "pynvim",
+    "smcms",
+    "symlink",
+    "tidyrc"
   ]
 }

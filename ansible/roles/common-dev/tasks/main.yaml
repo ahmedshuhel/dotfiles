@@ -6,13 +6,13 @@
   shell: >
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
   args:
-    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+    creates: "{{ home_dir }}/.nvm/nvm.sh"
 
 - name: Install pyenv
   shell: >
     curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
   args:
-    creates: "{{ ansible_env.HOME }}/.pyenv"
+    creates: "{{ home_dir }}/.pyenv"
 
 - name: Debug dotfiles dir
   debug:
@@ -21,29 +21,64 @@
 - name: Create a symbolic link of .zshrc
   file:
     src: "{{ dotfiles_dir }}/.zshrc"
-    dest: "{{ ansible_env.HOME }}/.zshrc"
+    dest: "{{ home_dir }}/.zshrc"
     force: yes
     state: link
 
 - name: Create a symbolic link of .pyenv.zsh
   file:
     src: "{{ dotfiles_dir }}/.pyenv.zsh"
-    dest: "{{ ansible_env.HOME }}/.pyenv.zsh"
+    dest: "{{ home_dir }}/.pyenv.zsh"
+    force: yes
+    state: link
+
+- name: Create dircolors symlink
+  file:
+    src: "{{ dotfiles_dir }}/.dircolors"
+    dest: "{{ home_dir }}/.dircolors"
+    force: yes
+    state: link
+
+- name: Create .tidyrc symlink
+  file:
+    src: "{{ dotfiles_dir }}/.tidyrc"
+    dest: "{{ home_dir }}/.tidyrc"
+    force: yes
+    state: link
+
+- name: Create lemon symlink
+  file:
+    src: "{{ dotfiles_dir }}/lemon.sh"
+    dest: "{{ home_dir }}/lemon.sh"
+    force: yes
+    state: link
+
+- name: Create lime (autossh) symlink
+  file:
+    src: "{{ dotfiles_dir }}/lime.sh"
+    dest: "{{ home_dir }}/lime.sh"
+    force: yes
+    state: link
+
+- name: Create start symlink
+  file:
+    src: "{{ dotfiles_dir }}/start.sh"
+    dest: "{{ home_dir }}/start.sh"
     force: yes
     state: link
 
 - name: Clone zsh auto suggestions
   git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions'
-    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+    dest: "{{ home_dir }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
 
 - name: Clone zsh syntax highlighting
   git:
     repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
-    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+    dest: "{{ home_dir }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
 
 - name: Clone zsh lazy load
   git:
     repo: 'https://github.com/qoomon/zsh-lazyload.git'
-    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-lazyload"
+    dest: "{{ home_dir }}/.oh-my-zsh/custom/plugins/zsh-lazyload"
 
