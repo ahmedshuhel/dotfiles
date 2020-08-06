@@ -1,0 +1,36 @@
+{
+  "languageserver": {
+    "metals": {
+      "command": "metals-vim",
+      "rootPatterns": ["build.sbt"],
+      "filetypes": ["scala", "sbt"]
+    },
+    "elmLS": {
+      "command": "elm-language-server",
+      "filetypes": ["elm"],
+      "rootPatterns": ["elm.json"],
+      "initializationOptions": {
+        "elmAnalyseTrigger": "change"
+      }
+    }
+  },
+  "codeLens.enable": true,
+  "omnisharp.useDotnet": false,
+  "python.jediEnabled": false,
+  "cSpell.userWords": [
+    "Debasis",
+    "Jitu",
+    "Nahid",
+    "Sanchia",
+    "Techlead",
+    "ansible",
+    "autoload",
+    "devenv",
+    "dotfiles",
+    "lazyload",
+    "nvim",
+    "omnisharp",
+    "pyenv",
+    "smcms"
+  ]
+}
