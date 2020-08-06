@@ -71,7 +71,12 @@ plugins=(z git tmux vi-mode zsh-autosuggestions zsh-syntax-highlighting zsh-lazy
 
 source $ZSH/oh-my-zsh.sh
 
-eval $(dircolors ~/.dircolors) 
+if [[ `uname` == "Darwin" ]]; then
+  eval $(gdircolors ~/.dircolors)
+else
+  eval $(dircolors ~/.dircolors)
+fi
+
 
 # User configuration
 
