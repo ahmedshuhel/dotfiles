@@ -210,9 +210,10 @@ let g:coc_global_extensions = [
       \'coc-css',
       \'coc-python',
       \'coc-tsserver',
-      \'coc-flutter', 
-      \'coc-json', 
-      \'coc-git'
+      \'coc-flutter',
+      \'coc-json',
+      \'coc-git',
+      \'coc-spell-checker'
       \]
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -370,6 +371,39 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 "}}
 
+"coc-snippets {{
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+"}}
+
+"coc-git {{
+" navigate chunks of current buffer
+nmap [g <Plug>(coc-git-prevchunk)
+nmap ]g <Plug>(coc-git-nextchunk)
+" show chunk diff at current position
+nmap gs <Plug>(coc-git-chunkinfo)
+" show commit contains current position
+nmap gc <Plug>(coc-git-commit)
+" create text object for git chunks
+omap ig <Plug>(coc-git-chunk-inner)
+xmap ig <Plug>(coc-git-chunk-inner)
+omap ag <Plug>(coc-git-chunk-outer)
+xmap ag <Plug>(coc-git-chunk-outer)
+"}}
+
+
 
 "Airline {{
 let g:airline_theme = 'gruvbox'
@@ -481,5 +515,7 @@ endfunction
 
 "Vim Markdown {{
 let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_toml_frontmatter = 1
+let g:vim_markdown_autowrite = 1
 "}}
 set secure
