@@ -91,19 +91,20 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'dhruvasagar/vim-table-mode'
 
-
 call plug#end()
 
 colorscheme gruvbox
 
-"Defx
-
+"Defx {{
 let s:defx_ignore_pattern='*.tmp,__pycache__,*.eggs,*.egg-info,*.pyc,*.cache*,*.egg,*.git,*.github,*.idea,*.vscode,*.ropeproject'
 let defx_explorer_cmd=':Defx -split=vertical -winwidth=40 -direction=topleft -columns=indent:git:icons:filename:type -ignored-files=' . s:defx_ignore_pattern
 
 autocmd FileType defx call s:defx_my_settings()
 autocmd FileType defx set cursorline
+
+" Close defx when closing the last buffer
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'defx') | q | endif
+
 " Enter with defx open
 " autocmd VimEnter * exec defx_explorer_cmd
 
@@ -171,8 +172,9 @@ function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> cd
   \ defx#do_action('change_vim_cwd')
 endfunction
+"}}
 
-
+" Distraction Free {{
 function! EnableDistractionFreeMode()
   CocDisable
   ALEDisable
@@ -192,9 +194,9 @@ function! DisableDistractionFreeMode()
   :silent exec "!tmux set -g status on"
   :silent exec "!tmux resize-pane -Z"
 endfunction
+"}}
 
-
-"COC{
+"COC {{
 let g:coc_global_extensions = [
       \'coc-markdownlint',
       \'coc-highlight',
@@ -366,24 +368,20 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-"}
-
-"UltiSnips
-let g:UltiSnipsExpandTrigger="<c-j>"
-"========
+"}}
 
 
-"Airline
+"Airline {{
 let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline_skip_empty_sections = 1
-"========
+"}}
 
-"Emmet
+"Emmet {{
 let g:user_emmet_leader_key='<c-y>'
-"========
+"}}
 
-"Cursor
+"Cursor {{
 autocmd GUIEnter * set vb t_vb= " for your GUI
 autocmd VimEnter * set vb t_vb=
 
@@ -391,15 +389,15 @@ let &t_ti.="\e[1 q"
 let &t_SI.="\e[5 q"
 let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
-"========
+"}}
 
-"Temp Files
+"Temp Files {{
 set directory=~/.vim/swapfiles//
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.pyc
-"========
+"}}
 
-"ALE
+"ALE {{
 let g:ale_linters_explicit = 1
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '>'
@@ -417,20 +415,20 @@ let g:ale_rust_rls_executable = 'rls'
 
 let g:ale_linters = { 'elm': ['elm_ls'] }
 
-"========
+"}}
 
 
-"AsyncRun Settings
+"AsyncRun Settings {{
 let g:asyncrun_open = 8
 command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
-"========
+"}}
 
-"Syntax Highlighting
+"Syntax Highlighting {{
 hi link pythonImport Include
 hi link pythonBuiltinFunc PreProc
-"========
+"}}
 
-
+"Mappings {{
 nnoremap edf :call EnableDistractionFreeMode()<CR>
 nnoremap ddf :call DisableDistractionFreeMode()<CR>
 nnoremap <C-p> :Clap files<CR>
@@ -440,7 +438,8 @@ nnoremap dln :DlCreateDailyNote<CR>
 nnoremap dlp :DlCreatePost
 nnoremap dlt :DlCreateTil
 nnoremap dlo :DlCreateOoo
-
+"}}
+"
 "Devlife {{
 let s:project_root_dir = finddir('.git/..', expand('%:p:h').';')
 
@@ -478,6 +477,9 @@ function! s:NewFile(fp, fn)
     execute "e ". a:fp . "/" . a:fn
     :w
 endfunction
+"}}
 
+"Vim Markdown {{
+let g:vim_markdown_folding_disabled = 1
 "}}
 set secure
