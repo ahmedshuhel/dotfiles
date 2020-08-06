@@ -1,3 +1,4 @@
 ---
 
-dotfiles_dir: "~/Workspace/dotfiles"
+workspace_dir: "{{ ansible_env.HOME }}/Workspace"
+dotfiles_dir: "{{ workspace_dir }}/dotfiles"

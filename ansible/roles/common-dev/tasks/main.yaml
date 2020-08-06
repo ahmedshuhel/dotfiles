@@ -14,16 +14,22 @@
   args:
     creates: "{{ ansible_env.HOME }}/.pyenv"
 
+- name: Debug dotfiles dir
+  debug:
+    msg: "{{ dotfiles_dir }}"
+
 - name: Create a symbolic link of .zshrc
   file:
     src: "{{ dotfiles_dir }}/.zshrc"
     dest: "{{ ansible_env.HOME }}/.zshrc"
+    force: yes
     state: link
 
 - name: Create a symbolic link of .pyenv.zsh
   file:
     src: "{{ dotfiles_dir }}/.pyenv.zsh"
     dest: "{{ ansible_env.HOME }}/.pyenv.zsh"
+    force: yes
     state: link
 
 - name: Clone zsh auto suggestions

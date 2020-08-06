@@ -25,12 +25,14 @@
   file:
     src: "{{ dotfiles_dir }}/init.vim"
     dest: "{{ config_file }}"
+    force: yes
     state: link
 
 - name: Create a symbolic link of COC settings 
   file:
     src: "{{ dotfiles_dir }}/coc-settings.json"
     dest: "{{ config_dir }}/coc-settings.json"
+    force: yes
     state: link
 
 - name: download vim-plug
