@@ -171,7 +171,8 @@ function git {
   fi
 }
 
-
+export PYTHON_LOCAL_BIN="$(python -m site --user-base)/bin"
+export PATH="$PYTHON_LOCAL_BIN:$PATH"
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 
