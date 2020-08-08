@@ -29,6 +29,7 @@
     "ansible",
     "autoload",
     "autossh",
+    "datepicker",
     "devenv",
     "dircolors",
     "dotfiles",
@@ -38,8 +39,10 @@
     "omnisharp",
     "pyenv",
     "pynvim",
+    "sidenav",
     "smcms",
     "symlink",
-    "tidyrc"
+    "tidyrc",
+    "whiteframe"
   ]
 }
