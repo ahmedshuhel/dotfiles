@@ -28,7 +28,8 @@
     ".vscode"
   ],
   "cSpell.ignoreRegExpList": [
-    "#\\S+"
+    "#\\S+",
+    "Plug \\'\\S+"
   ],
   "cSpell.showStatus": false,
   "cSpell.allowCompoundWords": true,
@@ -43,6 +44,12 @@
     "autossh",
     "datepicker",
     "devenv",
+    "func",
+    "obj",
+    "GGrep",
+    "prevchunk",
+    "Devlife",
+    "mygroup",
     "dircolors",
     "dotfiles",
     "lazyload",
@@ -54,6 +61,11 @@
     "sidenav",
     "symlink",
     "tidyrc",
-    "whiteframe"
+    "gruvbox",
+    "defx",
+    "whiteframe",
+    "uname",
+    "Goyo",
+    "pycache"
   ]
 }

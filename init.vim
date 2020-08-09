@@ -213,7 +213,8 @@ let g:coc_global_extensions = [
       \'coc-flutter',
       \'coc-json',
       \'coc-git',
-      \'coc-spell-checker'
+      \'coc-spell-checker',
+      \'coc-vimlsp'
       \]
 " TextEdit might fail if hidden is not set.
 set hidden
