@@ -14,18 +14,30 @@
       }
     }
   },
+  "coc-actions.showActionKind": true,
+  "coc-actions.useCursorLine": true,
+  "coc-actions.hideCursor": false,
   "codeLens.enable": true,
   "omnisharp.useDotnet": false,
   "python.jediEnabled": false,
+  "cSpell.ignorePaths": [
+    "**/package-lock.json",
+    "**/node_modules/**",
+    "**/vscode-extension/**",
+    "**/.git/objects/**",
+    ".vscode"
+  ],
+  "cSpell.ignoreRegExpList": [
+    "#\\S+"
+  ],
+  "cSpell.showStatus": false,
+  "cSpell.allowCompoundWords": true,
   "cSpell.userWords": [
-    "AQRP",
-    "Debasis",
-    "Jitu",
     "Kinesalite",
-    "Nahid",
-    "Sanchia",
+    "NuGet",
     "Techlead",
     "Testim",
+    "Youtube",
     "ansible",
     "autoload",
     "autossh",
@@ -40,7 +52,6 @@
     "pyenv",
     "pynvim",
     "sidenav",
-    "smcms",
     "symlink",
     "tidyrc",
     "whiteframe"
