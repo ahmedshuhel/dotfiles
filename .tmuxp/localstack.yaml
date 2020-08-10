@@ -1,6 +1,6 @@
 session_name: localstack
 windows:
-- start_directory: /home/ahmedshuhel/Workspace
+- start_directory: ~/Workspace
   options:
     automatic-rename: 'off'
     pane-border-status: 'top'
