@@ -196,6 +196,7 @@ function! DisableDistractionFreeMode()
 endfunction
 "}}
 
+
 "COC {{
 let g:coc_global_extensions = [
       \'coc-markdownlint',
@@ -456,9 +457,7 @@ let g:ale_fixers = {
 
 let g:ale_javascript_prettier_options = '--single-quote'
 let g:ale_rust_rls_executable = 'rls'
-
 let g:ale_linters = { 'elm': ['elm_ls'] }
-
 "}}
 
 
@@ -527,5 +526,15 @@ endfunction
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_toml_frontmatter = 1
 let g:vim_markdown_autowrite = 1
+"}}
+
+"Markdown `gf` {{
+function! s:MarkdownGF()
+    let raw_filename = expand('<cfile>')
+    let arg = substitute(raw_filename, '\([^#]*\)\(#\{1,6\}\)\([^#]*\)', '+\/\2\\\\s\3 \1', 'g')
+    execute "edit" arg
+endfunction
+
+autocmd! Filetype markdown nnoremap <buffer> gf :call <SID>MarkdownGF()<CR>
 "}}
 set secure
