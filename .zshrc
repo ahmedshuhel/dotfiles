@@ -171,13 +171,17 @@ function git {
   fi
 }
 
-export PYTHON_LOCAL_BIN="$(python -m site --user-base)/bin"
-export PATH="$PYTHON_LOCAL_BIN:$PATH"
+export PYTHON2_LOCAL_BIN="$(python -m site --user-base)/bin"
+export PYTHON3_LOCAL_BIN="$(python3 -m site --user-base)/bin"
+
+export PATH="$PYTHON3_LOCAL_BIN:$PYTHON2_LOCAL_BIN:$PATH"
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 
 lazyload nvm -- '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' # This loads nvm
 lazyload pyenv -- 'source ~/.pyenv.zsh'
+
+source ~/shuttle.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

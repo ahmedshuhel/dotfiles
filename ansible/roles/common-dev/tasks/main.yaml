@@ -2,6 +2,12 @@
 - name: Install common dev tools
   include_tasks: "{{ ansible_os_family|lower }}.yaml"
 
+- name: install sshuttle
+  pip:
+    name: sshuttle
+    extra_args: --user
+    executable: pip3
+
 - name: Install nvm
   shell: >
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
@@ -64,6 +70,13 @@
   file:
     src: "{{ dotfiles_dir }}/start.sh"
     dest: "{{ home_dir }}/start.sh"
+    force: yes
+    state: link
+
+- name: Create shuttle symlink
+  file:
+    src: "{{ dotfiles_dir }}/shuttle.zsh"
+    dest: "{{ home_dir }}/shuttle.zsh"
     force: yes
     state: link
 
