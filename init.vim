@@ -49,6 +49,8 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'szw/vim-maximizer'
 Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'ryanoasis/vim-devicons'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'moll/vim-node'

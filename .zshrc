@@ -155,8 +155,8 @@ function git_review {
     git remote add $user git@github.com:$user/$repo
   fi
 
-  command git fetch $user $branch
-  command git checkout $branch
+  command git fetch $user $branch && \
+  command git checkout $branch && \
   command git reset --hard $user/$branch
 }
 
