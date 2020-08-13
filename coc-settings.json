@@ -1,4 +1,14 @@
 {
+  "codeLens.enable": true,
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "",
+  "diagnostic.infoSign": "",
+  "git.addedSign.text": "+",
+  "git.addedSign.hlGroup": "DiffAdd",
+  "git.removedSign.text": "-",
+  "git.removedSign.hlGroup": "DiffDelete",
+  "git.changedSign.text": "~",
+  "git.changedSign.hlGroup": "DiffChange",
   "languageserver": {
     "metals": {
       "command": "metals-vim",
@@ -14,10 +24,13 @@
       }
     }
   },
+  "markdownlint.config": {
+    "default": true,
+    "MD013": false
+  },
   "coc-actions.showActionKind": true,
   "coc-actions.useCursorLine": true,
   "coc-actions.hideCursor": false,
-  "codeLens.enable": true,
   "omnisharp.useDotnet": false,
   "python.jediEnabled": false,
   "cSpell.ignorePaths": [
