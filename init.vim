@@ -514,9 +514,14 @@ function! s:CreateOoo(pn)
 endfunction
 
 function! s:CreateDailyNote()
+    let l:date = strftime("%Y-%m-%d")
     let l:fp = s:project_root_dir . "/dn"
-    let l:fn = strftime("%Y-%m-%d") . ".md"
+    let l:fn = l:date . ".md"
     call s:NewFile(l:fp, l:fn)
+
+    let l:cmd = '~/.templates/dln.sh ' . l:date
+    let l:result = system(cmd)
+    call append(0, split(l:result, '\n'))
 endfunction
 
 function! s:CreatePost(fn)
