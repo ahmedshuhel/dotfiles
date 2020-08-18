@@ -473,6 +473,10 @@ command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 "Syntax Highlighting {{
 hi link pythonImport Include
 hi link pythonBuiltinFunc PreProc
+
+hi DiffAdd cterm=reverse ctermfg=237 ctermbg=142 gui=reverse guifg=#b8bb26 guibg=#282828
+hi DiffChange cterm=reverse ctermfg=237 ctermbg=108 gui=reverse guifg=#8ec07c guibg=#282828
+hi DiffDelete cterm=reverse ctermfg=237  ctermbg=167 gui=reverse guifg=#fb4934 guibg=#282828
 "}}
 
 "Mappings {{
