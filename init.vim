@@ -39,6 +39,7 @@ if g:env =~ 'DARWIN'
 endif
 
 if g:env =~ 'LINUX'
+  let g:python_host_prog = '/usr/bin/python2'
   let g:python3_host_prog = '/usr/bin/python3'
 endif
 
