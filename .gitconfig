@@ -1,0 +1,8 @@
+[user]
+	email = shuhel@ymail.com
+	name = Shuhel Ahmed
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	lg = log --oneline --graph
