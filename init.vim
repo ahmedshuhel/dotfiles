@@ -430,16 +430,6 @@ let g:airline_skip_empty_sections = 1
 let g:user_emmet_leader_key='<c-y>'
 "}}
 
-"Cursor {{
-autocmd GUIEnter * set vb t_vb= " for your GUI
-autocmd VimEnter * set vb t_vb=
-
-let &t_ti.="\e[1 q"
-let &t_SI.="\e[5 q"
-let &t_EI.="\e[1 q"
-let &t_te.="\e[0 q"
-"}}
-
 "Temp Files {{
 set directory=~/.vim/swapfiles//
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
