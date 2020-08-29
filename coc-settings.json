@@ -47,6 +47,7 @@
   "cSpell.showStatus": false,
   "cSpell.allowCompoundWords": true,
   "cSpell.userWords": [
+    "CELERYD",
     "Devlife",
     "ahmedshuhel",
     "GGrep",
@@ -67,6 +68,7 @@
     "dircolors",
     "dotfiles",
     "echom",
+    "execvp",
     "func",
     "gruvbox",
     "kclpy",
@@ -82,10 +84,12 @@
     "pycache",
     "pyenv",
     "pynvim",
+    "pytest",
     "sidenav",
     "symlink",
     "tidyrc",
     "uname",
+    "unconfigure",
     "whiteframe"
   ]
 }
