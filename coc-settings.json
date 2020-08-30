@@ -42,6 +42,7 @@
   ],
   "cSpell.ignoreRegExpList": [
     "#\\S+",
+    "@\\S+",
     "Plug \\'\\S+"
   ],
   "cSpell.showStatus": false,
