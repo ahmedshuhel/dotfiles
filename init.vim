@@ -5,6 +5,7 @@ filetype off
 filetype plugin indent on
 syntax on
 syntax enable
+set guicursor=
 set background=dark
 set foldmethod=indent
 set smartindent
@@ -217,6 +218,7 @@ let g:coc_global_extensions = [
       \'coc-json',
       \'coc-git',
       \'coc-spell-checker',
+      \'coc-cspell-dicts',
       \'coc-vimlsp'
       \]
 " TextEdit might fail if hidden is not set.
