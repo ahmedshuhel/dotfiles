@@ -89,6 +89,7 @@
     "httpx",
     "isnot",
     "kclpy",
+    "kubectl",
     "kubernetes",
     "lazyload",
     "mygroup",

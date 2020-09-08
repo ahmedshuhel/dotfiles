@@ -1,4 +1,5 @@
 set nocompatible
+set noswapfile
 set clipboard+=unnamedplus
 set exrc
 filetype off
