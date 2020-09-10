@@ -186,3 +186,8 @@ source ~/shuttle.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH=$PATH:$HOME/bin
+
+if [[ $(pwd) == /mnt/c/Users/ahmedshuhel  ]]
+then
+    cd ~
+fi
