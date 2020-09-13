@@ -48,7 +48,9 @@
   "cSpell.ignoreRegExpList": [
     "#\\S+",
     "@\\S+",
-    "Plug \\'\\S+"
+    "Plug \\'\\S+",
+    "(?<=@)([A-Z]\\w+)(\\s[A-Z]\\w+)+",
+    "(?<=\\[.*\\])\\(.*\\)"
   ],
   "cSpellExt.enableDictionaries": [
     "catalan",
