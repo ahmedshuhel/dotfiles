@@ -503,16 +503,24 @@ endfunction
 function! s:CreateOoo(pn)
     let l:fp = s:project_root_dir . "/meetings/ooo/" . a:pn
     let l:fn = strftime("%Y-%m-%d") . ".md"
+
+    let l:line = getline('.')
+    call setline('.', strpart(l:line, 0, col('.') - 1) . l:fp . "/" . l:fn . strpart(l:line, col('.') - 1))
+    :w
     call s:NewFile(l:fp, l:fn)
 endfunction
 
 function! s:CreateDailyNote()
     let l:date = strftime("%Y-%m-%d")
-    let l:fp = s:project_root_dir . "/dn"
+    let l:yesterday = strftime('%Y-%m-%d', localtime() - 24 * 3600)
+    let l:month = strftime('%m.%B')
+    let l:year = strftime('%Y')
+
+    let l:fp = s:project_root_dir . "/dn/" . l:year . "/" . l:month
     let l:fn = l:date . ".md"
     call s:NewFile(l:fp, l:fn)
 
-    let l:cmd = '~/.templates/dln.sh ' . l:date
+    let l:cmd = '~/.templates/dln.sh ' . l:date . " " . l:yesterday
     let l:result = system(cmd)
     call append(0, split(l:result, '\n'))
 endfunction

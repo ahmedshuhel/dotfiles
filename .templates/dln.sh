@@ -1,13 +1,14 @@
 #!/bin/sh
 
 DATE=$1
+YESTERDAY=$2
 
 cat  << EOF
 # $DATE
 
 ## Backlog
 
-- [Previous](insert link)
+- [Previous](./$YESTERDAY.md)
 
 ## Todo
 
