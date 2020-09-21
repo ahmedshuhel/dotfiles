@@ -60,6 +60,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mattn/emmet-vim'
+Plug 'digitaltoad/vim-pug'
 Plug 'raimondi/delimitmate'
 Plug 'w0rp/ale'
 Plug 'pangloss/vim-javascript'
@@ -542,6 +543,28 @@ function! s:NewFile(fp, fn)
     execute "e ". a:fp . "/" . a:fn
     :w
 endfunction
+
+function! MarkdownGF()
+    " Get the filename under the cursor
+    let cfile=expand('<cfile>')
+    " Separate the filename from the section
+    let parts=split(cfile, '#')
+
+    " No section marked
+    if (len(parts) == 1)
+        execute "normal! gf"
+    " There was a subsection in the file name
+    else
+        execute "e " . expand('%:h') . "/" . parts[0]
+        let l:raw_section = join(split(parts[1], '-'), ' ')
+        let l:section = substitute(l:raw_section, '\<.', '\u&', 'g')
+        let l:pattern = "^\\#\\+\\s" . l:section . "$"
+        echom l:pattern
+        call search(l:pattern, 'w')
+    endif
+endfunction
+
+autocmd! Filetype markdown nnoremap <buffer> gf :call MarkdownGF()<CR>
 "}}
 
 "Vim Markdown {{
