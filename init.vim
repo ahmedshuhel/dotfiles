@@ -2,6 +2,7 @@ set nocompatible
 set noswapfile
 set clipboard+=unnamedplus
 set exrc
+set secure
 filetype off
 filetype plugin indent on
 syntax on
@@ -95,6 +96,7 @@ Plug 'andys8/vim-elm-syntax', { 'for': ['elm'] }
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'vim-test/vim-test'
 
 call plug#end()
 
@@ -579,4 +581,14 @@ let g:vim_markdown_toml_frontmatter = 1
 let g:vim_markdown_autowrite = 1
 "}}
 
-set secure
+"Vim Test {{
+let test#strategy = "asyncrun_background"
+
+" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+"}}
+
