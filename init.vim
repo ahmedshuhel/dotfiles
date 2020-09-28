@@ -515,17 +515,28 @@ endfunction
 
 function! s:CreateDailyNote()
     let l:date = strftime("%Y-%m-%d")
+    let l:yesterday = strftime('%Y-%m-%d', localtime() - 24 * 3600)
     let l:month = strftime('%m.%B')
     let l:year = strftime('%Y')
 
+    let l:previous = s:project_root_dir . "/"  . findfile(l:yesterday . '.md', 'dn/**')
+    :execute "edit " . l:previous
+    :execute "normal /Backlog\<CR>"
+    :execute "normal j"
+    :execute "normal y/##\<CR>"
+    let l:backlog = getreg('*')
+
+    echom l:backlog
+
     let l:fp = s:project_root_dir . "/dn/" . l:year . "/" . l:month
     let l:fn = l:date . ".md"
-    let l:backlog = "TBD"
     call s:NewFile(l:fp, l:fn)
 
-    let l:cmd = '~/.templates/dln.sh ' . l:backlog
+    let l:cmd = "~/.templates/dln.sh " . ""
     let l:result = system(cmd)
     call append(0, split(l:result, '\n'))
+    :execute "normal /Backlog\<CR>"
+    :execute "normal p"
 endfunction
 
 function! s:CreatePost(fn)
