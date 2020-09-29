@@ -603,3 +603,4 @@ nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
 "}}
 
+autocmd FileType gitcommit setlocal spell
