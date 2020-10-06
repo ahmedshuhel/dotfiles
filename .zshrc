@@ -187,9 +187,9 @@ source ~/shuttle.zsh
 
 export PATH=$PATH:$HOME/bin
 
-export PATH=$PATH:/usr/lib/jvm/jdk-11.0.8/bin
-export JAVA_HOME=/usr/lib/jvm/jdk-11.0.8/
-export J2SDKDIR=/usr/lib/jvm/jdk-11.0.8/
+export PATH=$PATH:/usr/lib/jvm/java-11-openjdk-amd64/bin
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+export J2SDKDIR=/usr/lib/jvm/java-11-openjdk-amd64/
 
 if [[ $(pwd) == /mnt/c/Users/ahmedshuhel  ]]
 then
