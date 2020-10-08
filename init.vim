@@ -522,21 +522,19 @@ function! s:CreateDailyNote()
 
     let l:previous = s:project_root_dir . "/"  . findfile(l:yesterday . '.md', 'dn/**')
     :execute "edit " . l:previous
-    :execute "normal /Backlog\<CR>"
+    :execute "normal /Todo\<CR>"
     :execute "normal j"
-    :execute "normal y/##\<CR>"
+    :execute "normal yG"
     let l:backlog = getreg('*')
-
-    echom l:backlog
 
     let l:fp = s:project_root_dir . "/dn/" . l:year . "/" . l:month
     let l:fn = l:date . ".md"
     call s:NewFile(l:fp, l:fn)
 
-    let l:cmd = "~/.templates/dln.sh " . ""
+    let l:cmd = "~/.templates/dln.sh"
     let l:result = system(cmd)
     call append(0, split(l:result, '\n'))
-    :execute "normal /Backlog\<CR>"
+    :execute "normal /Todo\<CR>"
     :execute "normal p"
 endfunction
 

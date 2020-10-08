@@ -9,6 +9,17 @@
   "git.removedSign.hlGroup": "DiffDelete",
   "git.changedSign.text": "~",
   "git.changedSign.hlGroup": "DiffChange",
+  "java.referencesCodeLens.enabled": true,
+  "java.configuration.runtimes": [
+    {
+        "name": "JavaSE-1.8",
+        "path": "/lib/jvm/java-8-openjdk-amd64"
+      },
+    {
+        "name": "JavaSE-11",
+        "path": "/lib/jvm/java-11-openjdk-amd64"
+      }
+  ],
   "languageserver": {
     "metals": {
       "command": "metals-vim",

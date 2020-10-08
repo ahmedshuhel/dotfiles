@@ -10,12 +10,5 @@ cat  << EOF
 - [Previous](./$YESTERDAY.md)
 - [Next](./$TOMORROW.md)
 
-## Backlog
-
-$BACKLOG
-
 ## Todo
-
-- [ ] Task 1
-- [ ] Task 2
 EOF
