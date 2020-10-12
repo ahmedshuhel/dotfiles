@@ -528,7 +528,7 @@ function! s:CreateInterviewNotes(fn)
     call s:InsterAtCursor(s:RelPath(l:fp, expand('%:p:h')))
     call s:NewFile(l:fp)
 
-    let l:cmd = "~/.dl/dlm.sh" . " " . a:fn
+    let l:cmd = "~/.dl/dli.sh" . " " . a:fn
     let l:result = system(cmd)
     call append(0, split(l:result, '\n'))
 endfunction
