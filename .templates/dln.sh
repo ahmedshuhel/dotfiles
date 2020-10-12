@@ -2,8 +2,8 @@
 
 BACKLOG=$1
 DATE=$(date '+%Y-%m-%d')
-YESTERDAY=$(date '+%Y-%m-%d' -d "$(date) - 1 day")
-TOMORROW=$(date '+%Y-%m-%d' -d "$(date) + 1 day")
+YESTERDAY=$(date -d "yesterday" '+%Y-%m-%d')
+TOMORROW=$(date -d "tomorrow" '+%Y-%m-%d')
 cat  << EOF
 # $DATE
 
