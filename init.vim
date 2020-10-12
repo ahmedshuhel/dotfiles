@@ -487,6 +487,7 @@ nnoremap dlp :DlCreatePost
 nnoremap dlt :DlCreateTil
 nnoremap dlo :DlCreateOoo
 nnoremap dlm :DlCreateMeetingNotes
+nnoremap dli :DlCreateInterviewNotes
 "}}
 "
 "Devlife {{
@@ -497,6 +498,7 @@ command! -nargs=1 DlCreatePost call s:CreatePost(<q-args>)
 command! -nargs=1 DlCreateTil call s:CreateTil(<q-args>)
 command! -nargs=1 DlCreateOoo call s:CreateOoo(<q-args>)
 command! -nargs=1 DlCreateMeetingNotes call s:CreateMeetingNotes(<q-args>)
+command! -nargs=1 DlCreateInterviewNotes call s:CreateInterviewNotes(<q-args>)
 
 function! s:RelPath(path, current_path) abort
 
@@ -512,14 +514,25 @@ return py3eval('get_rel_path()')
 endfunction
 
 function! s:CreateMeetingNotes(fn)
-    let l:fp = s:project_root_dir . "/meetings"
-    let l:fn = strftime("%Y-%m-%d") . "-" . join(split(a:fn), '-') . ".md"
-    call s:NewFile(l:fp, l:fn)
+    let l:fp = s:project_root_dir . "/meetings/" . strftime("%Y-%m-%d") . "-" . join(split(a:fn), '-') . ".md"
+    call s:InsterAtCursor(s:RelPath(l:fp, expand('%:p:h')))
+    call s:NewFile(l:fp)
 
     let l:cmd = "~/.dl/dlm.sh"
     let l:result = system(cmd)
     call append(0, split(l:result, '\n'))
 endfunction
+
+function! s:CreateInterviewNotes(fn)
+    let l:fp = s:project_root_dir . "/meetings/interview/" . strftime("%Y-%m-%d") . "-" . join(split(a:fn), '-') . ".md"
+    call s:InsterAtCursor(s:RelPath(l:fp, expand('%:p:h')))
+    call s:NewFile(l:fp)
+
+    let l:cmd = "~/.dl/dlm.sh" . " " . a:fn
+    let l:result = system(cmd)
+    call append(0, split(l:result, '\n'))
+endfunction
+
 
 function! s:InsterAtCursor(text)
     let l:line = getline('.')
@@ -527,11 +540,10 @@ function! s:InsterAtCursor(text)
 endfunction
 
 function! s:CreateOoo(pn)
-    let l:fp = s:project_root_dir . "/meetings/ooo/" . a:pn
-    let l:fn = strftime("%Y-%m-%d") . ".md"
+    let l:fp = s:project_root_dir . "/meetings/ooo/" . a:pn . "/" . strftime("%Y-%m-%d") . ".md"
 
-    call s:InsterAtCursor(s:RelPath(l:fp . '/' . l:fn, expand('%:p:h')))
-    call s:NewFile(l:fp, l:fn)
+    call s:InsterAtCursor(s:RelPath(l:fp, expand('%:p:h')))
+    call s:NewFile(l:fp)
 
     let l:cmd = "~/.dl/dlo.sh"
     let l:result = system(cmd)
@@ -551,9 +563,8 @@ function! s:CreateDailyNote()
     :execute "normal yG"
     let l:backlog = getreg('*')
 
-    let l:fp = s:project_root_dir . "/dn/" . l:year . "/" . l:month
-    let l:fn = l:date . ".md"
-    call s:NewFile(l:fp, l:fn)
+    let l:fp = s:project_root_dir . "/dn/" . l:year . "/" . l:month . "/" . l:date . ".md"
+    call s:NewFile(l:fp)
 
     let l:cmd = "~/.dl/dln.sh"
     let l:result = system(cmd)
@@ -563,20 +574,18 @@ function! s:CreateDailyNote()
 endfunction
 
 function! s:CreatePost(fn)
-    let l:fp = s:project_root_dir . "/posts"
-    let l:fn = strftime("%Y-%m-%d") . "-" . join(split(a:fn), '-') . ".md"
-    call s:NewFile(l:fp, l:fn)
+    let l:fp = s:project_root_dir . "/posts/" . strftime("%Y-%m-%d") . "-" . join(split(a:fn), '-') . ".md"
+    call s:NewFile(l:fp)
 endfunction
 
 function! s:CreateTil(fn)
-    let l:fp = s:project_root_dir . "/til"
-    let l:fn = strftime("%Y-%m-%d") . "-" . join(split(a:fn), '-') . ".md"
-    call s:NewFile(l:fp, l:fn)
+    let l:fp = s:project_root_dir . "/til/" . strftime("%Y-%m-%d") . "-" . join(split(a:fn), '-') . ".md"
+    call s:NewFile(l:fp)
 endfunction
 
-function! s:NewFile(fp, fn)
-    echom "Creating file '" . a:fp . "/" . a:fn . "'"
-    execute "e ". a:fp . "/" . a:fn
+function! s:NewFile(fp)
+    echom "Creating file '" . a:fp . "'"
+    execute "e ". a:fp
     :w
 endfunction
 
