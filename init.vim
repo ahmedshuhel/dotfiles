@@ -498,24 +498,44 @@ command! -nargs=1 DlCreateTil call s:CreateTil(<q-args>)
 command! -nargs=1 DlCreateOoo call s:CreateOoo(<q-args>)
 command! -nargs=1 DlCreateMeetingNotes call s:CreateMeetingNotes(<q-args>)
 
+function! s:RelPath(path, current_path) abort
+
+python3 << EOF
+import vim
+from os.path import relpath
+
+def get_rel_path():
+  return relpath(vim.eval('a:path'), vim.eval('a:current_path'))
+EOF
+
+return py3eval('get_rel_path()')
+endfunction
+
 function! s:CreateMeetingNotes(fn)
     let l:fp = s:project_root_dir . "/meetings"
     let l:fn = strftime("%Y-%m-%d") . "-" . join(split(a:fn), '-') . ".md"
     call s:NewFile(l:fp, l:fn)
 
-    let l:cmd = "~/.templates/dlm.sh"
+    let l:cmd = "~/.dl/dlm.sh"
     let l:result = system(cmd)
     call append(0, split(l:result, '\n'))
+endfunction
+
+function! s:InsterAtCursor(text)
+    let l:line = getline('.')
+    call setline('.', strpart(l:line, 0, col('.') - 1) . a:text . strpart(l:line, col('.') - 1))
 endfunction
 
 function! s:CreateOoo(pn)
     let l:fp = s:project_root_dir . "/meetings/ooo/" . a:pn
     let l:fn = strftime("%Y-%m-%d") . ".md"
 
-    let l:line = getline('.')
-    call setline('.', strpart(l:line, 0, col('.') - 1) . l:fp . "/" . l:fn . strpart(l:line, col('.') - 1))
-    :w
+    call s:InsterAtCursor(s:RelPath(l:fp . '/' . l:fn, expand('%s:p:h')))
     call s:NewFile(l:fp, l:fn)
+
+    let l:cmd = "~/.dl/dlo.sh"
+    let l:result = system(cmd)
+    call append(0, split(l:result, '\n'))
 endfunction
 
 function! s:CreateDailyNote()
@@ -535,7 +555,7 @@ function! s:CreateDailyNote()
     let l:fn = l:date . ".md"
     call s:NewFile(l:fp, l:fn)
 
-    let l:cmd = "~/.templates/dln.sh"
+    let l:cmd = "~/.dl/dln.sh"
     let l:result = system(cmd)
     call append(0, split(l:result, '\n'))
     :execute "normal /Todo\<CR>"
