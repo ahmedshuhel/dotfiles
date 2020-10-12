@@ -502,6 +502,10 @@ function! s:CreateMeetingNotes(fn)
     let l:fp = s:project_root_dir . "/meetings"
     let l:fn = strftime("%Y-%m-%d") . "-" . join(split(a:fn), '-') . ".md"
     call s:NewFile(l:fp, l:fn)
+
+    let l:cmd = "~/.templates/dlm.sh"
+    let l:result = system(cmd)
+    call append(0, split(l:result, '\n'))
 endfunction
 
 function! s:CreateOoo(pn)
