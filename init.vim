@@ -530,7 +530,7 @@ function! s:CreateOoo(pn)
     let l:fp = s:project_root_dir . "/meetings/ooo/" . a:pn
     let l:fn = strftime("%Y-%m-%d") . ".md"
 
-    call s:InsterAtCursor(s:RelPath(l:fp . '/' . l:fn, expand('%s:p:h')))
+    call s:InsterAtCursor(s:RelPath(l:fp . '/' . l:fn, expand('%:p:h')))
     call s:NewFile(l:fp, l:fn)
 
     let l:cmd = "~/.dl/dlo.sh"
