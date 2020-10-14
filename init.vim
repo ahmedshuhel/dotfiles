@@ -513,8 +513,12 @@ EOF
 return py3eval('get_rel_path()')
 endfunction
 
+function! s:Sanitize(fn)
+  return substitute(a:fn, "-", "", "g")
+endfunction
+
 function! s:CreateMeetingNotes(fn)
-    let l:fp = s:project_root_dir . "/meetings/" . strftime("%Y-%m-%d") . "-" . join(split(a:fn), '-') . ".md"
+    let l:fp = s:project_root_dir . "/meetings/" . strftime("%Y-%m-%d") . "-" . join(split(s:Sanitize(a:fn)), '-') . ".md"
     call s:InsterAtCursor(s:RelPath(l:fp, expand('%:p:h')))
     call s:NewFile(l:fp)
 
@@ -524,11 +528,11 @@ function! s:CreateMeetingNotes(fn)
 endfunction
 
 function! s:CreateInterviewNotes(fn)
-    let l:fp = s:project_root_dir . "/meetings/interview/" . strftime("%Y-%m-%d") . "-" . join(split(a:fn), '-') . ".md"
+    let l:fp = s:project_root_dir . "/meetings/interview/" . strftime("%Y-%m-%d") . "-" . join(split(s:Sanitize(a:fn)), '-') . ".md"
     call s:InsterAtCursor(s:RelPath(l:fp, expand('%:p:h')))
     call s:NewFile(l:fp)
 
-    let l:cmd = "~/.dl/dli.sh" . " " . a:fn
+    let l:cmd = "~/.dl/dli.sh" . " '" . a:fn . "'"
     let l:result = system(cmd)
     call append(0, split(l:result, '\n'))
 endfunction
