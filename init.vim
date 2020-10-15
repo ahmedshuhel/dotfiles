@@ -482,6 +482,7 @@ nnoremap ddf :call DisableDistractionFreeMode()<CR>
 nnoremap <C-p> :Clap files<CR>
 nnoremap <F12> :Ggrep <cword><CR>
 
+nnoremap dlgn :DlGotoDailyNote<CR>
 nnoremap dln :DlCreateDailyNote<CR>
 nnoremap dlp :DlCreatePost
 nnoremap dlt :DlCreateTil
@@ -493,6 +494,7 @@ nnoremap dli :DlCreateInterviewNotes
 "Devlife {{
 let s:project_root_dir = finddir('.git/..', expand('%:p:h').';')
 
+command! DlGotoDailyNote call s:GotoDailyNote()
 command! DlCreateDailyNote call s:CreateDailyNote()
 command! -nargs=1 DlCreatePost call s:CreatePost(<q-args>)
 command! -nargs=1 DlCreateTil call s:CreateTil(<q-args>)
@@ -552,6 +554,14 @@ function! s:CreateOoo(pn)
     let l:cmd = "~/.dl/dlo.sh"
     let l:result = system(cmd)
     call append(0, split(l:result, '\n'))
+endfunction
+
+function! s:GotoDailyNote()
+    let l:date = strftime("%Y-%m-%d")
+    let l:month = strftime('%m.%B')
+    let l:year = strftime('%Y')
+    let l:fp = s:project_root_dir . "/dn/" . l:year . "/" . l:month . "/" . l:date . ".md"
+    execute "e ". l:fp
 endfunction
 
 function! s:CreateDailyNote()
