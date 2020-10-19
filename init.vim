@@ -589,6 +589,7 @@ endfunction
 
 function! s:CreatePost(fn)
     let l:fp = s:project_root_dir . "/posts/" . strftime("%Y-%m-%d") . "-" . join(split(a:fn), '-') . ".md"
+    call s:InsterAtCursor(s:RelPath(l:fp, expand('%:p:h')))
     call s:NewFile(l:fp)
 endfunction
 
