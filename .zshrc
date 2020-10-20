@@ -122,7 +122,7 @@ function open {
     url=$(echo $remote_url | cut -d':' -f2)
     echo "https://github.com/$url/pulls/ahmedshuhel"
   else
-    command lomonade open "$@"
+    command lemonade open "$@"
   fi
 }
 
