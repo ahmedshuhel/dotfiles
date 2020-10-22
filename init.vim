@@ -516,7 +516,7 @@ return py3eval('get_rel_path()')
 endfunction
 
 function! s:Sanitize(fn)
-  return substitute(a:fn, "-", "", "g")
+  return substitute(substitute(substitute(a:fn, "-", "", "g"), "(", "", "g"), ")", "", "g")
 endfunction
 
 function! s:CreateMeetingNotes(fn)
