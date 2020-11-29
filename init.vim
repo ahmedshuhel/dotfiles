@@ -565,17 +565,26 @@ function! s:GotoDailyNote()
     execute "e ". l:fp
 endfunction
 
+function! s:FindLastEntry(today)
+    let l:yesterday = strftime('%Y-%m-%d', a:today - 24 * 3600)
+    let l:entry = findfile(l:yesterday . '.md', 'dn/**')
+
+    if !empty(l:entry)
+      return s:project_root_dir . "/"  . l:entry
+    else
+      return s:FindLastEntry(a:today - 24 * 300)
+    endif
+endfunction
+
 function! s:CreateDailyNote()
     let l:date = strftime("%Y-%m-%d")
-    let l:yesterday = strftime('%Y-%m-%d', localtime() - 24 * 3600)
     let l:month = strftime('%m.%B')
     let l:year = strftime('%Y')
 
-    let l:previous = s:project_root_dir . "/"  . findfile(l:yesterday . '.md', 'dn/**')
-    :execute "edit " . l:previous
-    :execute "normal /Todo\<CR>"
-    :execute "normal j"
-    :execute "normal yG"
+    execute "edit " . s:FindLastEntry(localtime())
+    execute "normal /Todo\<CR>"
+    execute "normal j"
+    execute "normal yG"
     let l:backlog = getreg('*')
 
     let l:fp = s:project_root_dir . "/dn/" . l:year . "/" . l:month . "/" . l:date . ".md"
@@ -584,8 +593,8 @@ function! s:CreateDailyNote()
     let l:cmd = "~/.dl/dln.sh"
     let l:result = system(cmd)
     call append(0, split(l:result, '\n'))
-    :execute "normal /Todo\<CR>"
-    :execute "normal p"
+    execute "normal /Todo\<CR>"
+    execute "normal p"
 endfunction
 
 function! s:CreatePost(fn)
