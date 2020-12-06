@@ -582,14 +582,22 @@ function! s:CreateDailyNote()
     let l:year = strftime('%Y')
     let l:last_entry = s:FindLastEntry(localtime())
 
+    let l:folder_path = s:project_root_dir . "/dn/" . l:year . "/" . l:month . "/"
+    let l:file_path = l:folder_path . l:date . ".md"
+
     execute "edit " . l:last_entry
+
+    " Add next entry link. Note: `Previous` is at line 2 and we want to add
+    " `Next` exactly after line #2
+    call append(3, '- [Next](' . s:RelPath(l:file_path,  fnamemodify(l:last_entry, ":p:h")) . ')')
+
+
+    " Copy from #Todo into register `*
     execute "normal /Todo\<CR>"
     execute "normal j"
     execute "normal yG"
     let l:backlog = getreg('*')
-
-    let l:folder_path = s:project_root_dir . "/dn/" . l:year . "/" . l:month . "/"
-    let l:file_path = l:folder_path . l:date . ".md"
+    " End copy
 
     call s:NewFile(l:file_path)
 

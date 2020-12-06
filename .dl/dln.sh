@@ -7,7 +7,6 @@ cat  << EOF
 # $DATE
 
 - [Previous]($1)
-- [Next](./$TOMORROW.md)
 
 ## Todo
 EOF
