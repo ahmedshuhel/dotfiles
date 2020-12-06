@@ -580,17 +580,20 @@ function! s:CreateDailyNote()
     let l:date = strftime("%Y-%m-%d")
     let l:month = strftime('%m.%B')
     let l:year = strftime('%Y')
+    let l:last_entry = s:FindLastEntry(localtime())
 
-    execute "edit " . s:FindLastEntry(localtime())
+    execute "edit " . l:last_entry
     execute "normal /Todo\<CR>"
     execute "normal j"
     execute "normal yG"
     let l:backlog = getreg('*')
 
-    let l:fp = s:project_root_dir . "/dn/" . l:year . "/" . l:month . "/" . l:date . ".md"
-    call s:NewFile(l:fp)
+    let l:folder_path = s:project_root_dir . "/dn/" . l:year . "/" . l:month . "/"
+    let l:file_path = l:folder_path . l:date . ".md"
 
-    let l:cmd = "~/.dl/dln.sh"
+    call s:NewFile(l:file_path)
+
+    let l:cmd = "~/.dl/dln.sh " . s:RelPath(l:last_entry, l:folder_path)
     let l:result = system(cmd)
     call append(0, split(l:result, '\n'))
     execute "normal /Todo\<CR>"
