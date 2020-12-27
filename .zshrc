@@ -110,22 +110,7 @@ fi
  alias vimdiff="nvim -d"
  alias start="~/start.sh"
 
-
 # Custom Functions
-function open {
-  if [[ "$1" == "jira" ]]; then
-    branch=$(command git rev-parse --abbrev-ref HEAD)
-    url="https://newscred.atlassian.net/browse/$branch"
-    echo $url
-  elif [[ "$1" == "pr" ]]; then
-    remote_url=$(command git remote get-url origin)
-    url=$(echo $remote_url | cut -d':' -f2)
-    echo "https://github.com/$url/pulls/ahmedshuhel"
-  else
-    command lemonade open "$@"
-  fi
-}
-
 
 function git_syncnote {
   cd ~/Workspace/devlife
@@ -186,6 +171,7 @@ source ~/shuttle.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH=$PATH:$HOME/bin
+export PATH=$PATH:/snap/bin
 
 export PATH=$PATH:/usr/lib/jvm/java-11-openjdk-amd64/bin
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
