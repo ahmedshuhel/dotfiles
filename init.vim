@@ -617,6 +617,10 @@ endfunction
 function! s:CreateTil(fn)
     let l:fp = s:project_root_dir . "/til/" . strftime("%Y-%m-%d") . "-" . join(split(a:fn), '-') . ".md"
     call s:NewFile(l:fp)
+
+    let l:cmd = "~/.dl/dlt.sh " . " '". a:fn ."'"
+    let l:result = system(l:cmd)
+    call append(0, split(l:result, '\n'))
 endfunction
 
 function! s:NewFile(fp)
