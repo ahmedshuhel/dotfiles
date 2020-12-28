@@ -682,7 +682,20 @@ let g:vim_markdown_autowrite = 1
 "}}
 
 "Vim Test {{
-let test#strategy = "asyncrun_background"
+" let test#strategy = "asyncrun_background"
+" let test#strategy = "vtr"
+
+function! AttachVtrStrategy(cmd)
+  if !exists("g:vtr_pane_attached")
+    let g:vtr_pane_attached = 1
+    :VtrAttachToPane
+  endif
+  call VtrSendCommand(a:cmd)
+endfunction
+
+let g:test#custom_strategies = {'vtr_attach': function('AttachVtrStrategy')}
+let g:test#strategy = 'vtr_attach'
+
 
 " these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
 nmap <silent> t<C-n> :TestNearest<CR>
