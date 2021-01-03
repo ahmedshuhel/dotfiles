@@ -181,27 +181,6 @@ function! s:defx_my_settings() abort
 endfunction
 "}}
 
-" Distraction Free {{
-function! EnableDistractionFreeMode()
-  CocDisable
-  ALEDisable
-  :silent exec "!tmux set -g status on"
-  :silent exec "!tmux resize-pane -Z"
-  color seoul256
-  Goyo
-  Limelight0.5
-endfunction
-
-function! DisableDistractionFreeMode()
-  CocEnable
-  ALEEnable
-  Limelight!
-  Goyo!
-  color gruvbox
-  :silent exec "!tmux set -g status on"
-  :silent exec "!tmux resize-pane -Z"
-endfunction
-"}}
 
 
 "COC {{
@@ -477,11 +456,8 @@ hi DiffDelete cterm=reverse ctermfg=237  ctermbg=167 gui=reverse guifg=#fb4934 g
 "}}
 
 "Mappings {{
-nnoremap edf :call EnableDistractionFreeMode()<CR>
-nnoremap ddf :call DisableDistractionFreeMode()<CR>
-nnoremap <C-p> :Clap files<CR>
-nnoremap <F12> :Ggrep <cword><CR>
-
+nnoremap edf :DlEnableDistractionFree<CR>
+nnoremap ddf :DlDisableDistractionFree<CR>
 nnoremap dlgn :DlGotoDailyNote<CR>
 nnoremap dln :DlCreateDailyNote<CR>
 nnoremap dlp :DlCreatePost
@@ -490,10 +466,19 @@ nnoremap dlo :DlCreateOoo
 nnoremap dlm :DlCreateMeetingNotes
 nnoremap dli :DlCreateInterviewNotes
 "}}
+
+"Clap {{
+let g:clap_layout = { 'relative': 'editor' }
+let g:clap_enable_background_shadow = v:false
+nnoremap <C-t> :Clap grep<CR>
+nnoremap <C-p> :Clap files<CR>
+"}}
+
 "
 "Devlife {{
 let s:project_root_dir = finddir('.git/..', expand('%:p:h').';')
-
+command! DlEnableDistractionFree call s:EnableDistractionFreeMode()
+command! DlDisableDistractionFree  call s:DisableDistractionFreeMode()
 command! DlGotoDailyNote call s:GotoDailyNote()
 command! DlCreateDailyNote call s:CreateDailyNote()
 command! -nargs=1 DlCreatePost call s:CreatePost(<q-args>)
@@ -628,6 +613,31 @@ function! s:NewFile(fp)
     execute "e ". a:fp
     :w
 endfunction
+
+" Distraction Free {{
+function! s:EnableDistractionFreeMode()
+  set signcolumn=no
+  :CocDisable
+  :ALEDisable
+  :silent exec "!tmux set -g status on"
+  :silent exec "!tmux resize-pane -Z"
+  color seoul256
+  :Goyo
+  :Limelight
+endfunction
+
+function! s:DisableDistractionFreeMode()
+  set signcolumn=yes
+  :CocEnable
+  :ALEEnable
+  :Limelight!
+  :Goyo!
+  color gruvbox
+  :silent exec "!tmux set -g status on"
+  :silent exec "!tmux resize-pane"
+endfunction
+"}}
+
 
 function! MarkdownGF()
     " Get the filename under the cursor
