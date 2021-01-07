@@ -550,14 +550,18 @@ function! s:GotoDailyNote()
     execute "e ". l:fp
 endfunction
 
-function! s:FindLastEntry(today)
+function! s:FindLastEntry(today, base_path, max_retry)
+    if (a:max_retry <= 0)
+      return ""
+    endif
+
     let l:yesterday = strftime('%Y-%m-%d', a:today - 24 * 3600)
-    let l:entry = findfile(l:yesterday . '.md', 'dn/**')
+    let l:entry = findfile(l:yesterday . '.md', a:base_path)
 
     if !empty(l:entry)
       return s:project_root_dir . "/"  . l:entry
     else
-      return s:FindLastEntry(a:today - 24 * 300)
+      return s:FindLastEntry(a:today - 24 * 300, a:base_path, a:max_retry - 1)
     endif
 endfunction
 
@@ -565,7 +569,7 @@ function! s:CreateDailyNote()
     let l:date = strftime("%Y-%m-%d")
     let l:month = strftime('%m.%B')
     let l:year = strftime('%Y')
-    let l:last_entry = s:FindLastEntry(localtime())
+    let l:last_entry = s:FindLastEntry(localtime(), 'dn/**', 15)
 
     let l:folder_path = s:project_root_dir . "/dn/" . l:year . "/" . l:month . "/"
     let l:file_path = l:folder_path . l:date . ".md"
