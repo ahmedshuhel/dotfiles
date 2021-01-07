@@ -535,7 +535,7 @@ function! s:CreateOoo(pn)
     let l:date = strftime("%Y-%m-%d")
     let l:folder_path = s:project_root_dir . "/meetings/ooo/" . a:pn . "/"
     let l:file_path = l:folder_path . l:date . ".md"
-    let l:last_entry = s:FindLastEntry(localtime(), 'meetings/ooo/' . a:pn . '/**', 30)
+    let l:last_entry = s:FindLastEntry(localtime(), 'meetings/ooo/' . a:pn . '/', 60)
 
     " Insert link in the current buffer. e.g. daily note
     call s:InsterAtCursor(s:RelPath(l:file_path, expand('%:p:h')))
@@ -544,7 +544,7 @@ function! s:CreateOoo(pn)
 
     " Add next entry link. Note: `Previous` is at line 2 and we want to add
     " `Next` exactly after line #2
-    call append(3, '- [Next](' . s:RelPath(l:file_path,  fnamemodify(l:last_entry, ":p:h")) . ')')
+    call append(2, '- [Next](' . s:RelPath(l:file_path,  fnamemodify(l:last_entry, ":p:h")) . ')')
 
     " Copy from #Action/Decisions into register `*
     execute "normal /## Decision\/Actions\<CR>"
@@ -575,16 +575,16 @@ endfunction
 
 function! s:FindLastEntry(today, base_path, max_retry)
     if (a:max_retry <= 0)
-      return ""
+      return s:project_root_dir . "/"  . a:base_path . strftime('%Y-%m-%s', localtime()) . '.md'
     endif
 
-    let l:yesterday = strftime('%Y-%m-%d', a:today - 24 * 3600)
-    let l:entry = findfile(l:yesterday . '.md', a:base_path)
+    let l:yesterday = a:today - 24 * 3600
+    let l:entry = findfile(strftime('%Y-%m-%d', l:yesterday) . '.md', a:base_path . '**')
 
     if !empty(l:entry)
       return s:project_root_dir . "/"  . l:entry
     else
-      return s:FindLastEntry(a:today - 24 * 300, a:base_path, a:max_retry - 1)
+      return s:FindLastEntry(l:yesterday, a:base_path, a:max_retry - 1)
     endif
 endfunction
 
@@ -592,7 +592,7 @@ function! s:CreateDailyNote()
     let l:date = strftime("%Y-%m-%d")
     let l:month = strftime('%m.%B')
     let l:year = strftime('%Y')
-    let l:last_entry = s:FindLastEntry(localtime(), 'dn/**', 15)
+    let l:last_entry = s:FindLastEntry(localtime(), 'dn/', 15)
 
     let l:folder_path = s:project_root_dir . "/dn/" . l:year . "/" . l:month . "/"
     let l:file_path = l:folder_path . l:date . ".md"
