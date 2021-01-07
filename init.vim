@@ -532,14 +532,37 @@ function! s:InsterAtCursor(text)
 endfunction
 
 function! s:CreateOoo(pn)
-    let l:fp = s:project_root_dir . "/meetings/ooo/" . a:pn . "/" . strftime("%Y-%m-%d") . ".md"
+    let l:date = strftime("%Y-%m-%d")
+    let l:folder_path = s:project_root_dir . "/meetings/ooo/" . a:pn . "/"
+    let l:file_path = l:folder_path . l:date . ".md"
+    let l:last_entry = s:FindLastEntry(localtime(), 'meetings/ooo/' . a:pn . '/**', 30)
 
-    call s:InsterAtCursor(s:RelPath(l:fp, expand('%:p:h')))
-    call s:NewFile(l:fp)
+    " Insert link in the current buffer. e.g. daily note
+    call s:InsterAtCursor(s:RelPath(l:file_path, expand('%:p:h')))
 
-    let l:cmd = "~/.dl/dlo.sh"
+    execute "edit " . l:last_entry
+
+    " Add next entry link. Note: `Previous` is at line 2 and we want to add
+    " `Next` exactly after line #2
+    call append(3, '- [Next](' . s:RelPath(l:file_path,  fnamemodify(l:last_entry, ":p:h")) . ')')
+
+    " Copy from #Action/Decisions into register `*
+    execute "normal /## Decision\/Actions\<CR>"
+    execute "normal j"
+    execute "normal yG"
+    let l:backlog = getreg('*')
+    " End copy
+
+    call s:NewFile(l:file_path)
+
+    let l:cmd = "~/.dl/dlo.sh " . s:RelPath(l:last_entry, l:folder_path)
     let l:result = system(cmd)
     call append(0, split(l:result, '\n'))
+
+    execute "normal /## Agenda\<CR>"
+    execute "normal j"
+    execute "normal p"
+    " call append(line("."), split(l:backlog, '\n'))
 endfunction
 
 function! s:GotoDailyNote()
