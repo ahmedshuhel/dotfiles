@@ -101,6 +101,7 @@
     "etcd",
     "execvp",
     "func",
+    "gbrowse",
     "getenv",
     "gruvbox",
     "guids",
