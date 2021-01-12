@@ -195,7 +195,7 @@ let g:coc_global_extensions = [
       \'coc-html',
       \'coc-snippets',
       \'coc-css',
-      \'coc-python',
+      \'coc-pyright',
       \'coc-tsserver',
       \'coc-flutter',
       \'coc-json',
