@@ -719,7 +719,7 @@ let g:vim_markdown_autowrite = 1
 au BufRead,BufNewFile *.md setl conceallevel=2
                               \ wrap
                               \ linebreak
-                              \ textwidth=120
+                              \ textwidth=140
 "}}
 
 "Vim Test {{
