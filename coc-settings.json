@@ -42,8 +42,6 @@
   "coc-actions.showActionKind": true,
   "coc-actions.useCursorLine": true,
   "coc-actions.hideCursor": false,
-  "omnisharp.useDotnet": false,
-  "python.jediEnabled": false,
   "cSpell.ignorePaths": [
     "**/package-lock.son",
     "**/node_modules/**",
@@ -141,5 +139,6 @@
     "uname",
     "unconfigure",
     "whiteframe"
-  ]
+  ],
+  "coc.preferences.extensionUpdateCheck": "daily"
 }
