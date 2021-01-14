@@ -188,7 +188,6 @@ let g:coc_global_extensions = [
       \'coc-markdownlint',
       \'coc-highlight',
       \'coc-yaml',
-      \'coc-actions',
       \'coc-rls',
       \'coc-omnisharp',
       \'coc-yank',
@@ -716,10 +715,11 @@ augroup END
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_toml_frontmatter = 1
 let g:vim_markdown_autowrite = 1
-au BufRead,BufNewFile *.md setl conceallevel=2
-                              \ wrap
-                              \ linebreak
-                              \ textwidth=140
+
+" au BufRead,BufNewFile *.md setl conceallevel=2
+"                               \ wrap
+"                               \ linebreak
+"                               \ textwidth=140
 "}}
 
 "Vim Test {{
