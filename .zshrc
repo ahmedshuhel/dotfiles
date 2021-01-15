@@ -112,19 +112,6 @@ fi
 
 # Custom Functions
 
-function git_syncnote {
-  cd ~/Workspace/devlife
-  command git add .
-  command git commit -m "Update daily log: $(date +'%F')"
-  command git fetch origin master
-  command git rebase origin/master
-
-  commit_count=$(command git log --pretty=oneline --since '1 day' | wc -l | sed -e 's/^[[:space:]]*//')
-  command git reset --soft HEAD~$commit_count
-  command git commit -m "Update daily log: $(date +'%F')"
-  command git push origin master -f
-}
-
 function git_review {
   user=`echo $1 | cut -d':' -f1`
   branch=`echo $1 | cut -d':' -f2`
@@ -156,7 +143,7 @@ function git {
   fi
 }
 
-export PYTHON2_LOCAL_BIN="$(python -m site --user-base)/bin"
+export PYTHON2_LOCAL_BIN="$(python2 -m site --user-base)/bin"
 export PYTHON3_LOCAL_BIN="$(python3 -m site --user-base)/bin"
 
 export PATH="$PYTHON3_LOCAL_BIN:$PYTHON2_LOCAL_BIN:$PATH"
@@ -165,10 +152,6 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 lazyload nvm -- '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' # This loads nvm
 lazyload pyenv -- 'source ~/.pyenv.zsh'
-
-source ~/shuttle.zsh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:/snap/bin
