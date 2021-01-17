@@ -1,6 +1,6 @@
 # Windows
 
-```powershell
+```console
 choco install gsudo
 
 sudo New-Item -ItemType SymbolicLink -Name settings.json -Path C:\Users\<user>\AppData\Local\Packages\Microsoft.WindowsTerminal_<random>\LocalState -Target C:\Users\ahmedshuhel\Workspace\dotfiles\Windows_Terminal.Settings.json
