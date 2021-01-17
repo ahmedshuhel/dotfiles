@@ -15,7 +15,7 @@
   // To learn more about global settings, visit https://aka.ms/terminal-global-settings
 
   // If enabled, selections are automatically copied to your clipboard.
-  "copyOnSelect": false,
+  "copyOnSelect": true,
 
   // If enabled, formatted data is also copied to your clipboard
   "copyFormatting": false,
@@ -28,7 +28,10 @@
     "defaults": {
       "fontFace":  "CaskaydiaCove Nerd Font Mono",
       "fontSize": 10,
-      "cursorShape": "filledBox"
+      "cursorShape": "filledBox",
+      "scrollbarState":"hidden",
+      "colorScheme": "Gruvbox Dark",
+      "padding": "8, 0, 8, 8"
     },
     "list": [
       {
