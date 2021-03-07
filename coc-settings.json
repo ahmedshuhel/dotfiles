@@ -1,8 +1,9 @@
 {
   "codeLens.enable": true,
   "diagnostic.errorSign": "✘",
-  "diagnostic.warningSign": "",
-  "diagnostic.infoSign": "",
+  "diagnostic.warningSign": "•",
+  "diagnostic.infoSign": "•",
+  "diagnostic.hintSign": "•",
   "git.addedSign.text": "+",
   "git.addedSign.hlGroup": "DiffAdd",
   "git.removedSign.text": "-",

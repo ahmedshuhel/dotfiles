@@ -452,6 +452,9 @@ hi link pythonBuiltinFunc PreProc
 hi DiffAdd cterm=reverse ctermfg=237 ctermbg=142 gui=reverse guifg=#b8bb26 guibg=#282828
 hi DiffChange cterm=reverse ctermfg=237 ctermbg=108 gui=reverse guifg=#8ec07c guibg=#282828
 hi DiffDelete cterm=reverse ctermfg=237  ctermbg=167 gui=reverse guifg=#fb4934 guibg=#282828
+
+hi CocWarningSign ctermfg=Yellow ctermbg=237 guifg=#ff922b
+hi CocInfoSign ctermfg=Blue ctermbg=237 guifg=#fab005
 "}}
 
 "Mappings {{
