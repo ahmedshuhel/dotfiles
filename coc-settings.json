@@ -9,6 +9,8 @@
   "git.removedSign.text": "-",
   "git.removedSign.hlGroup": "DiffDelete",
   "git.changedSign.text": "~",
+  "tsserver.log": "terse",
+  "tsserver.ignoreLocalTsserver": true,
   "git.changedSign.hlGroup": "DiffChange",
   "java.referencesCodeLens.enabled": true,
   "java.configuration.runtimes": [
@@ -40,9 +42,6 @@
     "default": true,
     "MD013": false
   },
-  "coc-actions.showActionKind": true,
-  "coc-actions.useCursorLine": true,
-  "coc-actions.hideCursor": false,
   "cSpell.ignorePaths": [
     "**/package-lock.son",
     "**/node_modules/**",
