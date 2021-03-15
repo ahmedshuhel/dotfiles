@@ -9,7 +9,8 @@ syntax on
 syntax enable
 set guicursor=
 set background=dark
-set foldmethod=indent
+set foldmethod=syntax
+set nofoldenable
 set smartindent
 set tabstop=2
 set shiftwidth=2
