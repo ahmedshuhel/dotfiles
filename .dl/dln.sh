@@ -8,5 +8,5 @@ cat  << EOF
 
 - [Previous]($1)
 
-## Todo
+## Tasks
 EOF

@@ -6,3 +6,5 @@
 	ci = commit
 	co = checkout
 	lg = log --oneline --graph
+[core]
+	editor = vim
