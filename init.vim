@@ -607,8 +607,8 @@ function! s:CreateDailyNote()
     call append(3, '- [Next](' . s:RelPath(l:file_path,  fnamemodify(l:last_entry, ":p:h")) . ')')
 
 
-    " Copy from #Todo into register `*
-    execute "normal /Todo\<CR>"
+    " Copy from #Tasks into register `*
+    execute "normal /Tasks\<CR>"
     execute "normal j"
     execute "normal yG"
     let l:backlog = getreg('*')
