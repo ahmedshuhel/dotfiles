@@ -619,7 +619,7 @@ function! s:CreateDailyNote()
     let l:cmd = "~/.dl/dln.sh " . s:RelPath(l:last_entry, l:folder_path)
     let l:result = system(cmd)
     call append(0, split(l:result, '\n'))
-    execute "normal /Todo\<CR>"
+    execute "normal /Tasks\<CR>"
     execute "normal p"
 endfunction
 
