@@ -74,7 +74,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'kshenoy/vim-signature'
@@ -98,8 +99,7 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'vim-test/vim-test'
-"Plug 'ahmedshuhel/devlife.vim'
-Plug '~/Workspace/devlife.vim'
+Plug 'ahmedshuhel/devlife.vim'
 
 call plug#end()
 
@@ -464,8 +464,8 @@ hi CocInfoSign ctermfg=Blue ctermbg=237 guifg=#fab005
 "Clap {{
 let g:clap_layout = { 'relative': 'editor' }
 let g:clap_enable_background_shadow = v:false
-nnoremap <C-t> :Clap grep<CR>
-nnoremap <C-p> :Clap files<CR>
+nnoremap <C-t> :Rg<CR>
+nnoremap <C-p> :Files<CR>
 "}}
 
 "Vim Markdown {{
