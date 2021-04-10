@@ -99,7 +99,8 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'vim-test/vim-test'
-Plug 'ahmedshuhel/devlife.vim'
+"Plug 'ahmedshuhel/devlife.vim'
+Plug '~/Workspace/devlife.vim'
 
 call plug#end()
 
@@ -363,6 +364,41 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 "}}
 
+" goyo {{
+function! s:goyo_enter()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
+  color seoul256
+  set signcolumn=no
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  Limelight
+  CocDisable
+  ALEDisable
+endfunction
+
+function! s:goyo_leave()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
+  set signcolumn=yes
+  set showmode
+  set showcmd
+  set scrolloff=5
+  Limelight!
+  color gruvbox
+  CocEnable
+  ALEEnable
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+" }}
+
 "coc-snippets {{
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
@@ -461,11 +497,9 @@ hi CocInfoSign ctermfg=Blue ctermbg=237 guifg=#fab005
 "}}
 
 
-"Clap {{
-let g:clap_layout = { 'relative': 'editor' }
-let g:clap_enable_background_shadow = v:false
+"FZF {{
 nnoremap <C-t> :Rg<CR>
-nnoremap <C-p> :Files<CR>
+nnoremap <C-p> :GFiles<CR>
 "}}
 
 "Vim Markdown {{
