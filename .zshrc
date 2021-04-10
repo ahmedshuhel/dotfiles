@@ -164,3 +164,5 @@ if [[ $(pwd) == /mnt/c/Users/ahmedshuhel  ]]
 then
     cd ~
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
