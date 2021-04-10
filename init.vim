@@ -366,18 +366,18 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " goyo {{
 function! s:goyo_enter()
+  color seoul256
   if executable('tmux') && strlen($TMUX)
     silent !tmux set status off
     silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
   endif
-  color seoul256
   set signcolumn=no
   set noshowmode
   set noshowcmd
   set scrolloff=999
-  Limelight
-  CocDisable
-  ALEDisable
+  silent Limelight
+  silent CocDisable
+  silent ALEDisable
 endfunction
 
 function! s:goyo_leave()
@@ -389,14 +389,19 @@ function! s:goyo_leave()
   set showmode
   set showcmd
   set scrolloff=5
-  Limelight!
+
+  silent Limelight!
+  silent CocEnable
+  silent ALEEnable
+
   color gruvbox
-  CocEnable
-  ALEEnable
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+noremap df :Goyo 120x50%<CR>
+noremap ddf :Goyo<CR>
 " }}
 
 "coc-snippets {{
