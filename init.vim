@@ -99,8 +99,8 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'vim-test/vim-test'
-"Plug 'ahmedshuhel/devlife.vim'
-Plug '~/Workspace/devlife.vim'
+Plug 'ahmedshuhel/devlife.vim'
+"Plug '~/Workspace/devlife.vim'
 
 call plug#end()
 
