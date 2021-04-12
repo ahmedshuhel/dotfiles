@@ -5,6 +5,7 @@
     "gsudo",
     "mkdir",
     "openjdk",
+    "pyright",
     "vsvimrc",
     "winvimrc"
   ]

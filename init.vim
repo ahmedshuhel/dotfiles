@@ -512,10 +512,7 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_toml_frontmatter = 1
 let g:vim_markdown_autowrite = 1
 
-" au BufRead,BufNewFile *.md setl conceallevel=2
-"                               \ wrap
-"                               \ linebreak
-"                               \ textwidth=140
+au BufRead,BufNewFile *.md setl textwidth=100
 "}}
 
 "Vim Test {{
