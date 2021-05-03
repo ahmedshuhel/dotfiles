@@ -100,6 +100,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'vim-test/vim-test'
 Plug 'ahmedshuhel/devlife.vim'
+Plug 'puremourning/vimspector'
 "Plug '~/Workspace/devlife.vim'
 
 call plug#end()
