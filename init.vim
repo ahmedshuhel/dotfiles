@@ -34,7 +34,7 @@ if !exists('g:env')
 endif
 
 
-let g:coc_node_path = expand("~/.nvm/versions/node/v12.14.1/bin/node")
+let g:coc_node_path = expand("~/.nvm/versions/node/v14.15.4/bin/node")
 
 
 if g:env =~ 'DARWIN'
