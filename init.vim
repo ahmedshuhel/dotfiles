@@ -107,6 +107,11 @@ call plug#end()
 
 colorscheme gruvbox
 
+"Table mode {{
+let g:table_mode_corner_corner='+'
+let g:table_mode_header_fillchar='='
+"}}
+
 "Defx {{
 let s:defx_ignore_pattern='*.tmp,__pycache__,*.eggs,*.egg-info,*.pyc,*.cache*,*.egg,*.git,*.github,*.idea,*.vscode,*.ropeproject'
 let defx_explorer_cmd=':Defx -split=vertical -winwidth=40 -direction=topleft -columns=indent:git:icons:filename:type -ignored-files=' . s:defx_ignore_pattern
