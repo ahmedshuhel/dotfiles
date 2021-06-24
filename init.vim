@@ -8,7 +8,6 @@ filetype plugin indent on
 syntax on
 syntax enable
 set guicursor=
-set background=dark
 set foldmethod=syntax
 set nofoldenable
 set smartindent
@@ -21,7 +20,7 @@ set cursorline
 set hlsearch
 set incsearch
 set mouse=a
-set laststatus=2 "airline
+set laststatus=2
 set list                                            "Display unprintable characters f12 - switches
 set listchars=tab:•\ ,trail:•,extends:»,precedes:«  "Unprintable chars mapping
 
@@ -51,16 +50,18 @@ let python_highlight_all=1
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'rktjmp/lush.nvim'
+Plug 'npxbr/gruvbox.nvim'
+Plug 'hoob3rt/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ryanoasis/vim-devicons'
 Plug 'szw/vim-maximizer'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
-Plug 'ryanoasis/vim-devicons'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'moll/vim-node'
 Plug 'altercation/vim-colors-solarized'
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'mattn/emmet-vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'raimondi/delimitmate'
@@ -93,7 +94,6 @@ Plug 'OrangeT/vim-csharp'
 Plug 'Shougo/defx.nvim'
 Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
-Plug 'morhetz/gruvbox'
 Plug 'andys8/vim-elm-syntax', { 'for': ['elm'] }
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -101,11 +101,37 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'vim-test/vim-test'
 Plug 'ahmedshuhel/devlife.vim'
 Plug 'puremourning/vimspector'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'navarasu/onedark.nvim'
 "Plug '~/Workspace/devlife.vim'
 
 call plug#end()
 
-colorscheme gruvbox
+
+lua <<EOF
+require('nvim-treesitter.configs').setup {
+  ignore_install = {},              -- List of parsers to ignore installing
+  highlight = {
+    enable = true,                  -- false will disable the whole extension
+    disable = {},                   -- list of language that will be disabled
+  },
+}
+EOF
+
+set background=dark
+"colorscheme gruvbox
+colorscheme onedark
+
+lua <<EOF
+require('lualine').setup {
+  options = {theme = 'onedark'},
+  extensions = {
+    'quickfix',
+    'fzf',
+    'fugitive'
+  },
+}
+EOF
 
 "Table mode {{
 let g:table_mode_corner='|'
@@ -192,8 +218,6 @@ function! s:defx_my_settings() abort
 endfunction
 "}}
 
-
-
 "COC {{
 let g:coc_global_extensions = [
       \'coc-markdownlint',
@@ -213,7 +237,8 @@ let g:coc_global_extensions = [
       \'coc-spell-checker',
       \'coc-cspell-dicts',
       \'coc-vimlsp',
-      \'coc-java'
+      \'coc-java',
+      \'coc-go'
       \]
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -348,8 +373,6 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
@@ -455,12 +478,6 @@ xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<
 nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>CocActionsOpenFromSelected<CR>g@
 "}}
 
-
-"Airline {{
-let g:airline_theme = 'gruvbox'
-let g:airline_powerline_fonts = 1
-let g:airline_skip_empty_sections = 1
-"}}
 
 "Emmet {{
 let g:user_emmet_leader_key='<c-y>'
