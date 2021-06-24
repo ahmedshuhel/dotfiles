@@ -8,3 +8,7 @@
 	lg = log --oneline --graph
 [core]
 	editor = vim
+[diff]
+	tool = vsdiffmerge
+[difftool]
+	prompt = true
