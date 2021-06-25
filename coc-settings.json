@@ -1,4 +1,7 @@
 {
+  "omnisharp.version": "v1.37.11",
+  "omnisharp.trace.server": "information",
+  "omnisharp.debug.server": true,
   "codeLens.enable": true,
   "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "•",
@@ -132,6 +135,7 @@
     "pydantic",
     "pyenv",
     "pynvim",
+    "pyright",
     "pytest",
     "recognised",
     "sidenav",

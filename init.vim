@@ -238,7 +238,8 @@ let g:coc_global_extensions = [
       \'coc-cspell-dicts',
       \'coc-vimlsp',
       \'coc-java',
-      \'coc-go'
+      \'coc-go',
+      \'coc-omnisharp'
       \]
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -514,12 +515,9 @@ command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 "}}
 
 "Syntax Highlighting {{
-hi link pythonImport Include
-hi link pythonBuiltinFunc PreProc
-
-hi DiffAdd cterm=reverse ctermfg=237 ctermbg=142 gui=reverse guifg=#b8bb26 guibg=#282828
-hi DiffChange cterm=reverse ctermfg=237 ctermbg=108 gui=reverse guifg=#8ec07c guibg=#282828
-hi DiffDelete cterm=reverse ctermfg=237  ctermbg=167 gui=reverse guifg=#fb4934 guibg=#282828
+hi DiffAdd guifg=#b8bb26 guibg=237
+hi DiffChange guifg=#8ec07c guibg=237
+hi DiffDelete guifg=#fb4934 guibg=237
 
 hi CocWarningSign ctermfg=Yellow ctermbg=237 guifg=#ff922b
 hi CocInfoSign ctermfg=Blue ctermbg=237 guifg=#fab005

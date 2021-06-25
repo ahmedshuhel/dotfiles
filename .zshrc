@@ -146,6 +146,7 @@ function git {
 export PYTHON2_LOCAL_BIN="$(python2 -m site --user-base)/bin"
 export PYTHON3_LOCAL_BIN="$(python3 -m site --user-base)/bin"
 
+
 export PATH="$PYTHON3_LOCAL_BIN:$PYTHON2_LOCAL_BIN:$PATH"
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -160,6 +161,9 @@ export PATH=$PATH:/usr/lib/jvm/java-11-openjdk-amd64/bin
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 export J2SDKDIR=/usr/lib/jvm/java-11-openjdk-amd64/
 export PATH=$PATH:/usr/local/go/bin
+
+export DOTNET_ROOT=$HOME/dotnet
+export PATH=$PATH:$HOME/dotnet
 
 if [[ $(pwd) == /mnt/c/Users/ahmedshuhel  ]]
 then
