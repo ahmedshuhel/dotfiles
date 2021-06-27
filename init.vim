@@ -50,11 +50,13 @@ let python_highlight_all=1
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'airblade/vim-gitgutter'
 Plug 'rktjmp/lush.nvim'
 Plug 'npxbr/gruvbox.nvim'
 Plug 'hoob3rt/lualine.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'szw/vim-maximizer'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-dadbod'
@@ -65,7 +67,6 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'mattn/emmet-vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'raimondi/delimitmate'
-Plug 'w0rp/ale'
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'derekwyatt/vim-scala'
@@ -91,9 +92,6 @@ Plug 'fatih/vim-go'
 Plug 'honza/vim-snippets'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'OrangeT/vim-csharp'
-Plug 'Shougo/defx.nvim'
-Plug 'kristijanhusak/defx-icons'
-Plug 'kristijanhusak/defx-git'
 Plug 'andys8/vim-elm-syntax', { 'for': ['elm'] }
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -103,10 +101,50 @@ Plug 'ahmedshuhel/devlife.vim'
 Plug 'puremourning/vimspector'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'navarasu/onedark.nvim'
+Plug 'sindrets/diffview.nvim'
 "Plug '~/Workspace/devlife.vim'
 
 call plug#end()
 
+lua <<EOF
+local cb = require('diffview.config').diffview_callback
+
+require('diffview').setup {
+  diff_binaries = false,    -- Show diffs for binaries
+  file_panel = {
+    width = 35,
+    use_icons = true        -- Requires nvim-web-devicons
+  },
+  key_bindings = {
+    disable_defaults = false,                   -- Disable the default key bindings
+    -- The `view` bindings are active in the diff buffers, only when the current
+    -- tabpage is a Diffview.
+    view = {
+      ["<tab>"]     = cb("select_next_entry"),  -- Open the diff for the next file 
+      ["<s-tab>"]   = cb("select_prev_entry"),  -- Open the diff for the previous file
+      ["<leader>e"] = cb("focus_files"),        -- Bring focus to the files panel
+      ["<leader>b"] = cb("toggle_files"),       -- Toggle the files panel.
+    },
+    file_panel = {
+      ["j"]             = cb("next_entry"),         -- Bring the cursor to the next file entry
+      ["<down>"]        = cb("next_entry"),
+      ["k"]             = cb("prev_entry"),         -- Bring the cursor to the previous file entry.
+      ["<up>"]          = cb("prev_entry"),
+      ["<cr>"]          = cb("select_entry"),       -- Open the diff for the selected entry.
+      ["o"]             = cb("select_entry"),
+      ["<2-LeftMouse>"] = cb("select_entry"),
+      ["-"]             = cb("toggle_stage_entry"), -- Stage / unstage the selected entry.
+      ["S"]             = cb("stage_all"),          -- Stage all entries.
+      ["U"]             = cb("unstage_all"),        -- Unstage all entries.
+      ["R"]             = cb("refresh_files"),      -- Update stats and entries in the file list.
+      ["<tab>"]         = cb("select_next_entry"),
+      ["<s-tab>"]       = cb("select_prev_entry"),
+      ["<leader>e"]     = cb("focus_files"),
+      ["<leader>b"]     = cb("toggle_files"),
+    }
+  }
+}
+EOF
 
 lua <<EOF
 require('nvim-treesitter.configs').setup {
@@ -128,7 +166,8 @@ require('lualine').setup {
   extensions = {
     'quickfix',
     'fzf',
-    'fugitive'
+    'fugitive',
+    'nvim-tree',
   },
 }
 EOF
@@ -139,93 +178,12 @@ let g:table_mode_corner_corner='+'
 let g:table_mode_header_fillchar='='
 "}}
 
-"Defx {{
-let s:defx_ignore_pattern='*.tmp,__pycache__,*.eggs,*.egg-info,*.pyc,*.cache*,*.egg,*.git,*.github,*.idea,*.vscode,*.ropeproject'
-let defx_explorer_cmd=':Defx -split=vertical -winwidth=40 -direction=topleft -columns=indent:git:icons:filename:type -ignored-files=' . s:defx_ignore_pattern
-
-autocmd FileType defx call s:defx_my_settings()
-autocmd FileType defx set cursorline
-
-" Close defx when closing the last buffer
-autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'defx') | q | endif
-
-" Enter with defx open
-" autocmd VimEnter * exec defx_explorer_cmd
-
-nnoremap - :exec defx_explorer_cmd . ' ' . expand('%:p:h') . ' -search=' . expand('%p:p') <cr>
-
-function! s:defx_my_settings() abort
-  " Define mappings
-  nnoremap <silent><buffer><expr> <CR>
-  \ defx#is_directory() ?
-  \ defx#do_action('open_or_close_tree') :
-  \ defx#do_action('drop')
-  nnoremap <silent><buffer><expr> c
-  \ defx#do_action('copy')
-  nnoremap <silent><buffer><expr> m
-  \ defx#do_action('move')
-  nnoremap <silent><buffer><expr> p
-  \ defx#do_action('paste')
-  nnoremap <silent><buffer><expr> E
-  \ defx#do_action('open', 'vsplit')
-  nnoremap <silent><buffer><expr> o
-  \ defx#do_action('open_or_close_tree')
-  nnoremap <silent><buffer><expr> d
-  \ defx#do_action('new_directory')
-  nnoremap <silent><buffer><expr> %
-  \ defx#do_action('new_file')
-  nnoremap <silent><buffer><expr> M
-  \ defx#do_action('new_multiple_files')
-  nnoremap <silent><buffer><expr> C
-  \ defx#do_action('toggle_columns',
-  \                'mark:indent:icon:filename:type:size:time')
-  nnoremap <silent><buffer><expr> S
-  \ defx#do_action('toggle_sort', 'time')
-  nnoremap <silent><buffer><expr> D
-  \ defx#do_action('remove')
-  nnoremap <silent><buffer><expr> r
-  \ defx#do_action('rename')
-  nnoremap <silent><buffer><expr> !
-  \ defx#do_action('execute_command')
-  nnoremap <silent><buffer><expr> x
-  \ defx#do_action('execute_system')
-  nnoremap <silent><buffer><expr> yy
-  \ defx#do_action('yank_path')
-  nnoremap <silent><buffer><expr> .
-  \ defx#do_action('toggle_ignored_files')
-  nnoremap <silent><buffer><expr> ;
-  \ defx#do_action('repeat')
-  nnoremap <silent><buffer><expr> -
-  \ defx#do_action('cd', ['..'])
-  nnoremap <silent><buffer><expr> ~
-  \ defx#do_action('cd')
-  nnoremap <silent><buffer><expr> q
-  \ defx#do_action('quit')
-  nnoremap <silent><buffer><expr> <Space>
-  \ defx#do_action('toggle_select') . 'j'
-  nnoremap <silent><buffer><expr> *
-  \ defx#do_action('toggle_select_all')
-  nnoremap <silent><buffer><expr> j
-  \ line('.') == line('$') ? 'gg' : 'j'
-  nnoremap <silent><buffer><expr> k
-  \ line('.') == 1 ? 'G' : 'k'
-  nnoremap <silent><buffer><expr> <C-r>
-  \ defx#do_action('redraw')
-  nnoremap <silent><buffer><expr> <C-p>
-  \ defx#do_action('print')
-  nnoremap <silent><buffer><expr> cd
-  \ defx#do_action('change_vim_cwd')
-endfunction
-"}}
-
 "COC {{
 let g:coc_global_extensions = [
       \'coc-markdownlint',
-      \'coc-highlight',
       \'coc-yaml',
       \'coc-rls',
       \'coc-omnisharp',
-      \'coc-yank',
       \'coc-html',
       \'coc-snippets',
       \'coc-css',
@@ -233,13 +191,11 @@ let g:coc_global_extensions = [
       \'coc-tsserver',
       \'coc-flutter',
       \'coc-json',
-      \'coc-git',
       \'coc-spell-checker',
       \'coc-cspell-dicts',
       \'coc-vimlsp',
       \'coc-java',
       \'coc-go',
-      \'coc-omnisharp'
       \]
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -395,6 +351,100 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 "}}
 
+" nvim-tree {{
+let g:nvim_tree_width = 40 "30 by default
+let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
+let g:nvim_tree_gitignore = 1 "0 by default
+let g:nvim_tree_auto_open = 1 "0 by default, opens the tree when typing `vim $DIR` or `vim`
+let g:nvim_tree_auto_close = 1 "0 by default, closes the tree when it's the last window
+let g:nvim_tree_auto_ignore_ft = [ 'startify', 'dashboard' ] "empty by default, don't auto open tree on specific filetypes.
+let g:nvim_tree_quit_on_open = 0 "0 by default, closes the tree when you open a file
+let g:nvim_tree_follow = 1 "0 by default, this option allows the cursor to be updated when entering a buffer
+let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
+let g:nvim_tree_hide_dotfiles = 0 "0 by default, this option hides files and folders starting with a dot `.`
+let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
+let g:nvim_tree_highlight_opened_files = 1 "0 by default, will enable folder and file icon highlight for opened files/directories.
+let g:nvim_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
+let g:nvim_tree_tab_open = 1 "0 by default, will open the tree when entering a new tab and the tree was previously open
+let g:nvim_tree_width_allow_resize  = 1 "0 by default, will not resize the tree when opening a file
+let g:nvim_tree_disable_netrw = 1 "1 by default, disables netrw
+let g:nvim_tree_hijack_netrw = 1 "1 by default, prevents netrw from automatically opening when opening directories (but lets you keep its other utilities)
+let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folder names
+let g:nvim_tree_group_empty = 0 " 0 by default, compact folders that only contain a single folder into one node in the file tree
+let g:nvim_tree_lsp_diagnostics = 0 "0 by default, will show lsp diagnostics in the signcolumn. See :help nvim_tree_lsp_diagnostics
+let g:nvim_tree_disable_window_picker = 1 "0 by default, will disable the window picker.
+let g:nvim_tree_hijack_cursor = 1 "1 by default, when moving cursor in the tree, will position the cursor at the start of the file on the current line
+let g:nvim_tree_icon_padding = ' ' "one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
+let g:nvim_tree_update_cwd = 1 "0 by default, will update the tree cwd when changing nvim's directory (DirChanged event). Behaves strangely with autochdir set.
+let g:nvim_tree_window_picker_exclude = {
+    \   'filetype': [
+    \     'packer',
+    \     'qf'
+    \   ],
+    \   'buftype': [
+    \     'terminal'
+    \   ]
+    \ }
+" Dictionary of buffer option names mapped to a list of option values that
+" indicates to the window picker that the buffer's window should not be
+" selectable.
+let g:nvim_tree_special_files = [ 'README.md', 'Makefile', 'MAKEFILE' ] " List of filenames that gets highlighted with NvimTreeSpecialFile
+let g:nvim_tree_show_icons = {
+    \ 'git': 1,
+    \ 'folders': 1,
+    \ 'files': 1,
+    \ 'folder_arrows': 1,
+    \ }
+"If 0, do not show the icons for one of 'git' 'folder' and 'files'
+"1 by default, notice that if 'files' is 1, it will only display
+"if nvim-web-devicons is installed and on your runtimepath.
+"if folder is 1, you can also tell folder_arrows 1 to show small arrows next to the folder icons.
+"but this will not work when you set indent_markers (because of UI conflict)
+
+" default will show icon by default if no icon is provided
+" default shows no icon by default
+let g:nvim_tree_icons = {
+    \ 'default': '',
+    \ 'symlink': '',
+    \ 'git': {
+    \   'unstaged': "~",
+    \   'staged': "✓",
+    \   'unmerged': "",
+    \   'renamed': "➜",
+    \   'untracked': "★",
+    \   'deleted': "✗",
+    \   'ignored': "◌"
+    \   },
+    \ 'folder': {
+    \   'arrow_open': "",
+    \   'arrow_closed': "",
+    \   'default': "",
+    \   'open': "",
+    \   'empty': "",
+    \   'empty_open': "",
+    \   'symlink': "",
+    \   'symlink_open': "",
+    \   },
+    \   'lsp': {
+    \     'hint': "",
+    \     'info': "",
+    \     'warning': "",
+    \     'error': "",
+    \   }
+    \ }
+
+nnoremap - :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
+" NvimTreeOpen and NvimTreeClose are also available if you need them
+
+set termguicolors " this variable must be enabled for colors to be applied properly
+
+" a list of groups can be found at `:help nvim_tree_highlight`
+highlight NvimTreeFolderIcon guibg=blue
+
+"}}
+
 " goyo {{
 function! s:goyo_enter()
   color seoul256
@@ -408,7 +458,6 @@ function! s:goyo_enter()
   set scrolloff=999
   silent Limelight
   silent CocDisable
-  silent ALEDisable
 endfunction
 
 function! s:goyo_leave()
@@ -423,7 +472,6 @@ function! s:goyo_leave()
 
   silent Limelight!
   silent CocEnable
-  silent ALEEnable
 
   color gruvbox
 endfunction
@@ -452,33 +500,6 @@ let g:coc_snippet_prev = '<c-k>'
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 "}}
 
-"coc-git {{
-" navigate chunks of current buffer
-nmap [g <Plug>(coc-git-prevchunk)
-nmap ]g <Plug>(coc-git-nextchunk)
-" show chunk diff at current position
-nmap gs <Plug>(coc-git-chunkinfo)
-nmap <leader>hs :CocCommand git.chunkStage<CR>
-nmap <leader>hu :CocCommand git.chunkUndo<CR>
-" show commit contains current position
-nmap gc <Plug>(coc-git-commit)
-" create text object for git chunks
-omap ig <Plug>(coc-git-chunk-inner)
-xmap ig <Plug>(coc-git-chunk-inner)
-omap ag <Plug>(coc-git-chunk-outer)
-xmap ag <Plug>(coc-git-chunk-outer)
-"}}
-
-"coc-action {{
-" Remap for do codeAction of selected region
-function! s:CocActionsOpenFromSelected(type) abort
-  execute 'CocCommand actions.open ' . a:type
-endfunction
-
-xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>CocActionsOpenFromSelected<CR>g@
-"}}
-
 
 "Emmet {{
 let g:user_emmet_leader_key='<c-y>'
@@ -489,25 +510,6 @@ set directory=~/.vim/swapfiles//
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*.pyc
 "}}
-
-"ALE {{
-let g:ale_linters_explicit = 1
-let g:ale_sign_column_always = 1
-let g:ale_sign_error = '>'
-let g:ale_sign_warning = '-'
-
-let g:ale_fixers = {
-\   'javascript': [
-\       'eslint',
-\       'prettier',
-\   ]
-\}
-
-let g:ale_javascript_prettier_options = '--single-quote'
-let g:ale_rust_rls_executable = 'rls'
-let g:ale_linters = { 'elm': ['elm_ls'] }
-"}}
-
 
 "AsyncRun Settings {{
 let g:asyncrun_open = 8

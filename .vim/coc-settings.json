@@ -6,6 +6,10 @@
     "mkdir",
     "openjdk",
     "pyright",
+    "startify",
+    "unstage",
+    "unstaged",
+    "untracked",
     "vsvimrc",
     "winvimrc"
   ]
