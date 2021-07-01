@@ -99,10 +99,12 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'vim-test/vim-test'
 Plug 'ahmedshuhel/devlife.vim'
 Plug 'puremourning/vimspector'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'navarasu/onedark.nvim'
 Plug 'sindrets/diffview.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 "Plug '~/Workspace/devlife.vim'
+"Plug '~/Workspace/t.nvim'
 
 call plug#end()
 
@@ -433,7 +435,7 @@ let g:nvim_tree_icons = {
     \   }
     \ }
 
-nnoremap - :NvimTreeToggle<CR>
+nnoremap - :NvimTreeOpen<CR> :NvimTreeFindFile<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 " NvimTreeOpen and NvimTreeClose are also available if you need them
