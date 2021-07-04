@@ -103,7 +103,7 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
- alias vim="$(which nvim)"
+ alias vim="$(which nvim.appimage)"
  alias zshconfig="vim ~/.zshrc"
  alias ohmyzsh="vim ~/.oh-my-zsh"
  alias vimrc="vim ~/.config/nvim/init.vim"
