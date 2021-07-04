@@ -50,6 +50,9 @@ let python_highlight_all=1
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'rktjmp/lush.nvim'
 Plug 'npxbr/gruvbox.nvim'
@@ -76,8 +79,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-surround'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'kshenoy/vim-signature'
@@ -103,8 +104,9 @@ Plug 'navarasu/onedark.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
+
+"Plug 'romgrk/barbar.nvim'
 "Plug '~/Workspace/devlife.vim'
-"Plug '~/Workspace/t.nvim'
 
 call plug#end()
 
@@ -531,6 +533,9 @@ hi CocInfoSign ctermfg=Blue ctermbg=237 guifg=#fab005
 "FZF {{
 nnoremap <C-t> :Rg<CR>
 nnoremap <C-p> :GFiles<CR>
+
+"nnoremap <C-t> :Telescope live_grep<CR>
+"nnoremap <C-p> :Telescope find_files<CR>
 "}}
 
 "Vim Markdown {{
