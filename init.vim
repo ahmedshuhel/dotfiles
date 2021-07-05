@@ -92,8 +92,8 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'dhruvasagar/vim-table-mode'
 
-Plug '~/Workspace/devlife.vim'
-"Plug 'ahmedshuhel/devlife.vim'
+"Plug '~/Workspace/devlife.vim'
+Plug 'ahmedshuhel/devlife.vim'
 Plug 'puremourning/vimspector'
 Plug 'navarasu/onedark.nvim'
 Plug 'sindrets/diffview.nvim'
@@ -101,7 +101,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
-"Plug 'romgrk/barbar.nvim'
+Plug 'romgrk/barbar.nvim'
 
 call plug#end()
 
