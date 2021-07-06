@@ -103,12 +103,6 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
- alias vim="$(which nvim.appimage)"
- alias zshconfig="vim ~/.zshrc"
- alias ohmyzsh="vim ~/.oh-my-zsh"
- alias vimrc="vim ~/.config/nvim/init.vim"
- alias vimdiff="nvim -d"
- alias start="~/start.sh"
 
 # Custom Functions
 
@@ -171,3 +165,10 @@ then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+ alias vim="$(which nvim.appimage)"
+ alias zshconfig="vim ~/.zshrc"
+ alias ohmyzsh="vim ~/.oh-my-zsh"
+ alias vimrc="vim ~/.config/nvim/init.vim"
+ alias vimdiff="nvim -d"
+ alias start="~/start.sh"
