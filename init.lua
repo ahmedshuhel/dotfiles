@@ -31,6 +31,9 @@ require "file-icons"
 require "statusline"
 
 -- hide line numbers , statusline in specific buffers!
+vim.api.nvim_exec("au VimEnter * Dashboard", false)
+vim.api.nvim_exec("au BufWritePost plugin-list.lua PackerCompile", false)
+
 vim.api.nvim_exec(
     [[
    au BufEnter term://* setlocal nonumber
