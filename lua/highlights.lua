@@ -74,7 +74,7 @@ fg("NvimTreeVertSplit", darker_black)
 bg("NvimTreeVertSplit", darker_black)
 fg("NvimTreeEndOfBuffer", darker_black)
 
-fg("NvimTreeRootFolder", blue)
+fg("NvimTreeRootFolder", nord_blue)
 bg("NvimTreeNormal", darker_black)
 fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
 fg_bg("NvimTreeWindowPicker", red, black2)
@@ -136,7 +136,7 @@ fg_bg("BufferLineCLoseButtonSelected", red, black)
 
 -- dashboard
 
-fg("DashboardHeader", grey_fg)
+fg("DashboardHeader", red)
 fg("DashboardCenter", grey_fg)
 fg("DashboardShortcut", grey_fg)
 fg("DashboardFooter", grey_fg)
