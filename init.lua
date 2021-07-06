@@ -9,7 +9,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- load all plugins
-require "plugins"
+require "plugin-list"
 require "misc-utils"
 require "top-bufferline"
 
@@ -20,7 +20,8 @@ g.auto_save = false
 
 -- colorscheme related stuff
 
-g.nvchad_theme = "onedark"
+g.nvim_theme = "onedark"
+
 local base16 = require "base16"
 base16(base16.themes["onedark"], true)
 

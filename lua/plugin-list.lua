@@ -76,9 +76,13 @@ return packer.startup(
         -- file managing , picker etc
         use {
             "kyazdani42/nvim-tree.lua",
-            cmd = "NvimTreeToggle",
+            cmd = {
+              "NvimTreeOpen",
+              "NvimTreeToggle",
+              "NvimTreeFindFile"
+            },
             config = function()
-                require("nvim-tree").config()
+                require("tree-nvim").config()
             end
         }
 
