@@ -30,10 +30,16 @@ require "mappings"
 require "file-icons"
 require "statusline"
 
--- hide line numbers , statusline in specific buffers!
-vim.api.nvim_exec("au VimEnter * Dashboard", false)
+function _G.open_dashboard()
+  if vim.fn.argc() == 0 then
+    vim.api.nvim_command("Dashboard")
+  end
+end
+
+vim.api.nvim_exec("au VimEnter * lua open_dashboard()", false)
 vim.api.nvim_exec("au BufWritePost plugin-list.lua PackerCompile", false)
 
+-- hide line numbers , statusline in specific buffers!
 vim.api.nvim_exec(
     [[
    au BufEnter term://* setlocal nonumber
