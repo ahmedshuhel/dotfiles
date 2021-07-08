@@ -8,6 +8,7 @@
 	lg = log --oneline --graph
 [core]
 	editor = vim
+	excludesFile = ~/.gitignore_global
 [diff]
 	tool = vsdiffmerge
 [difftool]
