@@ -166,10 +166,15 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+if [[ `uname` == "Darwin" ]]; then
+ alias vim="$(which nvim)"
+else
  alias vim="$(which nvim.appimage)"
  alias nvim="$(which nvim.appimage)"
- alias zshconfig="vim ~/.zshrc"
- alias ohmyzsh="vim ~/.oh-my-zsh"
- alias vimrc="vim ~/.config/nvim/init.lua"
- alias vimdiff="vim -d"
- alias start="~/start.sh"
+fi
+
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+alias vimrc="vim ~/.config/nvim/init.lua"
+alias vimdiff="vim -d"
+alias start="~/start.sh"
