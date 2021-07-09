@@ -102,9 +102,7 @@ return packer.startup(
         }
 
         -- git stuff
-        
         use "tpope/vim-fugitive"
-        
         use {
             "lewis6991/gitsigns.nvim",
             requires = {
@@ -193,6 +191,12 @@ return packer.startup(
             setup = function()
                 require("misc-utils").blankline()
             end
+        }
+        use {
+            "~/Workspace/devlife.vim",
+            requires = {
+                'nvim-lua/plenary.nvim'
+            }
         }
     end,
     {
