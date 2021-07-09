@@ -192,13 +192,7 @@ return packer.startup(
                 require("misc-utils").blankline()
             end
         }
-        use {
-            "~/Workspace/devlife.vim",
-            requires = {
-                'nvim-lua/plenary.nvim'
-            }
-        }
-    end,
+   end,
     {
         display = {
             border = {"┌", "─", "┐", "│", "┘", "─", "└", "│"}

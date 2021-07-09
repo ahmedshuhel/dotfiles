@@ -35,6 +35,7 @@ vim.g.loaded_netrwPlugin = 0
 vim.g.loaded_matchit = 0
 vim.g.loaded_matchparen = 0
 vim.g.loaded_spec = 0
+vim.g.loaded_python_provider = 0
 
 local M = {}
 
