@@ -102,7 +102,13 @@ return packer.startup(
         }
 
         -- git stuff
-        use "tpope/vim-fugitive"
+        use {
+            "tpope/vim-fugitive",
+            requires = {
+                'tpope/vim-dispatch',
+                'tpope/vim-rhubarb'
+            }
+        }
         use {
             "lewis6991/gitsigns.nvim",
             requires = {
