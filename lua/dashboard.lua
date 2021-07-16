@@ -32,7 +32,7 @@ M.config = function()
       }
 
     g.dashboard_custom_section = {
-        a = {description = {"  Find File                 CTRL  p"}, command = "Telescope find_files"},
+        a = {description = {"🔍 Find File                 CTRL  p"}, command = "Telescope find_files"},
         b = {description = {"  Recents                   SPC f o"}, command = "Telescope oldfiles"},
         c = {description = {"  Find Word                 SPC f w"}, command = "Telescope live_grep"},
         d = {description = {"洛 New File                  SPC f n"}, command = "DashboardNewFile"},
