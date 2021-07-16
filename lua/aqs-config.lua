@@ -7,12 +7,12 @@ opt.ignorecase = true
 opt.splitbelow = true
 opt.splitright = true
 opt.termguicolors = true
-opt.cul = true
+opt.cul = false -- Highlight the screen line of the cursor with CursorLine
 opt.mouse = "a"
 opt.signcolumn = "yes"
 opt.cmdheight = 1
-opt.updatetime = 250 -- update interval for gitsigns
-opt.timeoutlen = 400
+opt.updatetime = 1000 -- update interval for gitsigns
+opt.timeoutlen = 500 -- Time in milliseconds to wait for a mapped sequence to complete.
 opt.clipboard = "unnamedplus"
 
 -- Numbers
@@ -24,6 +24,10 @@ opt.numberwidth = 2
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
+
+-- fast render hack
+opt.ttimeoutlen = 100
+opt.lazyredraw = true
 
 -- disable builtin vim plugins
 g.loaded_gzip = 0
@@ -40,7 +44,6 @@ g.loaded_python_provider = 0
 g.loaded_python_provider = 0
 g.loaded_ruby_provider = 0
 g.loaded_perl_provider = 0
-
 g.mapleader = " "
 g.auto_save = false
 

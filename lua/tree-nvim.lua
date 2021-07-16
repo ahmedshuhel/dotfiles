@@ -16,7 +16,7 @@ M.config = function()
     g.nvim_tree_follow = 1
     g.nvim_tree_indent_markers = 1
     g.nvim_tree_hide_dotfiles = 0
-    g.nvim_tree_git_hl = 1
+    g.nvim_tree_git_hl = 0
     g.nvim_tree_highlight_opened_files = 1
     g.nvim_tree_root_folder_modifier = ":~"
     g.nvim_tree_tab_open = 0
@@ -29,8 +29,8 @@ M.config = function()
     g.nvim_tree_disable_window_picker = 1
 
     g.nvim_tree_show_icons = {
-        git = 1,
-        folders = 1,
+        git = 0,
+        folders = -8,
         files = 1,
         folder_arrows= 1
     }
