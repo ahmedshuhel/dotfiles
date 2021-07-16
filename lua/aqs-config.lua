@@ -1,5 +1,6 @@
 local opt = vim.opt
 local g = vim.g
+local fn = vim.fn
 
 opt.ruler = false
 opt.hidden = true
@@ -51,5 +52,7 @@ g.auto_save = false
 g.nvim_theme = "onedark"
 
 -- host program
-g.node_host_prog = "/home/ahmedshuhel/.nvm/versions/node/v14.15.4/bin/neovim-node-host"
+
+
+g.node_host_prog = fn.fnamemodify('~', ':p') .. ".nvm/versions/node/v14.15.4/bin/neovim-node-host"
 g.python3_host_prog = "/usr/bin/python3"
