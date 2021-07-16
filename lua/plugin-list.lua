@@ -135,7 +135,13 @@ return packer.startup(
             end
         }
 
-        use {"andymass/vim-matchup", event = "CursorMoved"}
+        use {
+            "andymass/vim-matchup",
+            event = "CursorMoved",
+            config = function()
+                require("aqs-matchup").config()
+            end
+        }
 
         use {
             "terrortylor/nvim-comment",
