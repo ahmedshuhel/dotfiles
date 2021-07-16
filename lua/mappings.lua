@@ -99,7 +99,7 @@ map("i", "<CR>", "v:lua.completions()", {expr = true})
 map("n", "-", ":NvimTreeOpen<CR> :NvimTreeFindFile<CR>", opt) -- new tab
 
 -- format code
-map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], opt)
+map("n", "<Leader>f", [[<Cmd> Format<CR>]], opt)
 
 -- dashboard stuff
 map("n", "<Leader>fw", [[<Cmd> Telescope live_grep<CR>]], opt)

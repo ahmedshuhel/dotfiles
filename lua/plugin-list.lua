@@ -71,7 +71,13 @@ return packer.startup(
             }
         }
 
-        use {"sbdchd/neoformat", cmd = "Neoformat"}
+        use {
+            "mhartington/formatter.nvim",
+            cmd = "Format",
+            config = function()
+                require("aqs-formatter").config()
+            end
+        }
 
         -- file managing , picker etc
         use {
