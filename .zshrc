@@ -147,12 +147,10 @@ function git {
 export PYTHON2_LOCAL_BIN="$(python2 -m site --user-base)/bin"
 export PYTHON3_LOCAL_BIN="$(python3 -m site --user-base)/bin"
 export PATH="$PYTHON3_LOCAL_BIN:$PYTHON2_LOCAL_BIN:$PATH"
-
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-source ~/.pyenv.zsh
+lazyload nvm -- '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
+lazyload pyenv -- 'source ~/.pyenv.zsh'
 
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:/snap/bin
