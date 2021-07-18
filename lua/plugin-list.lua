@@ -5,6 +5,7 @@ return packer.startup(
     function()
         use "wbthomason/packer.nvim"
 
+        use {"akinsho/nvim-toggleterm.lua"}
         use "akinsho/nvim-bufferline.lua"
         use "glepnir/galaxyline.nvim"
 

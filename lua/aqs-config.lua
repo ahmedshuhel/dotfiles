@@ -2,6 +2,7 @@ local opt = vim.opt
 local g = vim.g
 local fn = vim.fn
 
+opt.guicursor = ''
 opt.ruler = false
 opt.hidden = true
 opt.ignorecase = true
