@@ -10,7 +10,7 @@ local opt = {}
 
 -- dont copy any deleted text , this is disabled by default so uncomment the below mappings if you want them
 --[[ remove this line
-
+:
 map("n", "dd", [=[ "_dd ]=], opt)
 map("v", "dd", [=[ "_dd ]=], opt)
 map("v", "x", [=[ "_x ]=], opt)
@@ -18,10 +18,9 @@ map("v", "x", [=[ "_x ]=], opt)
  this line too ]]
 --
 
--- OPEN TERMINALS --
--- map("n", "<C-l>", [[<Cmd>vnew term://bash <CR>]], opt) -- term over right
--- map("n", "<C-x>", [[<Cmd> split term://bash | resize 10 <CR>]], opt) --  term bottom
--- map("n", "<C-t>t", [[<Cmd> tabnew | term <CR>]], opt) -- term newtab
+-- TERMINALS --
+map("n", "<leader>tt", [[<Cmd> ToggleTerm<CR>]], opt) -- toggle terminal
+map("t", "<leader><ESC>", [[<C-\><C-n>]], opt) --  exit terminal mode
 
 -- copy whole file content
 map("n", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
