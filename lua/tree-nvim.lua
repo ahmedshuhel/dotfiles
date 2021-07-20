@@ -26,7 +26,7 @@ M.config = function()
     g.nvim_tree_hijack_netrw = 1
     g.nvim_tree_update_cwd = 0
     g.nvim_tree_special_files = {}
-    g.nvim_tree_disable_window_picker = 1
+    g.nvim_tree_disable_window_picker = 0
 
     g.nvim_tree_show_icons = {
         git = 0,
