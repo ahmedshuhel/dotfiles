@@ -11,16 +11,18 @@ opt.splitright = true
 opt.termguicolors = true
 opt.cul = false -- Highlight the screen line of the cursor with CursorLine
 opt.mouse = "a"
-opt.signcolumn = "yes"
-opt.cmdheight = 1
-opt.updatetime = 1000 -- update interval for gitsigns
-opt.timeoutlen = 500 -- Time in milliseconds to wait for a mapped sequence to complete.
-opt.clipboard = "unnamedplus"
 
 -- Numbers
 opt.number = true
 opt.numberwidth = 2
 -- opt.relativenumber = true
+
+opt.signcolumn = "number"
+opt.cmdheight = 1
+opt.updatetime = 1000 -- update interval for gitsigns
+opt.timeoutlen = 500 -- Time in milliseconds to wait for a mapped sequence to complete.
+opt.clipboard = "unnamedplus"
+
 
 -- for indenline
 opt.expandtab = true
