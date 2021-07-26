@@ -28,15 +28,34 @@ function _G.open_dashboard()
   end
 end
 
+
 vim.api.nvim_exec("au VimEnter * lua open_dashboard()", false)
 vim.api.nvim_exec("au BufWritePost plugin-list.lua PackerCompile", false)
 
 -- hide line numbers , statusline in specific buffers!
 vim.api.nvim_exec(
-    [[
+[[
    au BufEnter term://* setlocal nonumber
    au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
    au BufEnter term://* set laststatus=0 
 ]],
-    false
+  false
 )
+
+
+function _G.reposition_tree()
+ -- vim.api.nvim_command('1wincmd H')
+ -- vim.api.nvim_command('vertical 1resize 40')
+end
+
+
+vim.api.nvim_exec(
+[[
+   augroup nvimtree
+     autocmd!
+     au BufWinEnter,BufWinLeave * lua reposition_tree()
+   augroup END
+]],
+  false
+)
+
