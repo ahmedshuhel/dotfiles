@@ -230,7 +230,6 @@ gls.short_line_right[1] = {
 vim.api.nvim_exec(
     [[
    au TermOpen,TermEnter term://* setlocal nonumber  laststatus=0
-   au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
 ]],
     false
 )

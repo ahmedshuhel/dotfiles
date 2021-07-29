@@ -75,7 +75,7 @@ fg("NvimTreeEndOfBuffer", darker_black)
 
 fg("NvimTreeRootFolder", nord_blue)
 bg("NvimTreeNormal", darker_black)
-fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
+fg_bg("NvimTreeStatuslineNc", line, black)
 fg_bg("NvimTreeWindowPicker", red, black2)
 
 -- telescope
