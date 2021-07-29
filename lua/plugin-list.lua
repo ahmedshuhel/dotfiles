@@ -4,14 +4,39 @@ local use = packer.use
 return packer.startup(
     function()
         use "wbthomason/packer.nvim"
+        use {
+            "siduck76/nvim-base16.lua",
+            after = "packer.nvim",
+            config = function()
+              require "plugins.nvim-base16"
+            end
+        }
+
+        use {
+            "akinsho/nvim-bufferline.lua",
+            after = "nvim-base16.lua",
+            config = function()
+              require "plugins.bufferline"
+            end
+        }
+        use {
+            "glepnir/galaxyline.nvim",
+            after = "nvim-base16.lua",
+            config = function()
+              require "plugins.statusline"
+            end
+        }
+
+        -- config in init.lua "file-icons"
+        use {
+            "kyazdani42/nvim-web-devicons",
+            after = "nvim-base16.lua",
+            config = function()
+              require "plugins.file-icons"
+            end
+        }
 
         use {"akinsho/nvim-toggleterm.lua"}
-        use "akinsho/nvim-bufferline.lua"
-        use "glepnir/galaxyline.nvim"
-
-        -- color related stuff
-        use "siduck76/nvim-base16.lua"
-
         -- tmux navigation
         use "christoomey/vim-tmux-navigator"
 
@@ -29,7 +54,7 @@ return packer.startup(
             "nvim-treesitter/nvim-treesitter",
             event = "BufRead",
             config = function()
-                require("treesitter-nvim").config()
+                require("plugins.treesitter-nvim").config()
             end
         }
 
@@ -37,7 +62,7 @@ return packer.startup(
             "neovim/nvim-lspconfig",
             event = "BufRead",
             config = function()
-                require("nvim-lspconfig").config()
+                require("plugins.nvim-lspconfig").config()
             end
         }
 
@@ -56,7 +81,7 @@ return packer.startup(
             "hrsh7th/nvim-compe",
             event = "InsertEnter",
             config = function()
-                require("compe-completion").config()
+                require("plugins.compe-completion").config()
             end,
             wants = {"LuaSnip"},
             requires = {
@@ -65,7 +90,7 @@ return packer.startup(
                     wants = "friendly-snippets",
                     event = "InsertCharPre",
                     config = function()
-                        require("compe-completion").snippets()
+                        require("plugins.compe-completion").snippets()
                     end
                 },
                 "rafamadriz/friendly-snippets"
@@ -76,7 +101,7 @@ return packer.startup(
             "mhartington/formatter.nvim",
             cmd = "Format",
             config = function()
-                require("aqs-formatter").config()
+                require("plugins.formatter").config()
             end
         }
 
@@ -89,12 +114,9 @@ return packer.startup(
               "NvimTreeFindFile"
             },
             config = function()
-                require("tree-nvim").config()
+                require("plugins.tree-nvim").config()
             end
         }
-
-        -- config in init.lua "file-icons"
-        use { "kyazdani42/nvim-web-devicons" }
 
         use {
             "nvim-telescope/telescope.nvim",
@@ -106,7 +128,7 @@ return packer.startup(
             },
             cmd = "Telescope",
             config = function()
-                require("telescope-nvim").config()
+                require("plugins.telescope-nvim").config()
             end
         }
 
@@ -125,7 +147,7 @@ return packer.startup(
             },
             event = "BufRead",
             config = function()
-                require("gitsigns-nvim").config()
+                require("plugins.gitsigns-nvim").config()
             end
         }
 
@@ -148,7 +170,7 @@ return packer.startup(
             "andymass/vim-matchup",
             event = "CursorMoved",
             config = function()
-                require("aqs-matchup").config()
+                require("plugins.matchup").config()
             end
         }
 
@@ -170,7 +192,7 @@ return packer.startup(
                 "SessionSave"
             },
             setup = function()
-                require("dashboard").config()
+                require("plugins.dashboard").config()
             end
         }
 
@@ -200,7 +222,7 @@ return packer.startup(
             "Pocco81/TrueZen.nvim",
             cmd = {"TZAtaraxis", "TZMinimalist", "TZFocus"},
             config = function()
-                require("zenmode").config()
+                require("plugins.zenmode").config()
             end
         }
 
@@ -210,7 +232,7 @@ return packer.startup(
             "lukas-reineke/indent-blankline.nvim",
             event = "BufRead",
             setup = function()
-                require("misc-utils").blankline()
+                require("utils").blankline()
             end
         }
    end,

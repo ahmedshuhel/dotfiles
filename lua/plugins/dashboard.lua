@@ -44,6 +44,17 @@ M.config = function()
         "   ",
         "@ahmedshuhel"
     }
+
+
+function _G.open_dashboard()
+  if vim.fn.argc() == 0 then
+    vim.api.nvim_command("Dashboard")
+  end
+end
+
+
+vim.api.nvim_exec("au VimEnter * lua open_dashboard()", false)
+
 end
 
 return M

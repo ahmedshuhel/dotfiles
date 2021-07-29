@@ -12,6 +12,9 @@ opt.termguicolors = true
 opt.cul = false -- Highlight the screen line of the cursor with CursorLine
 opt.mouse = "a"
 
+opt.shortmess:append("sI") -- disable nvim intro
+vim.cmd("let &fcs='eob: '") -- disable ~ end of buffer
+
 -- Numbers
 opt.number = true
 opt.numberwidth = 4
@@ -23,6 +26,9 @@ opt.updatetime = 1000 -- update interval for gitsigns
 opt.timeoutlen = 500 -- Time in milliseconds to wait for a mapped sequence to complete.
 opt.clipboard = "unnamedplus"
 
+-- go to previous/next line with h,l,left arrow and right arrow
+-- when cursor reaches end/beginning of line
+opt.whichwrap:append("<>hl")
 
 -- for indenline
 opt.expandtab = true
@@ -33,29 +39,40 @@ opt.smartindent = true
 opt.ttimeoutlen = 100
 opt.lazyredraw = true
 
--- disable builtin vim plugins
-g.loaded_gzip = 0
-g.loaded_tar = 0
-g.loaded_tarPlugin = 0
-g.loaded_zipPlugin = 0
-g.loaded_2html_plugin = 0
-g.loaded_netrw = 0
-g.loaded_netrwPlugin = 0
-g.loaded_matchit = 0
-g.loaded_matchparen = 0
-g.loaded_spec = 0
-g.loaded_python_provider = 0
-g.loaded_python_provider = 0
-g.loaded_ruby_provider = 0
-g.loaded_perl_provider = 0
+
 g.mapleader = " "
 g.auto_save = false
 
--- colorscheme related stuff
-g.nvim_theme = "onedark"
-
+g.dp_theme = 'onedark'
 -- host program
-
-
 g.node_host_prog = fn.fnamemodify('~', ':p') .. ".nvm/versions/node/v14.15.4/bin/neovim-node-host"
 g.python3_host_prog = "/usr/bin/python3"
+
+-- disable builtin vim plugins
+local disabled_built_ins = {
+    "netrw",
+    "netrwPlugin",
+    "netrwSettings",
+    "netrwFileHandlers",
+    "gzip",
+    "zip",
+    "zipPlugin",
+    "tar",
+    "tarPlugin",
+    "getscript",
+    "getscriptPlugin",
+    "vimball",
+    "vimballPlugin",
+    "2html_plugin",
+    "logipat",
+    "rrhelper",
+    "spellfile_plugin",
+    "matchit",
+    "python_provider",
+    "ruby_provider",
+    "perl_provider"
+}
+
+for _, plugin in pairs(disabled_built_ins) do
+    vim.g["loaded_" .. plugin] = 1
+end

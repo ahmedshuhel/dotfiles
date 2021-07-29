@@ -18,7 +18,7 @@ map("v", "x", [=[ "_x ]=], opt)
  this line too ]]
 --
 
--- TERMINALS --
+-- Terminal
 map("n", "<leader>tt", [[<Cmd> ToggleTerm<CR>]], opt) -- toggle terminal
 map("t", "<leader><ESC>", [[<C-\><C-n>]], opt) --  exit terminal mode
 

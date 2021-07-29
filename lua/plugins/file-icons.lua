@@ -1,4 +1,4 @@
-local global_theme = "themes/" .. vim.g.nvim_theme
+local global_theme = "themes/" .. vim.g.dp_theme
 local colors = require(global_theme)
 
 require "nvim-web-devicons".setup {
