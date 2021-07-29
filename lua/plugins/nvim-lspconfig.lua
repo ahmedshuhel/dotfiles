@@ -1,7 +1,7 @@
 local M = {}
 
 M.config = function()
-    function on_attach(client, bufnr)
+    local function on_attach(client, bufnr)
         local function buf_set_keymap(...)
             vim.api.nvim_buf_set_keymap(bufnr, ...)
         end
@@ -39,6 +39,11 @@ M.config = function()
         end
     end
 
+
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+
     -- lspInstall + lspconfig stuff
 
     local function setup_servers()
@@ -51,7 +56,8 @@ M.config = function()
             if lang ~= "lua" then
                 lspconf[lang].setup {
                     on_attach = on_attach,
-                    root_dir = vim.loop.cwd
+                    root_dir = vim.loop.cwd,
+                    capabilities = capabilities
                 }
             elseif lang == "lua" then
                 lspconf[lang].setup {
@@ -59,13 +65,15 @@ M.config = function()
                     settings = {
                         Lua = {
                             diagnostics = {
-                                globals = {"vim"}
+                                globals = {"vim", "jit"}
                             },
                             workspace = {
                                 library = {
                                     [vim.fn.expand("$VIMRUNTIME/lua")] = true,
                                     [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
-                                }
+                                },
+                                maxPreload = 100000,
+                                preloadFileSize = 10000
                             },
                             telemetry = {
                                 enable = false
@@ -85,11 +93,42 @@ M.config = function()
         vim.cmd("bufdo e") -- triggers FileType autocmd that starts the server
     end
 
-    -- replace the default lsp diagnostic letters with prettier symbols
-    vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})
-    vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
-    vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
-    vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})
+    local function lspSymbol(name, icon)
+        vim.fn.sign_define("LspDiagnosticsSign" .. name, {text = icon, numhl = "LspDiagnosticsDefaul" .. name})
+    end
+
+    lspSymbol("Error", "")
+    lspSymbol("Warning", "")
+    lspSymbol("Information", "")
+    lspSymbol("Hint", "")
+
+    vim.lsp.handlers["textDocument/publishDiagnostics"] =
+        vim.lsp.with(
+        vim.lsp.diagnostic.on_publish_diagnostics,
+        {
+            virtual_text = {
+                prefix = "",
+                spacing = 0
+            },
+            signs = true,
+            underline = true,
+
+            -- set this to true if you want diagnostics to show in insert mode
+            update_in_insert = false
+        }
+    )
+
+    -- suppress error messages from lang servers
+    vim.notify = function(msg, log_level, _opts)
+        if msg:match("exit code") then
+            return
+        end
+        if log_level == vim.log.levels.ERROR then
+            vim.api.nvim_err_writeln(msg)
+        else
+            vim.api.nvim_echo({{msg}}, true, {})
+        end
+    end
 end
 
 return M

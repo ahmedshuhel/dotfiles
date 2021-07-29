@@ -125,13 +125,3 @@ map("n", "<S-x>", ":bd!<CR>", opt) -- close tab
 -- move between tabs
 map("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
 map("n", "<S-TAB>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
-
--- devlife
-map("n", "dltn", [[<Cmd>DlGotoDailyTask<CR>]])
-map("n", "dlt", [[<Cmd>DlCreateDailyTask<CR>]])
-map("n", "dln", [[<Cmd>DlCreateDailyNote<CR>]])
-map("n", "dlp", [[<Cmd>DlCreatePost]])
-map("n", "dlo", [[<Cmd>DlCreateOoo]])
-map("n", "dll", [[<Cmd>DlCreateTil]])
-map("n", "dlm", [[<Cmd>DlCreateMeetingNotes]])
-map("n", "dli", [[<Cmd>DlCreateInterviewNotes]])

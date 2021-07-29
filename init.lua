@@ -8,15 +8,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   execute 'packadd packer.nvim'
 end
 
--- load all plugins
 require "options"
 require "plugin-list"
 require "mappings"
-
-vim.api.nvim_exec(
-    [[
-   au TermOpen,TermEnter term://* setlocal nonumber  laststatus=0
-   au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
-]],
-    false
-)

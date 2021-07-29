@@ -116,4 +116,4 @@ bg("FloatBorder", black2)
 fg("FloatBorder", black2)
 
 -- set bg color for nvim
-bg("Normal", black)
+-- bg("Normal", black)

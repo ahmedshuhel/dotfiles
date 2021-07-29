@@ -205,3 +205,11 @@ gls.right[7] = {
         highlight = {colors.green, colors.lightbg}
     }
 }
+
+vim.api.nvim_exec(
+    [[
+   au TermOpen,TermEnter term://* setlocal nonumber  laststatus=0
+   au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
+]],
+    false
+)

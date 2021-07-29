@@ -58,15 +58,16 @@ return packer.startup(
             end
         }
 
+        use "kabouzeid/nvim-lspinstall"
+
         use {
             "neovim/nvim-lspconfig",
             event = "BufRead",
+            after = "nvim-lspinstall",
             config = function()
                 require("plugins.nvim-lspconfig").config()
             end
         }
-
-        use "kabouzeid/nvim-lspinstall"
 
         use {
             "onsails/lspkind-nvim",
@@ -235,6 +236,8 @@ return packer.startup(
                 require("utils").blankline()
             end
         }
+
+        use "ahmedshuhel/devlife.vim"
    end,
     {
         display = {
