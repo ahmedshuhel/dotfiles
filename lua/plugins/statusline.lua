@@ -2,7 +2,7 @@ local gl = require("galaxyline")
 local gls = gl.section
 local condition = require("galaxyline.condition")
 
-gl.short_line_list = {" "}
+gl.short_line_list = {"NvimTree"}
 
 local global_theme = "themes/" .. vim.g.dp_theme
 local colors = require(global_theme)
@@ -55,6 +55,16 @@ gls.left[5] = {
         separator = " ",
         separator_highlight = {colors.lightbg2, colors.statusline_bg}
     }
+}
+
+gls.short_line_left[1] = {
+  nvim_tree = {
+    provider = function()
+      return ""
+    end,
+    highlight = {colors.black, colors.black},
+    separator_ighlight = {colors.black,colors.black},
+  }
 }
 
 local checkwidth = function()
@@ -205,6 +215,17 @@ gls.right[7] = {
         highlight = {colors.green, colors.lightbg}
     }
 }
+
+gls.short_line_right[1] = {
+  nvim_tree = {
+    provider = function()
+      return ""
+    end,
+    highlight = {colors.black, colors.black},
+    separator_ighlight = {colors.black,colors.black},
+  }
+}
+
 
 vim.api.nvim_exec(
     [[
