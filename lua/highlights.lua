@@ -9,11 +9,8 @@ local black = colors.black
 local black2 = colors.black2
 local one_bg = colors.one_bg
 local one_bg2 = colors.one_bg2
-local one_bg3 = colors.one_bg3
-local light_grey = colors.light_grey
 local grey = colors.grey
 local grey_fg = colors.grey_fg
-local grey_fg2 = colors.grey_fg2
 local red = colors.red
 local line = colors.line
 local green = colors.green
@@ -64,6 +61,7 @@ fg("cursorlinenr", white)
 fg_bg("DiffAdd", nord_blue, "none")
 fg_bg("DiffChange", grey_fg, "none")
 fg_bg("DiffModified", nord_blue, "none")
+fg_bg("DiffDelete", red, "none")
 
 -- NvimTree
 fg("NvimTreeFolderIcon", blue)
