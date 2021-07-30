@@ -8,16 +8,6 @@ end
 
 local opt = {}
 
--- dont copy any deleted text , this is disabled by default so uncomment the below mappings if you want them
---[[ remove this line
-:
-map("n", "dd", [=[ "_dd ]=], opt)
-map("v", "dd", [=[ "_dd ]=], opt)
-map("v", "x", [=[ "_x ]=], opt)
-
- this line too ]]
---
-
 -- Terminal
 map("n", "<leader>tt", [[<Cmd> ToggleTerm<CR>]], opt) -- toggle terminal
 map("t", "<leader><ESC>", [[<C-\><C-n>]], opt) --  exit terminal mode
@@ -34,7 +24,6 @@ map("n", "<leader>zm", ":TZMinimalist<CR>", opt)
 map("n", "<leader>zf", ":TZFocus<CR>", opt)
 
 map("n", "<C-s>", ":w <CR>", opt)
--- vim.cmd("inoremap jh <Esc>")
 
 -- Commenter Keybinding
 map("n", "<leader>/", ":CommentToggle<CR>", opt)
@@ -42,7 +31,7 @@ map("v", "<leader>/", ":CommentToggle<CR>", opt)
 
 map("n", "<C-q>", ":bp<bar>sp<bar>bn<bar>bd! <CR>", opt)
 
--- compe stuff
+-- compe
 
 local t = function(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -125,3 +114,6 @@ map("n", "<S-x>", ":bd!<CR>", opt) -- close tab
 -- move between tabs
 map("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
 map("n", "<S-TAB>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
+
+--highlight
+map("n", "<ESC>", ":noh<CR>", opt)
