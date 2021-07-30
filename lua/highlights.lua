@@ -41,7 +41,7 @@ fg("IndentBlanklineChar", line)
 fg("LineNr", grey)
 fg("Comment", grey_fg)
 fg("NvimInternalError", red)
-fg("VertSplit", line)
+
 fg("EndOfBuffer", black)
 
 -- Pmenu
@@ -50,8 +50,14 @@ bg("PmenuSbar", one_bg2)
 bg("PmenuSel", green)
 bg("PmenuThumb", nord_blue)
 
+-- Statusline/Vertical Split
+fg_bg("VertSplit", darker_black, darker_black)
+
 -- inactive statuslines as thin splitlines
 cmd("hi! StatusLineNC gui=underline guifg=" .. line)
+cmd("hi clear StatusLine")
+bg("Statusline", darker_black)
+bg("StatuslineNC", darker_black)
 
 -- line n.o
 cmd "hi clear CursorLine"
@@ -74,8 +80,8 @@ bg("NvimTreeVertSplit", darker_black)
 fg("NvimTreeEndOfBuffer", darker_black)
 
 fg("NvimTreeRootFolder", nord_blue)
-bg("NvimTreeNormal", darker_black)
-fg_bg("NvimTreeStatuslineNc", line, black)
+bg("NvimTreeNormal", black)
+fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
 fg_bg("NvimTreeWindowPicker", red, black2)
 
 -- telescope

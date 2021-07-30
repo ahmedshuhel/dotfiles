@@ -57,16 +57,6 @@ gls.left[5] = {
     }
 }
 
-gls.short_line_left[1] = {
-  nvim_tree = {
-    provider = function()
-      return ""
-    end,
-    highlight = {colors.black, colors.black},
-    separator_ighlight = {colors.black,colors.black},
-  }
-}
-
 local checkwidth = function()
     local squeeze_width = vim.fn.winwidth(0) / 2
     if squeeze_width > 30 then
@@ -216,16 +206,15 @@ gls.right[7] = {
     }
 }
 
-gls.short_line_right[1] = {
+gls.short_line_left[1] = {
   nvim_tree = {
     provider = function()
       return ""
     end,
-    highlight = {colors.black, colors.black},
-    separator_ighlight = {colors.black,colors.black},
+    highlight = {colors.darker_black, colors.darker_black},
+    separator_ighlight = {colors.darker_black,colors.darker_black},
   }
 }
-
 
 vim.api.nvim_exec(
     [[
