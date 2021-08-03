@@ -54,7 +54,8 @@ bg("PmenuThumb", nord_blue)
 fg_bg("VertSplit", darker_black, darker_black)
 
 -- inactive statuslines as thin splitlines
-cmd("hi! StatusLineNC gui=underline guifg=" .. line)
+-- cmd("hi! StatusLineNC gui=underline guifg=" .. line)
+
 cmd("hi clear StatusLine")
 bg("Statusline", darker_black)
 bg("StatuslineNC", darker_black)

@@ -199,17 +199,6 @@ return packer.startup(
 
         use {"tweekmonster/startuptime.vim", cmd = "StartupTime"}
 
-        -- load autosave only if its globally enabled
-        use {
-            "Pocco81/AutoSave.nvim",
-            config = function()
-                require("zenmode").autoSave()
-            end,
-            cond = function()
-                return vim.g.auto_save == true
-            end
-        }
-
         -- smooth scroll
         use {
             "karb94/neoscroll.nvim",
@@ -234,6 +223,13 @@ return packer.startup(
             event = "BufRead",
             setup = function()
                 require("utils").blankline()
+            end
+        }
+
+        use {
+            "dhruvasagar/vim-table-mode",
+            config = function()
+                require("plugins.tablemode").config()
             end
         }
 
