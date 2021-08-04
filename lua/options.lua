@@ -12,6 +12,9 @@ opt.termguicolors = true
 opt.cul = false -- Highlight the screen line of the cursor with CursorLine
 opt.mouse = "a"
 
+opt.showmode = false
+opt.showcmd  = false
+
 opt.shortmess:append("sI") -- disable nvim intro
 vim.cmd("let &fcs='eob: '") -- disable ~ end of buffer
 
