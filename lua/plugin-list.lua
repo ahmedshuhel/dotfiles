@@ -233,7 +233,11 @@ return packer.startup(
             end
         }
 
+        -- delete buffer without messing up your entire window layout
+        use 'famiu/bufdelete.nvim'
+
         use "ahmedshuhel/devlife.vim"
+
    end,
     {
         display = {
