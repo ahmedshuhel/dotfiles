@@ -17,7 +17,6 @@ local green = colors.green
 local nord_blue = colors.nord_blue
 local blue = colors.blue
 local yellow = colors.yellow
-local purple = colors.purple
 
 -- for guifg , bg
 
@@ -104,8 +103,8 @@ fg("LspDiagnosticsSignInformation", green)
 fg("LspDiagnosticsVirtualTextInformation", green)
 
 -- hint
-fg("LspDiagnosticsSignHint", purple)
-fg("LspDiagnosticsVirtualTextHint", purple)
+fg("LspDiagnosticsSignHint", green)
+fg("LspDiagnosticsVirtualTextHint", grey)
 
 -- dashboard
 
