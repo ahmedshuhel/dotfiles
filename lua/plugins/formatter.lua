@@ -40,9 +40,9 @@ M.config = function()
          function()
             return {
               exe = "black",
-              args = {},
+              args = { '-q', '-' },
               stdin = true,
-              cwd = vim.fn.expand('%:p:h')  -- Run clang-format in cwd of the file.
+              cwd = vim.fn.expand('%:p:h')
             }
           end
       }
