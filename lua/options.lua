@@ -16,6 +16,7 @@ opt.showmode = false
 opt.showcmd  = false
 
 opt.shortmess:append("sI") -- disable nvim intro
+opt.shortmess:append("c") -- Remove `Pattern not found` from compe
 vim.cmd("let &fcs='eob: '") -- disable ~ end of buffer
 
 -- Numbers
