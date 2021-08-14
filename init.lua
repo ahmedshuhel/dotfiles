@@ -11,3 +11,9 @@ end
 require "options"
 require "plugin-list"
 require "mappings"
+
+-- load project local nvimrc
+local local_vimrc = fn.getcwd()..'/.nvim/init.lua'
+if vim.loop.fs_stat(local_vimrc) then
+  vim.cmd('source '..local_vimrc)
+end
