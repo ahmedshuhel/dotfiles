@@ -233,6 +233,12 @@ return packer.startup(
             end
         }
 
+        use {
+            "plasticboy/vim-markdown",
+            requires = {
+                'godlygeek/tabular',
+            }
+        }
         -- delete buffer without messing up your entire window layout
         use 'famiu/bufdelete.nvim'
 
