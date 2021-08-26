@@ -147,9 +147,9 @@ gls.right[4] = {
         provider = function()
             return " "
         end,
-        highlight = {colors.statusline_bg, colors.red},
+        highlight = {colors.statusline_bg, colors.nord_blue},
         separator = " ",
-        separator_highlight = {colors.red, colors.statusline_bg}
+        separator_highlight = {colors.nord_blue, colors.statusline_bg}
     }
 }
 
@@ -157,11 +157,11 @@ gls.right[5] = {
     ViMode = {
         provider = function()
             local alias = {
-                n = "Normal",
-                i = "Insert",
+                n = "Normal ",
+                i = "Insert ",
                 c = "Command",
-                V = "Visual",
-                [""] = "Visual",
+                V = "Visual ",
+                [""] = "Visual ",
                 v = "Visual",
                 R = "Replace"
             }
@@ -173,7 +173,7 @@ gls.right[5] = {
                 return "  " .. current_Mode .. " "
             end
         end,
-        highlight = {colors.red, colors.lightbg}
+        highlight = {colors.nord_blue, colors.lightbg}
     }
 }
 
@@ -200,7 +200,7 @@ gls.right[7] = {
                 return "  Bot "
             end
             local result, _ = math.modf((current_line / total_line) * 100)
-            return "  " .. result .. "% "
+            return "  " .. string.format("%02d", result) .. "% "
         end,
         highlight = {colors.green, colors.lightbg}
     }
