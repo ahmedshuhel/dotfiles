@@ -10,7 +10,7 @@ local opt = {}
 
 -- Terminal
 map("n", "<leader>tx", [[<Cmd> ToggleTerm<CR>]], opt) -- toggle terminal
-map("t", "<leader><ESC>", [[<C-\><C-n>]], opt) --  exit terminal mode
+map("t", "\\<ESC>", [[<C-\><C-n>]], opt) --  exit terminal mode
 
 -- copy whole file content
 map("n", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
