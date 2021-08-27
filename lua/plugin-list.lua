@@ -12,6 +12,16 @@ return packer.startup(
             end
         }
 
+        -- config in init.lua "file-icons"
+        use {
+            "kyazdani42/nvim-web-devicons",
+            after = "nvim-base16.lua",
+            config = function()
+              require "plugins.file-icons"
+            end
+        }
+
+
         use {
             "akinsho/nvim-bufferline.lua",
             after = "nvim-base16.lua",
@@ -24,15 +34,6 @@ return packer.startup(
             after = "nvim-base16.lua",
             config = function()
               require "plugins.statusline"
-            end
-        }
-
-        -- config in init.lua "file-icons"
-        use {
-            "kyazdani42/nvim-web-devicons",
-            after = "nvim-base16.lua",
-            config = function()
-              require "plugins.file-icons"
             end
         }
 
@@ -77,26 +78,46 @@ return packer.startup(
             end
         }
 
-        -- load compe in insert mode only
         use {
-            "hrsh7th/nvim-compe",
-            event = "InsertEnter",
-            config = function()
-                require("plugins.compe-completion").config()
+            'L3MON4D3/LuaSnip',
+            event = "InsertCharPre",
+            cofing = function()
+                require('plugins.luasnip').config()
             end,
-            wants = {"LuaSnip"},
             requires = {
-                {
-                    "L3MON4D3/LuaSnip",
-                    wants = "friendly-snippets",
-                    event = "InsertCharPre",
-                    config = function()
-                        require("plugins.compe-completion").snippets()
-                    end
-                },
-                "rafamadriz/friendly-snippets"
+                "rafamadriz/friendly-snippets",
             }
         }
+
+        use {
+            "kristijanhusak/vim-dadbod-ui",
+            config = function()
+              require('plugins.dadbod-ui').config()
+            end,
+            requires = {
+                'tpope/vim-dadbod',
+            }
+        }
+
+        -- load compe in insert mode only
+        use {
+            "hrsh7th/nvim-cmp",
+	    after = { "LuaSnip", "vim-dadbod-ui", "lspkind-nvim" },
+            event = "InsertEnter",
+            config = function()
+                require("plugins.cmp-completion").config()
+            end
+        }
+
+ 	use {
+	    "kristijanhusak/vim-dadbod-completion",
+	    after = "nvim-cmp"
+	}
+
+        use {
+	    "saadparwaiz1/cmp_luasnip",
+	    after = "nvim-cmp"
+	}
 
         use {
             "mhartington/formatter.nvim",
@@ -155,15 +176,14 @@ return packer.startup(
         -- misc plugins
         use {
             "windwp/nvim-autopairs",
-            after = "nvim-compe",
+	    after = "nvim-cmp",
             config = function()
                 require("nvim-autopairs").setup()
-                require("nvim-autopairs.completion.compe").setup(
-                    {
-                        map_cr = true,
-                        map_complete = true -- insert () func completion
-                    }
-                )
+                require("nvim-autopairs.completion.cmp").setup({
+                  map_cr = true, --  map <CR> on insert mode
+                  map_complete = true, -- it will auto insert `(` after select function or method item
+                  auto_select = true -- automatically select the first item
+                })
             end
         }
 
@@ -239,6 +259,7 @@ return packer.startup(
                 'godlygeek/tabular',
             }
         }
+
         -- delete buffer without messing up your entire window layout
         use 'famiu/bufdelete.nvim'
 

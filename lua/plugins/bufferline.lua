@@ -9,7 +9,7 @@ end
 
 bufferline.setup {
     options = {
-        offsets = {{filetype = "NvimTree", text = ""}},
+        offsets = {{filetype = "NvimTree", text = ""}, {filetype = "dbui", text = ""}},
         buffer_close_icon = "",
         modified_icon = "",
         close_icon = "",

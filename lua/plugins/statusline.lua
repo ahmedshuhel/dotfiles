@@ -2,7 +2,7 @@ local gl = require("galaxyline")
 local gls = gl.section
 local condition = require("galaxyline.condition")
 
-gl.short_line_list = {"NvimTree"}
+gl.short_line_list = {"NvimTree", "dbui"}
 
 local global_theme = "themes/" .. vim.g.dp_theme
 local colors = require(global_theme)
