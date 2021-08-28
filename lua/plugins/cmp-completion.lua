@@ -1,5 +1,4 @@
 local opt = vim.opt
-local api = vim.api
 local cmp = require('cmp')
 
 local M = {}
@@ -81,10 +80,9 @@ M.config = function()
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "nvim_lua" },
+          { name = "vim-dadbod-completion"}
       },
   }
-
-  api.nvim_exec("autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })", false)
 end
 
 return M
