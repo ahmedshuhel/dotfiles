@@ -11,6 +11,11 @@ local opt = {}
 -- Terminal
 map("n", "<leader>tx", [[<Cmd> ToggleTerm<CR>]], opt) -- toggle terminal
 map("t", "\\<ESC>", [[<C-\><C-n>]], opt) --  exit terminal mode
+map("t", "<C-h>", [[<C-\><C-n><C-w>h]], opt) --  Navigate left
+map("t", "<C-j>", [[<C-\><C-n><C-w>j]], opt) --  Navigate dwon
+map("t", "<C-k>", [[<C-\><C-n><C-w>k]], opt) --  Navigate up
+map("t", "<C-l>", [[<C-\><C-n><C-w>l]], opt) --  Navigate right
+
 
 -- copy whole file content
 map("n", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
