@@ -71,6 +71,15 @@ return packer.startup(
         }
 
         use {
+            "ray-x/lsp_signature.nvim",
+            after = "nvim-lspconfig",
+            config = function()
+               require("plugins.lsp-signature").config()
+            end,
+        }
+
+
+        use {
             "onsails/lspkind-nvim",
             event = "BufRead",
             config = function()
@@ -79,14 +88,45 @@ return packer.startup(
         }
 
         use {
-            'L3MON4D3/LuaSnip',
-            event = "InsertCharPre",
-            cofing = function()
+            "hrsh7th/nvim-cmp",
+            event = "InsertEnter",
+            config = function()
+                require('plugins.cmp-completion').config()
+            end,
+        }
+
+        use {
+            "L3MON4D3/LuaSnip",
+            wants = "friendly-snippets",
+            after = "nvim-cmp",
+            config = function()
                 require('plugins.luasnip').config()
             end,
-            requires = {
-                "rafamadriz/friendly-snippets",
-            }
+        }
+
+        use {
+            "saadparwaiz1/cmp_luasnip",
+            after = "LuaSnip",
+        }
+
+        use {
+            "hrsh7th/cmp-nvim-lua",
+            after = "cmp_luasnip",
+        }
+
+        use {
+            "hrsh7th/cmp-nvim-lsp",
+            after = "cmp-nvim-lua",
+        }
+
+        use {
+            "hrsh7th/cmp-buffer",
+            after = "cmp-nvim-lsp",
+        }
+
+        use {
+            "rafamadriz/friendly-snippets",
+            after = "cmp-buffer",
         }
 
         use {
@@ -99,24 +139,9 @@ return packer.startup(
             }
         }
 
-        -- load compe in insert mode only
-        use {
-            "hrsh7th/nvim-cmp",
-	    after = { "LuaSnip", "vim-dadbod-ui", "lspkind-nvim" },
-            event = "InsertEnter",
-            config = function()
-                require("plugins.cmp-completion").config()
-            end
-        }
-
  	use {
 	    "kristijanhusak/vim-dadbod-completion",
-	    after = "nvim-cmp"
-	}
-
-        use {
-	    "saadparwaiz1/cmp_luasnip",
-	    after = "nvim-cmp"
+	    after = {"nvim-cmp", "vim-dadbod-ui"}
 	}
 
         use {
