@@ -283,6 +283,18 @@ return packer.startup({function()
                 'godlygeek/tabular',
             }
         }
+        -- Lua
+        use {
+            "folke/trouble.nvim",
+            requires = "kyazdani42/nvim-web-devicons",
+            config = function()
+              require("trouble").setup ({
+                position = "bottom", -- position of the list can be: bottom, top, left, right
+                height = 10, -- height of the trouble list when position is top or bottom
+                icons = true, -- use devicons for filenames
+              })
+            end
+        }
 
         -- delete buffer without messing up your entire window layout
         use 'ojroques/nvim-bufdel'
