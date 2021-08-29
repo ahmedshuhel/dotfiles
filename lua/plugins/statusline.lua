@@ -1,3 +1,4 @@
+local api = vim.api
 local gl = require("galaxyline")
 local gls = gl.section
 local condition = require("galaxyline.condition")
@@ -216,9 +217,24 @@ gls.short_line_left[1] = {
   }
 }
 
-vim.api.nvim_exec(
-    [[
-   au TermOpen,TermEnter term://* setlocal nonumber  laststatus=0
-]],
-    false
-)
+
+_G.toggle_statusline = function()
+    local hidden = {
+       "help",
+       "dashboard",
+       "NvimTree",
+       "terminal",
+       "toggleterm"
+    }
+
+    local buftype = api.nvim_buf_get_option("%", "ft")
+    if vim.tbl_contains(hidden, buftype) then
+       api.nvim_set_option("laststatus", 0)
+       return
+    else
+       api.nvim_set_option("laststatus", 2)
+    end
+end
+
+
+vim.cmd [[ autocmd BufEnter,BufWinEnter,FileType,WinEnter * lua toggle_statusline() ]]
