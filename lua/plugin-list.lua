@@ -1,8 +1,7 @@
 local packer = require("packer")
 local use = packer.use
 
-return packer.startup(
-    function()
+return packer.startup({function()
         use "wbthomason/packer.nvim"
         use {
             "siduck76/nvim-base16.lua",
@@ -290,10 +289,12 @@ return packer.startup(
 
         use "ahmedshuhel/devlife.vim"
 
-   end,
-    {
-        display = {
-            border = {"┌", "─", "┐", "│", "┘", "─", "└", "│"}
-        }
-    }
-)
+    end,
+    config = {
+      auto_clean = true,
+      display = {
+        open_fn = function()
+          return require('packer.util').float({ border = 'single' })
+        end
+      }
+ }})
