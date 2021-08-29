@@ -1,7 +1,7 @@
 local M = {}
 
 M.config = function()
-    local function on_attach(client, bufnr)
+    local function on_attach(_, bufnr)
         local function buf_set_keymap(...)
             vim.api.nvim_buf_set_keymap(bufnr, ...)
         end
@@ -24,24 +24,33 @@ M.config = function()
         buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
         buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
         buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-        buf_set_keymap("n", "<space>ac", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+        buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
         buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
         buf_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
         buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
         buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
         buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-
-        -- Set some keybinds conditional on server capabilities
-        if client.resolved_capabilities.document_formatting then
-            buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-        elseif client.resolved_capabilities.document_range_formatting then
-            buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-        end
+        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+        buf_set_keymap("v", "<space>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
     end
 
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
     capabilities.textDocument.completion.completionItem.snippetSupport = true
+    capabilities.textDocument.completion.completionItem.preselectSupport = true
+    capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+    capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+    capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+    capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+    capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+    capabilities.textDocument.completion.completionItem.resolveSupport = {
+       properties = {
+          "documentation",
+          "detail",
+          "additionalTextEdits",
+       },
+    }
 
 
     -- lspInstall + lspconfig stuff
@@ -50,17 +59,20 @@ M.config = function()
         require "lspinstall".setup()
 
         local lspconf = require("lspconfig")
-        local servers = require "lspinstall".installed_servers()
+        local servers = require("lspinstall").installed_servers()
 
         for _, lang in pairs(servers) do
             if lang ~= "lua" then
                 lspconf[lang].setup {
                     on_attach = on_attach,
                     root_dir = vim.loop.cwd,
-                    capabilities = capabilities
+                    capabilities = capabilities,
+                    flags = { debounce_text_changes = 500 },
                 }
             elseif lang == "lua" then
                 lspconf[lang].setup {
+                    flags = { debounce_text_changes = 500 },
+                    capabilities = capabilities,
                     root_dir = vim.loop.cwd,
                     settings = {
                         Lua = {
@@ -111,15 +123,22 @@ M.config = function()
                 spacing = 0
             },
             signs = true,
-            underline = true,
+            underline = false,
 
             -- set this to true if you want diagnostics to show in insert mode
             update_in_insert = false
         }
     )
 
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+       border = "single",
+    })
+    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+       border = "single",
+    })
+
     -- suppress error messages from lang servers
-    vim.notify = function(msg, log_level, _opts)
+    vim.notify = function(msg, log_level, _)
         if msg:match("exit code") then
             return
         end

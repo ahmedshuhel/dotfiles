@@ -114,7 +114,7 @@ map("n", "<Leader>fs", [[<Cmd>Telescope grep_string<CR>]], opt)
 
 -- bufferline tab stuff
 map("n", "<S-t>", ":tabnew<CR>", opt) -- new tab
-map("n", "<S-x>", ":lua require('bufdelete').bufdelete(0, false)<CR>", opt) -- close tab
+map("n", "<S-x>", "[[<Cmd>BufDel<CR>]]", opt) -- close tab
 
 -- move between tabs
 map("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opt)

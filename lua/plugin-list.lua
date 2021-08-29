@@ -285,7 +285,7 @@ return packer.startup({function()
         }
 
         -- delete buffer without messing up your entire window layout
-        use 'famiu/bufdelete.nvim'
+        use 'ojroques/nvim-bufdel'
 
         use "ahmedshuhel/devlife.vim"
 

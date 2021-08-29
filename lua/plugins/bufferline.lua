@@ -12,6 +12,7 @@ bufferline.setup {
         offsets = {{filetype = "NvimTree", text = ""}, {filetype = "dbui", text = ""}},
         buffer_close_icon = "",
         modified_icon = "",
+        close_command = "BufDel! %d",
         close_icon = "",
         left_trunc_marker = "",
         right_trunc_marker = "",
