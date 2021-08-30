@@ -225,7 +225,8 @@ _G.toggle_statusline = function()
        "NvimTree",
        "terminal",
        "toggleterm",
-       "Outline"
+       "Outline",
+       ""
     }
 
     local buftype = api.nvim_buf_get_option("%", "ft")
