@@ -258,7 +258,12 @@ return packer.startup({function()
             end
         }
 
-        use "alvan/vim-closetag"
+        use {
+            "alvan/vim-closetag",
+            config = function ()
+              require("plugins.autoclose").config()
+            end
+        }
 
         use {
             "lukas-reineke/indent-blankline.nvim",
