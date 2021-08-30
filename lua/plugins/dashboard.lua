@@ -53,7 +53,7 @@ function _G.open_dashboard()
 end
 
 
-vim.api.nvim_exec("au VimEnter * lua open_dashboard()", false)
+vim.cmd([[au VimEnter * lua open_dashboard()]], false)
 
 end
 

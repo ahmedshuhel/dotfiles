@@ -3,6 +3,7 @@ local use = packer.use
 
 return packer.startup({function()
         use "wbthomason/packer.nvim"
+
         use {
             "siduck76/nvim-base16.lua",
             after = "packer.nvim",
@@ -11,7 +12,6 @@ return packer.startup({function()
             end
         }
 
-        -- config in init.lua "file-icons"
         use {
             "kyazdani42/nvim-web-devicons",
             after = "nvim-base16.lua",
@@ -20,7 +20,6 @@ return packer.startup({function()
             end
         }
 
-
         use {
             "akinsho/nvim-bufferline.lua",
             after = "nvim-base16.lua",
@@ -28,6 +27,7 @@ return packer.startup({function()
               require "plugins.bufferline"
             end
         }
+
         use {
             "glepnir/galaxyline.nvim",
             after = "nvim-base16.lua",
@@ -37,7 +37,7 @@ return packer.startup({function()
         }
 
         use {"akinsho/nvim-toggleterm.lua"}
-        -- tmux navigation
+
         use "christoomey/vim-tmux-navigator"
 
         use {
@@ -49,7 +49,6 @@ return packer.startup({function()
             end
         }
 
-        -- language related plugins
         use {
             "nvim-treesitter/nvim-treesitter",
             event = "BufRead",
@@ -76,7 +75,6 @@ return packer.startup({function()
                require("plugins.lsp-signature").config()
             end,
         }
-
 
         use {
             "onsails/lspkind-nvim",
@@ -151,7 +149,6 @@ return packer.startup({function()
             end
         }
 
-        -- file managing , picker etc
         use {
             "kyazdani42/nvim-tree.lua",
             cmd = {
@@ -178,14 +175,17 @@ return packer.startup({function()
             end
         }
 
-        -- git stuff
         use {
             "tpope/vim-fugitive",
             requires = {
                 'tpope/vim-dispatch',
                 'tpope/vim-rhubarb'
-            }
+            },
+            config = function ()
+                require("plugins.fugitive").config()
+            end
         }
+
         use {
             "lewis6991/gitsigns.nvim",
             requires = {
@@ -197,7 +197,6 @@ return packer.startup({function()
             end
         }
 
-        -- misc plugins
         use {
             "windwp/nvim-autopairs",
 	    after = "nvim-cmp",
@@ -243,7 +242,6 @@ return packer.startup({function()
 
         use {"tweekmonster/startuptime.vim", cmd = "StartupTime"}
 
-        -- smooth scroll
         use {
             "karb94/neoscroll.nvim",
             event = "WinScrolled",
@@ -260,7 +258,7 @@ return packer.startup({function()
             end
         }
 
-        --   use "alvan/vim-closetag" -- for html autoclosing tag
+        use "alvan/vim-closetag"
 
         use {
             "lukas-reineke/indent-blankline.nvim",
@@ -281,14 +279,17 @@ return packer.startup({function()
             "plasticboy/vim-markdown",
             requires = {
                 'godlygeek/tabular',
-            }
+            },
+            config = function ()
+                require('plugins.vim-markdown').config()
+            end
         }
-        -- Lua
+
         use {
             "folke/trouble.nvim",
             requires = "kyazdani42/nvim-web-devicons",
             config = function()
-              require("trouble").setup ({
+              require("trouble").setup({
                 position = "bottom", -- position of the list can be: bottom, top, left, right
                 height = 10, -- height of the trouble list when position is top or bottom
                 icons = true, -- use devicons for filenames
