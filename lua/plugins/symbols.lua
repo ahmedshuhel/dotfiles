@@ -5,7 +5,7 @@ local function config()
          keymaps = { -- These keymaps can be a string or a table for multiple keys
             close = {"q"},
          },
-        symbol_blacklist = {},
+        symbol_blacklist = {"Variable"},
 
     }
 end

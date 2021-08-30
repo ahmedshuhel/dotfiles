@@ -310,6 +310,22 @@ return packer.startup({function()
             end
         }
 
+        use {
+            "Pocco81/DAPInstall.nvim",
+            config = function ()
+                require("plugins.dapinstall").config()
+            end
+        }
+
+        use {
+            "rcarriga/nvim-dap-ui",
+            after = "DAPInstall.nvim",
+            requires = {"mfussenegger/nvim-dap"},
+            config = function ()
+                require("plugins.dap").config()
+            end
+        }
+
         -- delete buffer without messing up your entire window layout
         use 'ojroques/nvim-bufdel'
 
