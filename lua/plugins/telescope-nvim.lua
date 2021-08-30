@@ -1,3 +1,4 @@
+local trouble = require("trouble.providers.telescope")
 local M = {}
 
 M.config = function()
@@ -45,7 +46,11 @@ M.config = function()
             grep_previewer = require "telescope.previewers".vim_buffer_vimgrep.new,
             qflist_previewer = require "telescope.previewers".vim_buffer_qflist.new,
             -- Developer configurations: Not meant for general override
-            buffer_previewer_maker = require "telescope.previewers".buffer_previewer_maker
+            buffer_previewer_maker = require "telescope.previewers".buffer_previewer_maker,
+            mappings = {
+              i = { ["<c-q>"] = trouble.open_with_trouble },
+              n = { ["<c-q>"] = trouble.open_with_trouble },
+            },
         },
         pickers = {
           find_files = {
