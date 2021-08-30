@@ -303,6 +303,13 @@ return packer.startup({function()
             end
         }
 
+        use {
+            'simrat39/symbols-outline.nvim',
+            config = function ()
+              require('plugins.symbols').config()
+            end
+        }
+
         -- delete buffer without messing up your entire window layout
         use 'ojroques/nvim-bufdel'
 

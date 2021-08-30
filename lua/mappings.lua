@@ -74,3 +74,6 @@ map("n", "<ESC>", ":noh<CR>", opt)
 --resize window
 map("n", "<Leader>]", ":vertical resize -5<CR>")
 map("n", "<Leader>[", ":vertical resize +5<CR>")
+
+--outline
+map("n", "<Leader>\\", [[<Cmd> SymbolsOutline<CR>]], opt)
