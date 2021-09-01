@@ -43,7 +43,6 @@ map("n", "-", ":NvimTreeOpen<CR> :NvimTreeFindFile<CR>", opt) -- new tab
 map("n", "<Leader>f", [[<Cmd> Format<CR>]], opt)
 
 -- dashboard stuff
-map("n", "<Leader>fw", [[<Cmd> Telescope live_grep<CR>]], opt)
 map("n", "<Leader>db", [[<Cmd> Dashboard<CR>]], opt)
 map("n", "<Leader>fn", [[<Cmd> DashboardNewFile<CR>]], opt)
 map("n", "<Leader>bm", [[<Cmd> DashboardJumpMarks<CR>]], opt)
@@ -51,14 +50,15 @@ map("n", "<C-s>l", [[<Cmd> SessionLoad<CR>]], opt)
 map("n", "<C-s>s", [[<Cmd> SessionSave<CR>]], opt)
 
 -- Telescope
-map("n", "<Leader>gt", [[<Cmd> Telescope git_status <CR>]], opt)
-map("n", "<Leader>cm", [[<Cmd> Telescope git_commits <CR>]], opt)
 map("n", "<C-p>", [[<Cmd> Telescope find_files <CR>]], opt)
+map("n", "<Leader>fg", [[<Cmd> Telescope live_grep<CR>]], opt)
+map("n", "<Leader>fs", [[<Cmd>Telescope grep_string<CR>]], opt)
 map("n", "<Leader>fp", [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]], opt)
 map("n", "<Leader>fb", [[<Cmd>Telescope buffers<CR>]], opt)
 map("n", "<Leader>fh", [[<Cmd>Telescope help_tags<CR>]], opt)
 map("n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]], opt)
-map("n", "<Leader>fs", [[<Cmd>Telescope grep_string<CR>]], opt)
+map("n", "<Leader>fgs", [[<Cmd> Telescope git_status <CR>]], opt)
+map("n", "<Leader>fgc", [[<Cmd> Telescope git_commits <CR>]], opt)
 
 -- bufferline tab stuff
 map("n", "<S-t>", ":tabnew<CR>", opt) -- new tab
