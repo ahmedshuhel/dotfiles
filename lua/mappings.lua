@@ -77,3 +77,8 @@ map("n", "<Leader>[", ":vertical resize +5<CR>")
 
 --outline
 map("n", "<Leader>\\", [[<Cmd> SymbolsOutline<CR>]], opt)
+
+--rest
+map("n", "<Leader>rr", [[<Cmd>lua require('rest-nvim').run()<CR>]], opt)
+map("n", "<Leader>rp", [[<Cmd>lua require('rest-nvim').run(true)<CR>]], opt)
+map("n", "<Leader>rl", [[<Cmd>lua require('rest-nvim').last()<CR>]], opt)
