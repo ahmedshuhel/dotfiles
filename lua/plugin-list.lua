@@ -325,26 +325,6 @@ return packer.startup({function()
                 require("plugins.dap").config()
             end
         }
-
-        use {
-            'NTBBloodbath/rest.nvim',
-            requires = { 'nvim-lua/plenary.nvim' },
-            config = function()
-              require("rest-nvim").setup({
-                  -- Open request results in a horizontal split
-                  result_split_horizontal = false,
-                  -- Skip SSL verification, useful for unknown certificates
-                  skip_ssl_verification = false,
-                  -- Highlight request on run
-                  highlight = {
-                      enabled = true,
-                      timeout = 150,
-                  },
-                  -- Jump to request line on run
-                  jump_to_request = false,
-              })
-            end
-        }
         -- delete buffer without messing up your entire window layout
         use 'ojroques/nvim-bufdel'
 
