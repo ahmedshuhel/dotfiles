@@ -199,7 +199,7 @@ return packer.startup({function()
 
         use {
             "windwp/nvim-autopairs",
-	    after = "nvim-cmp",
+            after = "nvim-cmp",
             config = function()
                 require("nvim-autopairs").setup()
                 require("nvim-autopairs.completion.cmp").setup({
@@ -255,13 +255,6 @@ return packer.startup({function()
             cmd = {"TZAtaraxis", "TZMinimalist", "TZFocus"},
             config = function()
                 require("plugins.zenmode").config()
-            end
-        }
-
-        use {
-            "alvan/vim-closetag",
-            config = function ()
-              require("plugins.autoclose").config()
             end
         }
 
