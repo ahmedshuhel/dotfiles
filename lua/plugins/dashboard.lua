@@ -3,7 +3,7 @@ local M = {}
 M.config = function()
     local g = vim.g
 
-    g.dashboard_disable_at_vimenter = 1
+    g.dashboard_disable_at_vimenter = 0
     g.dashboard_disable_statusline = 1
     g.dashboard_default_executive = "telescope"
     g.dashboard_custom_header = {
@@ -53,12 +53,12 @@ function _G.open_dashboard()
 end
 
 
-vim.cmd([[
-  augroup dashboardgroup
-    autocmd!
-    au VimEnter * lua open_dashboard()
-  augroup END
-]], false)
+-- vim.cmd([[
+--   augroup dashboardgroup
+--     autocmd!
+--     au VimEnter * lua open_dashboard()
+--   augroup END
+-- ]], false)
 
 end
 

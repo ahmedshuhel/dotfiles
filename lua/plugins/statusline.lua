@@ -224,7 +224,6 @@ _G.toggle_statusline = function()
        "dashboard",
        "terminal",
        "toggleterm",
-       ""
     }
 
     local buftype = api.nvim_buf_get_option("%", "ft")

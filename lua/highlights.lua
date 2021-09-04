@@ -108,10 +108,10 @@ fg("LspDiagnosticsVirtualTextHint", grey)
 
 -- dashboard
 
-fg("DashboardHeader", red)
+fg("DashboardHeader", nord_blue)
 fg("DashboardCenter", grey_fg)
 fg("DashboardShortcut", grey_fg)
-fg("DashboardFooter", grey_fg)
+fg("DashboardFooter", red)
 
 -- packer's floating window
 
