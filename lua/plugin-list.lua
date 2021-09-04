@@ -243,14 +243,6 @@ return packer.startup({function()
         use {"tweekmonster/startuptime.vim", cmd = "StartupTime"}
 
         use {
-            "karb94/neoscroll.nvim",
-            event = "WinScrolled",
-            config = function()
-                require("neoscroll").setup()
-            end
-        }
-
-        use {
             "Pocco81/TrueZen.nvim",
             cmd = {"TZAtaraxis", "TZMinimalist", "TZFocus"},
             config = function()

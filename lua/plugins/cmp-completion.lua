@@ -53,11 +53,11 @@ M.config = function()
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.close(),
-          ["<C-j>"] = cmp.mapping.confirm {
+          ["<CR>"] = cmp.mapping.confirm {
              behavior = cmp.ConfirmBehavior.Replace,
              select = true,
           },
-          ["<Tab>"] = function(fallback)
+          ["<C-j>"] = function(fallback)
              if vim.fn.pumvisible() == 1 then
                 cmp.mapping.close()
                 -- vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-n>", true, true, true), "n")
@@ -68,7 +68,7 @@ M.config = function()
                 fallback()
              end
           end,
-          ["<S-Tab>"] = function(fallback)
+          ["<C-k>"] = function(fallback)
              if vim.fn.pumvisible() == 1 then
                 cmp.mapping.close()
                 --vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-p>", true, true, true), "n")
