@@ -53,14 +53,16 @@ M.config = function()
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.close(),
-          ["<CR>"] = cmp.mapping.confirm {
+          ["<C-j>"] = cmp.mapping.confirm {
              behavior = cmp.ConfirmBehavior.Replace,
              select = true,
           },
           ["<Tab>"] = function(fallback)
              if vim.fn.pumvisible() == 1 then
-                vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-n>", true, true, true), "n")
-             elseif require("luasnip").expand_or_jumpable() then
+                cmp.mapping.close()
+                -- vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-n>", true, true, true), "n")
+             end
+             if require("luasnip").expand_or_jumpable() then
                 vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
              else
                 fallback()
@@ -68,8 +70,10 @@ M.config = function()
           end,
           ["<S-Tab>"] = function(fallback)
              if vim.fn.pumvisible() == 1 then
-                vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-p>", true, true, true), "n")
-             elseif require("luasnip").jumpable(-1) then
+                cmp.mapping.close()
+                --vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-p>", true, true, true), "n")
+             end
+             if require("luasnip").jumpable(-1) then
                 vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
              else
                 fallback()

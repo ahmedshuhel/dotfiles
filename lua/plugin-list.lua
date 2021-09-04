@@ -318,6 +318,13 @@ return packer.startup({function()
                 require("plugins.dap").config()
             end
         }
+
+        use {
+            "mattn/emmet-vim",
+            config = function ()
+                require('plugins.emmet').config()
+            end
+        }
         -- delete buffer without messing up your entire window layout
         use 'ojroques/nvim-bufdel'
 
