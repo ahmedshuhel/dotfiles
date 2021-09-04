@@ -1,5 +1,10 @@
 local function config()
-    vim.cmd([[ autocmd FileType gitcommit setlocal spell ]], false)
+    vim.cmd([[
+      augroup fugitivegroup
+        autocmd!
+        autocmd FileType gitcommit setlocal spell
+      augroup END
+    ]], false)
 end
 
 return {

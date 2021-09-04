@@ -236,5 +236,9 @@ _G.toggle_statusline = function()
     end
 end
 
-
-vim.cmd [[ autocmd BufEnter,BufWinEnter,FileType,WinEnter * lua toggle_statusline() ]]
+vim.cmd([[
+  augroup statuslinegroup
+    autocmd!
+    autocmd BufEnter,BufWinEnter,FileType,WinEnter * lua toggle_statusline()
+  augroup END
+]], false)

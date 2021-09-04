@@ -5,7 +5,12 @@ local function config()
   g.vim_markdown_toml_frontmatter = 1
   g.vim_markdown_autowrite = 1
 
-  vim.cmd([[au BufRead,BufNewFile *.md setl textwidth=100]], false)
+  vim.cmd([[
+      augroup markdowngroup
+        autocmd!
+        au BufRead,BufNewFile *.md setl textwidth=100
+      augroup END
+  ]], false)
 end
 
 return {
