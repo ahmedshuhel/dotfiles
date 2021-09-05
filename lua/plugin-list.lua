@@ -38,7 +38,6 @@ return packer.startup({function()
 
         use {"akinsho/nvim-toggleterm.lua"}
 
-        use "christoomey/vim-tmux-navigator"
 
         use {
             "norcalli/nvim-colorizer.lua",
@@ -321,6 +320,8 @@ return packer.startup({function()
         use 'ojroques/nvim-bufdel'
 
         use "ahmedshuhel/devlife.vim"
+
+        use "christoomey/vim-tmux-navigator"
 
     end,
     config = {
