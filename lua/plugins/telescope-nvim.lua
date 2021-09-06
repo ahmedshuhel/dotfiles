@@ -56,7 +56,12 @@ M.config = function()
           find_files = {
             theme = "dropdown",
             previewer = false
-          }
+          },
+          oldfiles = {
+            theme = "dropdown",
+            previewer = false
+          },
+
         },
         extensions = {
             fzf = {
