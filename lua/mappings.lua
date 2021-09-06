@@ -28,8 +28,6 @@ map("n", "<leader>zz", ":TZAtaraxis<CR>", opt)
 map("n", "<leader>zm", ":TZMinimalist<CR>", opt)
 map("n", "<leader>zf", ":TZFocus<CR>", opt)
 
-map("n", "<C-s>", ":w <CR>", opt)
-
 -- Commenter Keybinding
 map("n", "<leader>/", ":CommentToggle<CR>", opt)
 map("v", "<leader>/", ":CommentToggle<CR>", opt)
