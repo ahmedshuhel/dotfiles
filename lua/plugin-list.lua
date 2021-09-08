@@ -36,7 +36,13 @@ return packer.startup({function()
             end
         }
 
-        use {"akinsho/nvim-toggleterm.lua"}
+        use {
+            "ahmedshuhel/toggleterm.nvim",
+            branch = "new_rightbelow",
+            config = function ()
+              require('plugins.toggleterm').config()
+            end
+        }
 
 
         use {
