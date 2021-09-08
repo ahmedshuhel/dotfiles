@@ -6,10 +6,12 @@ return {
        bind = true,
        doc_lines = 2,
        floating_window = true,
-       fix_pos = true,
-       hint_enable = true,
+       floating_window_above_cur_line = true,
+       fix_pos = false,
+       hint_enable = false,  -- virtual hint enable/disable
        hint_prefix = " ",
        hint_scheme = "String",
+       transpancy = 20, -- set this value if you want the floating windows to be transpant (100 fully transpant), nil to disable(default)
        use_lspsaga = false,
        hi_parameter = "Search",
        max_height = 22,
