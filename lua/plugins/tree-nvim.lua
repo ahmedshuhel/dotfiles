@@ -7,7 +7,7 @@ M.config = function()
 
     g.nvim_tree_side = "left"
     g.nvim_tree_width = 40
-    g.nvim_tree_ignore = {".git", "node_modules", ".cache"}
+    g.nvim_tree_ignore = {".git", "node_modules", ".cache", ".pytest_cache", "__pycache__", ".eggs", ".docker"}
     g.nvim_tree_gitignore = 0
     g.nvim_tree_auto_ignore_ft = {"dashboard"} -- don't open tree on specific fiypes.
     g.nvim_tree_auto_open = 0
