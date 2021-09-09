@@ -4,6 +4,9 @@ local use = packer.use
 return packer.startup({function()
         use "wbthomason/packer.nvim"
 
+        -- delete buffer without messing up your entire window layout
+        use 'ojroques/nvim-bufdel'
+
         use {
             "siduck76/nvim-base16.lua",
             after = "packer.nvim",
@@ -22,7 +25,7 @@ return packer.startup({function()
 
         use {
             "akinsho/nvim-bufferline.lua",
-            after = "nvim-base16.lua",
+            after = {"nvim-base16.lua", "nvim-bufdel"},
             config = function()
               require "plugins.bufferline"
             end
@@ -155,7 +158,9 @@ return packer.startup({function()
         }
 
         use {
-            "kyazdani42/nvim-tree.lua",
+            "ahmedshuhel/nvim-tree.lua",
+            branch = "bufdel",
+            after = "nvim-bufdel",
             cmd = {
               "NvimTreeOpen",
               "NvimTreeToggle",
@@ -315,8 +320,6 @@ return packer.startup({function()
                 require('plugins.emmet').config()
             end
         }
-        -- delete buffer without messing up your entire window layout
-        use 'ojroques/nvim-bufdel'
 
         use "ahmedshuhel/devlife.vim"
 
