@@ -236,19 +236,19 @@ return packer.startup({function()
             end
         }
 
-        use {
-            "glepnir/dashboard-nvim",
-            cmd = {
-                "Dashboard",
-                "DashboardNewFile",
-                "DashboardJumpMarks",
-                "SessionLoad",
-                "SessionSave"
-            },
-            setup = function()
-                require("plugins.dashboard").config()
-            end
-        }
+        -- use {
+        --     "glepnir/dashboard-nvim",
+        --     cmd = {
+        --         "Dashboard",
+        --         "DashboardNewFile",
+        --         "DashboardJumpMarks",
+        --         "SessionLoad",
+        --         "SessionSave"
+        --     },
+        --     setup = function()
+        --         require("plugins.dashboard").config()
+        --     end
+        -- }
 
         use {"tweekmonster/startuptime.vim", cmd = "StartupTime"}
 

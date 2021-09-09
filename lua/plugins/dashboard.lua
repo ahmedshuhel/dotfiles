@@ -53,12 +53,12 @@ function _G.open_dashboard()
 end
 
 
--- vim.cmd([[
---   augroup dashboardgroup
---     autocmd!
---     au VimEnter * lua open_dashboard()
---   augroup END
--- ]], false)
+vim.cmd([[
+  augroup dashboardgroup
+    autocmd!
+    au VimEnter * lua open_dashboard()
+  augroup END
+]], false)
 
 end
 
