@@ -290,11 +290,7 @@ return packer.startup({function()
             before = 'telescope.nvim',
             requires = "kyazdani42/nvim-web-devicons",
             config = function()
-              require("trouble").setup({
-                position = "bottom", -- position of the list can be: bottom, top, left, right
-                height = 10, -- height of the trouble list when position is top or bottom
-                icons = true, -- use devicons for filenames
-              })
+                require('plugins.trouble').config()
             end
         }
 
