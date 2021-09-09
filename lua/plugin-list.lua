@@ -294,13 +294,6 @@ return packer.startup({function()
         }
 
         use {
-            'simrat39/symbols-outline.nvim',
-            config = function ()
-              require('plugins.symbols').config()
-            end
-        }
-
-        use {
             "Pocco81/DAPInstall.nvim",
             config = function ()
                 require("plugins.dapinstall").config()

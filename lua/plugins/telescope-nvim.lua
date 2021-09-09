@@ -61,7 +61,10 @@ M.config = function()
             theme = "dropdown",
             previewer = false
           },
-
+          lsp_document_symbols = {
+            theme = "dropdown",
+            previewer = false
+          },
         },
         extensions = {
             fzf = {

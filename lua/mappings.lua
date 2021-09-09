@@ -48,6 +48,7 @@ map("n", "<C-s>s", [[<Cmd> SessionSave<CR>]], opt)
 
 -- Telescope
 map("n", "<C-p>", [[<Cmd> Telescope find_files <CR>]], opt)
+map("n", "<Leader>\\", [[<Cmd> Telescope lsp_document_symbols <CR>]], opt)
 map("n", "<Leader>fg", [[<Cmd> Telescope live_grep<CR>]], opt)
 map("n", "<Leader>fs", [[<Cmd>Telescope grep_string<CR>]], opt)
 map("n", "<Leader>fp", [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]], opt)
@@ -71,9 +72,6 @@ map("n", "<ESC>", ":noh<CR>", opt)
 --resize window
 map("n", "<Leader>]", ":vertical resize -5<CR>")
 map("n", "<Leader>[", ":vertical resize +5<CR>")
-
---outline
-map("n", "<Leader>\\", [[<Cmd> SymbolsOutline<CR>]], opt)
 
 -- tmux navigator
 map("n", "<C-h>", [[<Cmd> TmuxNavigateLeft<CR>]], opt)
