@@ -327,7 +327,12 @@ return packer.startup({function()
 
         use "ahmedshuhel/devlife.vim"
 
-        use "christoomey/vim-tmux-navigator"
+        use {
+            "christoomey/vim-tmux-navigator",
+            config = function ()
+                require('plugins.tmux-navigator').config()
+            end
+        }
 
     end,
     config = {

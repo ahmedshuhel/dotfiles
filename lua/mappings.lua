@@ -9,8 +9,7 @@ end
 local opt = {}
 
 -- Terminal
-map("n", "<leader>tx", [[<Cmd> ToggleTerm<CR>]], opt) -- toggle terminal
-map("t", "\\<ESC>", [[<C-\><C-n>]], opt) --  exit terminal mode
+map("t", "<c-q>", [[<C-\><C-n>]], opt)       --  Exit terminal mode
 map("t", "<C-h>", [[<C-\><C-n><C-w>h]], opt) --  Navigate left
 map("t", "<C-j>", [[<C-\><C-n><C-w>j]], opt) --  Navigate dwon
 map("t", "<C-k>", [[<C-\><C-n><C-w>k]], opt) --  Navigate up
@@ -75,3 +74,9 @@ map("n", "<Leader>[", ":vertical resize +5<CR>")
 
 --outline
 map("n", "<Leader>\\", [[<Cmd> SymbolsOutline<CR>]], opt)
+
+-- tmux navigator
+map("n", "<C-h>", [[<Cmd> TmuxNavigateLeft<CR>]], opt)
+map("n", "<C-j>", [[<Cmd> TmuxNavigateDown<CR>]], opt)
+map("n", "<C-k>", [[<Cmd> TmuxNavigateUp<CR>]], opt)
+map("n", "<C-l>", [[<Cmd> TmuxNavigateRight<CR>]], opt)
