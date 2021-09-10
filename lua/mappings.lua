@@ -51,13 +51,13 @@ map("n", "<C-p>", [[<Cmd> Telescope find_files <CR>]], opt)
 map("n", "<Leader>\\", [[<Cmd> Telescope lsp_document_symbols <CR>]], opt)
 map("n", "<Leader>o", [[<Cmd> Telescope lsp_document_symbols <CR>]], opt)
 map("n", "<Leader>fg", [[<Cmd> Telescope live_grep<CR>]], opt)
-map("n", "<Leader>fs", [[<Cmd>Telescope grep_string<CR>]], opt)
 map("n", "<Leader>fp", [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]], opt)
 map("n", "<Leader>fb", [[<Cmd>Telescope buffers<CR>]], opt)
 map("n", "<Leader>fh", [[<Cmd>Telescope help_tags<CR>]], opt)
 map("n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]], opt)
-map("n", "<Leader>fgs", [[<Cmd> Telescope git_status <CR>]], opt)
-map("n", "<Leader>fgc", [[<Cmd> Telescope git_commits <CR>]], opt)
+map("n", "<Leader>fs", [[<Cmd> Telescope git_status <CR>]], opt)
+map("n", "<Leader>fc", [[<Cmd> Telescope git_commits <CR>]], opt)
+map("n", "<Leader>fgs", [[<Cmd>Telescope grep_string<CR>]], opt)
 
 -- bufferline tab stuff
 map("n", "<S-t>", ":tabnew<CR>", opt) -- new tab
