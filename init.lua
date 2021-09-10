@@ -8,14 +8,15 @@ if fn.empty(fn.glob(install_path)) > 0 then
   execute 'packadd packer.nvim'
 end
 
-require "options"
-require "plugin-list"
-require "mappings"
+
+require("globals")
+require("highlights")
+require("options")
+require("plugin-list")
+require("mappings")
 
 -- load project local nvimrc
 local local_vimrc = fn.getcwd()..'/.nvim/init.lua'
 if vim.loop.fs_stat(local_vimrc) then
   vim.cmd('source '.. local_vimrc)
 end
-
-

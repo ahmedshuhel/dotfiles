@@ -59,9 +59,6 @@ cmd("hi clear StatusLine")
 bg("Statusline", darker_black)
 bg("StatuslineNC", darker_black)
 
--- line n.o
-cmd "hi clear CursorLine"
-fg("cursorlinenr", white)
 
 -- git signs ---
 fg_bg("DiffAdd", nord_blue, "none")
@@ -108,10 +105,10 @@ fg("LspDiagnosticsVirtualTextHint", grey)
 
 -- dashboard
 
-fg("DashboardHeader", nord_blue)
-fg("DashboardCenter", grey_fg)
-fg("DashboardShortcut", grey_fg)
-fg("DashboardFooter", red)
+-- fg("DashboardHeader", nord_blue)
+-- fg("DashboardCenter", grey_fg)
+-- fg("DashboardShortcut", grey_fg)
+-- fg("DashboardFooter", red)
 
 -- packer's floating window
 
@@ -121,3 +118,11 @@ fg("FloatBorder", black2)
 
 -- set bg color for nvim
 -- bg("Normal", black)
+
+-- Cursor
+-- line n.o
+--cmd "hi clear CursorLine"
+
+fg("CursorLineNr", white)
+bg("nCursor", nord_blue)
+bg("iCursor", green)

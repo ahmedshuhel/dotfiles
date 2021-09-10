@@ -1,8 +1,15 @@
 local opt = vim.opt
-local g = vim.g
 local fn = vim.fn
 
-opt.guicursor = ''
+opt.guicursor = 'n-v-c:block-nCursor,i-ci-ve:ver100-iCursor'
+
+vim.cmd([[
+  augroup RestoreCursorShapeOnExit
+      au!
+      autocmd VimLeave,VimSuspend * set guicursor=a:block-Cursor
+  augroup END
+]])
+
 opt.ruler = false
 opt.hidden = true
 opt.ignorecase = true
@@ -42,41 +49,3 @@ opt.smartindent = true
 -- fast render hack
 opt.ttimeoutlen = 100
 opt.lazyredraw = true
-
-
-g.mapleader = " "
-g.auto_save = false
-
-g.dp_theme = 'onedark'
--- host program
-g.node_host_prog = fn.fnamemodify('~', ':p') .. ".nvm/versions/node/v14.15.4/bin/neovim-node-host"
-g.python3_host_prog = "/usr/bin/python3"
-
--- disable builtin vim plugins
-local disabled_built_ins = {
-    "netrw",
-    "netrwPlugin",
-    "netrwSettings",
-    "netrwFileHandlers",
-    "gzip",
-    "zip",
-    "zipPlugin",
-    "tar",
-    "tarPlugin",
-    "getscript",
-    "getscriptPlugin",
-    "vimball",
-    "vimballPlugin",
-    "2html_plugin",
-    "logipat",
-    "rrhelper",
-    "spellfile_plugin",
-    "matchit",
-    "python_provider",
-    "ruby_provider",
-    "perl_provider"
-}
-
-for _, plugin in pairs(disabled_built_ins) do
-    vim.g["loaded_" .. plugin] = 1
-end

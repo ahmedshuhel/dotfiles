@@ -65,7 +65,10 @@ return packer.startup({function()
             end
         }
 
-        use "kabouzeid/nvim-lspinstall"
+        use {
+            "kabouzeid/nvim-lspinstall",
+            after = "trouble.nvim"
+        }
 
         use {
             "neovim/nvim-lspconfig",
