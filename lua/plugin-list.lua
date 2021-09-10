@@ -286,7 +286,8 @@ return packer.startup({function()
         }
 
         use {
-            "folke/trouble.nvim",
+            "ahmedshuhel/trouble.nvim",
+            branch = 'rightbelow',
             before = 'telescope.nvim',
             requires = "kyazdani42/nvim-web-devicons",
             config = function()
