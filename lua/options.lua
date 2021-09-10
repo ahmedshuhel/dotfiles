@@ -1,14 +1,6 @@
 local opt = vim.opt
-local fn = vim.fn
 
-opt.guicursor = 'n-v-c:block-nCursor,i-ci-ve:ver100-iCursor'
-
-vim.cmd([[
-  augroup RestoreCursorShapeOnExit
-      au!
-      autocmd VimLeave,VimSuspend * set guicursor=a:block-Cursor
-  augroup END
-]])
+opt.guicursor = 'n-v-c:block-DpNCursor,i-ci-ve:ver100-DpICursor'
 
 opt.ruler = false
 opt.hidden = true
@@ -49,3 +41,10 @@ opt.smartindent = true
 -- fast render hack
 opt.ttimeoutlen = 100
 opt.lazyredraw = true
+
+vim.cmd([[
+augroup RestoreCursorShapeOnExit
+  au!
+  au VimLeave,VimSuspend * set guicursor=a:block-Cursor
+augroup END
+]])

@@ -124,5 +124,5 @@ fg("FloatBorder", black2)
 --cmd "hi clear CursorLine"
 
 fg("CursorLineNr", white)
-bg("nCursor", nord_blue)
-bg("iCursor", green)
+bg("DpNCursor", nord_blue)
+bg("DpICursor", green)

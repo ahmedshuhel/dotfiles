@@ -10,7 +10,6 @@ end
 
 
 require("globals")
-require("highlights")
 require("options")
 require("plugin-list")
 require("mappings")
