@@ -25,7 +25,7 @@ local colors = {
     teal = "#519ABA",
     orange = "#fca2aa",
     cyan = "#a3b8ef",
-    statusline_bg = "#22262e",
+    statusline_bg = "#1b1f27",
     lightbg = "#2d3139",
     lightbg2 = "#262a32"
 }
