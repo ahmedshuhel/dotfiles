@@ -49,6 +49,7 @@ map("n", "<C-s>s", [[<Cmd> SessionSave<CR>]], opt)
 -- Telescope
 map("n", "<C-p>", [[<Cmd> Telescope find_files <CR>]], opt)
 map("n", "<Leader>\\", [[<Cmd> Telescope lsp_document_symbols <CR>]], opt)
+map("n", "<Leader>o", [[<Cmd> Telescope lsp_document_symbols <CR>]], opt)
 map("n", "<Leader>fg", [[<Cmd> Telescope live_grep<CR>]], opt)
 map("n", "<Leader>fs", [[<Cmd>Telescope grep_string<CR>]], opt)
 map("n", "<Leader>fp", [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]], opt)

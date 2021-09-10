@@ -35,7 +35,7 @@ return packer.startup({function()
     "glepnir/galaxyline.nvim",
     after = "nvim-base16.lua",
     config = function()
-      require "plugins.statusline"
+      require("plugins.statusline").config()
     end
   }
 

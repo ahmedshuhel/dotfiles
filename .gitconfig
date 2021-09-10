@@ -7,7 +7,7 @@
 	co = checkout
 	lg = log --oneline --graph
 [core]
-	editor = nvim
+	editor = vi
 	excludesFile = ~/.gitignore_global
 [diff]
 	tool = vsdiffmerge
