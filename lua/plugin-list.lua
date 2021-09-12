@@ -100,7 +100,7 @@ return packer.startup({function()
     event = "InsertEnter",
     config = function()
       require('plugins.cmp-completion').config()
-    end,
+    end
   }
 
   use {
@@ -135,6 +135,11 @@ return packer.startup({function()
   use {
     "rafamadriz/friendly-snippets",
     after = "cmp-buffer",
+  }
+
+  use {
+    "hrsh7th/cmp-path",
+    after = "cmp-nvim-lsp"
   }
 
   use {

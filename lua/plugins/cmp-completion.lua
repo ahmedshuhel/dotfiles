@@ -81,10 +81,7 @@ local function config()
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
       ["<C-Space>"] = cmp.mapping.complete(),
       ["<C-e>"] = cmp.mapping.close(),
-      ["<CR>"] = cmp.mapping.confirm {
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = true,
-      },
+      ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true, }),
       ["<C-j>"] = jump_next,
       ["<C-k>"] = jump_prev
     },
@@ -92,6 +89,7 @@ local function config()
       { name = "nvim_lsp" },
       { name = "luasnip" },
       { name = "nvim_lua" },
+      { name = "path"},
       { name = "vim-dadbod-completion"}
     },
   }
