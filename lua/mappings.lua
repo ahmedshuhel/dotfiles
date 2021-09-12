@@ -79,3 +79,6 @@ map("n", "<C-h>", [[<Cmd> TmuxNavigateLeft<CR>]], opt)
 map("n", "<C-j>", [[<Cmd> TmuxNavigateDown<CR>]], opt)
 map("n", "<C-k>", [[<Cmd> TmuxNavigateUp<CR>]], opt)
 map("n", "<C-l>", [[<Cmd> TmuxNavigateRight<CR>]], opt)
+
+-- dbui
+map("n", "<Leader>.", ":DBUIToggle<CR>", opt)
