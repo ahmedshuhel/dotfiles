@@ -5,6 +5,10 @@ local function config()
         autocmd FileType gitcommit setlocal spell
       augroup END
     ]], false)
+
+    vim.cmd 'cnoreabbrev G rightbelow G'
+
+
 end
 
 return {
