@@ -294,7 +294,7 @@ return packer.startup({function()
         }
 
         use {
-          "ahmedshuhel/trouble.nvim",
+          "~/Workspace/nvim-plugins/trouble.nvim",
           branch = 'rightbelow',
           before = 'telescope.nvim',
           requires = "kyazdani42/nvim-web-devicons",
