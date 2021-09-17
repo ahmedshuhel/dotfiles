@@ -177,11 +177,11 @@ else
  alias nvim="$(which nvim.appimage)"
 fi
 
-alias zshconfig="vim ~/.zshrc"
+alias zshconf="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias vimrc="vim ~/.config/nvim/init.lua"
 alias vimdiff="vim -d"
-alias start="~/start.sh"
+alias ncd="nc-docker"
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
