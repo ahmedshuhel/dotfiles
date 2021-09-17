@@ -1,3 +1,4 @@
 *.retry
 *.box
 .vagrant/
+packer_compiled.lua
