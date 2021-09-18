@@ -1,13 +1,7 @@
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    // Add custom actions and keybindings to this array.
-    // To unbind a key combination from your defaults.json, set the command to "unbound".
-    // To learn more about actions and keybindings, visit https://aka.ms/terminal-keybindings
-    "actions":
+    "actions": 
     [
-        // Copy and paste are bound to Ctrl+Shift+C and Ctrl+Shift+V in your defaults.json.
-        // These two lines additionally bind them to Ctrl+C and Ctrl+V.
-        // To learn more about selection, visit https://aka.ms/terminal-selection
         {
             "command": 
             {
@@ -17,8 +11,27 @@
             "keys": "ctrl+shift+c"
         },
         {
+            "command": "find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "command": "unbound",
+            "keys": "ctrl+,"
+        },
+        {
+            "command": "unbound",
+            "keys": "ctrl+tab"
+        },
+        {
             "command": "paste",
-            "keys": "ctrl+shift+v",
+            "keys": "ctrl+shift+v"
+        },
+        {
+            "command": 
+            {
+                "action": "openSettings"
+            },
+            "keys": "ctrl+shift+,"
         },
         {
             "command": 
@@ -28,23 +41,6 @@
             },
             "keys": "ctrl+alt+r"
         },
-        // Press Ctrl+Shift+F to open the search box
-        {
-            "command": "find",
-            "keys": "ctrl+shift+f"
-        },
-        {
-            "command": "",
-            "keys": "ctrl+,"
-        },
-        {
-            "command": "openSettings",
-            "keys": "ctrl+shift+,"
-        },
-        // Press Alt+Shift+D to open a new pane.
-        // - "split": "auto" makes this pane open in the direction that provides the most surface area.
-        // - "splitMode": "duplicate" makes the new pane use the focused pane's profile.
-        // To learn more about panes, visit https://aka.ms/terminal-panes
         {
             "command": 
             {
@@ -58,6 +54,7 @@
     "alwaysShowTabs": true,
     "copyFormatting": "none",
     "defaultProfile": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+    "launchMode": "maximized",
     "profiles": 
     {
         "defaults": 
@@ -66,7 +63,7 @@
             "cursorShape": "filledBox",
             "fontFace": "CaskaydiaCove Nerd Font Mono",
             "fontSize": 10,
-            "padding": "8, 0, 8, 8",
+            "padding": "8, 0",
             "scrollbarState": "hidden"
         },
         "list": 
@@ -91,9 +88,14 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
+                "colorScheme": "OneDark",
+                "cursorShape": "filledBox",
+                "fontFace": "Hack Nerd Font Mono",
+                "fontSize": 10,
                 "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
                 "hidden": false,
                 "name": "Ubuntu-20.04",
+                "scrollbarState": "hidden",
                 "source": "Windows.Terminal.Wsl"
             }
         ]
@@ -216,6 +218,29 @@
             "yellow": "#C18301"
         },
         {
+            "background": "#1E222A",
+            "black": "#1E2127",
+            "blue": "#61AFEF",
+            "brightBlack": "#5C6370",
+            "brightBlue": "#61AFEF",
+            "brightCyan": "#56B6C2",
+            "brightGreen": "#98C379",
+            "brightPurple": "#C678DD",
+            "brightRed": "#E06C75",
+            "brightWhite": "#FFFFFF",
+            "brightYellow": "#D19A66",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#56B6C2",
+            "foreground": "#ABB2BF",
+            "green": "#98C379",
+            "name": "OneDark",
+            "purple": "#C678DD",
+            "red": "#E06C75",
+            "selectionBackground": "#FFFFFF",
+            "white": "#ABB2BF",
+            "yellow": "#D19A66"
+        },
+        {
             "background": "#002B36",
             "black": "#002B36",
             "blue": "#268BD2",
@@ -329,31 +354,10 @@
             "selectionBackground": "#FFFFFF",
             "white": "#C0C0C0",
             "yellow": "#808000"
-        },
-        {
-            "name": "OneDark",
-            "black": "#1e2127",
-            "red": "#e06c75",
-            "green": "#98c379",
-            "yellow": "#d19a66",
-            "blue": "#61afef",
-            "purple": "#c678dd",
-            "cyan": "#56b6c2",
-            "white": "#abb2bf",
-            "brightBlack": "#5c6370",
-            "brightRed": "#e06c75",
-            "brightGreen": "#98c379",
-            "brightYellow": "#d19a66",
-            "brightBlue": "#61afef",
-            "brightPurple": "#c678dd",
-            "brightCyan": "#56b6c2",
-            "brightWhite": "#ffffff",
-            "background": "#1e2127",
-            "foreground": "#abb2bf"
         }
     ],
     "showTabsInTitlebar": true,
     "tabSwitcherMode": "inOrder",
     "theme": "system",
-    "windowingBehavior": "useAnyExisting"
+    "windowingBehavior": "useNew"
 }
