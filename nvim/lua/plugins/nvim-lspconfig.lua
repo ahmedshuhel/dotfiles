@@ -143,10 +143,7 @@ local function config()
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = {
-      prefix = "",
-      spacing = 0
-    },
+    virtual_text = false,
     signs = true,
     underline = false,
     -- set this to true if you want diagnostics to show in insert mode
