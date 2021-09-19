@@ -14,8 +14,14 @@ opt.mouse = "a"
 opt.showmode = false
 opt.showcmd  = false
 
-opt.shortmess:append("sI") -- disable nvim intro
+opt.shortmess:append("a") -- use abbreviations for messages
+opt.shortmess:append("W") -- don't give "written" or "[w]" when writing a file
+opt.shortmess:append("s") -- don't give "search hit BOTTOM, continuing at TOP" or "search
+opt.shortmess:append("I") -- disable nvim intro
 opt.shortmess:append("c") -- Remove `Pattern not found` from compe
+opt.shortmess:append("q") -- use "recording" instead of "recording @a"
+opt.shortmess:append("F") -- don't give the file info when editing a file, like `:silent`
+
 vim.cmd("let &fcs='eob: '") -- disable ~ end of buffer
 
 -- Numbers
