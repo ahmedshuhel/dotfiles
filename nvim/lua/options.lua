@@ -20,10 +20,9 @@ vim.cmd("let &fcs='eob: '") -- disable ~ end of buffer
 
 -- Numbers
 opt.number = true
-opt.numberwidth = 4
--- opt.relativenumber = true
 
-opt.signcolumn = "number"
+opt.numberwidth = 3
+opt.signcolumn = "yes:1"
 opt.cmdheight = 1
 opt.updatetime = 1000 -- update interval for gitsigns
 opt.timeoutlen = 500 -- Time in milliseconds to wait for a mapped sequence to complete.
@@ -37,6 +36,9 @@ opt.whichwrap:append("<>hl")
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
+
+-- swapfile
+opt.swapfile = false
 
 -- fast render hack
 opt.ttimeoutlen = 100
