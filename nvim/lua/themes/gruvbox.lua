@@ -15,6 +15,7 @@ local colors = {
     pink = "#ff75a0",
     line = "#2c2f30", -- for lines like vertsplit
     green = "#89b482",
+    darker_green = "#353d2d",
     vibrant_green = "#a9b665",
     nord_blue = "#6f8faf",
     blue = "#6d8dad",
