@@ -335,6 +335,8 @@ return packer.startup({function()
           end
         }
 
+        use "kshenoy/vim-signature" -- show marks
+
       end,
       config = {
         auto_clean = true,
