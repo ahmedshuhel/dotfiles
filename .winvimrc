@@ -3,6 +3,7 @@
 
 filetype plugin indent on
 syntax enable
+colorscheme darkblue
 
 set autoindent
 set backspace=indent,eol,start
