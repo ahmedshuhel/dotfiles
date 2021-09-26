@@ -43,8 +43,20 @@ local function config()
     }
   }
 
-
   gls.left[4] = {
+    TroubleLoadning = {
+      provider = function ()
+        if vim.g["trouble_loading"] == true then
+          return "Loading ..."
+        end
+        return ""
+      end,
+      icon = "  ",
+      highlight = {colors.yellow, colors.statusline_bg}
+    }
+  }
+
+  gls.left[5] = {
     DiffAdd = {
       provider = "DiffAdd",
       condition = checkwidth,
@@ -53,7 +65,7 @@ local function config()
     }
   }
 
-  gls.left[5] = {
+  gls.left[6] = {
     DiffModified = {
       provider = "DiffModified",
       condition = checkwidth,
@@ -62,7 +74,7 @@ local function config()
     }
   }
 
-  gls.left[6] = {
+  gls.left[7] = {
     DiffRemove = {
       provider = "DiffRemove",
       condition = checkwidth,
@@ -71,7 +83,7 @@ local function config()
     }
   }
 
-  gls.left[7] = {
+  gls.left[8] = {
     DiagnosticError = {
       provider = "DiagnosticError",
       icon = "  ",
@@ -79,13 +91,14 @@ local function config()
     }
   }
 
-  gls.left[8] = {
+  gls.left[9] = {
     DiagnosticWarn = {
       provider = "DiagnosticWarn",
       icon = "  ",
       highlight = {colors.yellow, colors.statusline_bg}
     }
   }
+
 
   gls.right[1] = {
     lsp_status = {
