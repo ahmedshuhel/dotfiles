@@ -15,13 +15,6 @@ map("t", "<C-j>", [[<C-\><C-n><C-w>j]], opt) --  Navigate dwon
 map("t", "<C-k>", [[<C-\><C-n><C-w>k]], opt) --  Navigate up
 map("t", "<C-l>", [[<C-\><C-n><C-w>l]], opt) --  Navigate right
 
-
--- copy whole file content
-map("n", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
-
--- toggle numbers
-map("n", "<leader>n", [[ <Cmd> set nu!<CR>]], opt)
-
 -- Truezen.nvim
 map("n", "<leader>zz", ":TZAtaraxis<CR>", opt)
 map("n", "<leader>zm", ":TZMinimalist<CR>", opt)
@@ -34,17 +27,17 @@ map("v", "<leader>/", ":CommentToggle<CR>", opt)
 map("n", "<C-q>", ":bp<bar>sp<bar>bn<bar>bd! <CR>", opt)
 
 -- nvimtree
-map("n", "-", ":NvimTreeOpen<CR> :NvimTreeFindFile<CR>", opt) -- new tab
+map("n", "-", ":NvimTreeFindFile<CR>", opt) -- new tab
 
 -- format code
 map("n", "<Leader>f", [[<Cmd> Format<CR>]], opt)
 
 -- dashboard stuff
-map("n", "<Leader>db", [[<Cmd> Dashboard<CR>]], opt)
-map("n", "<Leader>fn", [[<Cmd> DashboardNewFile<CR>]], opt)
-map("n", "<Leader>bm", [[<Cmd> DashboardJumpMarks<CR>]], opt)
-map("n", "<C-s>l", [[<Cmd> SessionLoad<CR>]], opt)
-map("n", "<C-s>s", [[<Cmd> SessionSave<CR>]], opt)
+-- map("n", "<Leader>db", [[<Cmd> Dashboard<CR>]], opt)
+-- map("n", "<Leader>fn", [[<Cmd> DashboardNewFile<CR>]], opt)
+-- map("n", "<Leader>bm", [[<Cmd> DashboardJumpMarks<CR>]], opt)
+-- map("n", "<C-s>l", [[<Cmd> SessionLoad<CR>]], opt)
+-- map("n", "<C-s>s", [[<Cmd> SessionSave<CR>]], opt)
 
 -- Telescope
 map("n", "<C-p>", [[<Cmd> Telescope find_files <CR>]], opt)
