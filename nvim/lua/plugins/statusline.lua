@@ -44,7 +44,7 @@ local function config()
   }
 
 
-  local spinners = {'⠋ Loading    ', '⠙ Loading .  ', '⠹ Loading .. ', '⠸ Loading ...', '⠼ Loading    ', '⠴ Loading .  ', '⠦ Loading .. ', '⠧ Loading ...', '⠇ Loading    ', '⠏ Loding .  '}
+  local spinners = {'⠋ Loading    ', '⠙ Loading .  ', '⠹ Loading .. ', '⠸ Loading ...', '⠼ Loading    ', '⠴ Loading .  ', '⠦ Loading .. ', '⠧ Loading ...', '⠇ Loading    ', '⠏ Loading    '}
   local spinner_idx = 1
 
   local timer = vim.loop.new_timer()
