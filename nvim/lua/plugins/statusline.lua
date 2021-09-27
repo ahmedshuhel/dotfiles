@@ -43,15 +43,28 @@ local function config()
     }
   }
 
+
+  local spinners = {'⠋ Loading    ', '⠙ Loading .  ', '⠹ Loading .. ', '⠸ Loading ...', '⠼ Loading    ', '⠴ Loading .  ', '⠦ Loading .. ', '⠧ Loading ...', '⠇ Loading    ', '⠏ Loding .  '}
+  local spinner_idx = 1
+
+  local timer = vim.loop.new_timer()
+  timer:start(0, 500, vim.schedule_wrap(function()
+    if spinner_idx == 10 then
+      spinner_idx = 1
+    else
+      spinner_idx = spinner_idx + 1
+    end
+  end))
+
+
   gls.left[4] = {
     TroubleLoadning = {
       provider = function ()
         if vim.g["trouble_loading"] == true then
-          return "Loading ..."
+          return spinners[spinner_idx]
         end
         return ""
       end,
-      icon = "  ",
       highlight = {colors.yellow, colors.statusline_bg}
     }
   }
