@@ -61,6 +61,10 @@ M.config = function()
             theme = "dropdown",
             previewer = false
           },
+          buffers = {
+            theme = "dropdown",
+            previewer = false
+          },
           lsp_document_symbols = {
             theme = "dropdown",
             previewer = false

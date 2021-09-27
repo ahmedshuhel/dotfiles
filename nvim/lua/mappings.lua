@@ -51,9 +51,9 @@ map("n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]], opt)
 map("n", "<Leader>fs", [[<Cmd> Telescope git_status <CR>]], opt)
 map("n", "<Leader>fc", [[<Cmd> Telescope git_commits <CR>]], opt)
 map("n", "<Leader>fgs", [[<Cmd>Telescope grep_string<CR>]], opt)
+map("n", "<S-t>", [[<Cmd>Telescope buffers<CR>]], opt) -- new tab
 
 -- bufferline tab stuff
-map("n", "<S-t>", ":tabnew<CR>", opt) -- new tab
 map("n", "<S-x>", "[[<Cmd>BufDel<CR>]]", opt) -- close tab
 
 -- move between tabs
