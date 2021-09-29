@@ -15,36 +15,8 @@ local checkwidth = function()
 end
 
 
-local function config()
-  gl.short_line_list = {"NvimTree", "dbui", "fugitiveblame", "toggleterm", "terminal", "zsh"}
-
-  gls.left[1] = {
-    LeftPadding = {
-      provider = function() return " " end,
-      highlight = {colors.grey_fg2, colors.statusline_bg}
-    }
-  }
-
-
-  gls.left[2] = {
-    FileIcon = {
-      provider = "FileIcon",
-      condition = condition.buffer_not_empty,
-      highlight = {colors.grey_fg2, colors.statusline_bg}
-    }
-  }
-
-
-  gls.left[3] = {
-    FileName = {
-      provider = {"FileName"},
-      condition = condition.buffer_not_empty,
-      highlight = {colors.grey_fg2, colors.statusline_bg},
-    }
-  }
-
-
-  local spinners = {' ⠋ Loading    ', ' ⠙ Loading .  ', ' ⠹ Loading .. ', ' ⠸ Loading ...', ' ⠼ Loading    ', ' ⠴ Loading .  ', ' ⠦ Loading .. ', ' ⠧ Loading ...', ' ⠇ Loading    ',  '⠏ Loading    '}
+local function trouble_loading_provider()
+  local spinners = {' ⠋ Loading ', ' ⠙ Loading ', ' ⠹ Loading ', ' ⠸ Loading ', ' ⠼ Loading ', ' ⠴ Loading ', ' ⠦ Loading ', ' ⠧ Loading ', ' ⠇ Loading ',  ' ⠏ Loading '}
   local spinner_idx = 1
 
   local timer = vim.loop.new_timer()
@@ -56,20 +28,41 @@ local function config()
     end
   end))
 
+  return function ()
+    if vim.g["trouble_loading"] == true then
+      return spinners[spinner_idx]
+    end
+    return ""
+  end
+end
 
-  gls.left[4] = {
-    TroubleLoadning = {
-      provider = function ()
-        if vim.g["trouble_loading"] == true then
-          return spinners[spinner_idx]
-        end
-        return ""
-      end,
-      highlight = {colors.yellow, colors.statusline_bg}
+local function config()
+  gl.short_line_list = {"NvimTree", "dbui", "fugitiveblame", "toggleterm", "terminal", "zsh"}
+
+  gls.left[1] = {
+    LeftPadding = {
+      provider = function() return " " end,
+      highlight = {colors.grey_fg2, colors.statusline_bg}
     }
   }
 
-  gls.left[5] = {
+  gls.left[2] = {
+    FileIcon = {
+      provider = "FileIcon",
+      condition = condition.buffer_not_empty,
+      highlight = {colors.grey_fg2, colors.statusline_bg}
+    }
+  }
+
+  gls.left[3] = {
+    FileName = {
+      provider = {"FileName"},
+      condition = condition.buffer_not_empty,
+      highlight = {colors.grey_fg2, colors.statusline_bg},
+    }
+  }
+
+  gls.left[4] = {
     DiffAdd = {
       provider = "DiffAdd",
       condition = checkwidth,
@@ -78,7 +71,7 @@ local function config()
     }
   }
 
-  gls.left[6] = {
+  gls.left[5] = {
     DiffModified = {
       provider = "DiffModified",
       condition = checkwidth,
@@ -87,7 +80,7 @@ local function config()
     }
   }
 
-  gls.left[7] = {
+  gls.left[6] = {
     DiffRemove = {
       provider = "DiffRemove",
       condition = checkwidth,
@@ -96,7 +89,7 @@ local function config()
     }
   }
 
-  gls.left[8] = {
+  gls.left[7] = {
     DiagnosticError = {
       provider = "DiagnosticError",
       icon = "  ",
@@ -104,7 +97,7 @@ local function config()
     }
   }
 
-  gls.left[9] = {
+  gls.left[8] = {
     DiagnosticWarn = {
       provider = "DiagnosticWarn",
       icon = "  ",
@@ -112,6 +105,12 @@ local function config()
     }
   }
 
+  gls.left[9] = {
+    TroubleLoadning = {
+      provider = trouble_loading_provider(),
+      highlight = {colors.yellow, colors.statusline_bg}
+    }
+  }
 
   gls.right[1] = {
     lsp_status = {
@@ -153,7 +152,6 @@ local function config()
       highlight = {colors.grey_fg2, colors.statusline_bg}
     }
   }
-
 
   gls.short_line_left[1] = {
     BufferType = {
