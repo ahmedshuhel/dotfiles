@@ -65,6 +65,9 @@ local function config()
         require('luasnip').lsp_expand(args.body)
       end
     },
+    completion = {
+      autocomplete = false
+    },
     formatting = {
       format = function(entry, vim_item)
         vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
