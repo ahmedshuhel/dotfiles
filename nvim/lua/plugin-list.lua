@@ -336,15 +336,6 @@ return packer.startup({function()
 
   use "kshenoy/vim-signature" -- show marks
 
-  use {
-    "kosayoda/nvim-lightbulb",
-    after = {"nvim-lspconfig", "telescope.nvim"},
-    config = function ()
-      require("plugins.lightbulb").config()
-    end
-  }
-
-
 end,
 config = {
   auto_clean = true,
