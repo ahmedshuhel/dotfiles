@@ -1,8 +1,8 @@
 local function config()
   vim.cmd([[
-    augroup Lightbulb
+    augroup LightbulbHover
       au!
-      autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
+      au CursorHold,CursorHoldI * lua require(nvim-lightbulb).update_lightbulb()
     augroup END
   ]])
 end

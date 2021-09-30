@@ -69,6 +69,10 @@ M.config = function()
             theme = "dropdown",
             previewer = false
           },
+          lsp_code_actions = {
+            theme = "cursor",
+            previewer = false
+          },
         },
         extensions = {
             fzf = {

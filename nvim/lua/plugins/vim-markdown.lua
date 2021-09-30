@@ -6,11 +6,11 @@ local function config()
   g.vim_markdown_autowrite = 1
 
   vim.cmd([[
-      augroup markdowngroup
+      augroup MarkdownTextWidth
         autocmd!
         au BufRead,BufNewFile *.md setl textwidth=100
       augroup END
-  ]], false)
+  ]])
 end
 
 return {

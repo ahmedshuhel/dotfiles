@@ -58,7 +58,7 @@ vim.cmd([[
     autocmd!
     au VimEnter * lua open_dashboard()
   augroup END
-]], false)
+]])
 
 end
 

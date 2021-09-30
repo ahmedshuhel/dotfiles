@@ -30,8 +30,8 @@ opt.number = true
 opt.numberwidth = 3
 opt.signcolumn = "yes:1"
 opt.cmdheight = 1
-opt.updatetime = 1000 -- update interval for gitsigns
-opt.timeoutlen = 500 -- Time in milliseconds to wait for a mapped sequence to complete.
+opt.updatetime = 500 -- update interval for gitsigns
+opt.timeoutlen = 400 -- Time in milliseconds to wait for a mapped sequence to complete.
 opt.clipboard = "unnamedplus"
 
 -- go to previous/next line with h,l,left arrow and right arrow
