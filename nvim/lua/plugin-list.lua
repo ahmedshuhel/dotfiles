@@ -3,7 +3,6 @@ local use = packer.use
 
 return packer.startup({function()
   use "wbthomason/packer.nvim"
-
   use {
     "siduck76/nvim-base16.lua",
     after = "packer.nvim",
@@ -245,112 +244,113 @@ return packer.startup({function()
   }
 
   -- use {
-    --     "glepnir/dashboard-nvim",
-    --     cmd = {
-      --         "Dashboard",
-      --         "DashboardNewFile",
-      --         "DashboardJumpMarks",
-      --         "SessionLoad",
-      --         "SessionSave"
-      --     },
-      --     setup = function()
-        --         require("plugins.dashboard").config()
-        --     end
-        -- }
+  --     "glepnir/dashboard-nvim",
+  --     cmd = {
+  --         "Dashboard",
+  --         "DashboardNewFile",
+  --         "DashboardJumpMarks",
+  --         "SessionLoad",
+  --         "SessionSave"
+  --     },
+  --     setup = function()
+  --         require("plugins.dashboard").config()
+  --     end
+  -- }
 
-        use {"tweekmonster/startuptime.vim", cmd = "StartupTime"}
+  use {"tweekmonster/startuptime.vim", cmd = "StartupTime"}
 
-        use {
-          "Pocco81/TrueZen.nvim",
-          cmd = {"TZAtaraxis", "TZMinimalist", "TZFocus"},
-          config = function()
-            require("plugins.zenmode").config()
-          end
-        }
+  use {
+    "Pocco81/TrueZen.nvim",
+    cmd = {"TZAtaraxis", "TZMinimalist", "TZFocus"},
+    config = function()
+      require("plugins.zenmode").config()
+    end
+  }
 
-        use {
-          "lukas-reineke/indent-blankline.nvim",
-          event = "BufRead",
-          setup = function()
-            require("utils").blankline()
-          end
-        }
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "BufRead",
+    setup = function()
+      require("utils").blankline()
+    end
+  }
 
-        use {
-          "dhruvasagar/vim-table-mode",
-          config = function()
-            require("plugins.tablemode").config()
-          end
-        }
+  use {
+    "dhruvasagar/vim-table-mode",
+    config = function()
+      require("plugins.tablemode").config()
+    end
+  }
 
-        use {
-          "plasticboy/vim-markdown",
-          requires = {
-            'godlygeek/tabular',
-          },
-          config = function ()
-            require('plugins.vim-markdown').config()
-          end
-        }
+  use {
+    "plasticboy/vim-markdown",
+    requires = {
+      'godlygeek/tabular',
+    },
+    config = function ()
+      require('plugins.vim-markdown').config()
+    end
+  }
 
-        use {
-          "ahmedshuhel/trouble.nvim",
-          branch = 'rightbelow',
-          before = 'telescope.nvim',
-          requires = "kyazdani42/nvim-web-devicons",
-          config = function()
-            require('plugins.trouble').config()
-          end
-        }
+  use {
+    "ahmedshuhel/trouble.nvim",
+    branch = 'rightbelow',
+    before = 'telescope.nvim',
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require('plugins.trouble').config()
+    end
+  }
 
-        use {
-          "Pocco81/DAPInstall.nvim",
-          config = function ()
-            require("plugins.dapinstall").config()
-          end
-        }
+  use {
+    "Pocco81/DAPInstall.nvim",
+    config = function ()
+      require("plugins.dapinstall").config()
+    end
+  }
 
-        use {
-          "rcarriga/nvim-dap-ui",
-          after = "DAPInstall.nvim",
-          requires = {"mfussenegger/nvim-dap"},
-          config = function ()
-            require("plugins.dap").config()
-          end
-        }
+  use {
+    "rcarriga/nvim-dap-ui",
+    after = "DAPInstall.nvim",
+    requires = {"mfussenegger/nvim-dap"},
+    config = function ()
+      require("plugins.dap").config()
+    end
+  }
 
-        -- use {
-        --   "mattn/emmet-vim",
-        --   config = function ()
-        --     require('plugins.emmet').config()
-        --   end
-        -- }
+  -- use {
+  --   "mattn/emmet-vim",
+  --   config = function ()
+  --     require('plugins.emmet').config()
+  --   end
+  -- }
 
-        use "ahmedshuhel/devlife.vim"
+  use "ahmedshuhel/devlife.vim"
 
-        use {
-          "christoomey/vim-tmux-navigator",
-          config = function ()
-            require('plugins.tmux-navigator').config()
-          end
-        }
+  use {
+    "christoomey/vim-tmux-navigator",
+    config = function ()
+      require('plugins.tmux-navigator').config()
+    end
+  }
 
-        use "kshenoy/vim-signature" -- show marks
+  use "kshenoy/vim-signature" -- show marks
 
-        use {
-          "kosayoda/nvim-lightbulb",
-          config = function ()
-            require("plugins.lightbulb").config()
-          end
-        }
+  use {
+    "kosayoda/nvim-lightbulb",
+    after = {"nvim-lspconfig", "telescope.nvim"},
+    config = function ()
+      require("plugins.lightbulb").config()
+    end
+  }
 
 
-      end,
-      config = {
-        auto_clean = true,
-        display = {
-          open_fn = function()
-            return require('packer.util').float({ border = 'single' })
-          end
-        }
-      }})
+end,
+config = {
+  auto_clean = true,
+  display = {
+    open_fn = function()
+      return require('packer.util').float({ border = 'single' })
+    end
+  }
+}})
