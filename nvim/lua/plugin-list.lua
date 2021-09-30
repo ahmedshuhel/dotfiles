@@ -319,12 +319,12 @@ return packer.startup({function()
           end
         }
 
-        use {
-          "mattn/emmet-vim",
-          config = function ()
-            require('plugins.emmet').config()
-          end
-        }
+        -- use {
+        --   "mattn/emmet-vim",
+        --   config = function ()
+        --     require('plugins.emmet').config()
+        --   end
+        -- }
 
         use "ahmedshuhel/devlife.vim"
 
@@ -336,6 +336,14 @@ return packer.startup({function()
         }
 
         use "kshenoy/vim-signature" -- show marks
+
+        use {
+          "kosayoda/nvim-lightbulb",
+          config = function ()
+            require("plugins.lightbulb").config()
+          end
+        }
+
 
       end,
       config = {
