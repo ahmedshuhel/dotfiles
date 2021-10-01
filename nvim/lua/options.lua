@@ -53,6 +53,6 @@ opt.lazyredraw = true
 vim.cmd([[
 augroup RestoreCursorShapeOnExit
   au!
-  au VimLeave,VimSuspend * set guicursor=a:block-Cursor
+  au VimLeave,VimSuspend * set guicursor=a:ver100-iCursor
 augroup END
 ]])
