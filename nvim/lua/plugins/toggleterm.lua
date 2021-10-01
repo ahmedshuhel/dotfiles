@@ -35,7 +35,6 @@ local function config()
     }
   })
 
-
   _.map("t", "<c-q>", [[<C-\><C-n>]])       --  Exit terminal mode
   _.map("t", "<C-h>", [[<C-\><C-n><C-w>h]]) --  Navigate left
   _.map("t", "<C-j>", [[<C-\><C-n><C-w>j]]) --  Navigate dwon

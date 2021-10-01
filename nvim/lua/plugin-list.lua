@@ -12,7 +12,21 @@ return packer.startup({function()
     end
   }
 
-  use 'ojroques/nvim-bufdel'
+  use {
+    'ojroques/nvim-bufdel',
+    config = function()
+      require("plugins.bufdel").config()
+    end
+  }
+
+  use {
+    "ahmedshuhel/nvim-tree.lua",
+    branch = "bufdel",
+    after = "nvim-bufdel",
+    config = function()
+      require("plugins.tree-nvim").config()
+    end
+  }
 
   use {
     "kyazdani42/nvim-web-devicons",
@@ -31,14 +45,6 @@ return packer.startup({function()
   }
 
   use {
-    "glepnir/galaxyline.nvim",
-    after = "onedark.nvim",
-    config = function()
-      require("plugins.statusline").config()
-    end
-  }
-
-  use {
     "ahmedshuhel/toggleterm.nvim",
     branch = "new_rightbelow",
     config = function ()
@@ -46,6 +52,13 @@ return packer.startup({function()
     end
   }
 
+  use {
+    "glepnir/galaxyline.nvim",
+    after = {"onedark.nvim", "toggleterm.nvim"},
+    config = function()
+      require("plugins.statusline").config()
+    end
+  }
 
   use {
     "norcalli/nvim-colorizer.lua",
@@ -160,15 +173,6 @@ return packer.startup({function()
     "mhartington/formatter.nvim",
     config = function()
       require("plugins.formatter").config()
-    end
-  }
-
-  use {
-    "ahmedshuhel/nvim-tree.lua",
-    branch = "bufdel",
-    after = "nvim-bufdel",
-    config = function()
-      require("plugins.tree-nvim").config()
     end
   }
 

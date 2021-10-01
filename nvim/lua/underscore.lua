@@ -22,24 +22,7 @@ local function fgbg(group, fgcol, bgcol)
 end
 
 
-local function config()
-  map("n", "<C-q>", ":bp<bar>sp<bar>bn<bar>bd! <CR>")
-
-  -- nvimtree
-  map("n", "-", ":NvimTreeFindFile<CR>") -- new tab
-
-  -- bufferline tab stuff
-  map("n", "<S-x>", "[[<Cmd>BufDel<CR>]]") -- close tab
-
-  --highlight
-  map("n", "<ESC>", ":noh<CR>")
-
-  -- dbui
-  map("n", "<Leader>.", ":DBUIToggle<CR>")
-end
-
 return {
-  config = config,
   fg = fg,
   bg = bg,
   fgbg = fgbg,

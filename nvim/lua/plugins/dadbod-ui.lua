@@ -1,5 +1,6 @@
 local g = vim.g
 local fn = vim.fn
+local _ = require("underscore")
 
 local config = function()
   local dir = fn.finddir('.git/..', fn.expand('%:p:h'))
@@ -13,6 +14,10 @@ local config = function()
       Count = 'select count(*) from `{table}`'
     }
   }
+
+  -- dbui
+ _.map("n", "<Leader>.", ":DBUIToggle<CR>")
+
 end
 
 return {

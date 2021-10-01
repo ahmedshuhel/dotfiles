@@ -3,8 +3,10 @@ local fn = vim.fn
 
 g.mapleader = " "
 g.auto_save = false
+
 g.node_host_prog = fn.fnamemodify('~', ':p') .. ".nvm/versions/node/v14.15.4/bin/neovim-node-host"
 g.python3_host_prog = "/usr/bin/python3"
+
 -- disable builtin vim plugins
 local disabled_built_ins = {
     "netrw",

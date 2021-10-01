@@ -1,5 +1,7 @@
 local g = vim.g
 local o = vim.o
+local _ = require("underscore")
+local c = require("colors")
 
 local tree_config = require("nvim-tree.config")
 local tree_cb = tree_config.nvim_tree_callback
@@ -12,7 +14,7 @@ local function config()
   g.nvim_tree_ignore = {".git", "node_modules", ".cache", ".pytest_cache", "__pycache__", ".eggs", ".docker"}
   g.nvim_tree_gitignore = 0
   g.nvim_tree_auto_ignore_ft = {"dashboard"} -- don't open tree on specific fiypes.
-  g.nvim_tree_auto_open = 1
+  g.nvim_tree_auto_open = 0
   g.nvim_tree_auto_close = 1 -- closes tree when it's the last window
   g.nvim_tree_quit_on_open = 0 -- closes tree when file's opened
   g.nvim_tree_follow = 0
@@ -92,12 +94,10 @@ local function config()
     {key = "g?", cb = tree_cb("toggle_help")}
   }
 
-  vim.cmd([[
-    augroup NvimTreeAutoGroup
-      au!
-      autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'nvimtree') | q | endif
-    augroup END
-  ]])
+  _.map("n", "-", ":NvimTreeFindFile<CR>") -- new tab
+
+_.fg("NvimTreeIndentMarker", c.one_bg2)
+_.fg("NvimTreeVertSplit", c.darker_black)
 
 end
 

@@ -1,6 +1,6 @@
 local opt = vim.opt
 
-opt.guicursor = 'n-v-c:block-DpNCursor,i-ci-ve:ver100-DpICursor'
+opt.guicursor = 'n-v-c:block-Cursor,i-ci-ve:ver100-iCursor'
 
 opt.ruler = false
 opt.hidden = true
@@ -31,14 +31,14 @@ opt.numberwidth = 3
 opt.signcolumn = "yes:1"
 opt.cmdheight = 1
 opt.updatetime = 500 -- update interval for gitsigns
-opt.timeoutlen = 400 -- Time in milliseconds to wait for a mapped sequence to complete.
+opt.timeoutlen = 300 -- Time in milliseconds to wait for a mapped sequence to complete.
 opt.clipboard = "unnamedplus"
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append("<>hl")
 
--- for indenline
+-- for indentline
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
