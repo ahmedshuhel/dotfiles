@@ -1,6 +1,15 @@
 local g = vim.g
 local fn = vim.fn
 
+local function map(mode, lhs, rhs, opts)
+  local options = {noremap = true, silent = true}
+  if opts then
+    options = vim.tbl_extend("force", options, opts)
+  end
+  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
+
 local function is_buffer_empty()
     -- Check whether the current buffer is empty
     return fn.empty(vim.fn.expand("%:t")) == 1
@@ -32,4 +41,5 @@ return {
   blankline = blankline,
   is_buffer_empty = is_buffer_empty,
   has_width_gt = has_width_gt,
+  map = map
 }
