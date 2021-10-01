@@ -1,10 +1,16 @@
-local api = vim.api
 local gl = require("galaxyline")
-local gls = gl.section
 local condition = require("galaxyline.condition")
+local _ = require("underscore");
+local colors = require("colors")
 
-local global_theme = "themes/" .. vim.g.dp_theme
-local colors = require(global_theme)
+local gls = gl.section
+
+local function highlight()
+  vim.cmd("hi clear StatusLine")
+  _.fgbg("VertSplit", colors.darker_black, colors.darker_black)
+  _.bg("Statusline", colors.darker_black)
+  _.bg("StatuslineNC", colors.darker_black)
+end
 
 local checkwidth = function()
     local squeeze_width = vim.fn.winwidth(0) / 2
@@ -13,7 +19,6 @@ local checkwidth = function()
     end
     return false
 end
-
 
 local function trouble_loading_provider()
   local spinners = {' ⠋ Loading ', ' ⠙ Loading ', ' ⠹ Loading ', ' ⠸ Loading ', ' ⠼ Loading ', ' ⠴ Loading ', ' ⠦ Loading ', ' ⠧ Loading ', ' ⠇ Loading ',  ' ⠏ Loading '}
@@ -161,6 +166,8 @@ local function config()
       highlight = {colors.blue, colors.statusline_bg, 'bold'}
     }
   }
+
+  highlight()
 end
 
 return {

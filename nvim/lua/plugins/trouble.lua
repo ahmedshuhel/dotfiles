@@ -1,12 +1,8 @@
-local api = vim.api
-local opt = {silent = true, noremap = true}
-
-local function map(...)
-  api.nvim_set_keymap("n", ...)
-end
+local t = require("trouble")
+local _ = require("underscore")
 
 local function config()
-  require("trouble").setup({
+  t.setup({
     position = "bottom", -- position of the list can be: bottom, top, left, right. TODO: add `rightbelow` to play nice with fixed left file tree
     height = 10, -- height of the trouble list when position is top or bottom
     icons = true, -- use devicons for filenames
@@ -35,9 +31,9 @@ local function config()
     }
   })
 
-  map("<leader>xx", "<cmd>Trouble<cr>", opt)
-  map("<leader>xl", "<cmd>Trouble loclist<cr>", opt)
-  map("<leader>xq", "<cmd>Trouble quickfix<cr>", opt)
+  _.map("n", "<leader>xx", "<cmd>Trouble<cr>")
+  _.map("n", "<leader>xl", "<cmd>Trouble loclist<cr>")
+  _.map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>")
 end
 
 return {

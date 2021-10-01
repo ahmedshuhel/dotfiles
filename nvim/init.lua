@@ -12,7 +12,7 @@ end
 require("globals")
 require("options")
 require("plugin-list")
-require("mappings")
+require("underscore").config()
 
 -- load project local nvimrc
 local local_vimrc = fn.getcwd()..'/.nvim/init.lua'

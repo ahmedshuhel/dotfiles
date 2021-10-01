@@ -1,10 +1,10 @@
-local M = {}
+local function config()
+  local g = vim.g
+  local api = vim.api
 
-M.config = function()
-    local g = vim.g
-    local api = vim.api
-
-    g.matchup_matchparen_offscreen = api.nvim_eval("{'method': 'popup'}")
+  g.matchup_matchparen_offscreen = api.nvim_eval("{'method': 'popup'}")
 end
 
-return M
+return {
+  config = config
+}

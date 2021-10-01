@@ -1,12 +1,12 @@
+local g = vim.g
 
-local M = {}
-
-M.config = function()
-    local g = vim.g
-    g.table_mode_corner='|'
-    g.table_mode_corner_corner='+'
-    g.table_mode_header_fillchar='-'
+local function config()
+  g.table_mode_corner='|'
+  g.table_mode_corner_corner='+'
+  g.table_mode_header_fillchar='-'
 end
 
-return M
+return {
+  config = config
+}
 

@@ -3,20 +3,20 @@ local use = packer.use
 
 return packer.startup({function()
   use "wbthomason/packer.nvim"
+
   use {
-    "siduck76/nvim-base16.lua",
+    "navarasu/onedark.nvim",
     after = "packer.nvim",
-    config = function()
-      require("plugins.nvim-base16").config()
+    config = function ()
+      require("plugins.onedark").config()
     end
   }
 
-  -- delete buffer without messing up your entire window layout
   use 'ojroques/nvim-bufdel'
 
   use {
     "kyazdani42/nvim-web-devicons",
-    after = "nvim-base16.lua",
+    after = "onedark.nvim",
     config = function()
       require "plugins.file-icons"
     end
@@ -24,15 +24,15 @@ return packer.startup({function()
 
   use {
     "akinsho/nvim-bufferline.lua",
-    after = {"nvim-base16.lua", "nvim-bufdel"},
+    after = {"onedark.nvim", "nvim-bufdel"},
     config = function()
-      require "plugins.bufferline"
+      require("plugins.bufferline").config()
     end
   }
 
   use {
     "glepnir/galaxyline.nvim",
-    after = "nvim-base16.lua",
+    after = "onedark.nvim",
     config = function()
       require("plugins.statusline").config()
     end
@@ -158,7 +158,6 @@ return packer.startup({function()
 
   use {
     "mhartington/formatter.nvim",
-    cmd = "Format",
     config = function()
       require("plugins.formatter").config()
     end
@@ -168,11 +167,6 @@ return packer.startup({function()
     "ahmedshuhel/nvim-tree.lua",
     branch = "bufdel",
     after = "nvim-bufdel",
-    cmd = {
-      "NvimTreeOpen",
-      "NvimTreeToggle",
-      "NvimTreeFindFile"
-    },
     config = function()
       require("plugins.tree-nvim").config()
     end
@@ -186,7 +180,6 @@ return packer.startup({function()
       {"nvim-telescope/telescope-fzf-native.nvim", run = "make"},
       {"nvim-telescope/telescope-media-files.nvim"}
     },
-    cmd = "Telescope",
     config = function()
       require("plugins.telescope-nvim").config()
     end
@@ -237,31 +230,15 @@ return packer.startup({function()
 
   use {
     "terrortylor/nvim-comment",
-    cmd = "CommentToggle",
     config = function()
-      require("nvim_comment").setup()
+      require("plugins.comment").config()
     end
   }
-
-  -- use {
-  --     "glepnir/dashboard-nvim",
-  --     cmd = {
-  --         "Dashboard",
-  --         "DashboardNewFile",
-  --         "DashboardJumpMarks",
-  --         "SessionLoad",
-  --         "SessionSave"
-  --     },
-  --     setup = function()
-  --         require("plugins.dashboard").config()
-  --     end
-  -- }
 
   use {"tweekmonster/startuptime.vim", cmd = "StartupTime"}
 
   use {
     "Pocco81/TrueZen.nvim",
-    cmd = {"TZAtaraxis", "TZMinimalist", "TZFocus"},
     config = function()
       require("plugins.zenmode").config()
     end
@@ -271,7 +248,7 @@ return packer.startup({function()
     "lukas-reineke/indent-blankline.nvim",
     event = "BufRead",
     setup = function()
-      require("utils").blankline()
+      require("plugins.blankline").config()
     end
   }
 
@@ -318,13 +295,6 @@ return packer.startup({function()
     end
   }
 
-  -- use {
-  --   "mattn/emmet-vim",
-  --   config = function ()
-  --     require('plugins.emmet').config()
-  --   end
-  -- }
-
   use "ahmedshuhel/devlife.vim"
 
   use {
@@ -334,7 +304,7 @@ return packer.startup({function()
     end
   }
 
-  use "kshenoy/vim-signature" -- show marks
+  use "kshenoy/vim-signature"
 
 end,
 config = {

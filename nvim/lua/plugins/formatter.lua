@@ -1,19 +1,19 @@
-local M = {}
+local _ = require("underscore")
+local f = require('formatter')
 
-M.config = function()
-
-  require('formatter').setup({
+local function config()
+  f.setup({
     logging = false,
     filetype = {
       javascript = {
-          -- prettier
-         function()
-            return {
-              exe = "prettier",
-              args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), '--single-quote'},
-              stdin = true
-            }
-          end
+        -- prettier
+        function()
+          return {
+            exe = "prettier",
+            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), '--single-quote'},
+            stdin = true
+          }
+        end
       },
       rust = {
         -- Rustfmt
@@ -26,30 +26,34 @@ M.config = function()
         end
       },
       lua = {
-          -- luafmt
-          function()
-            return {
-              exe = "luafmt",
-              args = {"--indent-count", 2, "--stdin"},
-              stdin = true
-            }
-          end
+        -- luafmt
+        function()
+          return {
+            exe = "luafmt",
+            args = {"--indent-count", 2, "--stdin"},
+            stdin = true
+          }
+        end
       },
       python = {
-          -- Black-format
-         function()
-            return {
-              exe = "black",
-              args = { '-q', '-' },
-              stdin = true,
-              cwd = vim.fn.expand('%:p:h')
-            }
-          end
+        -- Black-format
+        function()
+          return {
+            exe = "black",
+            args = { '-q', '-' },
+            stdin = true,
+            cwd = vim.fn.expand('%:p:h')
+          }
+        end
       }
     }
   })
+
+  _.map("n", "<Leader>f", [[<Cmd> Format<CR>]])
 end
 
-return M
+return {
+  config = config
+}
 
 
