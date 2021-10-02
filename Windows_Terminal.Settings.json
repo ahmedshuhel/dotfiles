@@ -61,8 +61,11 @@
         {
             "colorScheme": "One Half Dark",
             "cursorShape": "filledBox",
-            "fontFace": "CaskaydiaCove Nerd Font Mono",
-            "fontSize": 10,
+            "font": 
+            {
+                "face": "CaskaydiaCove Nerd Font Mono",
+                "size": 10
+            },
             "padding": "8, 0",
             "scrollbarState": "hidden"
         },
@@ -89,14 +92,18 @@
             },
             {
                 "colorScheme": "OneDark",
-                "cursorShape": "filledBox",
-                "fontFace": "Hack Nerd Font Mono",
-                "fontSize": 10,
+                "cursorShape": "bar",
+                "font": 
+                {
+                    "face": "Hack Nerd Font Mono",
+                    "size": 10
+                },
                 "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
                 "hidden": false,
                 "name": "Ubuntu-20.04",
                 "scrollbarState": "hidden",
-                "source": "Windows.Terminal.Wsl"
+                "source": "Windows.Terminal.Wsl",
+                "suppressApplicationTitle": false
             }
         ]
     },
