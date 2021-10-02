@@ -10,7 +10,7 @@ local function config()
   g.indent_blankline_show_trailing_blankline_indent = false
   g.indent_blankline_show_first_indent_level = false
 
-  _.fg("IndentBlanklineChar", c.line)
+  _.hi("IndentBlanklineChar", {fg = c.line})
 end
 
 return {

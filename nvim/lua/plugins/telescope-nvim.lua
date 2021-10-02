@@ -4,10 +4,10 @@ local _ = require("underscore")
 local c = require("colors")
 
 local function config()
-  _.fg("TelescopeBorder", c.line)
-  _.fg("TelescopePromptBorder", c.line)
-  _.fg("TelescopeResultsBorder", c.line)
-  _.fg("TelescopePreviewBorder", c.grey)
+  _.hi("TelescopeBorder", {fg = c.grey})
+  _.hi("TelescopePromptBorder", {fg = c.grey})
+  _.hi("TelescopeResultsBorder", {fg = c.grey})
+  _.hi("TelescopePreviewBorder", {fg = c.grey})
 
   ts.setup ({
     defaults = {
@@ -99,13 +99,13 @@ local function config()
   ts.load_extension("fzf")
   ts.load_extension("media_files")
 
-  _.map("n", "<C-p>", [[<Cmd> Telescope find_files <CR>]])
-  _.map("n", "<Leader>o", [[<Cmd> Telescope lsp_document_symbols <CR>]])
-  _.map("n", "<Leader>g", [[<Cmd> Telescope live_grep<CR>]])
+  _.map("n", "<C-p>", [[<Cmd>Telescope find_files<CR>]])
+  _.map("n", "<Leader>o", [[<Cmd>Telescope lsp_document_symbols<CR>]])
+  _.map("n", "<Leader>g", [[<Cmd>Telescope live_grep<CR>]])
   _.map("n", "<S-t>", [[<Cmd>Telescope buffers<CR>]])
   _.map("n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]])
-  _.map("n", "<Leader>fs", [[<Cmd> Telescope git_status <CR>]])
-  _.map("n", "<Leader>fc", [[<Cmd> Telescope git_commits <CR>]])
+  _.map("n", "<Leader>fs", [[<Cmd>Telescope git_status<CR>]])
+  _.map("n", "<Leader>fc", [[<Cmd>Telescope git_commits<CR>]])
 end
 
 return {

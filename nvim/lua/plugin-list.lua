@@ -178,6 +178,7 @@ return packer.startup({function()
 
   use {
     "nvim-telescope/telescope.nvim",
+    after = "onedark.nvim",
     requires = {
       {"nvim-lua/popup.nvim"},
       {"nvim-lua/plenary.nvim"},
@@ -250,6 +251,7 @@ return packer.startup({function()
 
   use {
     "lukas-reineke/indent-blankline.nvim",
+    after = "onedark.vim",
     event = "BufRead",
     setup = function()
       require("plugins.blankline").config()

@@ -6,7 +6,7 @@ local colors = require("colors")
 local gls = gl.section
 
 local function highlight()
-  vim.cmd("hi clear StatusLine")
+  _.clh('StatusLine')
   _.fgbg("VertSplit", colors.darker_black, colors.darker_black)
   _.bg("Statusline", colors.darker_black)
   _.bg("StatuslineNC", colors.darker_black)
