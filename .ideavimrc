@@ -1,3 +1,20 @@
+" # Tips to find/map/execute actions -------------------
+
+" ## Executing actions:
+" :action {action_id}
+
+" ## Execute an action by id. Works from Ex command line.
+" <Action>(*action_id*)
+" For the mappings you can use a special <Action> keyword. Don't forget the parentheses.
+
+" ## Finding actions:
+" :actionlist [pattern]
+
+" ## Find IDE actions by id or keymap pattern (E.g. :actionlist extract, :actionlist <C-D)
+" In addition to :actionlist command, IdeaVim provides IdeaVim: track action Ids option to extract the ids of executed command.
+" This option can be found in "Search everywhere" (double shift).
+
+
 """ Map leader to backslash ---------------------
 let mapleader=" "
 
@@ -30,16 +47,15 @@ map gr :action FindUsages<CR>
 
 map <leader>f <Action>(ReformatCode)
 map <leader>o <Action>(FileStructurePopup)
-
-map <leader>d <Action>(Debug)
 map <leader>rn <Action>(RenameElement)
-map <leader>c <Action>(Stop)
-map <leader>z <Action>(ToggleDistractionFreeMode)
-
-map <leader>s <Action>(SelectInProjectView)
-map <leader>a <Action>(Annotate)
-map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
-map <S-Space> <Action>(GotoNextError)
 
 map <leader>b <Action>(ToggleLineBreakpoint)
-map <leader>o <Action>(FileStructurePopup)
+map <leader>d <Action>(Debug)
+map <leader>c <Action>(Stop)
+
+map T <Action>(Switcher)
+
+map <leader>zz <Action>(ToggleDistractionFreeMode)
+
+map ]d <Action>(GotoNextError)
+map [d <Action>(GotoPreviousError)
