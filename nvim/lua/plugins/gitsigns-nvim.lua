@@ -1,42 +1,42 @@
-local _ = require("underscore");
+local _ = require("underscore")
 local c = require("colors")
 local gs = require("gitsigns")
 
 local function config()
-  gs.setup ({
+  gs.setup({
     signs = {
-      add = {hl = "DiffAdd", text = "▌", numhl = "GitSignsAddNr"},
-      change = {hl = "DiffChange", text = "▌", numhl = "GitSignsChangeNr"},
-      delete = {hl = "DiffDelete", text = "_", numhl = "GitSignsDeleteNr"},
-      topdelete = {hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr"},
-      changedelete = {hl = "DiffChange", text = "~", numhl = "GitSignsChangeNr"}
+      add = { hl = "DiffAdd", text = "▌", numhl = "GitSignsAddNr" },
+      change = { hl = "DiffChange", text = "▌", numhl = "GitSignsChangeNr" },
+      delete = { hl = "DiffDelete", text = "_", numhl = "GitSignsDeleteNr" },
+      topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
+      changedelete = { hl = "DiffChange", text = "~", numhl = "GitSignsChangeNr" },
     },
     numhl = false,
     keymaps = {
-        -- Default keymap options
+      -- Default keymap options
       noremap = true,
       buffer = true,
-      ["n ]c"] = {expr = true, '&diff ? \']c\' : \'<cmd>lua require"gitsigns".next_hunk()<CR>\''},
-      ["n [c"] = {expr = true, '&diff ? \'[c\' : \'<cmd>lua require"gitsigns".prev_hunk()<CR>\''},
+      ["n ]c"] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'" },
+      ["n [c"] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'" },
       ["n <leader>hs"] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
       ["n <leader>hu"] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
       ["n <leader>hr"] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
       ["n <leader>hp"] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
-      ["n <leader>hb"] = '<cmd>lua require"gitsigns".blame_line()<CR>'
+      ["n <leader>hb"] = '<cmd>lua require"gitsigns".blame_line()<CR>',
     },
     watch_gitdir = {
-        interval = 100
+      interval = 100,
     },
     sign_priority = 5,
-    status_formatter = nil -- Use default
+    status_formatter = nil, -- Use default
   })
 
-  _.fgbg("DiffAdd", c.nord_blue, "none")
-  _.fgbg("DiffChange", c.grey_fg, "none")
-  _.fgbg("DiffModified", c.nord_blue, "none")
-  _.fgbg("DiffDelete", c.red, "none")
+  _.hi("DiffAdd", { fg = c.nord_blue })
+  _.hi("DiffChange", { fg = c.grey_fg })
+  _.hi("DiffModified", { fg = c.nord_blue })
+  _.hi("DiffDelete", { fg = c.red })
 end
 
 return {
-  config = config
+  config = config,
 }

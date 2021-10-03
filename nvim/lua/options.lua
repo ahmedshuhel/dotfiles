@@ -1,6 +1,6 @@
 local opt = vim.opt
 
-opt.guicursor = 'n-v-c:block-Cursor,i-ci-ve:ver100-iCursor'
+opt.guicursor = "n-v-c:block-Cursor,i-ci-ve:ver100-iCursor"
 
 opt.ruler = false
 opt.hidden = true
@@ -12,7 +12,7 @@ opt.cul = false -- Highlight the screen line of the cursor with CursorLine
 opt.mouse = "a"
 
 opt.showmode = false
-opt.showcmd  = false
+opt.showcmd = false
 
 opt.shortmess:append("a") -- use abbreviations for messages
 opt.shortmess:append("W") -- don't give "written" or "[w]" when writing a file
