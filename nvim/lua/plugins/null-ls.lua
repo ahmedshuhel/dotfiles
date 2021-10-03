@@ -1,4 +1,5 @@
 local nls = require("null-ls")
+local helpers = require("null-ls.helpers")
 
 local function config()
   nls.config({
@@ -8,12 +9,20 @@ local function config()
           return utils.root_has_file(".stylua.toml")
         end,
       }),
-      nls.builtins.formatting.prettier,
+      helpers.conditional(function(utils)
+        return utils.root_has_file(".eslintrc.yml") and nls.builtins.formatting.eslint_d
+          or nls.builtins.formatting.prettier.with({
+            filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte", "html" },
+          })
+      end),
       nls.builtins.formatting.black,
-      nls.builtins.formatting.sqlformat,
+      nls.builtins.formatting.sqlformat.with({
+        filetypes = { "sql", "mysql", "pgsql" },
+      }),
       nls.builtins.formatting.terraform_fmt,
       nls.builtins.diagnostics.codespell,
-      nls.builtins.diagnostics.eslint_d,
+      nls.builtins.diagnostics.write_good,
+      nls.builtins.diagnostics.stylelint,
     },
   })
 end
