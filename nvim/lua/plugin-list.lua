@@ -186,8 +186,18 @@ return packer.startup({
     })
 
     use({
+      "ahmedshuhel/trouble.nvim",
+      branch = "rightbelow",
+      after = {"onedark.nvim"},
+      requires = "kyazdani42/nvim-web-devicons",
+      config = function()
+        require("plugins.trouble").config()
+      end,
+    })
+
+    use({
       "nvim-telescope/telescope.nvim",
-      after = "onedark.nvim",
+      after = {"onedark.nvim", "trouble.nvim"},
       requires = {
         { "nvim-lua/popup.nvim" },
         { "nvim-lua/plenary.nvim" },
@@ -287,17 +297,6 @@ return packer.startup({
       },
       config = function()
         require("plugins.vim-markdown").config()
-      end,
-    })
-
-    use({
-      "ahmedshuhel/trouble.nvim",
-      branch = "rightbelow",
-      after = "onedark.nvim",
-      before = "telescope.nvim",
-      requires = "kyazdani42/nvim-web-devicons",
-      config = function()
-        require("plugins.trouble").config()
       end,
     })
 
