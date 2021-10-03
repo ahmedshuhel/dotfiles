@@ -23,7 +23,7 @@ return packer.startup({
     use({
       "ahmedshuhel/nvim-tree.lua",
       branch = "bufdel",
-      after = {"onedark.nvim", "nvim-bufdel"},
+      after = { "onedark.nvim", "nvim-bufdel" },
       config = function()
         require("plugins.tree-nvim").config()
       end,
@@ -64,6 +64,7 @@ return packer.startup({
 
     use({
       "norcalli/nvim-colorizer.lua",
+      after = "onedark.nvim",
       event = "BufRead",
       config = function()
         require("colorizer").setup()
@@ -73,6 +74,7 @@ return packer.startup({
 
     use({
       "nvim-treesitter/nvim-treesitter",
+      after = "onedark.nvim",
       event = "BufRead",
       config = function()
         require("plugins.treesitter-nvim").config()
@@ -95,7 +97,7 @@ return packer.startup({
     use({
       "neovim/nvim-lspconfig",
       event = "BufRead",
-      after = "null-ls.nvim",
+      after = { "onedark.nvim", "null-ls.nvim" },
       config = function()
         require("plugins.null-ls").config()
         require("plugins.nvim-lspconfig").config()
@@ -104,7 +106,7 @@ return packer.startup({
 
     use({
       "ray-x/lsp_signature.nvim",
-      after = "nvim-lspconfig",
+      after = { "onedark.nvim", "nvim-lspconfig" },
       config = function()
         require("plugins.lsp-signature").config()
       end,
@@ -112,6 +114,7 @@ return packer.startup({
 
     use({
       "onsails/lspkind-nvim",
+      after = "onedark.nvim",
       event = "BufRead",
       config = function()
         require("lspkind").init()
@@ -120,6 +123,7 @@ return packer.startup({
 
     use({
       "hrsh7th/nvim-cmp",
+      after = "onedark.nvim",
       event = "InsertEnter",
       config = function()
         require("plugins.cmp-completion").config()
@@ -167,6 +171,7 @@ return packer.startup({
 
     use({
       "kristijanhusak/vim-dadbod-ui",
+      after = "onedark.nvim",
       config = function()
         require("plugins.dadbod-ui").config()
       end,
@@ -196,6 +201,7 @@ return packer.startup({
 
     use({
       "tpope/vim-fugitive",
+      after = "onedark.nvim",
       requires = {
         "tpope/vim-dispatch",
         "tpope/vim-rhubarb",
@@ -207,6 +213,7 @@ return packer.startup({
 
     use({
       "lewis6991/gitsigns.nvim",
+      after = "onedark.nvim",
       requires = {
         "nvim-lua/plenary.nvim",
       },
@@ -239,6 +246,7 @@ return packer.startup({
 
     use({
       "terrortylor/nvim-comment",
+      after = "onedark.nvim",
       config = function()
         require("plugins.comment").config()
       end,
@@ -248,6 +256,7 @@ return packer.startup({
 
     use({
       "Pocco81/TrueZen.nvim",
+      after = "onedark.nvim",
       config = function()
         require("plugins.zenmode").config()
       end,
@@ -264,6 +273,7 @@ return packer.startup({
 
     use({
       "dhruvasagar/vim-table-mode",
+      after = "onedark.nvim",
       config = function()
         require("plugins.tablemode").config()
       end,
@@ -271,6 +281,7 @@ return packer.startup({
 
     use({
       "plasticboy/vim-markdown",
+      after = "onedark.nvim",
       requires = {
         "godlygeek/tabular",
       },
@@ -282,6 +293,7 @@ return packer.startup({
     use({
       "ahmedshuhel/trouble.nvim",
       branch = "rightbelow",
+      after = "onedark.nvim",
       before = "telescope.nvim",
       requires = "kyazdani42/nvim-web-devicons",
       config = function()
@@ -298,7 +310,7 @@ return packer.startup({
 
     use({
       "rcarriga/nvim-dap-ui",
-      after = "DAPInstall.nvim",
+      after = { "onedark.nvim", "DAPInstall.nvim" },
       requires = { "mfussenegger/nvim-dap" },
       config = function()
         require("plugins.dap").config()
@@ -314,6 +326,7 @@ return packer.startup({
       end,
     })
 
+    -- Show markers
     use("kshenoy/vim-signature")
   end,
   config = {
