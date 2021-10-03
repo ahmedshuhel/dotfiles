@@ -15,6 +15,7 @@ local function config()
     hide_numbers = true, -- hide the number column in toggleterm buffers
     shade_filetypes = {},
     shade_terminals = true,
+    shading_factor = 1, -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
     start_in_insert = true,
     insert_mappings = true, -- whether or not the open mapping applies in insert mode
     persist_size = true,
@@ -26,16 +27,16 @@ local function config()
       -- see :h nvim_open_win for details on borders however
       -- the 'curved' border is a custom border type
       -- not natively supported but implemented in this plugin.
-      border = 'rounded',
+      border = "rounded",
       winblend = 3,
       highlights = {
         border = "Normal",
         background = "Normal",
-      }
-    }
+      },
+    },
   })
 
-  _.map("t", "<c-q>", [[<C-\><C-n>]])       --  Exit terminal mode
+  _.map("t", "<c-q>", [[<C-\><C-n>]]) --  Exit terminal mode
   _.map("t", "<C-h>", [[<C-\><C-n><C-w>h]]) --  Navigate left
   _.map("t", "<C-j>", [[<C-\><C-n><C-w>j]]) --  Navigate dwon
   _.map("t", "<C-k>", [[<C-\><C-n><C-w>k]]) --  Navigate up
@@ -43,5 +44,5 @@ local function config()
 end
 
 return {
-  config = config
+  config = config,
 }
