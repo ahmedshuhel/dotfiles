@@ -16,7 +16,7 @@ local config = function()
   }
 
   -- dbui
- _.map("n", "<Leader>/", ":DBUIToggle<CR>")
+ _.map("n", "<C-_>", ":DBUIToggle<CR>")
 
 end
 
