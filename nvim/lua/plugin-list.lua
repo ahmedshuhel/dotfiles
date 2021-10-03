@@ -82,6 +82,14 @@ return packer.startup({
     })
 
     use({
+      "nvim-treesitter/playground",
+      after = "nvim-treesitter",
+      config = function()
+        require("plugins.treesitter-playground.lua").config()
+      end,
+    })
+
+    use({
       "kabouzeid/nvim-lspinstall",
       after = "trouble.nvim",
     })
@@ -333,7 +341,6 @@ return packer.startup({
     use("tpope/vim-eunuch")
 
     use("tpope/vim-repeat")
-
   end,
   config = {
     auto_clean = true,
