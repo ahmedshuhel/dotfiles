@@ -1,6 +1,5 @@
 local api = vim.api
-local opt = {silent = true, noremap = true}
-
+local opt = { silent = true, noremap = true }
 
 local function on_attach(_, bufnr)
   local function map(...)
@@ -32,7 +31,6 @@ local function on_attach(_, bufnr)
   map("<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
   map("<space>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opt)
 
-
   map("<leader>xd", "<cmd>Trouble lsp_document_diagnostics<cr>", opt)
   map("<leader>xw", "<cmd>Trouble lsp_workspace_diagnostics<cr>", opt)
 end
@@ -40,7 +38,8 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 capabilities.textDocument.completion.completionItem.documentationFormat = {
-  "markdown", "plaintext"
+  "markdown",
+  "plaintext",
 }
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.preselectSupport = true
@@ -58,20 +57,20 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 }
 
 local function setup_servers()
-  require "lspinstall".setup()
+  require("lspinstall").setup()
   local lspconf = require("lspconfig")
   local servers = require("lspinstall").installed_servers()
 
   for _, lang in pairs(servers) do
     if lang == "python" then
-      lspconf[lang].setup(vim.tbl_deep_extend('force', {
+      lspconf[lang].setup(vim.tbl_deep_extend("force", {
         on_attach = on_attach,
         root_dir = vim.loop.cwd,
         capabilities = capabilities,
         flags = { debounce_text_changes = 500 },
         settings = {
           pyright = {
-            disableLanguageServices = false
+            disableLanguageServices = false,
           },
           python = {
             analysis = {
@@ -80,67 +79,65 @@ local function setup_servers()
               diagnosticMode = "workspace",
               useLibraryCodeForTypes = true,
               diagnosticSeverityOverrides = {
-                reportUnusedImport = false
-              }
-            }
-          }
-        }
-      }, lspconf['python']))
+                reportUnusedImport = false,
+              },
+            },
+          },
+        },
+      }, lspconf["python"]))
     elseif lang == "lua" then
-      lspconf[lang].setup {
+      lspconf[lang].setup({
         flags = { debounce_text_changes = 500 },
         capabilities = capabilities,
         root_dir = vim.loop.cwd,
         settings = {
           Lua = {
             diagnostics = {
-              globals = {"vim", "jit"}
+              globals = { "vim", "jit" },
             },
             workspace = {
               library = {
                 [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
+                [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
               },
               maxPreload = 100000,
-              preloadFileSize = 10000
+              preloadFileSize = 10000,
             },
             telemetry = {
-              enable = false
-            }
-          }
-        }
-      }
+              enable = false,
+            },
+          },
+        },
+      })
     else
-      lspconf[lang].setup {
+      lspconf[lang].setup({
         on_attach = on_attach,
         root_dir = vim.loop.cwd,
         capabilities = capabilities,
         flags = { debounce_text_changes = 500 },
-      }
+      })
     end
   end
 
   lspconf["null-ls"].setup({
-    on_attach = on_attach
+    on_attach = on_attach,
   })
-
 end
 
 local function lspSymbol(name, icon)
-  vim.fn.sign_define("LspDiagnosticsSign" .. name, {text = icon, numhl = "LspDiagnosticsDefaul" .. name})
+  vim.fn.sign_define("LspDiagnosticsSign" .. name, { text = icon, numhl = "LspDiagnosticsDefaul" .. name })
 end
 
 local function config()
-
   -- Set log level to debug language server
   -- vim.lsp.set_log_level("debug")
   -- Open log using `:lua vim.cmd('e'..vim.lsp.get_log_path())`
   setup_servers()
 
   -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-  require "lspinstall".post_install_hook = function()
-    setup_servers()     -- reload installed servers
-    vim.cmd("bufdo e")  -- triggers FileType autocmd that starts the server
+  require("lspinstall").post_install_hook = function()
+    setup_servers() -- reload installed servers
+    vim.cmd("bufdo e") -- triggers FileType autocmd that starts the server
   end
 
   lspSymbol("Error", "")
@@ -153,7 +150,7 @@ local function config()
     signs = true,
     underline = false,
     -- set this to true if you want diagnostics to show in insert mode
-    update_in_insert = false
+    update_in_insert = false,
   })
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -172,11 +169,11 @@ local function config()
     if log_level == vim.log.levels.ERROR then
       vim.api.nvim_err_writeln(msg)
     else
-      vim.api.nvim_echo({{msg}}, true, {})
+      vim.api.nvim_echo({ { msg } }, true, {})
     end
   end
 end
 
 return {
-  config = config
+  config = config,
 }
