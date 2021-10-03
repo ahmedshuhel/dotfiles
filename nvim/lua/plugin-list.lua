@@ -328,6 +328,10 @@ return packer.startup({
 
     -- Show markers
     use("kshenoy/vim-signature")
+
+    use("tpope/vim-surround")
+
+    use("tpope/vim-eunuch")
   end,
   config = {
     auto_clean = true,
