@@ -82,11 +82,19 @@ return packer.startup({function()
     after = "trouble.nvim"
   }
 
+  use { "jose-elias-alvarez/null-ls.nvim",
+    after = "nvim-lspinstall",
+    requires = {
+      "nvim-lua/plenary.nvim"
+    }
+  }
+
   use {
     "neovim/nvim-lspconfig",
     event = "BufRead",
-    after = "nvim-lspinstall",
+    after = "null-ls.nvim",
     config = function()
+      require("plugins.null-ls").config()
       require("plugins.nvim-lspconfig").config()
     end
   }
@@ -169,12 +177,6 @@ return packer.startup({function()
     after = {"nvim-cmp", "vim-dadbod-ui"}
   }
 
-  use {
-    "mhartington/formatter.nvim",
-    config = function()
-      require("plugins.formatter").config()
-    end
-  }
 
   use {
     "nvim-telescope/telescope.nvim",
@@ -251,7 +253,7 @@ return packer.startup({function()
 
   use {
     "lukas-reineke/indent-blankline.nvim",
-    after = "onedark.vim",
+    after = "onedark.nvim",
     event = "BufRead",
     setup = function()
       require("plugins.blankline").config()

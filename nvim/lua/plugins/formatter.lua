@@ -55,5 +55,3 @@ end
 return {
   config = config
 }
-
-

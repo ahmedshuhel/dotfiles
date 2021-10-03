@@ -21,7 +21,7 @@ local function config()
         },
         { id = "breakpoints", size = 0.25 },
         { id = "stacks", size = 0.25 },
-        { id = "watches", size = 00.25 },
+        { id = "watches", size = 0.25 },
       },
       size = 40,
       position = "left", -- Can be "left" or "right"
@@ -43,5 +43,5 @@ local function config()
 end
 
 return {
-    config = config
+  config = config
 }

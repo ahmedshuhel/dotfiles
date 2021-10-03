@@ -38,7 +38,10 @@ local function on_attach(_, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
+
+capabilities.textDocument.completion.completionItem.documentationFormat = {
+  "markdown", "plaintext"
+}
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.preselectSupport = true
 capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
@@ -116,6 +119,11 @@ local function setup_servers()
       }
     end
   end
+
+  lspconf["null-ls"].setup({
+    on_attach = on_attach
+  })
+
 end
 
 local function lspSymbol(name, icon)
@@ -127,13 +135,12 @@ local function config()
   -- Set log level to debug language server
   -- vim.lsp.set_log_level("debug")
   -- Open log using `:lua vim.cmd('e'..vim.lsp.get_log_path())`
-
-
   setup_servers()
+
   -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
   require "lspinstall".post_install_hook = function()
-    setup_servers() -- reload installed servers
-    vim.cmd("bufdo e") -- triggers FileType autocmd that starts the server
+    setup_servers()     -- reload installed servers
+    vim.cmd("bufdo e")  -- triggers FileType autocmd that starts the server
   end
 
   lspSymbol("Error", "")
@@ -141,8 +148,7 @@ local function config()
   lspSymbol("Information", "")
   lspSymbol("Hint", "")
 
-  vim.lsp.handlers["textDocument/publishDiagnostics"] =
-  vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = false,
     signs = true,
     underline = false,
