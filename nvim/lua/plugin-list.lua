@@ -188,7 +188,7 @@ return packer.startup({
     use({
       "ahmedshuhel/trouble.nvim",
       branch = "rightbelow",
-      after = {"onedark.nvim"},
+      after = { "onedark.nvim" },
       requires = "kyazdani42/nvim-web-devicons",
       config = function()
         require("plugins.trouble").config()
@@ -197,7 +197,7 @@ return packer.startup({
 
     use({
       "nvim-telescope/telescope.nvim",
-      after = {"onedark.nvim", "trouble.nvim"},
+      after = { "onedark.nvim", "trouble.nvim" },
       requires = {
         { "nvim-lua/popup.nvim" },
         { "nvim-lua/plenary.nvim" },
@@ -331,6 +331,9 @@ return packer.startup({
     use("tpope/vim-surround")
 
     use("tpope/vim-eunuch")
+
+    use("tpope/vim-repeat")
+
   end,
   config = {
     auto_clean = true,
