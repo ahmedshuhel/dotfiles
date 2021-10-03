@@ -21,19 +21,19 @@ return packer.startup({
     })
 
     use({
-      "ahmedshuhel/nvim-tree.lua",
-      branch = "bufdel",
-      after = { "onedark.nvim", "nvim-bufdel" },
-      config = function()
-        require("plugins.tree-nvim").config()
-      end,
-    })
-
-    use({
       "kyazdani42/nvim-web-devicons",
       after = "onedark.nvim",
       config = function()
         require("plugins.file-icons")
+      end,
+    })
+
+    use({
+      "ahmedshuhel/nvim-tree.lua",
+      branch = "bufdel",
+      after = { "onedark.nvim", "nvim-bufdel", "nvim-web-devicons" },
+      config = function()
+        require("plugins.tree-nvim").config()
       end,
     })
 
