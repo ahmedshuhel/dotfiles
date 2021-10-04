@@ -2,7 +2,7 @@ local cmd = vim.cmd
 local api = vim.api
 
 -- Keymap
-local function map(mode, lhs, rhs, opts)
+local function keymap(mode, lhs, rhs, opts)
   local options = {noremap = true, silent = true}
   if opts then
     options = vim.tbl_extend("force", options, opts)
@@ -27,7 +27,7 @@ local function gui(highlight)
   end
 end
 
--- Hilight
+-- Apply highlight
 local function hi(group_name, highlight)
   local fg = highlight.fg and "guifg=" .. highlight.fg or "guifg=NONE"
   local bg = highlight.bg and "guibg=" .. highlight.bg or "guibg=NONE"
@@ -44,5 +44,5 @@ end
 return {
   hi = hi,
   hic = hic,
-  map = map
+  map = keymap
 }
