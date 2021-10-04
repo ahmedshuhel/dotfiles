@@ -85,7 +85,16 @@ return packer.startup({
       "nvim-treesitter/playground",
       after = "nvim-treesitter",
       config = function()
-        require("plugins.treesitter-playground.lua").config()
+        require("plugins.treesitter-playground").config()
+      end,
+    })
+
+    use({
+      "NTBBloodbath/rest.nvim",
+      after = { "nvim-treesitter", "onedark.nvim" },
+      requires = { "nvim-lua/plenary.nvim" },
+      config = function()
+        require("plugins.rest-nvim").config()
       end,
     })
 

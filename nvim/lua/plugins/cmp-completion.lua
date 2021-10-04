@@ -1,5 +1,6 @@
 local opt = vim.opt
 local cmp = require("cmp")
+local _ = require("underscore")
 
 local icons = {
   Text = "",
@@ -29,10 +30,6 @@ local icons = {
   TypeParameter = "",
 }
 
-local function t(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
 local function config()
   opt.completeopt = "menuone,noselect"
   cmp.setup({
@@ -56,18 +53,18 @@ local function config()
       ["<C-n>"] = cmp.mapping.select_next_item(),
       ["<Tab>"] = function()
         if vim.fn.pumvisible() == 1 then
-          vim.fn.feedkeys(t("<C-n>"), "n")
+          vim.fn.feedkeys(_.t("<C-n>"), "n")
         elseif require("luasnip").expand_or_jumpable() then
-          vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
+          vim.fn.feedkeys(_.t("<Plug>luasnip-expand-or-jump"), "")
         else
-          vim.fn.feedkeys(t("<C-Space>"), "")
+          vim.fn.feedkeys(_.t("<C-Space>"), "")
         end
       end,
       ["<S-Tab>"] = function(fallback)
         if vim.fn.pumvisible() == 1 then
-          vim.fn.feedkeys(t("<C-p>"), "n")
+          vim.fn.feedkeys(_.t("<C-p>"), "n")
         elseif require("luasnip").jumpable(-1) then
-          vim.fn.feedkeys(t("<Plug>luasnip-jump-prev"), "")
+          vim.fn.feedkeys(_.t("<Plug>luasnip-jump-prev"), "")
         else
           fallback()
         end

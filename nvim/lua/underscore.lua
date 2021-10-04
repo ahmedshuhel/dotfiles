@@ -3,7 +3,7 @@ local api = vim.api
 
 -- Keymap
 local function keymap(mode, lhs, rhs, opts)
-  local options = {noremap = true, silent = true}
+  local options = { noremap = true, silent = true }
   if opts then
     options = vim.tbl_extend("force", options, opts)
   end
@@ -32,9 +32,12 @@ local function hi(group_name, highlight)
   local fg = highlight.fg and "guifg=" .. highlight.fg or "guifg=NONE"
   local bg = highlight.bg and "guibg=" .. highlight.bg or "guibg=NONE"
   local sp = highlight.sp and "guisp=" .. highlight.sp or "guisp=NONE"
-  cmd("highlight " .. group_name .. " ".."gui="..gui(highlight).." "..fg .. " " .. bg .. " " .. sp)
+  cmd("highlight " .. group_name .. " " .. "gui=" .. gui(highlight) .. " " .. fg .. " " .. bg .. " " .. sp)
 end
 
+local function t(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
 
 -- Clear highlight
 local function hic(group)
@@ -44,5 +47,6 @@ end
 return {
   hi = hi,
   hic = hic,
-  map = keymap
+  map = keymap,
+  t = t,
 }
