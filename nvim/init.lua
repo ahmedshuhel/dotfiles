@@ -1,32 +1,63 @@
-local exec = vim.api.nvim_command
+local g  = vim.g
 local fn = vim.fn
 local uv = vim.loop
 local cmd = vim.cmd
-local _ = require("underscore")
-local c = require("colors")
+local api = vim.api
+
+-- disable builtin vim plugins
+local disabled_built_ins = {
+    "python_provider",
+    "ruby_provider",
+    "perl_provider",
+    "netrw",
+    "netrwPlugin",
+    "netrwSettings",
+    "netrwFileHandlers",
+    "gzip",
+    "zip",
+    "zipPlugin",
+    "tar",
+    "tarPlugin",
+    "getscript",
+    "getscriptPlugin",
+    "vimball",
+    "vimballPlugin",
+    "2html_plugin",
+    "logipat",
+    "rrhelper",
+    "spellfile_plugin",
+    "matchit",
+}
+
+for _, plugin in pairs(disabled_built_ins) do
+    vim.g["loaded_" .. plugin] = 1
+end
+
+g.node_host_prog = fn.fnamemodify('~', ':p') .. ".nvm/versions/node/v14.15.4/bin/neovim-node-host"
+g.python3_host_prog = "/usr/bin/python3"
+
+g.mapleader = " "
+g.auto_save = false
+
 
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
   fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
-  exec("packadd packer.nvim")
+  api.nvim_command("packadd packer.nvim")
 end
 
-require("globals")
+-- All global options
 require("options")
-require("plugin-list")
 
-_.map("n", "<C-q>", ":bp<bar>sp<bar>bn<bar>bd! <CR>")
-_.map("n", "<ESC>", ":noh<CR>")
+-- Load keymaps before plugins
+require("keymaps")
 
-_.hi("Pmenu", { bg = c.one_bg })
-_.hi("PmenuSbar", { bg = c.one_bg2 })
-_.hi("PmenuSel", { bg = c.green })
-_.hi("PmenuThumb", { bg = c.nord_blue })
+-- Load plugins
+require("plugins")
 
-_.hi("NormalFloat", { bg = c.black2 })
-_.hi("FloatBorder", { bg = c.black2 })
-_.hi("FloatBorder", { fg = c.black2 })
+-- Override highlights
+require("highlights")
 
 -- load project local nvimrc
 local local_vimrc = fn.getcwd() .. "/.nvim/init.lua"

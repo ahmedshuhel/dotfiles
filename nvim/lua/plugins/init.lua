@@ -350,6 +350,9 @@ return packer.startup({
     use("tpope/vim-eunuch")
 
     use("tpope/vim-repeat")
+
+    -- Add nslp
+    -- Add which key
   end,
   config = {
     auto_clean = true,
