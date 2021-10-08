@@ -30,10 +30,7 @@ local icons = {
 }
 
 local function config()
-  opt.completeopt = "menuone,noselect"
-
   local cmp = require("cmp")
-
   cmp.setup({
     snippet = {
       expand = function(args)
@@ -53,18 +50,20 @@ local function config()
     mapping = {
       ["<C-p>"] = cmp.mapping.select_prev_item(),
       ["<C-n>"] = cmp.mapping.select_next_item(),
-      ["<Tab>"] = function()
-        if vim.fn.pumvisible() == 1 then
-          vim.fn.feedkeys(_.t("<C-n>"), "n")
+      ["<Tab>"] = function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
         elseif require("luasnip").expand_or_jumpable() then
           vim.fn.feedkeys(_.t("<Plug>luasnip-expand-or-jump"), "")
-        else
+        elseif _.has_chars_before_cursor() then
           vim.fn.feedkeys(_.t("<C-Space>"), "")
+        else
+          fallback()
         end
       end,
       ["<S-Tab>"] = function(fallback)
-        if vim.fn.pumvisible() == 1 then
-          vim.fn.feedkeys(_.t("<C-p>"), "n")
+        if cmp.visible() then
+          cmp.select_prev_item()
         elseif require("luasnip").jumpable(-1) then
           vim.fn.feedkeys(_.t("<Plug>luasnip-jump-prev"), "")
         else

@@ -6,6 +6,7 @@ local function config()
   g.onedark_disable_terminal_colors = 1
 
   require('onedark').setup()
+  require("highlights")
 end
 
 return {

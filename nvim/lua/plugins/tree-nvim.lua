@@ -1,5 +1,4 @@
 local g = vim.g
-local o = vim.o
 local _ = require("underscore")
 local c = require("colors")
 
@@ -14,8 +13,6 @@ end
 local function config()
   local tree_config = require("nvim-tree.config")
   local tree_cb = tree_config.nvim_tree_callback
-
-  o.termguicolors = true
 
   g.nvim_tree_ignore = { ".git", "node_modules", ".cache", ".pytest_cache", "__pycache__", ".eggs", ".docker" }
   g.nvim_tree_gitignore = 0

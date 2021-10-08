@@ -1,8 +1,13 @@
 local cmd = vim.cmd
 local api = vim.api
+local fn = vim.fn
+
+local M = {}
+
+M.trim = vim.trim
 
 -- Keymap
-local function keymap(mode, lhs, rhs, opts)
+M.map = function(mode, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
   if opts then
     options = vim.tbl_extend("force", options, opts)
@@ -28,25 +33,29 @@ local function gui(highlight)
 end
 
 -- Apply highlight
-local function hi(group_name, highlight)
+M.hi = function(group_name, highlight)
   local fg = highlight.fg and "guifg=" .. highlight.fg or "guifg=NONE"
   local bg = highlight.bg and "guibg=" .. highlight.bg or "guibg=NONE"
   local sp = highlight.sp and "guisp=" .. highlight.sp or "guisp=NONE"
   cmd("highlight " .. group_name .. " " .. "gui=" .. gui(highlight) .. " " .. fg .. " " .. bg .. " " .. sp)
 end
 
-local function t(str)
+M.t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
 -- Clear highlight
-local function hic(group)
+M.hic = function(group)
   cmd("hi clear " .. group)
 end
 
-return {
-  hi = hi,
-  hic = hic,
-  map = keymap,
-  t = t,
-}
+M.pp = function(obj)
+  return print(vim.inspect(obj))
+end
+
+M.has_chars_before_cursor = function()
+  local chars = vim.trim(fn.strpart(fn.getline("."), fn.col(".") - 2, 1))
+  return string.len(chars) > 0
+end
+
+return M

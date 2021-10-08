@@ -56,9 +56,6 @@ require("keymaps")
 -- Load plugins
 require("plugins").load()
 
--- Override highlights
-require("highlights")
-
 -- load project local nvimrc
 local local_vimrc = fn.getcwd() .. "/.nvim/init.lua"
 if uv.fs_stat(local_vimrc) then
