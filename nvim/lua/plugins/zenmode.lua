@@ -1,8 +1,7 @@
-local zen = require("true-zen")
 local _ = require("underscore")
 
 local function config()
-  zen.setup({
+ require("true-zen").setup({
     ui = {
       bottom = {
         laststatus = 0,
@@ -65,7 +64,9 @@ local function config()
       cursor_by_mode = false,
     },
   })
+end
 
+local function keymaps()
   _.map("n", "<leader>zz", ":TZAtaraxis<CR>")
   _.map("n", "<leader>zm", ":TZMinimalist<CR>")
   _.map("n", "<leader>zf", ":TZFocus<CR>")
@@ -73,4 +74,5 @@ end
 
 return {
   config = config,
+  keymaps = keymaps,
 }

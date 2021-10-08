@@ -3,14 +3,19 @@ local o = vim.o
 local _ = require("underscore")
 local c = require("colors")
 
-local tree_config = require("nvim-tree.config")
-local tree_cb = tree_config.nvim_tree_callback
+local function highlight()
+  _.hi("NvimTreeIndentMarker", { fg = c.line })
+end
+
+local function keymaps()
+  _.map("n", "-", ":NvimTreeFindFile<CR>")
+end
 
 local function config()
-  o.termguicolors = true
+  local tree_config = require("nvim-tree.config")
+  local tree_cb = tree_config.nvim_tree_callback
 
-  _.hi("NvimTreeIndentMarker", { fg = c.line })
-  --_.hi("NvimTreeVertSplit", { fg = c.darker_black })
+  o.termguicolors = true
 
   g.nvim_tree_ignore = { ".git", "node_modules", ".cache", ".pytest_cache", "__pycache__", ".eggs", ".docker" }
   g.nvim_tree_gitignore = 0
@@ -148,10 +153,10 @@ local function config()
       },
     },
   })
-
-  _.map("n", "-", ":NvimTreeFindFile<CR>")
 end
 
 return {
   config = config,
+  highlight = highlight,
+  keymaps = keymaps
 }

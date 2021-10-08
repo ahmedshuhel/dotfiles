@@ -1,7 +1,8 @@
 local colors = require("colors")
-local bufferline = require("bufferline")
 
 local function config()
+  local bufferline = require("bufferline")
+
   bufferline.setup({
     options = {
       offsets = {{filetype = "NvimTree", text = ""}, {filetype = "dbui", text = ""}},

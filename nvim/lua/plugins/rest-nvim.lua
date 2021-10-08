@@ -1,5 +1,11 @@
 local _ = require("underscore")
 
+local function keymaps()
+  _.map("n", "<Leader>ch", "[[:lua require('rest-nvim').run()<CR>]]")
+  _.map("n", "<Leader>cp", [[:lua require('rest-nvim').run(true)<CR>)]])
+  _.map("n", "<Leader>cl", [[:lua require('rest-nvim').last()<CR>]])
+end
+
 local function config()
   require("rest-nvim").setup({
     -- Open request results in a horizontal split
@@ -14,12 +20,9 @@ local function config()
     -- Jump to request line on run
     jump_to_request = false,
   })
-
-  _.map("n", "<Leader>ch", "[[:lua require('rest-nvim').run()<CR>]]")
-  _.map("n", "<Leader>cp", [[:lua require('rest-nvim').run(true)<CR>)]])
-  _.map("n", "<Leader>cl", [[:lua require('rest-nvim').last()<CR>]])
 end
 
 return {
   config = config,
+  keymaps = keymaps
 }

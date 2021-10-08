@@ -54,7 +54,7 @@ require("options")
 require("keymaps")
 
 -- Load plugins
-require("plugins")
+require("plugins").load()
 
 -- Override highlights
 require("highlights")

@@ -1,8 +1,9 @@
 local _ = require("underscore")
 local c = require("colors")
-local gs = require("gitsigns")
 
 local function config()
+  local gs = require("gitsigns")
+
   gs.setup({
     signs = {
       add = { hl = "DiffAdd", text = "▌", numhl = "GitSignsAddNr" },
@@ -30,7 +31,9 @@ local function config()
     sign_priority = 5,
     status_formatter = nil, -- Use default
   })
+end
 
+local function highlight()
   _.hi("DiffAdd", { fg = c.nord_blue })
   _.hi("DiffChange", { fg = c.grey_fg })
   _.hi("DiffModified", { fg = c.nord_blue })
@@ -39,4 +42,5 @@ end
 
 return {
   config = config,
+  highlight = highlight,
 }

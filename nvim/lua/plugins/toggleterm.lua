@@ -1,7 +1,16 @@
-local toggleterm = require("toggleterm")
 local _ = require("underscore")
 
+local function keymaps()
+  _.map("t", "<c-q>", [[<C-\><C-n>]]) --  Exit terminal mode
+  _.map("t", "<C-h>", [[<C-\><C-n><C-w>h]]) --  Navigate left
+  _.map("t", "<C-j>", [[<C-\><C-n><C-w>j]]) --  Navigate dwon
+  _.map("t", "<C-k>", [[<C-\><C-n><C-w>k]]) --  Navigate up
+  _.map("t", "<C-l>", [[<C-\><C-n><C-w>l]]) --  Navigate right
+end
+
 local function config()
+  local toggleterm = require("toggleterm")
+
   toggleterm.setup({
     -- size can be a number or function which is passed the current terminal
     size = function(term)
@@ -35,14 +44,9 @@ local function config()
       },
     },
   })
-
-  _.map("t", "<c-q>", [[<C-\><C-n>]]) --  Exit terminal mode
-  _.map("t", "<C-h>", [[<C-\><C-n><C-w>h]]) --  Navigate left
-  _.map("t", "<C-j>", [[<C-\><C-n><C-w>j]]) --  Navigate dwon
-  _.map("t", "<C-k>", [[<C-\><C-n><C-w>k]]) --  Navigate up
-  _.map("t", "<C-l>", [[<C-\><C-n><C-w>l]]) --  Navigate right
 end
 
 return {
   config = config,
+  keymaps = keymaps
 }

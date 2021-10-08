@@ -1,9 +1,5 @@
-local gl = require("galaxyline")
-local condition = require("galaxyline.condition")
 local _ = require("underscore")
 local colors = require("colors")
-
-local gls = gl.section
 
 local function highlight()
   _.hi("VertSplit", { fg = colors.darker_black, bg = colors.darker_black })
@@ -56,6 +52,10 @@ local function trouble_loading_provider()
 end
 
 local function config()
+  local gl = require("galaxyline")
+  local condition = require("galaxyline.condition")
+  local gls = gl.section
+
   gl.short_line_list = { "NvimTree", "dbui", "fugitiveblame", "toggleterm", "terminal", "zsh" }
 
   gls.left[1] = {
@@ -188,10 +188,9 @@ local function config()
       highlight = { colors.blue, colors.statusline_bg, "bold" },
     },
   }
-
-  highlight()
 end
 
 return {
   config = config,
+  highlight = highlight,
 }

@@ -1,9 +1,11 @@
 local _ = require("underscore")
 
-local function config()
+local function keymaps()
   _.map("n", "<S-x>", "[[<Cmd>BufDel<CR>]]") -- close tab
 end
 
+
+
 return {
-  config = config
+  keymaps = keymaps
 }

@@ -1,5 +1,4 @@
 local opt = vim.opt
-local cmp = require("cmp")
 local _ = require("underscore")
 
 local icons = {
@@ -32,6 +31,9 @@ local icons = {
 
 local function config()
   opt.completeopt = "menuone,noselect"
+
+  local cmp = require("cmp")
+
   cmp.setup({
     snippet = {
       expand = function(args)

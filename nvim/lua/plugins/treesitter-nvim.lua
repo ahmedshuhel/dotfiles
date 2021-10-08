@@ -1,7 +1,6 @@
-local tsconfig = require("nvim-treesitter.configs")
-local parsers = require("nvim-treesitter.parsers")
-
 local function config()
+  local tsconfig = require("nvim-treesitter.configs")
+  local parsers = require("nvim-treesitter.parsers")
   local parser_configs = parsers.get_parser_configs()
 
   parser_configs.http = {
