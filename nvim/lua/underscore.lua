@@ -49,13 +49,26 @@ M.hic = function(group)
   cmd("hi clear " .. group)
 end
 
-M.pp = function(obj)
-  return print(vim.inspect(obj))
+M.if_nil = function(val, default)
+  if val == nil then
+    return default
+  end
+  return val
 end
 
-M.has_chars_before_cursor = function()
-  local chars = vim.trim(fn.strpart(fn.getline("."), fn.col(".") - 2, 1))
-  return string.len(chars) > 0
+M.pp = function(obj)
+  print(vim.inspect(obj))
+end
+
+M.feedkeys = function(keys, mode)
+  local m = M.if_nil(mode, "")
+  vim.api.nvim_feedkeys(M.t(keys), m, true)
+end
+
+M.has_chars_before = function()
+  local ln, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local chars = vim.trim(vim.api.nvim_buf_get_lines(0, ln - 1, ln, true)[1]:sub(col, col))
+  return col ~= 0 and chars:len() > 0
 end
 
 return M

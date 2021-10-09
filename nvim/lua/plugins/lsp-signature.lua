@@ -11,7 +11,7 @@ local function config()
     hint_enable = false, -- virtual hint enable/disable
     hint_prefix = " ",
     hint_scheme = "String",
-    transpancy = 20, -- set this value if you want the floating windows to be transpant (100 fully transpant), nil to disable(default)
+    transpancy = 10, -- set this value if you want the floating windows to be transpant (100 fully transpant), nil to disable(default)
     hi_parameter = "Search",
     max_height = 22,
     max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width

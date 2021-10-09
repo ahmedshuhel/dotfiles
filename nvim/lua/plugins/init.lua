@@ -68,6 +68,7 @@ local plugins = {
   {
     "nvim-treesitter/playground",
     after = "nvim-treesitter",
+    cmd = "TSPlaygroundToggle",
     config = function()
       require("plugins.treesitter-playground").config()
     end,
@@ -92,15 +93,6 @@ local plugins = {
     },
   },
   {
-    "neovim/nvim-lspconfig",
-    event = "BufRead",
-    after = { "onedark.nvim", "null-ls.nvim" },
-    config = function()
-      require("plugins.null-ls").config()
-      require("plugins.nvim-lspconfig").config()
-    end,
-  },
-  {
     "ray-x/lsp_signature.nvim",
     after = { "onedark.nvim", "nvim-lspconfig" },
     config = function()
@@ -116,46 +108,6 @@ local plugins = {
     end,
   },
   {
-    "hrsh7th/nvim-cmp",
-    after = "onedark.nvim",
-    event = "InsertEnter",
-    config = function()
-      require("plugins.cmp-completion").config()
-    end,
-  },
-  {
-    "L3MON4D3/LuaSnip",
-    wants = "friendly-snippets",
-    after = "nvim-cmp",
-    config = function()
-      require("plugins.luasnip").config()
-    end,
-  },
-  {
-    "saadparwaiz1/cmp_luasnip",
-    after = "LuaSnip",
-  },
-  {
-    "hrsh7th/cmp-nvim-lua",
-    after = "cmp_luasnip",
-  },
-  {
-    "hrsh7th/cmp-nvim-lsp",
-    after = "cmp-nvim-lua",
-  },
-  {
-    "hrsh7th/cmp-buffer",
-    after = "cmp-nvim-lsp",
-  },
-  {
-    "rafamadriz/friendly-snippets",
-    after = "cmp-buffer",
-  },
-  {
-    "hrsh7th/cmp-path",
-    after = "cmp-nvim-lsp",
-  },
-  {
     "kristijanhusak/vim-dadbod-ui",
     after = "onedark.nvim",
     config = function()
@@ -166,8 +118,35 @@ local plugins = {
     },
   },
   {
-    "kristijanhusak/vim-dadbod-completion",
-    after = { "nvim-cmp", "vim-dadbod-ui" },
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    config = function()
+      require("plugins.cmp-completion").config()
+    end,
+    requires = {
+      { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
+      { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
+      { "hrsh7th/cmp-path", after = "nvim-cmp" },
+      { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+      { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
+      { "kristijanhusak/vim-dadbod-completion", after = { "nvim-cmp", "vim-dadbod-ui" } },
+      {
+        "L3MON4D3/LuaSnip",
+        requires = "rafamadriz/friendly-snippets",
+        config = function()
+          require("plugins.luasnip").config()
+        end,
+      },
+    },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    event = "BufRead",
+    after = { "onedark.nvim", "null-ls.nvim", "nvim-cmp" },
+    config = function()
+      require("plugins.null-ls").config()
+      require("plugins.nvim-lspconfig").config()
+    end,
   },
   {
     "ahmedshuhel/trouble.nvim",
@@ -301,8 +280,7 @@ local plugins = {
   "tpope/vim-surround",
   "tpope/vim-eunuch",
   "tpope/vim-repeat",
-  -- Add nslp
-  -- Add which key
+  -- Add nslp, which key
 }
 
 local function load()
@@ -325,5 +303,5 @@ end
 
 return {
   load = load,
-  plugins = plugins
+  plugins = plugins,
 }

@@ -31,6 +31,9 @@ local icons = {
 
 local function config()
   local cmp = require("cmp")
+  local lspkind = require("lspkind")
+  local ls = require("luasnip")
+
   cmp.setup({
     snippet = {
       expand = function(args)
@@ -41,40 +44,42 @@ local function config()
       autocomplete = false,
     },
     formatting = {
-      format = function(entry, vim_item)
-        vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
-        vim_item.menu = ({ nvim_lsp = "[LSP]", nvim_lua = "[Lua]", buffer = "[BUF]" })[entry.source.name]
-        return vim_item
-      end,
+      format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
     },
     mapping = {
-      ["<C-p>"] = cmp.mapping.select_prev_item(),
-      ["<C-n>"] = cmp.mapping.select_next_item(),
-      ["<Tab>"] = function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        elseif require("luasnip").expand_or_jumpable() then
-          vim.fn.feedkeys(_.t("<Plug>luasnip-expand-or-jump"), "")
-        elseif _.has_chars_before_cursor() then
-          vim.fn.feedkeys(_.t("<C-Space>"), "")
-        else
-          fallback()
-        end
-      end,
-      ["<S-Tab>"] = function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item()
-        elseif require("luasnip").jumpable(-1) then
-          vim.fn.feedkeys(_.t("<Plug>luasnip-jump-prev"), "")
-        else
-          fallback()
-        end
-      end,
       ["<C-d>"] = cmp.mapping.scroll_docs(-4),
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
       ["<C-Space>"] = cmp.mapping.complete(),
       ["<C-e>"] = cmp.mapping.close(),
       ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+      ["<C-p>"] = cmp.mapping.select_prev_item(),
+      ["<C-n>"] = cmp.mapping.select_next_item(),
+      ["<Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          _.feedkeys("<C-n>", "n")
+        elseif ls.expand_or_jumpable() then
+          _.feedkeys("<Plug>luasnip-expand-or-jump")
+        elseif _.has_chars_before() then
+          _.feedkeys("<C-Space>")
+        else
+          fallback()
+        end
+      end, {
+        "i",
+        "s",
+      }),
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          _.feedkeys("<C-p>", "n")
+        elseif ls.jumpable(-1) then
+          _.feedkeys("<Plug>luasnip-jump-prev")
+        else
+          fallback()
+        end
+      end, {
+        "i",
+        "s",
+      }),
     },
     sources = {
       { name = "nvim_lsp" },

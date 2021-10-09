@@ -1,14 +1,12 @@
-local ls = require("luasnip")
-
 local function config()
-  ls.config.set_config({
+  require("luasnip").config.set_config({
     history = true,
-    updateevents = "TextChanged,TextChangedI"
+    updateevents = "TextChanged,TextChangedI",
   })
 
-  require("luasnip/loaders/from_vscode").load()
+  require("luasnip.loaders.from_vscode").load()
 end
 
 return {
-  config = config
+  config = config,
 }
