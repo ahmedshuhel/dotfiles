@@ -1,44 +1,55 @@
-local g  = vim.g
+local g = vim.g
 local fn = vim.fn
 local uv = vim.loop
 local cmd = vim.cmd
 local api = vim.api
 
--- disable builtin vim plugins
-local disabled_built_ins = {
-    "python_provider",
-    "ruby_provider",
-    "perl_provider",
-    "netrw",
-    "netrwPlugin",
-    "netrwSettings",
-    "netrwFileHandlers",
-    "gzip",
-    "zip",
-    "zipPlugin",
-    "tar",
-    "tarPlugin",
-    "getscript",
-    "getscriptPlugin",
-    "vimball",
-    "vimballPlugin",
-    "2html_plugin",
-    "logipat",
-    "rrhelper",
-    "spellfile_plugin",
-    "matchit",
-}
-
-for _, plugin in pairs(disabled_built_ins) do
-    vim.g["loaded_" .. plugin] = 1
-end
-
-g.node_host_prog = fn.fnamemodify('~', ':p') .. ".nvm/versions/node/v14.15.4/bin/neovim-node-host"
+g.node_host_prog = fn.fnamemodify("~", ":p") .. ".nvm/versions/node/v14.15.4/bin/neovim-node-host"
 g.python3_host_prog = "/usr/bin/python3"
-
 g.mapleader = " "
 g.auto_save = false
 
+g.clipboard = {
+  name = "win32yank-wsl",
+  copy = {
+    ["+"] = "win32yank.exe -i --crlf",
+    ["*"] = "win32yank.exe -i --crlf",
+  },
+  paste = {
+    ["+"] = "win32yank.exe -o --lf",
+    ["*"] = "win32yank.exe -o --lf",
+  },
+  cache_enabled = 0,
+}
+
+-- disable builtin vim plugins
+local disabled_builtins = {
+  "python_provider",
+  -- "ruby_provider",
+  "perl_provider",
+  "netrw",
+  "netrwPlugin",
+  "netrwSettings",
+  "netrwFileHandlers",
+  "gzip",
+  "zip",
+  "zipPlugin",
+  "tar",
+  "tarPlugin",
+  "getscript",
+  "getscriptPlugin",
+  "vimball",
+  "vimballPlugin",
+  "2html_plugin",
+  "logipat",
+  "rrhelper",
+  "spellfile_plugin",
+  "matchit",
+}
+
+for _, plugin in pairs(disabled_builtins) do
+  vim.g["loaded_" .. plugin] = 1
+end
 
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
