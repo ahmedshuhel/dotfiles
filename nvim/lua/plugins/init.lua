@@ -19,9 +19,8 @@ local plugins = {
     end,
   },
   {
-    "ahmedshuhel/nvim-tree.lua",
-    branch = "bufdel",
-    after = { "onedark.nvim", "nvim-bufdel", "nvim-web-devicons" },
+    "kyazdani42/nvim-tree.lua",
+    after = { "onedark.nvim", "nvim-web-devicons" },
     config = function()
       require("plugins.tree-nvim").config()
     end,
@@ -274,6 +273,13 @@ local plugins = {
     config = function()
       require("plugins.tmux-navigator").config()
     end,
+  },
+  {
+    "rafcamlet/nvim-luapad",
+    after = "onedark.nvim",
+    config = function ()
+      require("plugins.luapad").config()
+    end
   },
   -- Show markers
   "kshenoy/vim-signature",
