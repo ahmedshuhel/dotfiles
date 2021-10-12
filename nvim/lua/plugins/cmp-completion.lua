@@ -41,6 +41,7 @@ local function config()
       end,
     },
     completion = {
+      completeopt = "menu,menuone,noinsert",
       autocomplete = false,
     },
     formatting = {
