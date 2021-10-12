@@ -17,6 +17,8 @@
 
 """ Map leader to backslash ---------------------
 let mapleader=" "
+set visualbell
+set noerrorbells
 
 """ Plugins  --------------------------------
 set surround
