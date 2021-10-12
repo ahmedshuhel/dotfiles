@@ -3,24 +3,27 @@ local fn = vim.fn
 local uv = vim.loop
 local cmd = vim.cmd
 local api = vim.api
+local _ = require("underscore")
 
 g.node_host_prog = fn.fnamemodify("~", ":p") .. ".nvm/versions/node/v14.15.4/bin/neovim-node-host"
 g.python3_host_prog = "/usr/bin/python3"
 g.mapleader = " "
 g.auto_save = false
 
-g.clipboard = {
-  name = "win32yank-wsl",
-  copy = {
-    ["+"] = "win32yank.exe -i --crlf",
-    ["*"] = "win32yank.exe -i --crlf",
-  },
-  paste = {
-    ["+"] = "win32yank.exe -o --lf",
-    ["*"] = "win32yank.exe -o --lf",
-  },
-  cache_enabled = 0,
-}
+if _.is_wsl2() then
+  g.clipboard = {
+    name = "win32yank-wsl",
+    copy = {
+      ["+"] = "win32yank.exe -i --crlf",
+      ["*"] = "win32yank.exe -i --crlf",
+    },
+    paste = {
+      ["+"] = "win32yank.exe -o --lf",
+      ["*"] = "win32yank.exe -o --lf",
+    },
+    cache_enabled = 0,
+  }
+end
 
 -- disable builtin vim plugins
 local disabled_builtins = {

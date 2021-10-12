@@ -71,4 +71,9 @@ M.has_chars_before = function()
   return col ~= 0 and chars:len() > 0
 end
 
+M.is_wsl2 = function()
+  local sys = fn.system("uname -a")
+  return sys:find("WSL2") ~= nil
+end
+
 return M
