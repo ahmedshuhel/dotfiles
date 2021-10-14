@@ -48,6 +48,7 @@ map gi :action GotoImplementation<CR>
 map gr :action FindUsages<CR>
 
 map <leader>f <Action>(ReformatCode)
+map <leader>/ <Action>(CommentByLineComment)
 map <leader>o <Action>(FileStructurePopup)
 map <leader>rn <Action>(RenameElement)
 
