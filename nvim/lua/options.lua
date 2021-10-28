@@ -54,7 +54,7 @@ opt.ttimeoutlen = 100
 opt.lazyredraw = true
 
 --folding
-opt.foldcolumn = 'auto'
+-- opt.foldcolumn = 'auto' // too noisy but works with mouse
 opt.foldlevel = 20
 opt.foldmethod = 'expr'
 opt.foldexpr = 'nvim_treesitter#foldexpr()'
