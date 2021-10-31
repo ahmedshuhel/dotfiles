@@ -2,6 +2,7 @@ local _ = require("underscore")
 
 local function config()
   local cmp = require("cmp")
+  -- local cmp_autopairs = require('nvim-autopairs.completion.cmp')
   local lspkind = require("lspkind")
   local ls = require("luasnip")
 
@@ -86,6 +87,8 @@ local function config()
       { name = "cmdline" },
     }),
   })
+
+  -- cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } })) 
 end
 
 return {

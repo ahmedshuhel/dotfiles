@@ -1,7 +1,5 @@
 local opt = vim.opt
 
-opt.guicursor = "n-v-c:block-Cursor,i-ci-ve:ver100-iCursor"
-
 opt.ruler = false
 opt.hidden = true
 opt.ignorecase = true
@@ -58,10 +56,3 @@ opt.lazyredraw = true
 opt.foldlevel = 20
 opt.foldmethod = 'expr'
 opt.foldexpr = 'nvim_treesitter#foldexpr()'
-
-vim.cmd([[
-augroup RestoreCursorShapeOnExit
-  au!
-  au VimLeave,VimSuspend * set guicursor=a:ver100-iCursor
-augroup END
-]])
