@@ -2,13 +2,24 @@ local packer = require("packer")
 
 return packer.startup({
   function(use)
-    use({ "kevinhwang91/nvim-bqf", ft="qf" })
     use("wbthomason/packer.nvim")
-    use({
+  use({
       "navarasu/onedark.nvim",
       after = "packer.nvim",
       config = function()
         require("plugins.onedark").config()
+      end,
+    })
+    use({
+      "kevinhwang91/nvim-bqf",
+      ft = "qf",
+      after = "onedark.nvim",
+      config = function()
+        require("bqf").setup({
+          preview = {
+            auto_preview = false,
+          },
+        })
       end,
     })
     use("ojroques/nvim-bufdel")
