@@ -1,33 +1,4 @@
-local opt = vim.opt
 local _ = require("underscore")
-
-local icons = {
-  Text = "",
-  Method = "",
-  Function = "",
-  Constructor = "",
-  Field = "ﰠ",
-  Variable = "",
-  Class = "ﴯ",
-  Interface = "",
-  Module = "",
-  Property = "ﰠ",
-  Unit = "塞",
-  Value = "",
-  Enum = "",
-  Keyword = "",
-  Snippet = "",
-  Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
-  EnumMember = "",
-  Constant = "",
-  Struct = "פּ",
-  Event = "",
-  Operator = "",
-  TypeParameter = "",
-}
 
 local function config()
   local cmp = require("cmp")
@@ -42,17 +13,24 @@ local function config()
     },
     completion = {
       completeopt = "menu,menuone,noinsert",
-      autocomplete = false,
+      autocomplete = true,
     },
     formatting = {
       format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
     },
     mapping = {
-      ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-      ["<C-f>"] = cmp.mapping.scroll_docs(4),
-      ["<C-Space>"] = cmp.mapping.complete(),
-      ["<C-e>"] = cmp.mapping.close(),
-      ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+      ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+      ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+      ["<C-y>"] = cmp.config.disable,
+      ["<C-e>"] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      ["<CR>"] = cmp.mapping({
+        i = cmp.mapping.confirm({ select = true }),
+        c = cmp.mapping.confirm({ select = false }),
+      }),
       ["<C-p>"] = cmp.mapping.select_prev_item(),
       ["<C-n>"] = cmp.mapping.select_next_item(),
       ["<Tab>"] = cmp.mapping(function(fallback)
@@ -82,13 +60,31 @@ local function config()
         "s",
       }),
     },
-    sources = {
+    sources = cmp.config.sources({
       { name = "nvim_lsp" },
       { name = "luasnip" },
       { name = "nvim_lua" },
       { name = "path" },
       { name = "vim-dadbod-completion" },
+    }, {
+      { name = "buffer" },
+    }),
+  })
+
+  -- Use buffer source for `/`.
+  cmp.setup.cmdline("/", {
+    sources = {
+      { name = "buffer" },
     },
+  })
+
+  -- Use cmdline & path source for ':'.
+  cmp.setup.cmdline(":", {
+    sources = cmp.config.sources({
+      { name = "path" },
+    }, {
+      { name = "cmdline" },
+    }),
   })
 end
 
