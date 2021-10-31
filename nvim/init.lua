@@ -68,7 +68,7 @@ require("options")
 require("keymaps")
 
 -- Load plugins
-require("plugins").load()
+require("plugins")
 
 -- load project local nvimrc
 local local_vimrc = fn.getcwd() .. "/.nvim/init.lua"
