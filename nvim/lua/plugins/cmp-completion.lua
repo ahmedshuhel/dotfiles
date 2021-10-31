@@ -64,13 +64,13 @@ local function config()
       }),
     },
     sources = cmp.config.sources({
-      { name = "nvim_lsp" },
-      { name = "luasnip" },
-      { name = "nvim_lua" },
-      { name = "path" },
-      { name = "vim-dadbod-completion" },
+      { name = "nvim_lsp", max_item_count = 10 },
+      { name = "luasnip", max_item_count = 5 },
+      { name = "nvim_lua", max_item_count = 10 },
+      { name = "path", max_item_count = 5 },
+      { name = "vim-dadbod-completion", max_item_count = 5 },
     }, {
-      { name = "buffer", max_item_count = 4 },
+      { name = "buffer", max_item_count = 2 },
     }),
   })
 
