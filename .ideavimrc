@@ -19,6 +19,7 @@
 let mapleader=" "
 set visualbell
 set noerrorbells
+set cb=unnamedplus
 
 """ Plugins  --------------------------------
 set surround
@@ -28,6 +29,7 @@ set argtextobj
 set easymotion
 set textobj-entire
 set ReplaceWithRegister
+set NERDTree
 
 """ Plugin settings -------------------------
 let g:argtextobj_pairs="[:],(:),<:>"
@@ -44,21 +46,28 @@ set ideastatusicon=gray
 set idearefactormode=keep
 
 """ Mappings --------------------------------
-map gi :action GotoImplementation<CR>
-map gr :action FindUsages<CR>
+nmap gi <Action>(GotoImplementation)
+nmap gr <Action>(FindUsages)
 
-map <leader>f <Action>(ReformatCode)
-map <leader>/ <Action>(CommentByLineComment)
-map <leader>o <Action>(FileStructurePopup)
-map <leader>rn <Action>(RenameElement)
+nmap <leader>f <Action>(ReformatCode)
+nmap <leader>/ <Action>(CommentByLineComment)
+nmap <leader>o <Action>(FileStructurePopup)
+nmap <leader>rn <Action>(RenameElement)
+nmap <leader>b <Action>(ToggleLineBreakpoint)
+nmap <leader>d <Action>(Debug)
+nmap <leader>c <Action>(Stop)
 
-map <leader>b <Action>(ToggleLineBreakpoint)
-map <leader>d <Action>(Debug)
-map <leader>c <Action>(Stop)
+nmap % <Action>(NewElement)
 
-map T <Action>(Switcher)
+nmap T <Action>(Switcher)
 
-map <leader>zz <Action>(ToggleDistractionFreeMode)
+nmap <leader>zz <Action>(ToggleDistractionFreeMode)
 
-map ]d <Action>(GotoNextError)
-map [d <Action>(GotoPreviousError)
+nmap ]d <Action>(GotoNextError)
+nmap [d <Action>(GotoPreviousError)
+
+nmap - :NERDTree<CR>
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <C-W>h
+nmap <C-l> <C-W>l

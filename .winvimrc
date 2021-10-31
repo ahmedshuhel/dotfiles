@@ -10,6 +10,7 @@ set backspace=indent,eol,start
 set complete-=i
 set smarttab
 set number
+set cb=unnamedplus
 
 set nrformats-=octal
 
@@ -64,4 +65,21 @@ if &t_Co == 8 && $TERM !~# '^Eterm'
   set t_Co=16
 endif
 
-noremap - :Ex<CR>
+noremap - :Lex 20<CR>
+
+nnoremap <C-h> :wincmd h<CR>
+nnoremap <C-j> :wincmd j<CR>
+nnoremap <C-k> :wincmd k<CR>
+nnoremap <C-l> :wincmd l<CR>
+
+function! NetrwMapping()
+  nnoremap <buffer> <C-h> :wincmd h<CR>
+  nnoremap <buffer> <C-j> :wincmd j<CR>
+  nnoremap <buffer> <C-k> :wincmd k<CR>
+  nnoremap <buffer> <C-l> :wincmd l<CR>
+endfunction
+
+augroup NetrwMapping
+  autocmd!
+  autocmd filetype netrw call NetrwMapping()
+augroup END

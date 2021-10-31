@@ -11,16 +11,16 @@
             "keys": "ctrl+shift+c"
         },
         {
-            "command": "find",
-            "keys": "ctrl+shift+f"
-        },
-        {
             "command": "unbound",
-            "keys": "ctrl+,"
+            "keys": "ctrl+comma"
         },
         {
             "command": "unbound",
             "keys": "ctrl+tab"
+        },
+        {
+            "command": "find",
+            "keys": "ctrl+shift+f"
         },
         {
             "command": "paste",
@@ -31,7 +31,7 @@
             {
                 "action": "openSettings"
             },
-            "keys": "ctrl+shift+,"
+            "keys": "ctrl+shift+comma"
         },
         {
             "command": 
@@ -59,6 +59,7 @@
     {
         "defaults": 
         {
+            "acrylicOpacity": 0.75,
             "colorScheme": "One Half Dark",
             "cursorShape": "filledBox",
             "font": 
@@ -68,8 +69,7 @@
             },
             "padding": "8, 0",
             "scrollbarState": "hidden",
-            "useAcrylic": true,
-            "acrylicOpacity": 0.75
+            "useAcrylic": true
         },
         "list": 
         [
@@ -96,7 +96,7 @@
                 "antialiasingMode": "grayscale",
                 "bellStyle": "none",
                 "colorScheme": "OneDark",
-                "cursorShape": "bar",
+                "cursorShape": "filledBox",
                 "experimental.retroTerminalEffect": false,
                 "font": 
                 {
