@@ -65,10 +65,9 @@ M.feedkeys = function(keys, mode)
   vim.api.nvim_feedkeys(M.t(keys), m, true)
 end
 
-M.has_chars_before = function()
-  local ln, col = unpack(vim.api.nvim_win_get_cursor(0))
-  local chars = vim.trim(vim.api.nvim_buf_get_lines(0, ln - 1, ln, true)[1]:sub(col, col))
-  return col ~= 0 and chars:len() > 0
+M.has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
 M.is_wsl2 = function()

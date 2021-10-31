@@ -14,11 +14,9 @@ local function config()
   local tree_config = require("nvim-tree.config")
   local tree_cb = tree_config.nvim_tree_callback
 
-  g.nvim_tree_ignore = { ".git", "node_modules", ".cache", ".pytest_cache", "__pycache__", ".eggs", ".docker" }
   g.nvim_tree_gitignore = 0
   g.nvim_tree_quit_on_open = 0
   g.nvim_tree_indent_markers = 1
-  g.nvim_tree_hide_dotfiles = 0
   g.nvim_tree_git_hl = 0
   g.nvim_tree_highlight_opened_files = 1
   g.nvim_tree_root_folder_modifier = ":~"
@@ -109,6 +107,10 @@ local function config()
       -- allow to open the tree if it was previously closed
       auto_open = false,
     },
+
+    nvim_tree_ignore = { ".git", "node_modules", ".cache", ".pytest_cache", "__pycache__", ".eggs", ".docker" },
+
+    nvim_tree_hide_dotfiles = false,
     -- hijack the cursor in the tree to put it at the start of the filename
     hijack_cursor = true,
     -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)

@@ -130,6 +130,13 @@ local plugins = {
       { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
       { "kristijanhusak/vim-dadbod-completion", after = { "nvim-cmp", "vim-dadbod-ui" } },
       {
+        "windwp/nvim-autopairs",
+        after = "nvim-cmp",
+        config = function()
+          require("nvim-autopairs").setup()
+        end
+      },
+      {
         "L3MON4D3/LuaSnip",
         requires = "rafamadriz/friendly-snippets",
         config = function()
@@ -189,13 +196,6 @@ local plugins = {
     event = "BufRead",
     config = function()
       require("plugins.gitsigns-nvim").config()
-    end,
-  },
-  {
-    "windwp/nvim-autopairs",
-    after = "nvim-cmp",
-    config = function()
-      -- require("nvim-autopairs").setup()
     end,
   },
   {
@@ -272,9 +272,9 @@ local plugins = {
   {
     "rafcamlet/nvim-luapad",
     after = "onedark.nvim",
-    config = function ()
+    config = function()
       require("plugins.luapad").config()
-    end
+    end,
   },
   -- Show markers
   "kshenoy/vim-signature",

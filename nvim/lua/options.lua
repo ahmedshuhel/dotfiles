@@ -12,9 +12,6 @@ opt.mouse = "a"
 opt.showmode = false
 opt.showcmd = false
 
--- opt.completeopt = "menu,menuone,noselect"
-opt.completeopt = "noselect"
-
 opt.shortmess:append("a") -- use abbreviations for messages
 opt.shortmess:append("W") -- don't give "written" or "[w]" when writing a file
 opt.shortmess:append("s") -- don't give "search hit BOTTOM, continuing at TOP" or "search

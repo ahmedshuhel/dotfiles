@@ -2,7 +2,6 @@ local _ = require("underscore")
 
 local function config()
   local cmp = require("cmp")
-  -- local cmp_autopairs = require('nvim-autopairs.completion.cmp')
   local lspkind = require("lspkind")
   local ls = require("luasnip")
 
@@ -12,12 +11,14 @@ local function config()
         require("luasnip").lsp_expand(args.body)
       end,
     },
-    completion = {
-      completeopt = "menu,menuone,noinsert",
-      autocomplete = true,
-    },
     formatting = {
       format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
+    },
+    completion = {
+      keyword_length = 2,
+    },
+    experimental = {
+      ghost_text = true,
     },
     mapping = {
       ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
@@ -30,17 +31,17 @@ local function config()
       }),
       ["<CR>"] = cmp.mapping({
         i = cmp.mapping.confirm({ select = true }),
-        c = cmp.mapping.confirm({ select = false }),
+        c = cmp.mapping.confirm({ select = true }),
       }),
       ["<C-p>"] = cmp.mapping.select_prev_item(),
       ["<C-n>"] = cmp.mapping.select_next_item(),
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          _.feedkeys("<C-n>", "n")
+          cmp.select_next_item()
         elseif ls.expand_or_jumpable() then
-          _.feedkeys("<Plug>luasnip-expand-or-jump")
-        elseif _.has_chars_before() then
-          _.feedkeys("<C-Space>")
+          ls.expand_or_jump()
+        elseif _.has_words_before() then
+          cmp.complete()
         else
           fallback()
         end
@@ -48,11 +49,12 @@ local function config()
         "i",
         "s",
       }),
+
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          _.feedkeys("<C-p>", "n")
+          cmp.select_prev_item()
         elseif ls.jumpable(-1) then
-          _.feedkeys("<Plug>luasnip-jump-prev")
+          ls.jump(-1)
         else
           fallback()
         end
@@ -68,7 +70,7 @@ local function config()
       { name = "path" },
       { name = "vim-dadbod-completion" },
     }, {
-      { name = "buffer" },
+      { name = "buffer", max_item_count = 4 },
     }),
   })
 
@@ -87,8 +89,6 @@ local function config()
       { name = "cmdline" },
     }),
   })
-
-  -- cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } })) 
 end
 
 return {
