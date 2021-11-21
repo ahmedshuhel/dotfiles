@@ -55,7 +55,7 @@ local function make_capabilities()
 end
 
 local function make_py_config(opt)
-  return _.extend(require("lspconfig")["python"], opt, {
+  return _.extend(require("lspconfig")["pyright"], opt, {
     settings = {
       pyright = {
         disableLanguageServices = false,
@@ -76,7 +76,7 @@ local function make_py_config(opt)
 end
 
 local function make_lua_config(opt)
-  return _.extend(require("lspconfig")["lua"], opt, {
+  return _.extend(require("lspconfig")["sumneko_lua"], opt, {
     flags = { debounce_text_changes = 500 },
     settings = {
       Lua = {
@@ -152,12 +152,12 @@ local function config()
 
   lsp_installer.on_server_ready(function(server)
     -- Customize the options passed to the server
-    if server.name == "python" then
+    if server.name == "pyright" then
       server:setup(make_py_config(opts))
       return
     end
 
-    if server.name == "lua" then
+    if server.name == "sumneko_lua" then
       server:setup(make_lua_config(opts))
       return
     end
