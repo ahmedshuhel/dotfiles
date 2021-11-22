@@ -11,9 +11,6 @@ local function keymaps()
 end
 
 local function config()
-  local tree_config = require("nvim-tree.config")
-  local tree_cb = tree_config.nvim_tree_callback
-
   g.nvim_tree_gitignore = 0
   g.nvim_tree_quit_on_open = 0
   g.nvim_tree_indent_markers = 1
@@ -52,6 +49,9 @@ local function config()
       symlink_open = "",
     },
   }
+
+  local tree_config = require("nvim-tree.config")
+  local tree_cb = tree_config.nvim_tree_callback
 
   local list = {
     { key = { "<CR>", "o", "<2-LeftMouse>" }, cb = tree_cb("edit") },
@@ -107,10 +107,6 @@ local function config()
       -- allow to open the tree if it was previously closed
       auto_open = false,
     },
-
-    nvim_tree_ignore = { ".git", "node_modules", ".cache", ".pytest_cache", "__pycache__", ".eggs", ".docker" },
-
-    nvim_tree_hide_dotfiles = false,
     -- hijack the cursor in the tree to put it at the start of the filename
     hijack_cursor = true,
     -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
@@ -155,6 +151,18 @@ local function config()
         custom_only = false,
         -- list of mappings to set on the tree manually
         list = list,
+      },
+    },
+    filters = {
+      dotfiles = false,
+      custom = {
+        ".git",
+        "node_modules",
+        ".cache",
+        ".pytest_cache",
+        "__pycache__",
+        ".eggs",
+        ".docker",
       },
     },
   })
