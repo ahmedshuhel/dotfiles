@@ -75,20 +75,20 @@ local function config()
   })
 
   -- Use buffer source for `/`.
-  cmp.setup.cmdline("/", {
-    sources = {
-      { name = "buffer", select = true },
-    },
-  })
+  -- cmp.setup.cmdline("/", {
+  --   sources = {
+  --     { name = "buffer", select = true },
+  --   },
+  -- })
 
   -- Use cmdline & path source for ':'.
-  cmp.setup.cmdline(":", {
-    sources = cmp.config.sources({
-      { name = "path", select = true },
-    }, {
-      { name = "cmdline" },
-    }),
-  })
+  -- cmp.setup.cmdline(":", {
+  --   sources = cmp.config.sources({
+  --     { name = "path", select = true },
+  --   }, {
+  --     { name = "cmdline" },
+  --   }),
+  -- })
 end
 
 return {
