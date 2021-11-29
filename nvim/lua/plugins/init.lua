@@ -5,6 +5,13 @@ return packer.startup({
     use("wbthomason/packer.nvim")
 
     use({
+      "folke/which-key.nvim",
+      config = function()
+        require("plugins.wk").config()
+      end,
+    })
+
+    use({
       "navarasu/onedark.nvim",
       after = "packer.nvim",
       config = function()
