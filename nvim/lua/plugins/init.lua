@@ -24,11 +24,7 @@ return packer.startup({
       ft = "qf",
       after = "onedark.nvim",
       config = function()
-        require("bqf").setup({
-          preview = {
-            auto_preview = false,
-          },
-        })
+        require("plugins.bqf").config()
       end,
     })
 
