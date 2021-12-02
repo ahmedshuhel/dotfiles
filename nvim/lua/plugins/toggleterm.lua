@@ -1,7 +1,7 @@
 local _ = require("underscore")
 
 local function keymaps()
-  _.map("t", "<c-q>", [[<C-\><C-n>]]) --  Exit terminal mode
+  _.map("t", "<C-q>", [[<C-\><C-n>]]) --  Exit terminal mode
   _.map("t", "<C-h>", [[<C-\><C-n><C-w>h]]) --  Navigate left
   _.map("t", "<C-j>", [[<C-\><C-n><C-w>j]]) --  Navigate dwon
   _.map("t", "<C-k>", [[<C-\><C-n><C-w>k]]) --  Navigate up
@@ -44,9 +44,22 @@ local function config()
       },
     },
   })
+
+  local Terminal = require("toggleterm.terminal").Terminal
+  local lazygit = Terminal:new({
+    cmd = "lazygit",
+    hidden = true,
+    direction = "float",
+  })
+
+  function _lazygit_toggle()
+    lazygit:toggle()
+  end
+
+  _.map("n", "<leader>lg", [[<cmd>lua _lazygit_toggle()<CR>]])
 end
 
 return {
   config = config,
-  keymaps = keymaps
+  keymaps = keymaps,
 }

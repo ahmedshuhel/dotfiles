@@ -64,7 +64,7 @@ end
 -- All global options
 require("options")
 
--- Load keymaps before plugins
+-- Load keymaps before plugins (to enable lazy loading of plugins on key down)
 require("keymaps")
 
 -- Load plugins
