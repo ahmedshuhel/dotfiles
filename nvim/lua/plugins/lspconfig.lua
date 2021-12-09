@@ -55,7 +55,7 @@ local function make_capabilities()
 end
 
 local function make_py_config(opt)
-  return _.extend(require("lspconfig")["pyright"], opt, {
+  return _.extend(opt, {
     settings = {
       pyright = {
         disableLanguageServices = false,
@@ -67,7 +67,8 @@ local function make_py_config(opt)
           diagnosticMode = "workspace",
           useLibraryCodeForTypes = true,
           diagnosticSeverityOverrides = {
-            reportUnusedImport = false,
+            reportUnusedImport = "none",
+            reportUnusedVariable = "none",
           },
         },
       },
@@ -76,7 +77,7 @@ local function make_py_config(opt)
 end
 
 local function make_lua_config(opt)
-  return _.extend(require("lspconfig")["sumneko_lua"], opt, {
+  return _.extend(opt, {
     flags = { debounce_text_changes = 500 },
     settings = {
       Lua = {
@@ -105,7 +106,7 @@ end
 
 local function config()
   -- Set log level to debug language server
-  vim.lsp.set_log_level("debug")
+  -- vim.lsp.set_log_level("debug")
   -- Open log using `:lua vim.cmd('e'..vim.lsp.get_log_path())`
 
   local lsp_installer = require("nvim-lsp-installer")
@@ -167,6 +168,7 @@ local function config()
     server:setup(opts)
   end)
 
+  require("plugins.null-ls").config()
   require("lspconfig")["null-ls"].setup(opts)
 end
 

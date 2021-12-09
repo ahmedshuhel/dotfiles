@@ -76,7 +76,7 @@ M.is_wsl2 = function()
 end
 
 M.extend = function(x, y, z)
-  return vim.tbl_deep_extend("force", x, y, z)
+  return vim.tbl_deep_extend("force", x, y)
 end
 
 return M

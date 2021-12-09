@@ -13,7 +13,6 @@ return packer.startup({
 
     use({
       "navarasu/onedark.nvim",
-      after = "packer.nvim",
       config = function()
         require("plugins.onedark").config()
       end,
@@ -110,17 +109,22 @@ return packer.startup({
 
     use({
       "williamboman/nvim-lsp-installer",
-      after = { "nvim-lspconfig" },
+      requires = {
+        {
+          "neovim/nvim-lspconfig",
+          requires = {
+            {
+              "jose-elias-alvarez/null-ls.nvim",
+              requires = {
+                "nvim-lua/plenary.nvim",
+              },
+            },
+          },
+        },
+      },
       config = function()
         require("plugins.lspconfig").config()
       end,
-    })
-
-    use({
-      "jose-elias-alvarez/null-ls.nvim",
-      requires = {
-        "nvim-lua/plenary.nvim",
-      },
     })
 
     use({
@@ -179,15 +183,6 @@ return packer.startup({
           end,
         },
       },
-    })
-
-    use({
-      "neovim/nvim-lspconfig",
-      event = "BufRead",
-      after = { "onedark.nvim", "null-ls.nvim", "nvim-cmp" },
-      config = function()
-        require("plugins.null-ls").config()
-      end,
     })
 
     use({
