@@ -168,7 +168,7 @@ local function config()
     server:setup(opts)
   end)
 
-  require("plugins.null-ls").config()
+  require("plugins.maq-null-ls").config()
   require("lspconfig")["null-ls"].setup(opts)
 end
 

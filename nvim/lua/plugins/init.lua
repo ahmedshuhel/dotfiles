@@ -14,7 +14,7 @@ return packer.startup({
     use({
       "navarasu/onedark.nvim",
       config = function()
-        require("plugins.onedark").config()
+        require("plugins.maq-onedark").config()
       end,
     })
 
@@ -23,7 +23,7 @@ return packer.startup({
       ft = "qf",
       after = "onedark.nvim",
       config = function()
-        require("plugins.bqf").config()
+        require("plugins.maq-bqf").config()
       end,
     })
 
@@ -58,7 +58,7 @@ return packer.startup({
       after = "onedark.nvim",
       branch = "new_rightbelow",
       config = function()
-        require("plugins.toggleterm").config()
+        require("plugins.maq-toggleterm").config()
       end,
     })
 
@@ -103,7 +103,7 @@ return packer.startup({
       after = { "nvim-treesitter", "onedark.nvim" },
       requires = { "nvim-lua/plenary.nvim" },
       config = function()
-        require("plugins.rest-nvim").config()
+        require("plugins.maq-rest-nvim").config()
       end,
     })
 
@@ -123,7 +123,7 @@ return packer.startup({
         },
       },
       config = function()
-        require("plugins.lspconfig").config()
+        require("plugins.maq-lspconfig").config()
       end,
     })
 
@@ -186,12 +186,10 @@ return packer.startup({
     })
 
     use({
-      "ahmedshuhel/trouble.nvim",
-      branch = "rightbelow",
-      after = { "onedark.nvim" },
+      "folke/trouble.nvim",
       requires = "kyazdani42/nvim-web-devicons",
       config = function()
-        require("plugins.trouble").config()
+        require("plugins.maq-trouble").config()
       end,
     })
 
@@ -318,7 +316,7 @@ return packer.startup({
       "rafcamlet/nvim-luapad",
       after = "onedark.nvim",
       config = function()
-        require("plugins.luapad").config()
+        require("plugins.maq-luapad").config()
       end,
     })
 

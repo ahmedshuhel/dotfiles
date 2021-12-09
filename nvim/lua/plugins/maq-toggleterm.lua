@@ -52,7 +52,7 @@ local function config()
     direction = "float",
   })
 
-  function _lazygit_toggle()
+  function _G._lazygit_toggle()
     lazygit:toggle()
   end
 
