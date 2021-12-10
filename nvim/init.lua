@@ -5,7 +5,7 @@ local cmd = vim.cmd
 local api = vim.api
 local _ = require("underscore")
 
-g.node_host_prog = fn.fnamemodify("~", ":p") .. ".nvm/versions/node/v14.15.4/bin/neovim-node-host"
+g.node_host_prog = fn.fnamemodify("~", ":p") .. ".nvm/versions/node/v16.13.1/bin/neovim-node-host"
 g.python3_host_prog = "/usr/bin/python3"
 g.mapleader = " "
 g.auto_save = false
