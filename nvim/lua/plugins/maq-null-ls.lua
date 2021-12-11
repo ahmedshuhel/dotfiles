@@ -21,7 +21,6 @@ local function config()
       }),
       nls.builtins.formatting.terraform_fmt,
       nls.builtins.diagnostics.codespell,
-      nls.builtins.diagnostics.write_good,
       nls.builtins.diagnostics.stylelint,
     },
   })

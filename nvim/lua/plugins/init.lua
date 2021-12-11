@@ -328,6 +328,14 @@ return packer.startup({
     use("tpope/vim-eunuch")
 
     use("tpope/vim-repeat")
+
+    use({
+      "luukvbaal/stabilize.nvim",
+      config = function()
+        require("stabilize").setup()
+      end,
+    })
+
   end,
   config = {
     auto_clean = true,

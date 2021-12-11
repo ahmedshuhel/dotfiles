@@ -75,7 +75,7 @@ M.is_wsl2 = function()
   return sys:find("WSL2") ~= nil
 end
 
-M.extend = function(x, y, z)
+M.extend = function(x, y)
   return vim.tbl_deep_extend("force", x, y)
 end
 

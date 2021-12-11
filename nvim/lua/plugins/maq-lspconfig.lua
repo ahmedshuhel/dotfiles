@@ -57,19 +57,12 @@ end
 local function make_py_config(opt)
   return _.extend(opt, {
     settings = {
-      pyright = {
-        disableLanguageServices = false,
-      },
       python = {
         analysis = {
           logLevel = "Trace",
           autoSearchPaths = true,
           diagnosticMode = "workspace",
           useLibraryCodeForTypes = true,
-          diagnosticSeverityOverrides = {
-            reportUnusedImport = "none",
-            reportUnusedVariable = "none",
-          },
         },
       },
     },
@@ -101,7 +94,8 @@ local function make_lua_config(opt)
 end
 
 local function lspSymbol(name, icon)
-  vim.fn.sign_define("LspDiagnosticsSign" .. name, { text = icon, numhl = "LspDiagnosticsDefaul" .. name })
+  local hl = "DiagnosticSign" .. name
+  vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
 end
 
 local function config()
