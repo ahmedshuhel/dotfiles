@@ -104,10 +104,12 @@ local function config()
   -- Open log using `:lua vim.cmd('e'..vim.lsp.get_log_path())`
 
   local lsp_installer = require("nvim-lsp-installer")
+  local nls = require("null-ls")
+  local helpers = require("null-ls.helpers")
 
   lspSymbol("Error", "")
-  lspSymbol("Warning", "")
-  lspSymbol("Information", "")
+  lspSymbol("Warn", "")
+  lspSymbol("Info", "")
   lspSymbol("Hint", "")
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -145,6 +147,29 @@ local function config()
     flags = { debounce_text_changes = 500 },
   }
 
+  nls.setup(_.extend(opts, {
+    sources = {
+      nls.builtins.formatting.stylua.with({
+        condition = function(utils)
+          return utils.root_has_file(".stylua.toml")
+        end,
+      }),
+      helpers.conditional(function(utils)
+        return utils.root_has_file(".eslintrc.yml") and nls.builtins.formatting.eslint_d
+          or nls.builtins.formatting.prettier.with({
+            filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte", "html" },
+          })
+      end),
+      nls.builtins.formatting.black,
+      nls.builtins.formatting.sqlformat.with({
+        filetypes = { "sql", "mysql", "pgsql" },
+      }),
+      nls.builtins.formatting.terraform_fmt,
+      nls.builtins.diagnostics.codespell,
+      nls.builtins.diagnostics.stylelint,
+    },
+  }))
+
   lsp_installer.on_server_ready(function(server)
     -- Customize the options passed to the server
     if server.name == "pyright" then
@@ -161,9 +186,6 @@ local function config()
     -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/ADVANCED_README.md
     server:setup(opts)
   end)
-
-  require("plugins.maq-null-ls").config()
-  require("lspconfig")["null-ls"].setup(opts)
 end
 
 return {
