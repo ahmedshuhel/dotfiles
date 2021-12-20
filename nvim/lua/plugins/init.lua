@@ -54,9 +54,8 @@ return packer.startup({
     })
 
     use({
-      "ahmedshuhel/toggleterm.nvim",
+      "akinsho/toggleterm.nvim",
       after = "onedark.nvim",
-      branch = "new_rightbelow",
       config = function()
         require("plugins.maq-toggleterm").config()
       end,
@@ -195,12 +194,22 @@ return packer.startup({
 
     use({
       "nvim-telescope/telescope.nvim",
-      after = { "onedark.nvim", "trouble.nvim" },
+      after = { "onedark.nvim", "trouble.nvim", "project.nvim" },
       requires = {
         { "nvim-lua/popup.nvim" },
         { "nvim-lua/plenary.nvim" },
         { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
         { "nvim-telescope/telescope-media-files.nvim" },
+        {
+          "ahmedkhalf/project.nvim",
+          config = function()
+            require("project_nvim").setup({
+              -- your configuration comes here
+              -- or leave it empty to use the default settings
+              -- refer to the configuration section below
+            })
+          end,
+        },
       },
       config = function()
         require("plugins.telescope-nvim").config()
@@ -335,7 +344,6 @@ return packer.startup({
         require("stabilize").setup()
       end,
     })
-
   end,
   config = {
     auto_clean = true,

@@ -46,7 +46,6 @@ local disabled_builtins = {
   "2html_plugin",
   "logipat",
   "rrhelper",
-  "spellfile_plugin",
   "matchit",
 }
 

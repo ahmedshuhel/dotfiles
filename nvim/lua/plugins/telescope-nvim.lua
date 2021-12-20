@@ -111,6 +111,7 @@ local function config()
 
   ts.load_extension("fzf")
   ts.load_extension("media_files")
+  ts.load_extension("projects")
 end
 
 return {

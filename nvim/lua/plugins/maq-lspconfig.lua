@@ -103,10 +103,6 @@ local function config()
   -- vim.lsp.set_log_level("debug")
   -- Open log using `:lua vim.cmd('e'..vim.lsp.get_log_path())`
 
-  local lsp_installer = require("nvim-lsp-installer")
-  local nls = require("null-ls")
-  local helpers = require("null-ls.helpers")
-
   lspSymbol("Error", "")
   lspSymbol("Warn", "")
   lspSymbol("Info", "")
@@ -147,6 +143,10 @@ local function config()
     flags = { debounce_text_changes = 500 },
   }
 
+  local lsp_installer = require("nvim-lsp-installer")
+  local nls = require("null-ls")
+  local helpers = require("null-ls.helpers")
+
   nls.setup(_.extend(opts, {
     sources = {
       nls.builtins.formatting.stylua.with({
@@ -174,17 +174,13 @@ local function config()
     -- Customize the options passed to the server
     if server.name == "pyright" then
       server:setup(make_py_config(opts))
-      return
-    end
-
-    if server.name == "sumneko_lua" then
+    elseif server.name == "sumneko_lua" then
       server:setup(make_lua_config(opts))
-      return
+    else
+      -- This setup() function is exactly the same as lspconfig's setup function.
+      -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/ADVANCED_README.md
+      server:setup(opts)
     end
-
-    -- This setup() function is exactly the same as lspconfig's setup function.
-    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/ADVANCED_README.md
-    server:setup(opts)
   end)
 end
 
