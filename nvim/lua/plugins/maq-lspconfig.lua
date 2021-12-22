@@ -95,7 +95,7 @@ end
 
 local function lspSymbol(name, icon)
   local hl = "DiagnosticSign" .. name
-  vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
+  vim.fn.sign_define(hl, { text = icon, texthl = hl })
 end
 
 local function config()
@@ -103,9 +103,9 @@ local function config()
   -- vim.lsp.set_log_level("debug")
   -- Open log using `:lua vim.cmd('e'..vim.lsp.get_log_path())`
 
-  lspSymbol("Error", "")
-  lspSymbol("Warn", "")
-  lspSymbol("Info", "")
+  lspSymbol("Error", "•")
+  lspSymbol("Warn", "•")
+  lspSymbol("Info", "•")
   lspSymbol("Hint", "•")
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
