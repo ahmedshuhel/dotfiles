@@ -78,12 +78,6 @@ plugins=(z git tmux vi-mode zsh-autosuggestions zsh-syntax-highlighting zsh-lazy
 
 source $ZSH/oh-my-zsh.sh
 
-if [[ `uname` == "Darwin" ]]; then
-  eval $(gdircolors ~/.dircolors)
-else
-  eval $(dircolors ~/.dircolors)
-fi
-
 
 # User configuration
 
@@ -186,3 +180,13 @@ alias ncd="nc-docker"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+
+if [[ `uname` == "Darwin" ]]; then
+  eval $(gdircolors ~/.dircolors)
+  export PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
+else
+  eval $(dircolors ~/.dircolors)
+fi
+
