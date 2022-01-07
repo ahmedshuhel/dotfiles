@@ -185,7 +185,16 @@ alias ncd="nc-docker"
 
 if [[ `uname` == "Darwin" ]]; then
   eval $(gdircolors ~/.dircolors)
-  export PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
+
+  export PATH="$(brew --prefix openssl@1.1)/bin:$PATH"
+
+  export CFLAGS="-I$(brew --prefix openssl@1.1)/include"
+  export LDFLAGS="-L$(brew --prefix openssl@1.1)/lib"
+  export LDFLAGS="${LDFLAGS} -L$(brew --prefix zlib)/lib"
+  export CPPFLAGS="${CPPFLAGS} -I$(brew --prefix zlib)/include"
+  export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} $(brew --prefix zlib)/lib/pkgconfig"
+  export CPPFLAGS="${CPPFLAGS} -I$(brew --prefix sqlite)/include"
+
 else
   eval $(dircolors ~/.dircolors)
 fi
