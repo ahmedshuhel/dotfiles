@@ -3,9 +3,9 @@ local g = vim.g
 local function config()
   require("onedark").setup({
     -- Main options --
-    style = "dark", -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+    style = "deep", -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
     transparent = false, -- Show/hide background
-    term_colors = true, -- Change terminal color as per the selected theme style
+    term_colors = false, -- Change terminal color as per the selected theme style
     ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
     -- toggle theme style ---
     toggle_style_key = "<leader>ts", -- Default keybinding to toggle
