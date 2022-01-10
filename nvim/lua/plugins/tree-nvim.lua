@@ -11,7 +11,6 @@ local function keymaps()
 end
 
 local function config()
-  g.nvim_tree_gitignore = 0
   g.nvim_tree_quit_on_open = 0
   g.nvim_tree_indent_markers = 1
   g.nvim_tree_git_hl = 0
@@ -164,6 +163,9 @@ local function config()
         ".eggs",
         ".docker",
       },
+    },
+    git = {
+      ignore = false,
     },
   })
 end

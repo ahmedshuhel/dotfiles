@@ -5,16 +5,16 @@ return packer.startup({
     use("wbthomason/packer.nvim")
 
     use({
-      "folke/which-key.nvim",
+      "navarasu/onedark.nvim",
       config = function()
-        require("plugins.wk").config()
+        require("plugins.maq-onedark").config()
       end,
     })
 
     use({
-      "navarasu/onedark.nvim",
+      "folke/which-key.nvim",
       config = function()
-        require("plugins.maq-onedark").config()
+        require("plugins.wk").config()
       end,
     })
 

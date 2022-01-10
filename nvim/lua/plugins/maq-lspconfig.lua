@@ -154,12 +154,18 @@ local function config()
           return utils.root_has_file(".stylua.toml")
         end,
       }),
-      helpers.conditional(function(utils)
-        return utils.root_has_file(".eslintrc.yml") and nls.builtins.formatting.eslint_d
-          or nls.builtins.formatting.prettier.with({
-            filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte", "html" },
-          })
-      end),
+      nls.builtins.formatting.prettier.with({
+        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte", "html" },
+        condition = function(utils)
+          return not utils.root_has_file(".eslintrc.yml")
+        end,
+      }),
+      nls.builtins.formatting.eslint_d.with({
+        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "html" },
+        condition = function(utils)
+          return utils.root_has_file(".eslintrc.yml")
+        end,
+      }),
       nls.builtins.formatting.black,
       nls.builtins.formatting.sqlformat.with({
         filetypes = { "sql", "mysql", "pgsql" },
