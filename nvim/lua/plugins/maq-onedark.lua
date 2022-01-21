@@ -1,5 +1,3 @@
-local g = vim.g
-
 local function config()
   require("onedark").setup({
     -- Main options --
