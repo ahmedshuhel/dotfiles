@@ -7,18 +7,16 @@ local function highlight()
 end
 
 local function keymaps()
-  _.map("n", "-", ":NvimTreeOpen<CR>:NvimTreeFindFile<CR>")
+  _.map("n", "-", ":NvimTreeFindFile<CR>")
 end
 
 local function config()
-  g.nvim_tree_quit_on_open = 0
   g.nvim_tree_indent_markers = 1
   g.nvim_tree_git_hl = 0
   g.nvim_tree_highlight_opened_files = 1
   g.nvim_tree_root_folder_modifier = ":~"
   g.nvim_tree_add_trailing = 1
   g.nvim_tree_special_files = {}
-  g.nvim_tree_disable_window_picker = 1
 
   g.nvim_tree_show_icons = {
     git = 0,
@@ -127,6 +125,14 @@ local function config()
       cmd = nil,
       -- the command arguments as a list
       args = {},
+    },
+    actions = {
+      open_file = {
+        quit_on_open = false,
+        window_picker = {
+          enable = false
+        }
+      }
     },
     diagnostics = {
       enable = false,
