@@ -144,6 +144,11 @@ export PATH="$PYTHON3_LOCAL_BIN:$PYTHON2_LOCAL_BIN:$PATH"
 export NVM_DIR="$HOME/.nvm"
 
 lazyload nvm -- '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
+
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
 lazyload pyenv -- 'source ~/.pyenv.zsh'
 
 export PATH=$PATH:$HOME/bin
