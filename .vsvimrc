@@ -12,6 +12,7 @@ map gu :vsc Edit.FindAllReferences<CR>
 map gc :vsc Edit.ToggleLineComment<CR>
 map <leader>rn :vsc Refactor.Rename<CR>
 map <leader>rm :vsc Refactor.ExtractMethod<CR>
+map - :vsc View.SolutionExplorer<CR>
 map ] :vsc Edit.NextMethod<CR>
 map [ :vsc Edit.PreviousMethod<CR>
 map zl :so ~/.vsvimrc<CR>
