@@ -1,12 +1,17 @@
 set ignorecase
 set clipboard=unnamed
 
-map gd :vsc Edit.GoToDeclaration<CR>
-map gD :vsc Edit.GoToDefinition<CR>
+let mapleader="\<space>"
+
+
+map gd :vsc Edit.GoToDefinition<CR>
+map gD :vsc Edit.GoToDeclaration<CR>
 map gi :vsc Edit.GoToImplementation<CR>
 map gm :vsc Edit.GoToMember<CR>
-map gu :vsc Edit.GoToReference<CR>
+map gu :vsc Edit.FindAllReferences<CR>
 map gc :vsc Edit.ToggleLineComment<CR>
+map <leader>rn :vsc Refactor.Rename<CR>
+map <leader>rm :vsc Refactor.ExtractMethod<CR>
 map ] :vsc Edit.NextMethod<CR>
 map [ :vsc Edit.PreviousMethod<CR>
 map zl :so ~/.vsvimrc<CR>
