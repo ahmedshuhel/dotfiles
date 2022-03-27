@@ -93,6 +93,7 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
+                "acrylicOpacity": 0.0,
                 "antialiasingMode": "grayscale",
                 "bellStyle": "none",
                 "colorScheme": "OneDark",
@@ -100,7 +101,7 @@
                 "experimental.retroTerminalEffect": false,
                 "font": 
                 {
-                    "face": "Hack Nerd Font Mono",
+                    "face": "CaskaydiaCove Nerd Font Mono",
                     "size": 10
                 },
                 "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
@@ -108,7 +109,8 @@
                 "name": "Ubuntu-20.04",
                 "scrollbarState": "hidden",
                 "source": "Windows.Terminal.Wsl",
-                "suppressApplicationTitle": false
+                "suppressApplicationTitle": false,
+                "useAcrylic": false
             }
         ]
     },
@@ -370,6 +372,6 @@
     ],
     "showTabsInTitlebar": true,
     "tabSwitcherMode": "inOrder",
-    "theme": "system",
+    "theme": "dark",
     "windowingBehavior": "useNew"
 }

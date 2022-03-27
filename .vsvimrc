@@ -1,10 +1,12 @@
 set ignorecase
 set clipboard=unnamed
 
-map gd :vsc ReSharper.ReSharper_GotoDeclaration<CR>
-map gD :vsc Resharper.Resharper_GotoImplementations<CR>
-map gu :vsc ReSharper.ReSharper_FindUsages<CR>
-map gc :vsc ReSharper.ReSharper_LineComment<CR>
-map ] :vsc ReSharper.ReSharper_GotoNextMethod<CR>
-map [ :vsc ReSharper.ReSharper_GotoPrevMethod<CR>
+map gd :vsc Edit.GoToDeclaration<CR>
+map gD :vsc Edit.GoToDefinition<CR>
+map gi :vsc Edit.GoToImplementation<CR>
+map gm :vsc Edit.GoToMember<CR>
+map gu :vsc Edit.GoToReference<CR>
+map gc :vsc Edit.ToggleLineComment<CR>
+map ] :vsc Edit.NextMethod<CR>
+map [ :vsc Edit.PreviousMethod<CR>
 map zl :so ~/.vsvimrc<CR>
