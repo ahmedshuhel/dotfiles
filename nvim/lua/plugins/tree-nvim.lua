@@ -11,41 +11,6 @@ local function keymaps()
 end
 
 local function config()
-  g.nvim_tree_indent_markers = 1
-  g.nvim_tree_git_hl = 0
-  g.nvim_tree_highlight_opened_files = 1
-  g.nvim_tree_root_folder_modifier = ":~"
-  g.nvim_tree_add_trailing = 1
-  g.nvim_tree_special_files = {}
-
-  g.nvim_tree_show_icons = {
-    git = 0,
-    folders = 1,
-    files = 1,
-    folder_arrows = 1,
-  }
-
-  g.nvim_tree_icons = {
-    default = "",
-    symlink = "",
-    git = {
-      unstaged = "✗",
-      staged = "✓",
-      unmerged = "",
-      renamed = "➜",
-      untracked = "★",
-      deleted = "",
-      ignored = "◌",
-    },
-    folder = {
-      default = "",
-      open = "",
-      empty = "",
-      empty_open = "",
-      symlink = "",
-      symlink_open = "",
-    },
-  }
 
   local tree_config = require("nvim-tree.config")
   local tree_cb = tree_config.nvim_tree_callback
@@ -84,6 +49,42 @@ local function config()
     { key = "g?", cb = tree_cb("toggle_help") },
   }
 
+  g.nvim_tree_git_hl = 0
+  g.nvim_tree_highlight_opened_files = 1
+  g.nvim_tree_root_folder_modifier = ":~"
+  g.nvim_tree_add_trailing = 1
+  g.nvim_tree_special_files = {}
+
+  g.nvim_tree_show_icons = {
+    git = 0,
+    folders = 1,
+    files = 1,
+    folder_arrows = 1,
+  }
+
+  g.nvim_tree_icons = {
+    default = "",
+    symlink = "",
+    git = {
+      unstaged = "✗",
+      staged = "✓",
+      unmerged = "",
+      renamed = "➜",
+      untracked = "★",
+      deleted = "",
+      ignored = "◌",
+    },
+    folder = {
+      default = "",
+      open = "",
+      empty = "",
+      empty_open = "",
+      symlink = "",
+      symlink_open = "",
+    },
+  }
+
+
   require("nvim-tree").setup({
     -- disables netrw completely
     disable_netrw = true,
@@ -93,8 +94,6 @@ local function config()
     open_on_setup = false,
     -- will not open on setup if the filetype is in this list
     ignore_ft_on_setup = {},
-    -- closes neovim automatically when the tree is the last **WINDOW** in the view
-    auto_close = true,
     -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
     open_on_tab = false,
     -- hijacks new directory buffers when they are opened.
@@ -142,6 +141,11 @@ local function config()
         warning = "",
         error = "",
       },
+    },
+    renderer = {
+      indent_markers = {
+        enable = true
+      }
     },
     view = {
       -- width of the window, can be either a number (columns) or a string in `%`
