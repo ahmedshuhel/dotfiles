@@ -10,9 +10,9 @@ end
 
 local function keymaps()
   _.map("n", "<C-p>", [[<Cmd>Telescope find_files<CR>]])
-  _.map("n", "<Leader>o", [[<Cmd>Telescope lsp_document_symbols<CR>]])
-  _.map("n", "<Leader>g", [[<Cmd>Telescope live_grep<CR>]])
   _.map("n", "<S-t>", [[<Cmd>Telescope buffers<CR>]])
+  _.map("n", "<Leader>gm", [[<Cmd>Telescope lsp_document_symbols<CR>]])
+  _.map("n", "<Leader>fg", [[<Cmd>Telescope live_grep<CR>]])
   _.map("n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]])
   _.map("n", "<Leader>fs", [[<Cmd>Telescope git_status<CR>]])
   _.map("n", "<Leader>fc", [[<Cmd>Telescope git_commits<CR>]])
