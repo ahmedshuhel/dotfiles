@@ -7,7 +7,20 @@ local function highlight()
 end
 
 local function keymaps()
-  _.map("n", "-", ":NvimTreeFindFile<CR>")
+  local wk = require("which-key")
+  wk.register({
+    ['-'] = {
+      function()
+        local t = require("nvim-tree")
+        if vim.fn.bufname('%') == '' then
+          t.open()
+        else
+          t.find_file(true)
+        end
+      end,
+      "Open Explorer"
+    }
+  })
 end
 
 local function config()
