@@ -297,16 +297,16 @@ return packer.startup({
       end,
     })
 
-    use({
-      "Pocco81/DAPInstall.nvim",
-      config = function()
-        require("plugins.dapinstall").config()
-      end,
-    })
+    -- use({
+    --   "Pocco81/dap-buddy.nvim",
+    --   config = function()
+    --     require("plugins.dapinstall").config()
+    --   end,
+    -- })
 
     use({
       "rcarriga/nvim-dap-ui",
-      after = { "onedark.nvim", "DAPInstall.nvim" },
+      after = { "onedark.nvim" },
       requires = { "mfussenegger/nvim-dap" },
       config = function()
         require("plugins.dap").config()

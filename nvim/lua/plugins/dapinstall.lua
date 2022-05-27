@@ -1,7 +1,7 @@
-local di = require("dap-install")
+local db = require("dap-buddy")
 
 local function config()
-  di.setup({
+  db.setup({
     installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
     verbosely_call_debuggers = false,
   })
