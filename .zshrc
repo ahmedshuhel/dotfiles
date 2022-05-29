@@ -148,7 +148,7 @@ lazyload nvm -- '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
-lazyload pyenv -- 'source ~/.pyenv.zsh'
+source ~/.pyenv.zsh
 
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:/snap/bin
