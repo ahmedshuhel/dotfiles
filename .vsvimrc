@@ -1,9 +1,10 @@
 set ignorecase
 set clipboard=unnamed
+set novb
 
 let mapleader="\<space>"
 
-
+map X :q<CR>
 map gd :vsc Edit.GoToDefinition<CR>
 map gD :vsc Edit.GoToDeclaration<CR>
 map gi :vsc Edit.GoToImplementation<CR>
