@@ -1,7 +1,5 @@
-local dapui = require('dapui')
-
 local function config()
-  dapui.setup({
+  require('dapui').setup({
     icons = { expanded = "▾", collapsed = "▸" },
     mappings = {
       -- Use a table to apply multiple mappings
@@ -11,25 +9,25 @@ local function config()
       edit = "e",
       repl = "r",
     },
-    sidebar = {
-      -- You can change the order of elements in the sidebar
-      elements = {
-        -- Provide as ID strings or tables with "id" and "size" keys
-        {
-          id = "scopes",
-          size = 0.25, -- Can be float or integer > 1
+    layouts = {
+      {
+        elements = {
+          'scopes',
+          'breakpoints',
+          'stacks',
+          'watches',
         },
-        { id = "breakpoints", size = 0.25 },
-        { id = "stacks", size = 0.25 },
-        { id = "watches", size = 0.25 },
+        size = 40,
+        position = 'left',
       },
-      size = 40,
-      position = "left", -- Can be "left" or "right"
-    },
-    tray = {
-      elements = { "repl" },
-      size = 10,
-      position = "bottom", -- Can be "bottom" or "top"
+      {
+        elements = {
+          'repl',
+          'console',
+        },
+        size = 10,
+        position = 'bottom',
+      },
     },
     floating = {
       max_height = nil, -- These can be integers or a float between 0 and 1.
