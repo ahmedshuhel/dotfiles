@@ -67,12 +67,17 @@ local function config()
       { name = "nvim_lsp", max_item_count = 10 },
       { name = "luasnip", max_item_count = 5 },
       { name = "nvim_lua", max_item_count = 10 },
-      { name = "path", max_item_count = 5 },
+      { name = "path", max_item_count = 10 },
       { name = "vim-dadbod-completion", max_item_count = 5 },
-    }, {
-      { name = "buffer", max_item_count = 2 },
-    }),
+    }, {}),
   })
+
+  cmp.setup.filetype('markdown', {
+    sources = cmp.config.sources({
+      { name = "path", max_item_count = 10 },
+    }, {})
+  })
+
 
   -- Use buffer source for `/`.
   -- cmp.setup.cmdline("/", {
