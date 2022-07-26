@@ -4,11 +4,23 @@ return packer.startup({
   function(use)
     use("wbthomason/packer.nvim")
 
-    use({
-      "navarasu/onedark.nvim",
-      config = function()
-        require("plugins.maq-onedark").config()
-      end,
+    -- use({
+    --   "navarasu/onedark.nvim",
+    --   config = function()
+    --     require("plugins.maq-onedark").config()
+    --   end,
+    -- })
+
+    use ({
+      "EdenEast/nightfox.nvim",
+      config = function ()
+        require("nightfox").setup({
+          comments = "italic",
+          keywords = "bold",
+          types = "italic,bold",
+        })
+        vim.cmd("colorscheme dawnfox")
+      end
     })
 
     use({
@@ -21,7 +33,6 @@ return packer.startup({
     use({
       "kevinhwang91/nvim-bqf",
       ft = "qf",
-      after = "onedark.nvim",
       config = function()
         require("plugins.maq-bqf").config()
       end,
@@ -31,7 +42,6 @@ return packer.startup({
 
     use({
       "kyazdani42/nvim-web-devicons",
-      after = "onedark.nvim",
       config = function()
         require("plugins.file-icons")
       end,
@@ -39,39 +49,39 @@ return packer.startup({
 
     use({
       "kyazdani42/nvim-tree.lua",
-      after = { "onedark.nvim", "nvim-web-devicons" },
+      after = { "nvim-web-devicons" },
       config = function()
         require("plugins.tree-nvim").config()
       end,
     })
 
     use({
-      "akinsho/nvim-bufferline.lua",
-      after = { "onedark.nvim", "nvim-bufdel" },
-      config = function()
-        require("plugins.bufline").config()
-      end,
-    })
-
-    use({
       "akinsho/toggleterm.nvim",
-      after = "onedark.nvim",
       config = function()
         require("plugins.maq-toggleterm").config()
       end,
     })
 
-    use({
-      "glepnir/galaxyline.nvim",
-      after = { "onedark.nvim", "toggleterm.nvim" },
-      config = function()
-        require("plugins.statusline").config()
-      end,
+    use ({
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+      after = {"nvim-tree.lua", "toggleterm.nvim", "nvim-dap-ui" },
+      config = function ()
+        require('lualine').setup({
+          extensions = {
+            'quickfix',
+            'nvim-tree',
+            'toggleterm',
+            'nvim-dap-ui',
+            'fugitive',
+            'man'
+          }
+        })
+      end
     })
 
     use({
       "norcalli/nvim-colorizer.lua",
-      after = "onedark.nvim",
       event = "BufRead",
       config = function()
         require("colorizer").setup()
@@ -81,7 +91,6 @@ return packer.startup({
 
     use({
       "nvim-treesitter/nvim-treesitter",
-      after = "onedark.nvim",
       event = "BufRead",
       config = function()
         require("plugins.treesitter-nvim").config()
@@ -99,7 +108,7 @@ return packer.startup({
 
     use({
       "NTBBloodbath/rest.nvim",
-      after = { "nvim-treesitter", "onedark.nvim" },
+      after = { "nvim-treesitter" },
       requires = { "nvim-lua/plenary.nvim" },
       config = function()
         require("plugins.maq-rest-nvim").config()
@@ -128,7 +137,7 @@ return packer.startup({
 
     use({
       "ray-x/lsp_signature.nvim",
-      after = { "onedark.nvim", "nvim-lspconfig" },
+      after = { "nvim-lspconfig" },
       config = function()
         require("plugins.lsp-signature").config()
       end,
@@ -136,7 +145,6 @@ return packer.startup({
 
     use({
       "onsails/lspkind-nvim",
-      after = "onedark.nvim",
       event = "BufRead",
       config = function()
         require("lspkind").init()
@@ -145,7 +153,6 @@ return packer.startup({
 
     use({
       "kristijanhusak/vim-dadbod-ui",
-      after = "onedark.nvim",
       config = function()
         require("plugins.dadbod-ui").config()
       end,
@@ -194,7 +201,6 @@ return packer.startup({
 
     use({
       "nvim-telescope/telescope.nvim",
-      after = { "onedark.nvim", "trouble.nvim", "project.nvim" },
       requires = {
         { "nvim-lua/popup.nvim" },
         { "nvim-lua/plenary.nvim" },
@@ -218,7 +224,6 @@ return packer.startup({
 
     use({
       "tpope/vim-fugitive",
-      after = "onedark.nvim",
       requires = {
         "tpope/vim-dispatch",
         "tpope/vim-rhubarb",
@@ -230,7 +235,6 @@ return packer.startup({
 
     use({
       "lewis6991/gitsigns.nvim",
-      after = "onedark.nvim",
       requires = {
         "nvim-lua/plenary.nvim",
       },
@@ -250,7 +254,6 @@ return packer.startup({
 
     use({
       "terrortylor/nvim-comment",
-      after = "onedark.nvim",
       config = function()
         require("plugins.comment").config()
       end,
@@ -263,7 +266,6 @@ return packer.startup({
 
     use({
       "Pocco81/TrueZen.nvim",
-      after = "onedark.nvim",
       config = function()
         require("plugins.zenmode").config()
       end,
@@ -271,7 +273,6 @@ return packer.startup({
 
     use({
       "lukas-reineke/indent-blankline.nvim",
-      after = "onedark.nvim",
       event = "BufRead",
       setup = function()
         require("plugins.blankline").config()
@@ -280,7 +281,6 @@ return packer.startup({
 
     use({
       "dhruvasagar/vim-table-mode",
-      after = "onedark.nvim",
       config = function()
         require("plugins.tablemode").config()
       end,
@@ -288,7 +288,6 @@ return packer.startup({
 
     use({
       "plasticboy/vim-markdown",
-      after = "onedark.nvim",
       requires = {
         "godlygeek/tabular",
       },
@@ -306,7 +305,6 @@ return packer.startup({
 
     use({
       "rcarriga/nvim-dap-ui",
-      after = { "onedark.nvim" },
       requires = { "mfussenegger/nvim-dap" },
       config = function()
         require("plugins.dap").config()
@@ -326,7 +324,6 @@ return packer.startup({
 
     use({
       "rafcamlet/nvim-luapad",
-      after = "onedark.nvim",
       config = function()
         require("plugins.maq-luapad").config()
       end,
