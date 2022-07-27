@@ -1,6 +1,3 @@
-local _ = require("underscore")
-local c = require("colors")
-
 local function config()
   local gs = require("gitsigns")
 
@@ -33,14 +30,6 @@ local function config()
   })
 end
 
-local function highlight()
-  _.hi("DiffAdd", { fg = c.nord_blue })
-  _.hi("DiffChange", { fg = c.grey_fg })
-  _.hi("DiffModified", { fg = c.nord_blue })
-  _.hi("DiffDelete", { fg = c.red })
-end
-
 return {
-  config = config,
-  highlight = highlight,
+  config = config
 }
