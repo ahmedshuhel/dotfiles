@@ -11,9 +11,9 @@ return packer.startup({
     --   end,
     -- })
 
-    use ({
+    use({
       "EdenEast/nightfox.nvim",
-      config = function ()
+      config = function()
         require("nightfox").setup({
           options = {
             styles = {
@@ -23,7 +23,7 @@ return packer.startup({
             }
           }
         })
-        vim.cmd("colorscheme dawnfox")
+        vim.cmd("colorscheme dayfox")
       end
     })
 
@@ -66,12 +66,20 @@ return packer.startup({
       end,
     })
 
-    use ({
+    use({
       'nvim-lualine/lualine.nvim',
       requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-      after = {"nvim-tree.lua", "toggleterm.nvim", "nvim-dap-ui" },
-      config = function ()
+      after = { "nvim-tree.lua", "toggleterm.nvim", "nvim-dap-ui" },
+      config = function()
         require('lualine').setup({
+          inactive_sections = {
+            lualine_a = {},
+            lualine_b = {},
+            lualine_c = {},
+            lualine_x = {},
+            lualine_y = {},
+            lualine_z = {}
+          },
           extensions = {
             'quickfix',
             'nvim-tree',
