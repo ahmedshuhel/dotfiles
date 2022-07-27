@@ -1,10 +1,6 @@
 local _ = require("underscore")
 local c = require("colors")
 
-local function highlight()
-  _.hi("NvimTreeIndentMarker", { fg = c.line })
-end
-
 local function keymaps()
   local wk = require("which-key")
   wk.register({
@@ -192,6 +188,5 @@ end
 
 return {
   config = config,
-  highlight = highlight,
   keymaps = keymaps,
 }

@@ -2,10 +2,6 @@ local g = vim.g
 local c = require("colors")
 local _ = require("underscore")
 
-local function highlight()
-  _.hi("IndentBlanklineChar", { fg = c.line })
-end
-
 local function config()
   g.indentLine_enabled = 1
   g.indent_blankline_char = "▏"
@@ -17,5 +13,4 @@ end
 
 return {
   config = config,
-  highlight = highlight,
 }

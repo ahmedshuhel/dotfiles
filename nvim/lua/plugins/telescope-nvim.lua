@@ -1,13 +1,6 @@
 local _ = require("underscore")
 local c = require("colors")
 
-local function highlight()
-  _.hi("TelescopeBorder", { fg = c.grey })
-  _.hi("TelescopePromptBorder", { fg = c.grey })
-  _.hi("TelescopeResultsBorder", { fg = c.grey })
-  _.hi("TelescopePreviewBorder", { fg = c.grey })
-end
-
 local function keymaps()
   _.map("n", "<C-p>", [[<Cmd>Telescope find_files<CR>]])
   _.map("n", "<S-t>", [[<Cmd>Telescope buffers<CR>]])
@@ -109,13 +102,11 @@ local function config()
     },
   })
 
-  ts.load_extension("fzf")
   ts.load_extension("media_files")
   ts.load_extension("projects")
 end
 
 return {
   config = config,
-  highlight = highlight,
   keymaps = keymaps,
 }
