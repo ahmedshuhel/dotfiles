@@ -27,6 +27,8 @@ return packer.startup({
       end
     })
 
+    user("vimpostor/vim-lumen")
+
     use({
       "folke/which-key.nvim",
       config = function()
