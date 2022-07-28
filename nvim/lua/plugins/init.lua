@@ -27,7 +27,7 @@ return packer.startup({
       end
     })
 
-    user("vimpostor/vim-lumen")
+    -- use("vimpostor/vim-lumen")
 
     use({
       "folke/which-key.nvim",
@@ -64,7 +64,7 @@ return packer.startup({
     use({
       "akinsho/toggleterm.nvim",
       config = function()
-        require("plugins.maq-toggleterm").config()
+        -- require("plugins.maq-toggleterm").config()
       end,
     })
 
