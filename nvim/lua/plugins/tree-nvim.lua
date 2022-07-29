@@ -184,9 +184,11 @@ local function config()
       ignore = false,
     },
   })
+
+  keymaps()
+
 end
 
 return {
   config = config,
-  keymaps = keymaps,
 }

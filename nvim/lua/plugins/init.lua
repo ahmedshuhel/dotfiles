@@ -27,7 +27,24 @@ return packer.startup({
       end
     })
 
-    -- use("vimpostor/vim-lumen")
+    use({
+      "f-person/auto-dark-mode.nvim",
+      config = function()
+        local adm = require("auto-dark-mode")
+        adm.setup({
+          update_interval = 1000,
+          set_dark_mode = function()
+                  vim.api.nvim_set_option('background', 'dark')
+                  vim.cmd('colorscheme nightfox')
+          end,
+          set_light_mode = function()
+                  vim.api.nvim_set_option('background', 'light')
+                  vim.cmd('colorscheme dayfox')
+          end,
+        })
+        adm.init()
+      end
+    })
 
     use({
       "folke/which-key.nvim",
@@ -55,7 +72,7 @@ return packer.startup({
 
     use({
       "kyazdani42/nvim-tree.lua",
-      after = { "nvim-web-devicons" },
+      after = { "nvim-web-devicons", "which-key.nvim" },
       config = function()
         require("plugins.tree-nvim").config()
       end,
@@ -64,7 +81,7 @@ return packer.startup({
     use({
       "akinsho/toggleterm.nvim",
       config = function()
-        -- require("plugins.maq-toggleterm").config()
+        require("plugins.maq-toggleterm").config()
       end,
     })
 
