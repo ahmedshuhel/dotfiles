@@ -146,25 +146,27 @@ return packer.startup({
       end,
     })
 
-    use({
-      "williamboman/nvim-lsp-installer",
-      requires = {
-        {
-          "neovim/nvim-lspconfig",
-          requires = {
-            {
-              "jose-elias-alvarez/null-ls.nvim",
-              requires = {
-                "nvim-lua/plenary.nvim",
-              },
-            },
-          },
-        },
-      },
-      config = function()
-        require("plugins.maq-lspconfig").config()
-      end,
-    })
+    use { "williamboman/mason.nvim" }
+
+    -- use({
+    --   "williamboman/nvim-lsp-installer",
+    --   requires = {
+    --     {
+    --       "neovim/nvim-lspconfig",
+    --       requires = {
+    --         {
+    --           "jose-elias-alvarez/null-ls.nvim",
+    --           requires = {
+    --             "nvim-lua/plenary.nvim",
+    --           },
+    --         },
+    --       },
+    --     },
+    --   },
+    --   config = function()
+    --     require("plugins.maq-lspconfig").config()
+    --   end,
+    -- })
 
     use({
       "ray-x/lsp_signature.nvim",

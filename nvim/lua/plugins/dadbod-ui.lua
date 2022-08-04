@@ -3,7 +3,7 @@ local fn = vim.fn
 local _ = require("underscore")
 
 local function keymaps()
-  _.map("n", "<C-_>", ":DBUIToggle<CR>")
+  _.map("n", "<C-y>", ":DBUIToggle<CR>")
 end
 
 local function config()
