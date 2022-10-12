@@ -203,3 +203,4 @@ else
   eval $(dircolors ~/.dircolors)
 fi
 
+export COMPOSE_DOCKER_CLI_BUILD=1
