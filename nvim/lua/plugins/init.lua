@@ -1,15 +1,9 @@
 local packer = require("packer")
 
 return packer.startup({
+
   function(use)
     use("wbthomason/packer.nvim")
-
-    -- use({
-    --   "navarasu/onedark.nvim",
-    --   config = function()
-    --     require("plugins.maq-onedark").config()
-    --   end,
-    -- })
 
     use({
       "EdenEast/nightfox.nvim",
@@ -146,35 +140,21 @@ return packer.startup({
       end,
     })
 
-    use { "williamboman/mason.nvim" }
+    use ({
+      "williamboman/mason-lspconfig.nvim",
+      requires = { "neovim/nvim-lspconfig", "williamboman/mason.nvim"},
+      config = function()
+        require("mason").setup()
+        require("mason-lspconfig").setup()
+      end
+    })
 
     -- use({
-    --   "williamboman/nvim-lsp-installer",
-    --   requires = {
-    --     {
-    --       "neovim/nvim-lspconfig",
-    --       requires = {
-    --         {
-    --           "jose-elias-alvarez/null-ls.nvim",
-    --           requires = {
-    --             "nvim-lua/plenary.nvim",
-    --           },
-    --         },
-    --       },
-    --     },
-    --   },
+    --   "ray-x/lsp_signature.nvim",
     --   config = function()
-    --     require("plugins.maq-lspconfig").config()
+    --     require("plugins.lsp-signature").config()
     --   end,
     -- })
-
-    use({
-      "ray-x/lsp_signature.nvim",
-      after = { "nvim-lspconfig" },
-      config = function()
-        require("plugins.lsp-signature").config()
-      end,
-    })
 
     use({
       "onsails/lspkind-nvim",
