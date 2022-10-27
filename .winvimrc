@@ -33,10 +33,6 @@ if &encoding ==# 'latin1' && has('gui_running')
   set encoding=utf-8
 endif
 
-if &listchars ==# 'eol:$'
-  set listchars=tab:>\,trail:-,extends:>,precedes:<,nbsp:+
-endif
-
 set formatoptions+=j " Delete comment character when joining commented lines
 
 if has('path_extra')

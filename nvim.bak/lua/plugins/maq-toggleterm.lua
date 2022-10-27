@@ -20,8 +20,8 @@ local function config()
         return vim.o.columns * 0.4
       end
     end,
-    open_mapping = [[<C-_>]],
     hide_numbers = true, -- hide the number column in toggleterm buffers
+    open_mapping = [[<C-_>]],
     shade_filetypes = {},
     shade_terminals = true,
     shading_factor = 1, -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light

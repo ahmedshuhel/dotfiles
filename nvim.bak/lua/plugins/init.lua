@@ -324,9 +324,9 @@ return packer.startup({
       end,
     })
 
-    -- use("~/Workspace/devlife.vim")
+    use("~/Workspace/devlife.vim")
 
-    use("ahmedshuhel/devlife.vim")
+    -- use("ahmedshuhel/devlife.vim")
 
     use({
       "christoomey/vim-tmux-navigator",
