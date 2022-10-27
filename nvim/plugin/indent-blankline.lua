@@ -10,4 +10,6 @@ indent_blankline.setup {
     filetype_exclude = { "help", "packer" },
     show_current_context = true,
     show_current_context_start = true,
+    how_trailing_blankline_indent = false,
+    show_first_indent_level = false
 }

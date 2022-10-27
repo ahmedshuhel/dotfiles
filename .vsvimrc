@@ -13,7 +13,7 @@ map gr :vsc Edit.FindAllReferences<CR>
 map gc :vsc Edit.ToggleLineComment<CR>
 map <leader>rn :vsc Refactor.Rename<CR>
 map <leader>rm :vsc Refactor.ExtractMethod<CR>
-map <leader>f :vsc Edit.FormatDocument<CR>
+map <leader>fm :vsc Edit.FormatDocument<CR>
 map - :vsc SolutionExplorer.SyncWithActiveDocument<CR>
 map ]m :vsc Edit.NextMethod<CR>
 map [m :vsc Edit.PreviousMethod<CR>
