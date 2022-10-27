@@ -5,7 +5,7 @@ end
 local navic = require "nvim-navic"
 
 local function attached_clients()
-    return "(" .. vim.tbl_count(vim.lsp.buf_get_clients(0)) .. ")"
+    return "(" .. vim.tbl_count(vim.lsp.get_active_clients()) .. ")"
 end
 
 local function cwd()
@@ -28,5 +28,5 @@ lualine.setup {
         },
     },
     inactive_sections = {},
-    extensions = { "quickfix", "toggleterm", "fugitive" },
+    extensions = { "quickfix", "toggleterm", "fugitive", "aerial", "nvim-tree", "nvim-dap-ui", "man" },
 }

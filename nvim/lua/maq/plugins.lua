@@ -54,6 +54,7 @@ local function spec(use)
                 "haydenmeade/neotest-jest",
                 "rouge8/neotest-rust",
                 "nvim-neotest/neotest-plenary",
+                "nvim-neotest/neotest-python",
             },
         },
         "mfussenegger/nvim-dap",

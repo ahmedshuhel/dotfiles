@@ -5,7 +5,7 @@ if not ok1 or not ok2 or not ok3 then
     return
 end
 
-dap_virtual_text.setup()
+dap_virtual_text.setup({})
 dapui.setup()
 
 local map = vim.keymap.set
@@ -25,7 +25,7 @@ map("n", "<leader>dL", function()
 end)
 map("n", "<leader>dX", function()
     dap.terminate()
-    dapui.close()
+    dapui.close({})
 end)
 map("n", "<leader>da", c(dap.toggle_breakpoint))
 map("n", "<leader>dc", c(dap.continue))
