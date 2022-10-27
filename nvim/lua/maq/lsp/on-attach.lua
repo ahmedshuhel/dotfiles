@@ -87,7 +87,7 @@ local function buf_set_keymaps(bufnr)
         vim.lsp.buf.format { id = client.id }
     end
 
-    buf_set_keymap("n", "<leader>p", function()
+    buf_set_keymap("n", "<space>f", function()
         local candidates = vim.tbl_filter(function(client)
             return client.name ~= "sumneko_lua" and client.supports_method "textDocument/formatting"
         end, vim.lsp.get_active_clients { bufnr = vim.api.nvim_get_current_buf() })
@@ -114,9 +114,9 @@ local function buf_set_keymaps(bufnr)
     end)
 
     -- Code actions
-    buf_set_keymap("n", "<leader>r", vim.lsp.buf.rename)
-    buf_set_keymap("n", "<space>f", vim.lsp.buf.code_action)
-    buf_set_keymap("n", "<leader>l", find_and_run_codelens)
+    buf_set_keymap("n", "<space>rn", vim.lsp.buf.rename)
+    buf_set_keymap("n", "<space>a", vim.lsp.buf.code_action)
+    buf_set_keymap("n", "<space>l", find_and_run_codelens)
 
     -- Movement
     buf_set_keymap("n", "gD", vim.lsp.buf.declaration)

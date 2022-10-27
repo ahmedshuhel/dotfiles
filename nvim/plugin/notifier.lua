@@ -4,10 +4,10 @@ if not ok then
 end
 
 notifier.setup {
-    status_width = function ()
+    status_width = function()
         return math.floor(vim.o.columns * 0.38)
     end,
     notify = {
-        clear_time = 5000
-    }
+        clear_time = 5000,
+    },
 }

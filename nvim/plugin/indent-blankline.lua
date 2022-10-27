@@ -9,7 +9,7 @@ indent_blankline.setup {
     buftype_exclude = { "terminal", "nofile" },
     filetype_exclude = { "help", "packer" },
     show_current_context = true,
-    show_current_context_start = true,
+    show_current_context_start = false,
     how_trailing_blankline_indent = false,
     show_first_indent_level = false
 }
