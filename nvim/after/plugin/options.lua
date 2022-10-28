@@ -22,7 +22,6 @@ vim.o.mouse = "a"
 vim.o.errorbells = false
 vim.o.title = true
 vim.o.ruler = true
-vim.o.showcmd = true
 vim.o.startofline = false
 vim.o.backspace = "indent,eol,start"
 vim.o.wildmenu = true
