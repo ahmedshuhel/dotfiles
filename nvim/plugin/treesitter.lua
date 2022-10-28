@@ -3,6 +3,17 @@ if not ok then
     return
 end
 
+local parsers = require "nvim-treesitter.parsers"
+local parser_configs = parsers.get_parser_configs()
+
+parser_configs.http = {
+    install_info = {
+        url = "https://github.com/NTBBloodbath/tree-sitter-http",
+        files = { "src/parser.c" },
+        branch = "main",
+    },
+}
+
 treesitter.setup {
     ensure_installed = "all",
     ignore_install = { "haskell", "phpdoc" },

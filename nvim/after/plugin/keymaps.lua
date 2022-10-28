@@ -27,3 +27,4 @@ f.map("n", "<C-h>", [[<Cmd> TmuxNavigateLeft<CR>]])
 f.map("n", "<C-j>", [[<Cmd> TmuxNavigateDown<CR>]])
 f.map("n", "<C-k>", [[<Cmd> TmuxNavigateUp<CR>]])
 f.map("n", "<C-l>", [[<Cmd> TmuxNavigateRight<CR>]])
+f.map("n", "<S-x>", "[[<Cmd>BufDel<CR>]]") -- close tab

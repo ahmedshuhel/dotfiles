@@ -14,7 +14,7 @@ end
 
 lualine.setup {
     options = {
-        disabled_filetypes = { "NvimTree" },
+        disabled_filetypes = { "NvimTree", "dbui" },
     },
     sections = {
         lualine_b = { "branch", "diff", cwd },
@@ -28,5 +28,13 @@ lualine.setup {
         },
     },
     inactive_sections = {},
-    extensions = { "quickfix", "toggleterm", "fugitive", "aerial", "nvim-tree", "nvim-dap-ui", "man" },
+    extensions = {
+        "quickfix",
+        "toggleterm",
+        "fugitive",
+        "aerial",
+        "nvim-tree",
+        "nvim-dap-ui",
+        "man",
+    },
 }

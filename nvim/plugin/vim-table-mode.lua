@@ -6,7 +6,4 @@ local function config()
   g.table_mode_header_fillchar='-'
 end
 
-return {
-  config = config
-}
-
+config()

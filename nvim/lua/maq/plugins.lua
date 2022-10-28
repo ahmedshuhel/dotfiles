@@ -38,14 +38,20 @@ local function spec(use)
         },
     }
 
+    -- db
     use {
-        "folke/which-key.nvim",
-        config = function()
-            require("which-key").setup {}
-        end,
+        "kristijanhusak/vim-dadbod-ui",
+        requires = {
+            "tpope/vim-dadbod",
+        },
     }
 
-    use { "christoomey/vim-tmux-navigator" }
+    -- REST
+    use {
+        "NTBBloodbath/rest.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+    }
+
     -- test & debugging
     use {
         {
@@ -210,9 +216,18 @@ local function spec(use)
     }
 
     -- Misc
-    use { "tweekmonster/startuptime.vim", cmd = { "StartupTime" } }
     use "wakatime/vim-wakatime"
+    use "dhruvasagar/vim-table-mode"
     use "ahmedshuhel/devlife.vim"
+    use "ojroques/nvim-bufdel"
+    use { "tweekmonster/startuptime.vim", cmd = { "StartupTime" } }
+    use { "christoomey/vim-tmux-navigator" }
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup {}
+        end,
+    }
 end
 
 require("packer").startup {
