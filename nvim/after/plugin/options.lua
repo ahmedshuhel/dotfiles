@@ -46,6 +46,13 @@ vim.opt.shortmess:append("F") -- don't give the file info when editing a file, l
 
 vim.cmd("let &fcs='eob: '") -- disable ~ end of buffer
 
+--folding
+-- opt.foldcolumn = 'auto' // too noisy but works with mouse
+vim.opt.foldlevel = 20
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+
+
 if vim.fn.has "win32" == 1 then
     vim.o.shell = "powershell.exe"
 end
