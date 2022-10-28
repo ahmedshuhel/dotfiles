@@ -14,6 +14,16 @@ local function parse_edits(entries, bufnr, text_edits)
     end
 end
 
+local function lspSymbol(name, icon)
+    local hl = "DiagnosticSign" .. name
+    vim.fn.sign_define(hl, { text = icon, texthl = hl })
+end
+
+lspSymbol("Error", "•")
+lspSymbol("Warn", "•")
+lspSymbol("Info", "•")
+lspSymbol("Hint", "•")
+
 -- Populates the quickfix list with all rename locations.
 vim.lsp.handlers["textDocument/rename"] = function(err, result, ...)
     rename(err, result, ...)
@@ -43,3 +53,13 @@ end
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "solid",
 })
+
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = false,
+    signs = true,
+    underline = false,
+    -- set this to true if you want diagnostics to show in insert mode
+    update_in_insert = false,
+})
+
