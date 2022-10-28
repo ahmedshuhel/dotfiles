@@ -62,4 +62,3 @@ try:
     iterm2.run_forever(main)
 except:
     print("Unable to connect on iTerm2 application")
-

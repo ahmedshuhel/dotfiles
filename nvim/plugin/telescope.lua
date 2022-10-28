@@ -39,6 +39,9 @@ telescope.setup {
         layout_strategy = "horizontal",
         layout_config = {
             horizontal = {
+                prompt_title = "",
+                preview_title = "",
+                result_title = "",
                 prompt_position = "top",
                 preview_width = 0.55,
                 results_width = 0.8,
@@ -98,7 +101,7 @@ telescope.setup {
     },
 }
 
-local dropdown = function()
+local dropdown = function(prefix)
     return require("telescope.themes").get_dropdown {
         borderchars = {
             { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
@@ -106,19 +109,46 @@ local dropdown = function()
             results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" },
             preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
         },
+        prompt_prefix =  prefix,
         width = 0.8,
         previewer = false,
         prompt_title = false,
     }
 end
 
+local full_theme = function(title)
+    return {
+        winblend = 20,
+        width = 0.8,
+        show_line = false,
+        prompt_prefix =  title,
+        prompt_title = "",
+        results_title = "",
+        preview_title = "",
+        borderchars = {
+            prompt = { "─", "│", " ", "│", "╭", "╮", "│", "│" },
+            results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" },
+            preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+        },
+    }
+end
+
 f.map("n", "<space>p", function()
-    builtin.find_files(dropdown())
+    builtin.find_files(dropdown("  "))
 end)
 
-f.map("n", "<S-t>", [[<Cmd>Telescope buffers<CR>]])
-f.map("n", "<leader>gm", [[<Cmd>Telescope lsp_document_symbols<CR>]])
-f.map("n", "<leader>fg", [[<Cmd>Telescope live_grep<CR>]])
-f.map("n", "<leader>fo", [[<Cmd>Telescope oldfiles<CR>]])
-f.map("n", "<leader>fs", [[<Cmd>Telescope git_status<CR>]])
-f.map("n", "<leader>fc", [[<Cmd>Telescope git_commits<CR>]])
+f.map("n", "<leader>fs", function()
+    builtin.git_status(dropdown("  "))
+end)
+
+f.map("n", "<leader>fo", function()
+    builtin.oldfiles(dropdown("  "))
+end)
+
+f.map("n", "<leader>fc", function()
+    builtin.git_commits(dropdown("  "))
+end)
+
+f.map("n", "<leader>fg", function()
+    builtin.live_grep(full_theme("  "))
+end)

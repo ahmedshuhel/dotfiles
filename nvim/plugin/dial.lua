@@ -10,6 +10,9 @@ require("dial.config").augends:register_group {
         augend.constant.alias.bool, -- boolean value (true <-> false)
         augend.integer.alias.hex, -- nonnegative hex number  (0x04, 0x1a31, etc.)
         augend.date.alias["%Y/%m/%d"], -- date (2026/05/25, etc.)
+        augend.hexcolor.new {
+            case = "lower",
+        },
     },
 }
 
