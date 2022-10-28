@@ -2,15 +2,13 @@ local ok, cmp = pcall(require, "cmp")
 if not ok then
     return
 end
+
 local types = require "cmp.types"
 local luasnip = require "luasnip"
 local cmp_dap = require "cmp_dap"
 local mapping = cmp.mapping
 
-local has_words_before = function()
-    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
-end
+local f = require "maq.funcs"
 
 cmp.setup {
     enabled = function()
@@ -18,8 +16,15 @@ cmp.setup {
     end,
     formatting = {
         format = require("lspkind").cmp_format {
-            with_text = true,
+            with_text = false,
+            maxwidth = 50,
         },
+    },
+    completion = {
+        keyword_length = 2,
+    },
+    experimental = {
+        ghost_text = true,
     },
     snippet = {
         expand = function(args)
@@ -46,7 +51,7 @@ cmp.setup {
                 cmp.select_next_item { behavior = types.cmp.SelectBehavior.Select }
             elseif luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
-            elseif has_words_before() then
+            elseif f.has_words_before() then
                 cmp.complete()
             else
                 fallback()
@@ -63,13 +68,14 @@ cmp.setup {
         end, { "i", "s" }),
     },
     sources = {
-        { name = "nvim_lsp" },
-        { name = "buffer" },
-        { name = "path" },
-        { name = "luasnip" },
-        { name = "tmux" },
-        { name = "rg" },
-        { name = "git" },
+        { name = "nvim_lsp", max_item_count = 10 },
+        { name = "luasnip", max_item_count = 5 },
+        { name = "nvim_lua", max_item_count = 10 },
+        { name = "path", max_item_count = 10 },
+        { name = "buffer", max_item_count = 3 },
+        { name = "tmux", max_item_count = 5 },
+        { name = "rg", max_item_count = 5 },
+        { name = "git", max_item_count = 5 },
         { name = "calc" },
     },
 }
