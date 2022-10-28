@@ -75,5 +75,3 @@ local local_vimrc = fn.getcwd() .. "/.nvim/init.lua"
 if uv.fs_stat(local_vimrc) then
   cmd("source " .. local_vimrc)
 end
-
--- Todo: get the tpone stuff

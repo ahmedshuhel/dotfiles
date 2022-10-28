@@ -25,6 +25,7 @@ local function spec(use)
         "tpope/vim-repeat",
         "tpope/vim-surround",
         "tpope/vim-fugitive",
+        "tpope/vim-eunuch",
         "tpope/vim-unimpaired",
         {
             "tpope/vim-sleuth",
