@@ -133,6 +133,7 @@ local function buf_set_keymaps(bufnr)
     buf_set_keymap("n", "<C-p>wd", telescope_lsp.workspace_diagnostics)
 end
 
+
 return function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 

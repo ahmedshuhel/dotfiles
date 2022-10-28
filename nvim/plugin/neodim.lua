@@ -1,4 +1,3 @@
-local fns = require "maq.funcs"
 local ok, neodim = pcall(require, "neodim")
 if not ok then
     return
