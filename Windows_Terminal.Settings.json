@@ -14,18 +14,25 @@
         {
             "command": 
             {
-                "action": "copy",
-                "singleLine": false
+                "action": "openSettings"
             },
-            "keys": "ctrl+shift+c"
+            "keys": "ctrl+shift+comma"
+        },
+        {
+            "command": "paste",
+            "keys": "ctrl+shift+v"
         },
         {
             "command": "find",
             "keys": "ctrl+shift+f"
         },
         {
-            "command": "paste",
-            "keys": "ctrl+shift+v"
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "keys": "ctrl+shift+c"
         },
         {
             "command": 
@@ -34,13 +41,6 @@
                 "title": null
             },
             "keys": "ctrl+alt+r"
-        },
-        {
-            "command": 
-            {
-                "action": "openSettings"
-            },
-            "keys": "ctrl+shift+comma"
         },
         {
             "command": 
@@ -122,6 +122,12 @@
                 "hidden": false,
                 "name": "Developer PowerShell for VS 2022",
                 "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{16208362-94fc-5b1f-a491-5b2624d5ab56}",
+                "hidden": true,
+                "name": "Visual Studio Debug Console",
+                "source": "VSDebugConsole"
             }
         ]
     },
