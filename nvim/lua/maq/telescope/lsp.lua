@@ -4,6 +4,23 @@ local make_entry = require "telescope.make_entry"
 local pickers = require "telescope.pickers"
 local builtin = require "telescope.builtin"
 
+local full_theme = function(title)
+    return {
+        winblend = 20,
+        width = 0.8,
+        show_line = false,
+        prompt_prefix = title,
+        prompt_title = "",
+        results_title = "",
+        preview_title = "",
+        borderchars = {
+            prompt = { "─", "│", " ", "│", "╭", "╮", "│", "│" },
+            results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" },
+            preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+        },
+    }
+end
+
 local M = {}
 
 M.document_diagnostics = function()
@@ -11,15 +28,15 @@ M.document_diagnostics = function()
 end
 
 M.workspace_diagnostics = function()
-    builtin.diagnostics()
+    builtin.diagnostics(full_theme(' '))
 end
 
 M.definitions = function()
-    builtin.lsp_definitions()
+    builtin.lsp_definitions(full_theme(' '))
 end
 
 M.references = function()
-    builtin.lsp_references()
+    builtin.lsp_references(full_theme(' '))
 end
 
 M.buffer_references = function(opts)

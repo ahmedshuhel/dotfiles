@@ -35,22 +35,21 @@ vim.o.completeopt = "menu,menuone,noselect"
 vim.opt.showmode = false
 vim.opt.showcmd = false
 
-vim.opt.shortmess:append("a") -- use abbreviations for messages
-vim.opt.shortmess:append("W") -- don't give "written" or "[w]" when writing a file
-vim.opt.shortmess:append("s") -- don't give "search hit BOTTOM, continuing at TOP" or "search
-vim.opt.shortmess:append("I") -- disable nvim intro
-vim.opt.shortmess:append("c") -- Remove `Pattern not found` from compe
-vim.opt.shortmess:append("q") -- use "recording" instead of "recording @a"
-vim.opt.shortmess:append("F") -- don't give the file info when editing a file, like `:silent`
+vim.opt.shortmess:append "a" -- use abbreviations for messages
+vim.opt.shortmess:append "W" -- don't give "written" or "[w]" when writing a file
+vim.opt.shortmess:append "s" -- don't give "search hit BOTTOM, continuing at TOP" or "search
+vim.opt.shortmess:append "I" -- disable nvim intro
+vim.opt.shortmess:append "c" -- Remove `Pattern not found` from compe
+vim.opt.shortmess:append "q" -- use "recording" instead of "recording @a"
+vim.opt.shortmess:append "F" -- don't give the file info when editing a file, like `:silent`
 
-vim.cmd("let &fcs='eob: '") -- disable ~ end of buffer
+vim.cmd "let &fcs='eob: '" -- disable ~ end of buffer
 
 --folding
 -- opt.foldcolumn = 'auto' // too noisy but works with mouse
 vim.opt.foldlevel = 20
-vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 if vim.fn.has "win32" == 1 then
     vim.o.shell = "powershell.exe"
