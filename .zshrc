@@ -145,10 +145,15 @@ export NVM_DIR="$HOME/.nvm"
 lazyload nvm -- '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
 
 
+# Activate pyenv
+
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
-source ~/.pyenv.zsh
 
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:/snap/bin
