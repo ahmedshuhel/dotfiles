@@ -18,7 +18,8 @@ if not pcall(require, "impatient") then
 end
 
 g.node_host_prog = fn.fnamemodify("~", ":p") .. ".nvm/versions/node/v16.13.1/bin/neovim-node-host"
-g.python3_host_prog = "/usr/bin/python3"
+g.python3_host_prog = fn.fnamemodify("~", ":p") .. ".pyenv/versions/py3nvim/bin/python3"
+
 g.nvcode_termcolors = 256
 g.mapleader = ","
 
