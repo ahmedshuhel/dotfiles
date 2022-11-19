@@ -13,3 +13,5 @@
 	tool = vsdiffmerge
 [difftool]
 	prompt = true
+[init]
+	defaultBranch = master
