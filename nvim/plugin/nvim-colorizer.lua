@@ -3,4 +3,8 @@ if not ok then
     return
 end
 
-colorizer.setup({})
+colorizer.setup {
+    user_default_options = {
+        names = false,
+    },
+}
