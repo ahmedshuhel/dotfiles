@@ -68,7 +68,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(z git tmux vi-mode zsh-autosuggestions zsh-syntax-highlighting zsh-lazyload)
+plugins=(z git tmux vi-mode zsh-lazyload)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,39 +99,6 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 
-# Custom Functions
-
-function git_review {
-  user=`echo $1 | cut -d':' -f1`
-  branch=`echo $1 | cut -d':' -f2`
-
-  echo "Checking out #branch: '${user}/${branch}'..."
-
-  remote_url=$(command git remote get-url newscred)
-  repo=$(echo $remote_url | cut -d'/' -f2)
-  local_branch="${user}-${branch}"
-  user_remote_url=$(command git remote get-url $user)
-
-  if [[ -z "$user_remote_url" ]]; then
-    git remote add $user git@github.com:$user/$repo
-  fi
-
-  command git fetch $user $branch && \
-  command git checkout $branch && \
-  command git reset --hard $user/$branch
-}
-
-
-function git {
-  if [[ "$1" == "review" ]]; then
-    git_review $2
-  elif [[ "$1" == "sync-note" ]]; then
-    git_syncnote
-  else
-    command git "$@"
-  fi
-}
-
 if [[ `uname` != "Darwin" ]]; then
   export PYTHON2_LOCAL_BIN="$(python2 -m site --user-base)/bin"
   export PATH="$PYTHON2_LOCAL_BIN:$PATH"
@@ -150,9 +117,8 @@ lazyload nvm -- '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-eval "$(pyenv init --path)"
+
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 
 export PATH=$PATH:$HOME/bin
@@ -196,7 +162,6 @@ if [[ `uname` == "Darwin" ]]; then
   eval $(gdircolors ~/.dircolors)
 
   export PATH="$(brew --prefix openssl@1.1)/bin:$PATH"
-
   export CFLAGS="-I$(brew --prefix openssl@1.1)/include"
   export LDFLAGS="-L$(brew --prefix openssl@1.1)/lib"
   export LDFLAGS="${LDFLAGS} -L$(brew --prefix zlib)/lib"
