@@ -175,8 +175,17 @@ require("mason-lspconfig").setup_handlers {
                         setType = true,
                     },
                     diagnostics = {
-                        globals = { "P" },
+                        globals = {
+                            "P",
+                            "vim",
+                        },
                     },
+                    workspacce = {
+                        library = {
+                            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                            [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+                        }
+                    }
                 },
             },
         }

@@ -2,7 +2,6 @@ local g = vim.g
 local fn = vim.fn
 local uv = vim.loop
 local cmd = vim.cmd
-local api = vim.api
 local f = require("maq.funcs")
 
 function P(...)
