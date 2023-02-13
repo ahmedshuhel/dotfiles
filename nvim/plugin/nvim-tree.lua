@@ -177,10 +177,10 @@ tree.setup {
             ".pytest_cache",
             "__pycache__",
             ".eggs",
-            ".docker",
         },
     },
     git = {
+        enable = false,
         ignore = false,
     },
 }

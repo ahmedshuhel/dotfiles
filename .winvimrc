@@ -18,6 +18,8 @@ set incsearch
 set laststatus=2
 set ruler
 set wildmenu
+set shellcmdflag=-ic
+set nowrap
 
 if !&scrolloff
   set scrolloff=1
@@ -79,3 +81,5 @@ augroup NetrwMapping
   autocmd!
   autocmd filetype netrw call NetrwMapping()
 augroup END
+
+
