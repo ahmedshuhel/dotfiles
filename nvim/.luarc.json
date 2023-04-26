@@ -79,6 +79,7 @@
         "/Users/ahmedshuhel/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
         "/Users/ahmedshuhel/.local/share/nvim/site/pack/packer/start/typescript.nvim",
         "/Users/ahmedshuhel/.local/share/nvim/site/pack/packer/start/which-key.nvim",
-        "${3rd}/luassert/library"
+        "${3rd}/luassert/library",
+        "${3rd}/luv/library"
     ]
 }
