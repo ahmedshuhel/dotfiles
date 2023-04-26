@@ -26,7 +26,9 @@ util.on_setup = util.add_hook_after(util.on_setup, function(config)
     config.capabilities = vim.tbl_deep_extend("force", create_capabilities(), config.capabilities or {})
 end)
 
-require("mason-lspconfig").setup {}
+require("mason-lspconfig").setup {
+ ensure_installed = { "lua_ls", "rust_analyzer" },
+}
 
 require("mason-lspconfig").setup_handlers {
     function(server_name)
