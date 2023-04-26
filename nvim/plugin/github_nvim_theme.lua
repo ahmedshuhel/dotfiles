@@ -7,7 +7,7 @@ require('github-theme').setup({
       comments = 'italic,bold',
       functions = 'NONE',
       keywords = 'bold',
-      variables = 'underline',
+      variables = 'NONE',
     },
     darken = {
       floats = true,
