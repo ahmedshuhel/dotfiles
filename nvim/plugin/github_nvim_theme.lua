@@ -1,49 +1,51 @@
-require('github-theme').setup({
-  options = {
-    transparent = false,
-    hide_end_of_buffer = true,
-    hide_nc_statusline = true,
-    styles = {
-      comments = 'italic,bold',
-      functions = 'NONE',
-      keywords = 'bold',
-      variables = 'NONE',
+require("github-theme").setup {
+    options = {
+        transparent = false,
+        hide_end_of_buffer = true,
+        hide_nc_statusline = true,
+        styles = {
+            comments = "italic,bold",
+            functions = "NONE",
+            keywords = "bold",
+            variables = "NONE",
+        },
+        darken = {
+            floats = true,
+            sidebars = {
+                enable = true,
+                list = {},
+            },
+        },
     },
-    darken = {
-      floats = true,
-      sidebars = {
-        enable = true,
-        list = {},
-      },
+    specs = {
+        -- Change the color of only the 'github_dark' theme's 'hint' color to magenta and make the 'error' color a dim red.
+        github_dark = {
+            diag = {
+                error = "#660000",
+                hint = "magenta.base",
+            },
+        },
+        -- Change the "hint" color to the "orange" color, and make the "error" color bright red.
+        all = {
+            diag = {
+                error = "#ff0000",
+                hint = "orange",
+            },
+        },
     },
-  },
+    -- Overwrite the highlight groups for all colorschemes
+    groups = {
+        all = {
+            htmlTag = { fg = "palette.red", bg = "#282c34", sp = "diag.hint", style = "underline,bold" },
+            DiagnosticHint = { link = "LspDiagnosticsDefaultHint" },
+            GitSignsAdd = { fg = "#80e595", bg = "NONE" }, -- diff mode: Added line |diff.txt|
+            GitSignsChange = { bg = "NONE" }, -- diff mode: Changed line |diff.txt|
+            GitSignsCurrentLineBlame = { bg =  "NONE"}, -- diff mode: Deleted line |diff.txt|
+            --
+            -- this will remove the highlight groups
+            -- TSField = {},
+        },
+    },
+}
 
-  specs = {
-    -- Change the color of only the 'github_dark' theme's 'hint' color to magenta and make the 'error' color a dim red.
-    github_dark = {
-      diag = {
-        error = '#660000',
-        hint = 'magenta.base',
-      },
-    },
-    -- Change the "hint" color to the "orange" color, and make the "error" color bright red.
-    all = {
-      diag = {
-        error = '#ff0000',
-        hint = 'orange',
-      },
-    },
-  },
-
-  -- Overwrite the highlight groups for all colorschemes
-  groups = {
-    all = {
-      htmlTag = { fg = 'palette.red', bg = '#282c34', sp = 'diag.hint', style = 'underline,bold' },
-      DiagnosticHint = { link = 'LspDiagnosticsDefaultHint' },
-      -- this will remove the highlight groups
-      -- TSField = {},
-    },
-  },
-})
-
-vim.cmd('colorscheme github_light')
+vim.cmd "colorscheme github_light"

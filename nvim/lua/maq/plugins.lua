@@ -8,6 +8,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     install_packer()
 end
 
+
 vim.cmd.packadd { "packer.nvim" }
 
 function _G.packer_upgrade()
