@@ -9,9 +9,16 @@
 [core]
 	editor = vi
 	excludesFile = ~/.gitignore_global
+	fsmonitor = true
+	untrackedcache = true
+	fsmonitor = true
+	untrackedcache = true
 [diff]
-	tool = vsdiffmerge
+	tool = vimdiff
 [difftool]
 	prompt = true
 [init]
 	defaultBranch = master
+[status]
+	showuntrackedfiles = all
+	showuntrackedfiles = all

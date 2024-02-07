@@ -133,7 +133,7 @@ local full_theme = function(title)
     }
 end
 
-f.map("n", "<space>p", function()
+f.map("n", "<C-P>", function()
     builtin.find_files(dropdown("  "))
 end)
 

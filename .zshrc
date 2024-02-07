@@ -127,7 +127,8 @@ export PATH=$PATH:/snap/bin
 export PATH=$PATH:/usr/lib/jvm/java-11-openjdk-amd64/bin
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 export J2SDKDIR=/usr/lib/jvm/java-11-openjdk-amd64/
-
+export MODULAR_HOME=$HOME/.modular
+export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"
 
 export GOPATH=$HOME/Workspace
 export PATH=$PATH:/usr/local/go/bin
@@ -178,3 +179,10 @@ else
 fi
 
 export COMPOSE_DOCKER_CLI_BUILD=1
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/ahmedshuhel/Workspace/poscube-terraform/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ahmedshuhel/Workspace/poscube-terraform/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/ahmedshuhel/Workspace/poscube-terraform/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ahmedshuhel/Workspace/poscube-terraform/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"

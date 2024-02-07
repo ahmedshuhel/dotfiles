@@ -3,7 +3,7 @@
 import asyncio
 import iterm2
 
-THEME_LIGHT = "nightfox_day_iterm"
+THEME_LIGHT = "github_light"
 THEME_DARK = "nightfox_iterm"
 
 
