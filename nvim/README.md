@@ -1,10 +1,4 @@
-# Nvim Configuration
+# 💤 LazyVim
 
-
-
-
-
-## Credit
-
-The configuration is originally cloned/copied from [williamboman/nvim-config](https://github.com/williamboman/nvim-config).
-
+A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
+Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
