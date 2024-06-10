@@ -13,6 +13,7 @@
 	untrackedcache = true
 	fsmonitor = true
 	untrackedcache = true
+	compression = 0
 [diff]
 	tool = vimdiff
 [difftool]
@@ -22,3 +23,10 @@
 [status]
 	showuntrackedfiles = all
 	showuntrackedfiles = all
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[http]
+	postBuffer = 157286400

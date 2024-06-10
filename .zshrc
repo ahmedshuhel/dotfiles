@@ -127,6 +127,7 @@ export PATH=$PATH:/snap/bin
 export PATH=$PATH:/usr/lib/jvm/java-11-openjdk-amd64/bin
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 export J2SDKDIR=/usr/lib/jvm/java-11-openjdk-amd64/
+
 export MODULAR_HOME=$HOME/.modular
 export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"
 
