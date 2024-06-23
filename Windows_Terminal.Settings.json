@@ -4,12 +4,41 @@
     "actions": 
     [
         {
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "keys": "ctrl+shift+c"
+        },
+        {
             "command": "unbound",
             "keys": "ctrl+comma"
         },
         {
             "command": "unbound",
             "keys": "ctrl+tab"
+        },
+        {
+            "command": 
+            {
+                "action": "renameTab",
+                "title": null
+            },
+            "keys": "ctrl+alt+r"
+        },
+        {
+            "command": "find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "keys": "alt+shift+d"
         },
         {
             "command": 
@@ -21,55 +50,37 @@
         {
             "command": "paste",
             "keys": "ctrl+shift+v"
-        },
-        {
-            "command": "find",
-            "keys": "ctrl+shift+f"
-        },
-        {
-            "command": 
-            {
-                "action": "copy",
-                "singleLine": false
-            },
-            "keys": "ctrl+shift+c"
-        },
-        {
-            "command": 
-            {
-                "action": "renameTab",
-                "title": null
-            },
-            "keys": "ctrl+alt+r"
-        },
-        {
-            "command": 
-            {
-                "action": "splitPane",
-                "split": "auto",
-                "splitMode": "duplicate"
-            },
-            "keys": "alt+shift+d"
         }
     ],
     "alwaysShowTabs": true,
     "copyFormatting": "none",
-    "defaultProfile": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "launchMode": "maximized",
+    "newTabMenu": 
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
     "profiles": 
     {
         "defaults": 
         {
-            "colorScheme": "One Half Dark",
+            "adjustIndistinguishableColors": "indexed",
+            "bellStyle": "none",
+            "colorScheme": "OneDark",
             "cursorShape": "filledBox",
+            "experimental.retroTerminalEffect": false,
             "font": 
             {
                 "face": "CaskaydiaCove Nerd Font Mono",
-                "size": 10
+                "size": 10.0
             },
+            "historySize": 10000,
             "opacity": 75,
             "padding": "8, 0",
             "scrollbarState": "hidden",
+            "suppressApplicationTitle": true,
             "useAcrylic": true
         },
         "list": 
@@ -100,7 +111,7 @@
                 "font": 
                 {
                     "face": "CaskaydiaCove Nerd Font Mono",
-                    "size": 10
+                    "size": 10.0
                 },
                 "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
                 "hidden": false,
@@ -128,6 +139,18 @@
                 "hidden": true,
                 "name": "Visual Studio Debug Console",
                 "source": "VSDebugConsole"
+            },
+            {
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "name": "PowerShell 7",
+                "source": "Windows.Terminal.PowershellCore"
+            },
+            {
+                "guid": "{8ab8e6f6-35c6-5b46-8419-3e1568105476}",
+                "hidden": false,
+                "name": "podman-machine-default",
+                "source": "Windows.Terminal.Wsl"
             }
         ]
     },
@@ -226,7 +249,7 @@
             "yellow": "#E5C07B"
         },
         {
-            "background": "#FAFAFA",
+            "background": "#FFFFFF",
             "black": "#383A42",
             "blue": "#0184BC",
             "brightBlack": "#4F525D",
@@ -350,7 +373,7 @@
             "brightGreen": "#8AE234",
             "brightPurple": "#AD7FA8",
             "brightRed": "#EF2929",
-            "brightWhite": "#EEEEEC",
+            "brightWhite": "#DEDEDE",
             "brightYellow": "#FCE94F",
             "cursorColor": "#000000",
             "cyan": "#06989A",
@@ -360,7 +383,7 @@
             "purple": "#75507B",
             "red": "#CC0000",
             "selectionBackground": "#FFFFFF",
-            "white": "#D3D7CF",
+            "white": "#B2B5AE",
             "yellow": "#C4A000"
         },
         {
@@ -390,5 +413,6 @@
     "showTabsInTitlebar": true,
     "tabSwitcherMode": "inOrder",
     "theme": "dark",
+    "themes": [],
     "windowingBehavior": "useNew"
 }
