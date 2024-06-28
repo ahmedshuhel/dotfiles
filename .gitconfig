@@ -9,11 +9,7 @@
 [core]
 	editor = vi
 	excludesFile = ~/.gitignore_global
-	fsmonitor = true
-	untrackedcache = true
-	fsmonitor = true
-	untrackedcache = true
-	compression = 0
+	fsMonitor = false
 [diff]
 	tool = vimdiff
 [difftool]
