@@ -18,3 +18,9 @@ disabled = true
 
 [python]
 disabled = true
+
+[git_branch]
+format = '[$symbol$branch(:$remote_branch)]($style) '
+
+[git_status]
+disabled = true
