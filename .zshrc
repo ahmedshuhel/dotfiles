@@ -187,3 +187,5 @@ if [ -f '/Users/ahmedshuhel/Workspace/poscube-terraform/google-cloud-sdk/path.zs
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/ahmedshuhel/Workspace/poscube-terraform/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ahmedshuhel/Workspace/poscube-terraform/google-cloud-sdk/completion.zsh.inc'; fi
 export PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
+
+. "$HOME/.cargo/env"
