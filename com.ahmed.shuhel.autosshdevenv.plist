@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+       <key>Label</key>
+       <string>com.shuhel.autosshdevenv</string>
+       <key>ProgramArguments</key>
+	<array>
+	   <string>/Users/ahmed.shuhel/Workspace/dotfiles/autossh_devenv.sh</string>
+	</array>
+        <key>RunAtLoad</key> 
+	<true/> 
+        <key>KeepAlive</key>
+	<true/> 
+        <key>StandardOutPath</key>
+	<string>/Users/ahmed.shuhel/Library/Logs/com.shuhel.autosshdevenv.out.log</string>
+        <key>StandardErrorPath</key> 
+	<string>/Users/ahmed.shuhel/Library/Logs/com.shuhel.autosshdevenv.err.log</string>
+        <key>WorkingDirectory</key> 
+	<string>/Users/ahmed.shuhel/</string> 
+    </dict>
+</plist>
+

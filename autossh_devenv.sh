@@ -8,7 +8,7 @@ USER="ubuntu"
 PORTS=(3443 4000 5049 6443 7647 9443)
 
 # AutoSSH Options
-AUTOSSH_OPTIONS="-M 0 -o ServerAliveInterval=60 -o ServerAliveCountMax=3"
+AUTOSSH_OPTIONS="-M 0 -o ServerAliveInterval=60 -o ServerAliveCountMax=3 -T -N"
 
 # Construct the port forwarding string
 PORT_FORWARDING=""
@@ -18,4 +18,4 @@ done
 
 # Start AutoSSH with all port forwardings
 echo "Starting AutoSSH tunnel for ports: ${PORTS[*]}"
-autossh $AUTOSSH_OPTIONS $PORT_FORWARDING $USER@$HOST
+/opt/homebrew/bin/autossh $AUTOSSH_OPTIONS $PORT_FORWARDING $USER@$HOST
