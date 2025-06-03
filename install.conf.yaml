@@ -16,6 +16,8 @@
     # Zsh configuration
     ~/.zshrc: .zshrc
 
+    ~/.tmux.conf: .tmux.conf
+
     # Neovim configuration
     ~/.config/nvim: nvim/
     
