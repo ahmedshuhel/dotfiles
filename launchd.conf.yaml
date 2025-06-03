@@ -1,0 +1,30 @@
+# LaunchAgent configuration - only for machines that need autossh service
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- link:
+    # LaunchAgent for autossh service
+    ~/Library/LaunchAgents/com.ahmed.shuhel.autosshdevenv.plist: com.ahmed.shuhel.autosshdevenv.plist
+
+- create:
+    - ~/Library/LaunchAgents
+
+- shell:
+    # Ask user if they want to load the service
+    - 
+      command: |
+        echo "🚀 LaunchAgent has been installed!"
+        echo "To load the autossh service, run:"
+        echo "  launchctl load -w ~/Library/LaunchAgents/com.ahmed.shuhel.autosshdevenv.plist"
+        echo ""
+        read -p "Do you want to load the autossh LaunchAgent service now? (y/N): " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+          echo "Loading LaunchAgent service..."
+          launchctl load -w ~/Library/LaunchAgents/com.ahmed.shuhel.autosshdevenv.plist && echo "✅ Service loaded successfully!" || echo "❌ Failed to load service"
+        else
+          echo "Service not loaded. You can load it later with the command above."
+        fi
+      description: Setting up LaunchAgent service

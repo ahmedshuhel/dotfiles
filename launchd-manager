@@ -1,0 +1,127 @@
+#!/usr/bin/env bash
+
+# LaunchAgent management script for autossh service
+
+set -e
+
+SERVICE_NAME="com.ahmed.shuhel.autosshdevenv"
+PLIST_PATH="$HOME/Library/LaunchAgents/${SERVICE_NAME}.plist"
+
+show_help() {
+    cat << EOF
+LaunchAgent Manager for autossh service
+
+USAGE:
+    $0 [COMMAND]
+
+COMMANDS:
+    install     Install the LaunchAgent (symlink plist file)
+    load        Load/start the service
+    unload      Unload/stop the service
+    reload      Reload the service (unload + load)
+    status      Show service status
+    logs        Show service logs
+    help        Show this help
+
+EXAMPLES:
+    $0 install    # Install the plist file
+    $0 load       # Start the service
+    $0 status     # Check if service is running
+    $0 logs       # View service logs
+
+EOF
+}
+
+install_service() {
+    echo "🔧 Installing LaunchAgent..."
+    mkdir -p "$HOME/Library/LaunchAgents"
+    
+    if [[ -L "$PLIST_PATH" ]]; then
+        echo "✅ LaunchAgent already installed"
+    else
+        ln -sf "$(pwd)/${SERVICE_NAME}.plist" "$PLIST_PATH"
+        echo "✅ LaunchAgent installed: $PLIST_PATH"
+    fi
+}
+
+load_service() {
+    echo "🚀 Loading LaunchAgent service..."
+    if launchctl load -w "$PLIST_PATH" 2>/dev/null; then
+        echo "✅ Service loaded successfully"
+    else
+        echo "❌ Failed to load service (it might already be loaded)"
+    fi
+}
+
+unload_service() {
+    echo "🛑 Unloading LaunchAgent service..."
+    if launchctl unload -w "$PLIST_PATH" 2>/dev/null; then
+        echo "✅ Service unloaded successfully"
+    else
+        echo "❌ Failed to unload service (it might not be loaded)"
+    fi
+}
+
+show_status() {
+    echo "📊 Service Status:"
+    if launchctl list | grep -q "$SERVICE_NAME"; then
+        echo "✅ Service is loaded"
+        launchctl list | grep "$SERVICE_NAME"
+    else
+        echo "❌ Service is not loaded"
+    fi
+}
+
+show_logs() {
+    local out_log="$HOME/Library/Logs/${SERVICE_NAME}.out.log"
+    local err_log="$HOME/Library/Logs/${SERVICE_NAME}.err.log"
+    
+    echo "📋 Service Logs:"
+    echo "Output log: $out_log"
+    echo "Error log: $err_log"
+    echo ""
+    
+    if [[ -f "$out_log" ]]; then
+        echo "=== Latest Output Log ==="
+        tail -20 "$out_log"
+        echo ""
+    fi
+    
+    if [[ -f "$err_log" ]]; then
+        echo "=== Latest Error Log ==="
+        tail -20 "$err_log"
+    fi
+}
+
+# Main command handling
+case "${1:-help}" in
+    install)
+        install_service
+        ;;
+    load)
+        load_service
+        ;;
+    unload)
+        unload_service
+        ;;
+    reload)
+        unload_service
+        sleep 1
+        load_service
+        ;;
+    status)
+        show_status
+        ;;
+    logs)
+        show_logs
+        ;;
+    help|--help|-h)
+        show_help
+        ;;
+    *)
+        echo "❌ Unknown command: $1"
+        echo ""
+        show_help
+        exit 1
+        ;;
+esac

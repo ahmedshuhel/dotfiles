@@ -1,0 +1,68 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+    shell:
+      stdout: true
+      stderr: true
+
+- clean: ['~']
+
+- link:
+    # Git configuration
+    ~/.gitconfig: .gitconfig
+    ~/.gitignore_global: .gitignore_global
+    
+    # Zsh configuration
+    ~/.zshrc: .zshrc
+
+    # Neovim configuration
+    ~/.config/nvim: nvim/
+    
+    # Starship configuration
+    ~/.config/starship.toml: starship.toml
+    
+    # Color schemes
+    ~/.config/colorschemes: colorscheme/
+    
+    ~/bin/clean_port:
+      path: clean_port.sh
+      create: true
+    
+    # Python scripts
+    ~/bin/auto_switch_iterm_theme:
+      path: auto_switch_iterm_theme.py
+      create: true
+    
+    # LaunchAgent (removed from default - use ./install-with-launchd for machines that need it)
+    
+- create:
+    - ~/bin
+    - ~/.config
+
+- shell:
+    # Make scripts executable
+    - [chmod +x autossh_devenv.sh, Making autossh_devenv.sh executable]
+    - [chmod +x clean_port.sh, Making clean_port.sh executable]
+    - [chmod +x auto_switch_iterm_theme.py, Making auto_switch_iterm_theme.py executable]
+    
+    # PowerShell profile (if PowerShell is installed)
+    - 
+      command: |
+        if command -v pwsh >/dev/null 2>&1; then
+          mkdir -p ~/.config/powershell
+          ln -sf "$(pwd)/Microsoft.PowerShell_profile.ps1" ~/.config/powershell/Microsoft.PowerShell_profile.ps1
+          echo "PowerShell profile linked"
+        else
+          echo "PowerShell not detected, skipping profile setup"
+        fi
+      description: Setting up PowerShell profile
+    
+    # Check PATH
+    - 
+      command: |
+        if [[ ":$PATH:" != *":$HOME/bin:"* ]]; then
+          echo "⚠️  ~/bin is not in your PATH"
+          echo "Add this to your shell profile: export PATH=\"\$HOME/bin:\$PATH\""
+        fi
+      description: Checking PATH configuration

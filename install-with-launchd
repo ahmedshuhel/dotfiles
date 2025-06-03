@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# Install dotfiles with LaunchAgent for machines that need autossh service
+
+set -e
+
+CONFIG_BASIC="install.conf.yaml"
+CONFIG_LAUNCHD="launchd.conf.yaml"
+DOTBOT_DIR="dotbot"
+DOTBOT_BIN="bin/dotbot"
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+echo "🔧 Installing dotfiles with LaunchAgent support..."
+
+cd "${BASEDIR}"
+git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
+git submodule update --init --recursive "${DOTBOT_DIR}"
+
+# Run basic installation first
+echo "📦 Installing basic dotfiles..."
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG_BASIC}" "${@}"
+
+# Then install LaunchAgent
+echo "🚀 Installing LaunchAgent..."
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG_LAUNCHD}" "${@}"
+
+echo "✅ Installation complete!"
