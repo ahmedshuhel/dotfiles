@@ -49,7 +49,7 @@ set idearefactormode=keep
 nmap gi <Action>(GotoImplementation)
 nmap gr <Action>(FindUsages)
 
-nmap <leader>f <Action>(ReformatCode)
+nmap <leader>rf <Action>(ReformatCode)
 nmap <leader>/ <Action>(CommentByLineComment)
 nmap <leader>o <Action>(FileStructurePopup)
 nmap <leader>rn <Action>(RenameElement)
