@@ -1,4 +1,5 @@
-$ENV:STARSHIP_CONFIG = "$HOME\Workspace\dotfiles\starship.toml"
+# Add Homebrew bin paths to PATH (macOS)
+$ENV:PATH = "/opt/homebrew/bin:/usr/local/bin:$ENV:PATH"
 
 Invoke-Expression (&starship init powershell)
 
@@ -12,4 +13,3 @@ Set-Alias vim nvim
 
 Set-Alias ll ls
 Set-Alias vim nvim
-
